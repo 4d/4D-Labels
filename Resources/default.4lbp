@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<label 
+	columns="2" 
+	rows="7"  
+	labels-per-record="1" 
+	start="1"
+	document-name="" 
+	standard-code="" 
+	version="2">
+	<setting 
+		id="setting" 
+		auto-width="true" 
+		landscape="false" 
+		vertical="false"/>
+	<size 
+		id="size" 
+		unit="pt" 
+		height="113" 
+		width="255"/>
+	<margin  
+		id="margin"
+		left="30"
+		top="30" 
+		right="30" 
+		bottom="60"/>
+	<gap 
+		id="gap" 
+		horizontal="0" 
+		vertical="0"/>
+	<form 
+		id="form" 
+		name="" 
+		number="-1"/>
+	<method 
+		id="method"  
+		name=""
+		evaluate-per-label="false"/>  
+</label>

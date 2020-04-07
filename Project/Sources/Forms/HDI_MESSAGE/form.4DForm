@@ -1,0 +1,304 @@
+﻿{
+	"destination": "detailScreen",
+	"windowMinWidth": 500,
+	"windowMinHeight": 400,
+	"width": 500,
+	"height": 400,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onCloseBox",
+		"onUnload",
+		"onTimer",
+		"onResize"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "595pt",
+		"paperHeight": "842pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"Rectangle1": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 500,
+					"height": 400,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"stroke": "transparent"
+				},
+				"tabControl": {
+					"type": "tab",
+					"top": 15,
+					"left": 0,
+					"width": 500,
+					"height": 25,
+					"sizingX": "grow",
+					"dataSourceTypeHint": "arrayText",
+					"labels": [
+						"Page 1",
+						"Page 2"
+					],
+					"action": "gotoPage",
+					"method": "ObjectMethods/tabControl.4dm",
+					"events": [
+						"onLoad",
+						"onClick"
+					]
+				},
+				"Text2": {
+					"type": "text",
+					"top": 378,
+					"left": 0,
+					"width": 500,
+					"height": 17,
+					"sizingX": "grow",
+					"sizingY": "move",
+					"stroke": "#0000FF",
+					"textAlign": "center",
+					"text": "Browse Pages, resize the Window, and then click the Close Box"
+				}
+			}
+		},
+		{
+			"objects": {
+				"Check Box": {
+					"type": "checkbox",
+					"top": 93,
+					"left": 171,
+					"width": 151,
+					"height": 19,
+					"text": "Check Box",
+					"method": "ObjectMethods/Check Box.4dm",
+					"events": [
+						"onLoad"
+					]
+				},
+				"Radio Button": {
+					"type": "radio",
+					"top": 150,
+					"left": 171,
+					"width": 139,
+					"height": 16,
+					"text": "Radio button",
+					"radioGroup": "Group3",
+					"method": "ObjectMethods/Radio Button.4dm",
+					"events": [
+						"onLoad"
+					]
+				},
+				"Radio Button1": {
+					"type": "radio",
+					"top": 180,
+					"left": 171,
+					"width": 139,
+					"height": 16,
+					"text": "Radio button",
+					"radioGroup": "Group3",
+					"events": [
+						"onClick"
+					]
+				},
+				"Radio Button2": {
+					"type": "radio",
+					"top": 210,
+					"left": 171,
+					"width": 139,
+					"height": 16,
+					"text": "Radio button",
+					"radioGroup": "Group3",
+					"events": [
+						"onClick"
+					]
+				},
+				"Splitter": {
+					"type": "splitter",
+					"top": 131,
+					"left": 9,
+					"width": 481,
+					"height": 6,
+					"sizingX": "grow",
+					"events": [
+						"onClick"
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"Text": {
+					"type": "text",
+					"top": 88,
+					"left": 28,
+					"width": 121,
+					"height": 17,
+					"textAlign": "right",
+					"text": "Sample Text:"
+				},
+				"Variable1": {
+					"type": "input",
+					"top": 88,
+					"left": 163,
+					"width": 313,
+					"height": 17,
+					"sizingX": "grow",
+					"hideFocusRing": true,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"Variable": {
+					"type": "input",
+					"top": 0,
+					"left": 0,
+					"width": 500,
+					"height": 400,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"dataSourceTypeHint": "picture",
+					"focusable": false,
+					"borderStyle": "none",
+					"enterable": false,
+					"dragging": "none"
+				},
+				"Picture1": {
+					"type": "picture",
+					"top": 0,
+					"left": 765,
+					"width": 500,
+					"height": 400,
+					"visibility": "hidden",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"pictureFormat": "scaled",
+					"picture": "Images/Picture1.png"
+				},
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 115,
+					"left": 831,
+					"width": 368,
+					"height": 171,
+					"visibility": "hidden",
+					"sizingX": "move",
+					"sizingY": "move",
+					"borderRadius": 20
+				},
+				"Text1": {
+					"type": "text",
+					"top": 148,
+					"left": 883,
+					"width": 233,
+					"height": 17,
+					"visibility": "hidden",
+					"sizingX": "move",
+					"sizingY": "move",
+					"text": "Save ?"
+				},
+				"Button1": {
+					"type": "button",
+					"top": 251,
+					"left": 1095,
+					"width": 79,
+					"height": 22,
+					"visibility": "hidden",
+					"sizingX": "move",
+					"sizingY": "move",
+					"action": "accept",
+					"text": "OK",
+					"focusable": false,
+					"events": [
+						"onClick"
+					]
+				},
+				"Button2": {
+					"type": "button",
+					"top": 251,
+					"left": 972,
+					"width": 79,
+					"height": 22,
+					"visibility": "hidden",
+					"sizingX": "move",
+					"sizingY": "move",
+					"action": "cancel",
+					"text": "No",
+					"focusable": false,
+					"events": [
+						"onClick"
+					]
+				},
+				"Button3": {
+					"type": "button",
+					"top": 251,
+					"left": 855,
+					"width": 79,
+					"height": 22,
+					"visibility": "hidden",
+					"sizingX": "move",
+					"sizingY": "move",
+					"text": "Cancel",
+					"focusable": false,
+					"method": "ObjectMethods/Button3.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"alert.mask": {
+					"type": "picture",
+					"top": 0,
+					"left": 0,
+					"width": 500,
+					"height": 400,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"pictureFormat": "tiled",
+					"picture": "Images/alert.mask.png"
+				},
+				"alert.box": {
+					"type": "subform",
+					"top": 120,
+					"left": 39,
+					"width": 420,
+					"height": 160,
+					"dataSourceTypeHint": "undefined",
+					"detailForm": "MESSAGE",
+					"deletableInList": false,
+					"doubleClickInRowAction": "editSubrecord",
+					"doubleClickInEmptyAreaAction": "addSubrecord",
+					"selectionMode": "multiple",
+					"printFrame": "variable",
+					"method": "ObjectMethods/alert.box.4dm"
+				}
+			}
+		}
+	],
+	"editor": {
+		"groups": {
+			"Group3": [
+				"Radio Button",
+				"Radio Button1",
+				"Radio Button2"
+			],
+			"Group1": [
+				"Rectangle",
+				"Text1",
+				"Button1",
+				"Button2",
+				"Button3"
+			]
+		}
+	}
+}

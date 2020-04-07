@@ -1,0 +1,123 @@
+﻿{
+	"destination": "detailScreen",
+	"memorizeGeometry": true,
+	"width": 220,
+	"height": 56,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onBoundVariableChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "595pt",
+		"paperHeight": "842pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"label.bg": {
+					"type": "rectangle",
+					"top": 1,
+					"left": 1,
+					"width": 111,
+					"height": 54,
+					"borderRadius": 0,
+					"stroke": "#ffd700",
+					"fill": "transparent",
+					"strokeWidth": 1,
+					"visibility": "hidden",
+					"strokeDashArray": [
+						6,
+						2
+					]
+				},
+				"layout.bg": {
+					"type": "rectangle",
+					"top": 1,
+					"left": 111,
+					"width": 108,
+					"height": 54,
+					"borderRadius": 0,
+					"stroke": "#ffd700",
+					"fill": "transparent",
+					"strokeWidth": 1,
+					"visibility": "hidden",
+					"strokeDashArray": [
+						6,
+						2
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"label": {
+					"type": "button",
+					"top": 0,
+					"left": 0,
+					"width": 110,
+					"height": 54,
+					"focusable": false,
+					"text": ":xliff:label",
+					"icon": "/RESOURCES/images/tbLabel.png",
+					"iconFrames": 4,
+					"style": "custom",
+					"method": "ObjectMethods/label.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"layout": {
+					"type": "button",
+					"top": 0,
+					"left": 110,
+					"width": 110,
+					"height": 54,
+					"focusable": false,
+					"text": ":xliff:layout",
+					"icon": "/RESOURCES/images/tbLayout.png",
+					"iconFrames": 4,
+					"style": "custom",
+					"method": "ObjectMethods/layout.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"selection": {
+					"type": "rectangle",
+					"top": 73,
+					"left": 1,
+					"width": 31,
+					"height": 34,
+					"fill": "transparent",
+					"stroke": "#FF6600",
+					"strokeWidth": 3
+				},
+				"Automatic_font": {
+					"type": "input",
+					"left": 45,
+					"top": 82,
+					"width": 121,
+					"height": 17,
+					"events": [
+						"onLoad"
+					],
+					"method": "ObjectMethods/Automatic_font.4dm",
+					"visibility": "hidden",
+					"fill": "#ffff00",
+					"stroke": "#ff0000",
+					"borderStyle": "dotted"
+				}
+			}
+		}
+	],
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
+}

@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+   <!--                  
+   Translation file for 4D products.
+   Copyright (C) 2013 4D SAS.
+   This file is distributed under the same license as the 4D product package.
+-->
+
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" product-version="v14" source-language="en-US" target-language="DE">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="separator">_</prop>
+            <prop prop-type="version">1.0</prop>
+            <prop prop-type="prefix">print_</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group id="" resname="Labels_Editor">
+            <trans-unit id="63" resname="apply">
+               <source>Apply</source>
+               <target>Anwenden</target>
+            </trans-unit>
+            <trans-unit id="62" resname="bottom">
+               <source>Bottom</source>
+               <target>Unten</target>
+            </trans-unit>
+            <trans-unit id="66" resname="columns">
+               <source>Columns</source>
+               <target>Spalten</target>
+            </trans-unit>
+            <trans-unit id="64" resname="forEach">
+               <source>For each</source>
+               <target>Für jeden</target>
+            </trans-unit>
+            <trans-unit id="1081_12" resname="formToUse">
+               <source>Form to use</source>
+               <target>Formular verwenden</target>
+            </trans-unit>
+            <trans-unit id="57" resname="gaps">
+               <source>Gaps</source>
+               <target>Abstände</target>
+            </trans-unit>
+            <trans-unit id="61" resname="height">
+               <source>Height</source>
+               <target>Höhe</target>
+            </trans-unit>
+            <trans-unit id="1081_27" resname="horizontal">
+               <source>Horizontal</source>
+               <target>Horizontal</target>
+            </trans-unit>
+            <trans-unit id="59" resname="label">
+               <source>Label</source>
+               <target>Etikett</target>
+            </trans-unit>
+            <trans-unit id="1081_01" resname="label_wizard_windowTitle">
+               <source>Label Wizard</source>
+               <target>Etiketteneditor</target>
+            </trans-unit>
+            <trans-unit id="1081_22" resname="labels">
+               <source>Labels</source>
+               <target>Etiketten</target>
+            </trans-unit>
+            
+            <trans-unit id="1081_18" resname="labelsOrder">
+               <source>Labels Order</source>
+               <target>Etikettenfolge</target>
+            </trans-unit>
+            <trans-unit id="59" resname="labelsPerRecord">
+               <source>Labels per record</source>
+               <target>Anzahl pro Datensatz</target>
+            </trans-unit>
+            <trans-unit id="61" resname="lanscape">
+               <source>Lanscape</source>
+               <target>Querformat</target>
+            </trans-unit>
+            <trans-unit id="60" resname="layout">
+               <source>Layout</source>
+               <target>Format</target>
+            </trans-unit>
+            <trans-unit id="1081_26" resname="left">
+               <source>Left</source>
+               <target>Links</target>
+            </trans-unit>
+            <trans-unit id="1081_11" resname="Line Width">
+               <source>Line Width</source>
+               <target>Linienbreite</target>
+            </trans-unit>
+            <trans-unit id="1081_04" resname="listOfFields">
+               <source>List of Fields</source>
+               <target>Feldliste</target>
+            </trans-unit>
+            <trans-unit id="58" resname="margins">
+               <source>Margins</source>
+               <target>Ränder</target>
+            </trans-unit>
+            <trans-unit id="62" resname="measurements">
+               <source>Measurements</source>
+               <target>Einheit</target>
+            </trans-unit>
+            <trans-unit id="1081_32" resname="method">
+               <source>Method</source>
+               <target>Methode</target>
+            </trans-unit>
+            <trans-unit id="53" resname="noForm">
+               <source>No Form</source>
+               <target>Kein Formular</target>
+            </trans-unit>
+            <trans-unit id="62" resname="noMethod">
+               <source>No Method</source>
+               <target>Keine Methode</target>
+            </trans-unit>
+            <trans-unit id="1081_06" resname="Object Look">
+               <source>Object Look</source>
+               <target>Objekt-Ansicht</target>
+            </trans-unit>>
+            <trans-unit id="1081_17" resname="Orientation" translate="yes">
+               <source>Orientation</source>
+               <target>Ausrichtung</target>
+            </trans-unit>
+            <trans-unit id="1081_23" resname="Page Size">
+               <source>Page Size</source>
+               <target>Papiergröße</target>
+            </trans-unit>
+            <trans-unit id="60" resname="portrait">
+               <source>Portrait</source>
+               <target>Normal</target>
+            </trans-unit>
+            <trans-unit id="1081_16" resname="printSetup..">
+               <source>Print Setup...</source>
+               <target>Papierformat...</target>
+            </trans-unit>
+            <trans-unit id="1081_35" resname="record">
+               <source>Record</source>
+               <target>Datensatz</target>
+            </trans-unit>
+            <trans-unit id="61" resname="right">
+               <source>Right</source>
+               <target>Rechts</target>
+            </trans-unit>
+            <trans-unit id="65" resname="rows">
+               <source>Rows</source>
+               <target>Reihen</target>
+            </trans-unit>
+            <trans-unit id="1081_31" resname="Standard Code:">
+               <source>Standard Code:</source>
+               <target>Standard-Code:</target>
+            </trans-unit>
+            <trans-unit id="1081_05" resname="Static Text:">
+               <source>Static Text:</source>
+               <target>Statischer Text:</target>
+            </trans-unit>
+            <trans-unit id="1081_14" resname="Style" translate="yes">
+               <source>Style</source>
+               <target>Stile</target>
+            </trans-unit>
+            <trans-unit id="1081_13" resname="Text">
+               <source>Text</source>
+               <target>Text</target>
+            </trans-unit>
+            <trans-unit id="1081_25" resname="top">
+               <source>Top</source>
+               <target>Oben</target>
+            </trans-unit>
+            <trans-unit id="1081_29" resname="unit">
+               <source>Unit</source>
+               <target>Einheit</target>
+            </trans-unit>
+            <trans-unit id="1081_28" resname="vertical">
+               <source>Vertical</source>
+               <target>Vertikal</target>
+            </trans-unit>
+            <trans-unit id="60" resname="width">
+               <source>Width</source>
+               <target>Breite</target>
+            </trans-unit>
+            <trans-unit id="50" resname="usePrintMargins">
+               <source>Use printer margins</source>
+               <target>Benutze Druckerränder</target>
+            </trans-unit>
+            <trans-unit id="51" resname="Select label settings file...">
+               <source>Please select a label settings file...</source>
+               <target>Bitte wählen Sie eine Etiketten-Vorlage aus...</target>
+            </trans-unit>
+            <trans-unit id="52" resname="gap_horizontal">
+               <source>Horizontal</source>
+               <target>Horizontal</target>
+            </trans-unit>
+            <trans-unit id="53" resname="gap_vertical">
+               <source>Vertical</source>
+               <target>Vertikal</target>
+            </trans-unit>
+         </group>
+        <group id="was_1104" resname="units">
+            <trans-unit id="1104_12" resname="point" translate="yes">
+               <source>Point</source>
+               <target>Punkt</target>
+            </trans-unit>
+            <trans-unit id="1104_13" resname="millimeter">
+               <source>Millimeter</source>
+               <target>Millimeter</target>
+            </trans-unit>
+            <trans-unit id="1104_14" resname="centimeter">
+               <source>Centimeter</source>
+               <target>Zentimeter</target>
+            </trans-unit>
+            <trans-unit id="1104_15" resname="inch">
+               <source>Inch</source>
+               <target>Zoll</target>
+            </trans-unit>
+         </group>
+         <group resname="buttons">
+            <trans-unit id="54" resname="cancel">
+               <source>Cancel</source>
+               <target>Abbrechen</target>
+            </trans-unit>
+            <trans-unit id="55" resname="print">
+               <source>Print</source>
+               <target>Drucken</target>
+            </trans-unit>
+            <trans-unit id="55" resname="load">
+               <source>Load</source>
+               <target>Öffnen</target>
+            </trans-unit>
+            <trans-unit id="56" resname="save">
+               <source>Save</source>
+               <target>Sichern</target>
+            </trans-unit>
+            <trans-unit id="49" resname="preview">
+               <source>Preview</source>
+               <target>Vorschau</target>
+            </trans-unit> 
+         </group>
+         
+         <group resname="tips">
+            <trans-unit id="100" resname="Tips_clickOnTheStartingLabel">
+               <source>Click on the Starting Label.</source>
+               <target>Startetikett anklicken.</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

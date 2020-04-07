@@ -1,0 +1,477 @@
+﻿{
+	"_API": {
+		"methods": [
+			"C_OPEN_EDITOR",
+			"C_Print_label",
+			"C_SELECT_ALL",
+			"C_SELECT_COPY",
+			"C_SELECT_CUT",
+			"C_SELECT_DUPLICATE",
+			"C_SELECT_PASTE"
+		]
+	},
+	"_COMMON": {
+		"groups": [
+			"color",
+			"PARSE",
+			"PRINT"
+		],
+		"methods": [
+			"COMPILER_LABELS",
+			"LABELS_INIT"
+		]
+	},
+	"(unitTest)": {},
+	"0_DEV": {
+		"tables": [
+			"Table_1"
+		],
+		"methods": [
+			"00_LABEL_OPEN_EDITOR",
+			"00_PRINT_LABEL",
+			"00_TEST",
+			"build_icons",
+			"Capitalize words",
+			"COMPILER_DEV",
+			"DEBUG_EXPORT",
+			"DEBUG_Update",
+			"OLD_LABEL_EDITOR"
+		],
+		"forms": [
+			"[Table_1]Input",
+			"[Table_1]Output"
+		]
+	},
+	"00_Editor": {
+		"groups": [
+			"DRAG & DROP",
+			"DRAW",
+			"Editor_Private",
+			"EVENTS",
+			"HISTORY",
+			"MENU",
+			"MISC",
+			"OBJECT",
+			"SELECTION",
+			"TEXT_EDIT"
+		],
+		"methods": [
+			"COMPILER_Editor",
+			"Editor_INIT",
+			"Editor_REDRAW",
+			"Editor_UPDATE",
+			"Editor_UPDATE_UI"
+		],
+		"forms": [
+			"Editor"
+		]
+	},
+	"00_wizard": {
+		"groups": [
+			"Label",
+			"layout",
+			"toolbar"
+		],
+		"methods": [
+			"COMPILER_wizard",
+			"wizard_DEINIT",
+			"wizard_Field_icon",
+			"wizard_Field_list",
+			"wizard_GOTO_PAGE",
+			"wizard_INIT",
+			"wizard_PAPER",
+			"wizard_PAPER_PREVIEW",
+			"wizard_Save",
+			"wizard_SET_DATA",
+			"wizard_UPDATE_UI"
+		],
+		"forms": [
+			"LABEL_WIZARD"
+		]
+	},
+	"4D": {
+		"methods": [
+			"4D_LOG",
+			"4D_NO_ERROR",
+			"COMPILER_4D"
+		]
+	},
+	"color": {
+		"methods": [
+			"Color_from_long",
+			"Color_to_long",
+			"COMPILER_color"
+		]
+	},
+	"convert": {
+		"methods": [
+			"COMPILER_convert",
+			"Convert_from_points",
+			"convert_hexToDec",
+			"Convert_into_points",
+			"convert_longToHex"
+		]
+	},
+	"DOM": {
+		"methods": [
+			"COMPILER_DOM",
+			"DOM_ELEMENT_CLEAR_ID",
+			"DOM_ELEMENT_MOVE",
+			"DOM_ELEMENT_REFRESH_ID",
+			"DOM_ELEMENT_RESTORE_ID"
+		]
+	},
+	"DRAG & DROP": {
+		"methods": [
+			"Editor_Definition_drop",
+			"Editor_Field_drop",
+			"Editor_Image_drop"
+		]
+	},
+	"DRAW": {
+		"methods": [
+			"Editor_COMMON_BEGIN",
+			"Editor_COMMON_ON_IDLE",
+			"Editor_COMMON_Stop",
+			"Editor_RECT_DRAGGER_BEGIN",
+			"Editor_RECT_DRAGGER_ON_IDLE",
+			"Editor_RECT_DRAGGER_Stop",
+			"Editor_TEXT_BEGIN",
+			"Editor_TEXT_ON_IDLE",
+			"Editor_TEXT_Stop"
+		]
+	},
+	"Editor_Private": {
+		"methods": [
+			"Editor_Get_default_stroke_width",
+			"Editor_Get_handle",
+			"Editor_OB_GET_TRANSFORM",
+			"Editor_SET_HANDLE",
+			"Editor_SET_STROKE_WIDTH"
+		]
+	},
+	"env": {
+		"methods": [
+			"COMPILER_env",
+			"env_4D_Resources_folder_path"
+		]
+	},
+	"EVENTS": {
+		"methods": [
+			"Editor_ON_BLUR",
+			"Editor_ON_CLICKED",
+			"Editor_ON_CONTEXTUAL_MENU",
+			"Editor_ON_DATA_CHANGE",
+			"Editor_ON_DOUBLE_CLICKED",
+			"Editor_ON_FOCUS",
+			"Editor_ON_RESIZE",
+			"Editor_ON_TIMER"
+		]
+	},
+	"HISTORY": {
+		"methods": [
+			"Editor_HISTORY_APPEND",
+			"Editor_HISTORY_CLEAR",
+			"Editor_HISTORY_FORWARD",
+			"Editor_HISTORY_RESTORE",
+			"Editor_HISTORY_REWIND"
+		]
+	},
+	"IFF": {
+		"methods": [
+			"COMPILER_IFF",
+			"IFF_FILLER",
+			"IFF_Get_BOOL",
+			"IFF_Get_byte",
+			"IFF_Get_data",
+			"IFF_Get_long",
+			"IFF_Get_pascal_text",
+			"IFF_Get_pattern",
+			"IFF_GET_RECT",
+			"IFF_Get_short",
+			"IFF_Get_text",
+			"IFF_Get_type",
+			"IFF_Is_group",
+			"IFF_PAD_CHUNK"
+		]
+	},
+	"Label": {
+		"methods": [
+			"COMPILER_label",
+			"label_data_Get",
+			"label_data_SET",
+			"label_Parse_document",
+			"label_Parse_pattern"
+		]
+	},
+	"layout": {
+		"methods": [
+			"layout_AUTOMATIC_RESIZING",
+			"layout_HANDLE",
+			"layout_INIT",
+			"layout_SET_DATA",
+			"layout_UPDATE_UI"
+		],
+		"forms": [
+			"LAYOUT"
+		]
+	},
+	"lib": {
+		"groups": [
+			"4D",
+			"convert",
+			"DOM",
+			"env",
+			"math",
+			"mess",
+			"miscellaneous",
+			"mnu",
+			"num",
+			"obj",
+			"rgx",
+			"str",
+			"xml"
+		]
+	},
+	"math": {
+		"methods": [
+			"Compiler_math",
+			"math_Length_conversion",
+			"test_math"
+		]
+	},
+	"MENU": {
+		"methods": [
+			"COMPILER_MENU",
+			"Editor_MENU_ALIGN",
+			"Editor_MENU_FONT",
+			"Editor_MENU_FONT_SIZE",
+			"Editor_MENU_IMAGE_OPTIONS",
+			"Editor_MENU_LEVEL",
+			"Editor_MENU_OPACITY",
+			"Editor_MENU_STROKE_WIDTH",
+			"Editor_MENU_TEXT_ALIGNMENT",
+			"Editor_MENU_TEXT_ATTRIBUTES",
+			"Editor_MENU_TEXT_STYLE",
+			"Editor_MENU_TOOLS"
+		]
+	},
+	"mess": {
+		"methods": [
+			"COMPILER_mess",
+			"HDI_MESSAGE",
+			"mess_DISPLAY",
+			"mess_Preferences"
+		],
+		"forms": [
+			"HDI_MESSAGE",
+			"MESSAGE"
+		]
+	},
+	"MISC": {
+		"methods": [
+			"Editor_ADD_STYLE",
+			"Editor_GET_CLICK",
+			"Editor_Get_color",
+			"Editor_Get_current",
+			"Editor_Get_current_tool",
+			"Editor_Get_grips",
+			"Editor_Get_objectCount",
+			"Editor_GET_POINTS",
+			"Editor_Get_zoom",
+			"Editor_PICKER",
+			"Editor_Put_object",
+			"Editor_PUT_USER_FORM",
+			"Editor_SET_CLICK",
+			"Editor_SET_CURRENT",
+			"Editor_SET_ENABLED",
+			"Editor_SET_FILL",
+			"Editor_SET_FONT_COLOR",
+			"Editor_SET_POINTS",
+			"Editor_SET_STROKE",
+			"Editor_SET_TOOL",
+			"Editor_TOOL_SET_ENABLED",
+			"Editor_UPDATE_TOOL"
+		]
+	},
+	"miscellaneous": {
+		"methods": [
+			"ALIGN_OBJECTS",
+			"COMPILER_miscellaneous",
+			"DO NOT OPEN"
+		]
+	},
+	"mnu": {
+		"methods": [
+			"COMPILER_mnu",
+			"menu_format",
+			"mnu_Color",
+			"mnu_Font",
+			"mnu_FontSize",
+			"mnu_FontSyle",
+			"mnu_Get_color",
+			"mnu_Justification"
+		]
+	},
+	"num": {
+		"methods": [
+			"COMPILER_num",
+			"num_not_INF"
+		]
+	},
+	"obj": {
+		"methods": [
+			"COMPILER_obj",
+			"obj_ADAPT_SEPARATOR_LINE",
+			"obj_ALIGN",
+			"obj_ALIGN_ON_BEST_SIZE",
+			"obj_ASSIGNMENT",
+			"obj_BEST_WIDTH",
+			"obj_BOUND_WITH_LIST",
+			"obj_BOUND_WITH_OBJECT",
+			"obj_CENTER",
+			"obj_SET_ENABLED",
+			"obj_TOUCH"
+		]
+	},
+	"OBJECT": {
+		"methods": [
+			"COMPILER_OB",
+			"Editor_Is_object",
+			"Editor_OB_Get_count",
+			"Editor_OB_Get_level",
+			"Editor_OB_Get_type"
+		]
+	},
+	"PARSE": {
+		"groups": [
+			"IFF"
+		],
+		"methods": [
+			"COMPILER_parse",
+			"Get_text_display",
+			"parse_color",
+			"parse_data"
+		]
+	},
+	"PRINT": {
+		"methods": [
+			"COMPILER_PRINT",
+			"Get_field_pointer",
+			"Print_CATCH_ERROR",
+			"PRINT_Font",
+			"PRINT_Get_image",
+			"PRINT_Get_image_field",
+			"PRINT_Get_text_field",
+			"Print_Label",
+			"PRINT_OBJECT",
+			"Print_Resume"
+		],
+		"forms": [
+			"print"
+		]
+	},
+	"rgx": {
+		"methods": [
+			"Compiler_Rgx",
+			"Rgx_ExtractText",
+			"Rgx_Get_Pattern",
+			"Rgx_MatchText",
+			"rgx_NO_ERROR",
+			"rgx_Options",
+			"Rgx_SplitText",
+			"Rgx_SubstituteText"
+		]
+	},
+	"SELECTION": {
+		"methods": [
+			"COMPILER_SEL",
+			"Editor_SEL_ALIGN",
+			"Editor_SEL_DISPLAY_HANDLES",
+			"Editor_SEL_DISTRIBUTE",
+			"Editor_SEL_Get_aspect_ratio",
+			"Editor_SEL_Get_color",
+			"Editor_SEL_Get_count",
+			"Editor_SEL_Get_font",
+			"Editor_SEL_Get_font_color",
+			"Editor_SEL_Get_font_size",
+			"Editor_SEL_Get_opacity",
+			"Editor_SEL_Get_stroke_width",
+			"Editor_SEL_Get_text_align",
+			"Editor_SEL_Get_text_style",
+			"Editor_SEL_INVENTORY",
+			"Editor_SEL_LEVEL",
+			"Editor_SEL_MOVE",
+			"editor_SEL_REVEAL",
+			"Editor_SEL_SET_ASPECT_RATIO",
+			"Editor_SEL_SET_COLOR",
+			"Editor_SEL_SET_FONT",
+			"Editor_SEL_SET_FONT_SIZE",
+			"Editor_SEL_SET_OPACITY",
+			"Editor_SEL_SET_RECT",
+			"Editor_SEL_SET_STROKE_WIDTH",
+			"Editor_SEL_SET_TEXT_ALIGNMENT",
+			"Editor_SEL_SET_TEXT_COLOR",
+			"Editor_SEL_SET_TEXT_STYLE",
+			"Editor_SELECT",
+			"Editor_SELECT_Add",
+			"Editor_SELECT_ALL",
+			"Editor_SELECT_APPEND",
+			"Editor_SELECT_Clear",
+			"Editor_SELECT_COPY",
+			"Editor_SELECT_CUT",
+			"Editor_SELECT_DELETE",
+			"Editor_SELECT_Find",
+			"Editor_SELECT_Get_dragger",
+			"Editor_SELECT_Get_id",
+			"Editor_SELECT_GET_LIST",
+			"Editor_SELECT_HANDLE",
+			"editor_SELECT_HIDE",
+			"Editor_SELECT_Move",
+			"Editor_SELECT_OBJECT",
+			"Editor_SELECT_Objects",
+			"Editor_SELECT_PASTE",
+			"Editor_SELECT_Resize",
+			"Editor_SELECT_SET",
+			"Editor_SELECT_UPDATE_ID"
+		]
+	},
+	"str": {
+		"methods": [
+			"COMPILER_str",
+			"str_Capitalize",
+			"str_equal",
+			"str_Single_quote",
+			"str_styledText",
+			"test_str"
+		]
+	},
+	"TEXT_EDIT": {
+		"methods": [
+			"Editor_TEXT_COMPUTE_SIZE",
+			"Editor_TEXT_EDIT_SET_VALUE",
+			"Editor_TEXT_EDIT_START",
+			"Editor_TEXT_EDIT_Stop",
+			"Editor_TEXT_EDIT_VALIDATE_INPUT"
+		]
+	},
+	"toolbar": {
+		"forms": [
+			"lbw_TABS"
+		]
+	},
+	"xml": {
+		"methods": [
+			"COMPILER_xml",
+			"test_xml",
+			"xml_ColoredSyntax",
+			"xml_GET_ATTRIBUTE_BY_NAME",
+			"xml_IsValidReference"
+		]
+	},
+	"trash": {
+		"groups": [
+			"(unitTest)"
+		]
+	}
+}

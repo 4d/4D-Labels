@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+   <!--Translation file.
+This file is distributed under the same license as the product package.-->
+
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" product-version="v14" source-language="en-US" target-language="cs">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="version">1.0</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group resname="Message">
+            <trans-unit id="1" resname="areYouSure">
+               <source>Are you sure?</source>
+               <target>Jste si jistý?</target>
+            </trans-unit>
+            <trans-unit id="2" resname="cancel">
+               <source>Cancel</source>
+               <target>Storno</target>
+            </trans-unit>
+            <trans-unit id="3" resname="ok">
+               <source>OK</source>
+               <target>OK</target>
+            </trans-unit>
+            <trans-unit id="4" resname="doNotAskAgain">
+               <source>Do not ask again</source>
+               <target>Znovu se neptat</target>
+            </trans-unit>
+            <trans-unit id="5" resname="youWillLoseChangesMadeToThisDocument">
+               <source>You will lose changes made to the document{document}.</source>
+               <target>Ztratíte všechny změny provedené v dokumentu {document}.</target>
+            </trans-unit>
+            <trans-unit id="6" resname="doYouWantToSaveChanges">
+               <source>Do you want to save changes?</source>
+               <target>Chcete uložit změny?</target>
+            </trans-unit>
+            <trans-unit id="7" resname="save">
+               <source>Save</source>
+               <target>Uložit</target>
+            </trans-unit>
+            <trans-unit id="8" resname="doNotSave">
+               <source>Do not save</source>
+               <target>Neuložit</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+   <!--                  
+   Translation file for 4D products.
+   Copyright (C) 2013 4D SAS.
+   This file is distributed under the same license as the 4D product package.
+-->
+
+<xliff version="1.0">
+   <file datatype="x-STR#" original="undefined" product-version="v14" source-language="en-US" target-language="ja">
+      <header>
+         <prop-group name="Xliff-Editor.4dbase">
+            <prop prop-type="separator">_</prop>
+            <prop prop-type="version">1.0</prop>
+            <prop prop-type="prefix">print_</prop>
+         </prop-group>
+      </header>
+      <body>
+         <group id="" resname="Labels_Editor">
+            <trans-unit id="63" resname="apply">
+               <source>Apply</source>
+               <target>メソッド</target>
+            </trans-unit>
+            <trans-unit id="62" resname="bottom">
+               <source>Bottom</source>
+               <target>下マージン</target>
+            </trans-unit>
+            <trans-unit id="66" resname="columns">
+               <source>Columns</source>
+               <target>カラム</target>
+            </trans-unit>
+            <trans-unit id="64" resname="forEach">
+               <source>For each</source>
+               <target>実行頻度</target>
+            </trans-unit>
+            <trans-unit id="1081_12" resname="formToUse">
+               <source>Form to use</source>
+               <target>使用するフォーム</target>
+            </trans-unit>
+            <trans-unit id="57" resname="gaps">
+               <source>Gaps</source>
+               <target>間隔</target>
+            </trans-unit>
+            <trans-unit id="61" resname="height">
+               <source>Height</source>
+               <target>ラベル高さ</target>
+            </trans-unit>
+            <trans-unit id="1081_27" resname="horizontal">
+               <source>Horizontal</source>
+               <target>水平方向</target>
+            </trans-unit>
+            <trans-unit id="59" resname="label">
+               <source>Label</source>
+               <target>ラベル毎</target>
+            </trans-unit>
+            <trans-unit id="1081_01" resname="label_wizard_windowTitle">
+               <source>Label Wizard</source>
+               <target>ラベルウィザード</target>
+            </trans-unit>
+            <trans-unit id="1081_22" resname="labels">
+               <source>Labels</source>
+               <target>ラベル</target>
+            </trans-unit>
+            <trans-unit id="1081_18" resname="labelsOrder">
+               <source>Labels Order</source>
+               <target>ラベルの順番</target>
+            </trans-unit>
+            <trans-unit id="59" resname="labelsPerRecord">
+               <source>Number per record</source>
+               <target>レコードごとの数</target>
+            </trans-unit>
+            <trans-unit id="61" resname="lanscape">
+               <source>Lanscape</source>
+               <target>横向き</target>
+            </trans-unit>
+            <trans-unit id="60" resname="layout">
+               <source>Layout</source>
+               <target>レイアウト</target>
+            </trans-unit>
+            <trans-unit id="1081_26" resname="left">
+               <source>Left</source>
+               <target>左マージン</target>
+            </trans-unit>
+            <trans-unit id="1081_11" resname="Line Width">
+               <source>Line Width</source>
+               <target>線幅</target>
+            </trans-unit>
+            <trans-unit id="1081_04" resname="listOfFields">
+               <source>List of Fields</source>
+               <target>フィールド一覧</target>
+            </trans-unit>
+            <trans-unit id="58" resname="margins">
+               <source>Margins</source>
+               <target>マージン</target>
+            </trans-unit>
+            <trans-unit id="62" resname="measurements">
+               <source>Measurements</source>
+               <target>単位</target>
+            </trans-unit>
+            <trans-unit id="1081_32" resname="method">
+               <source>Method</source>
+               <target>適用メソッド</target>
+            </trans-unit>
+            <trans-unit id="53" resname="noForm">
+               <source>No Form</source>
+               <target>フォームなし</target>
+            </trans-unit>
+            <trans-unit id="62" resname="noMethod">
+               <source>No Method</source>
+               <target>メソッドなし</target>
+            </trans-unit>
+            <trans-unit id="1081_06" resname="Object Look">
+               <source>Object Look</source>
+               <target>オブジェクトルック</target>
+            </trans-unit>
+            <trans-unit id="1081_17" resname="Orientation" translate="yes">
+               <source>Orientation</source>
+               <target>方向</target>
+            </trans-unit>
+            <trans-unit id="1081_23" resname="Page Size">
+               <source>Page Size</source>
+               <target>ページサイズ</target>
+            </trans-unit>
+            <trans-unit id="60" resname="portrait">
+               <source>Portrait</source>
+               <target>縦向き</target>
+            </trans-unit>
+            <trans-unit id="1081_16" resname="printSetup..">
+               <source>Print Setup...</source>
+               <target>印刷設定...</target>
+            </trans-unit>
+            <trans-unit id="1081_35" resname="record">
+               <source>Record</source>
+               <target>レコード毎</target>
+            </trans-unit>
+            <trans-unit id="61" resname="right">
+               <source>Right</source>
+               <target>右マージン</target>
+            </trans-unit>
+            <trans-unit id="65" resname="rows">
+               <source>Rows</source>
+               <target>行</target>
+            </trans-unit>
+            <trans-unit id="1081_31" resname="Standard Code:">
+               <source>Standard Code:</source>
+               <target>ラベルテンプレート:</target>
+            </trans-unit>
+            <trans-unit id="1081_05" resname="Static Text:">
+               <source>Static Text:</source>
+               <target>標準テキスト:</target>
+            </trans-unit>
+            <trans-unit id="1081_14" resname="Style" translate="yes">
+               <source>Style</source>
+               <target>スタイル</target>
+            </trans-unit>
+            <trans-unit id="1081_13" resname="Text">
+               <source>Text</source>
+               <target>テキスト</target>
+            </trans-unit>
+            <trans-unit id="1081_25" resname="top">
+               <source>Top</source>
+               <target>上マージン</target>
+            </trans-unit>
+            <trans-unit id="1081_29" resname="unit">
+               <source>Unit</source>
+               <target>単位</target>
+            </trans-unit>
+            <trans-unit id="1081_28" resname="vertical">
+               <source>Vertical</source>
+               <target>垂直方向</target>
+            </trans-unit>
+            <trans-unit id="60" resname="width">
+               <source>Width</source>
+               <target>ラベル幅</target>
+            </trans-unit>
+            <trans-unit id="50" resname="usePrintMargins">
+               <source>Use printer margins</source>
+               <target>プリンターのマージンを使用</target>
+            </trans-unit>
+            <trans-unit id="51" resname="Select label settings file...">
+               <source>Please select a label settings file...</source>
+               <target>ラベル設定ファイルを選択...</target>
+            </trans-unit>
+            <trans-unit id="52" resname="gap_horizontal">
+               <source>Horizontal</source>
+               <target>水平間隔</target>
+            </trans-unit>
+            <trans-unit id="53" resname="gap_vertical">
+               <source>Vertical</source>
+               <target>垂直間隔</target>
+            </trans-unit>
+         </group>
+         <group id="was_1104" resname="units">
+            <trans-unit id="1104_12" resname="point" translate="yes">
+               <source>Point</source>
+               <target>ポイント</target>
+            </trans-unit>
+            <trans-unit id="1104_13" resname="millimeter">
+               <source>Millimeter</source>
+               <target>mm</target>
+            </trans-unit>
+            <trans-unit id="1104_14" resname="centimeter">
+               <source>Centimeter</source>
+               <target>cm</target>
+            </trans-unit>
+            <trans-unit id="1104_15" resname="inch">
+               <source>Inch</source>
+               <target>in</target>
+            </trans-unit>
+         </group>
+         <group resname="buttons">
+            <trans-unit id="54" resname="cancel">
+               <source>Cancel</source>
+               <target>キャンセル</target>
+            </trans-unit>
+            <trans-unit id="55" resname="print">
+               <source>Print</source>
+               <target>印刷</target>
+            </trans-unit>
+            <trans-unit id="55" resname="load">
+               <source>Load</source>
+               <target>読み込み</target>
+            </trans-unit>
+            <trans-unit id="56" resname="save">
+               <source>Save</source>
+               <target>保存</target>
+            </trans-unit>
+            <trans-unit id="49" resname="preview">
+               <source>Preview</source>
+               <target>プレビュー</target>
+            </trans-unit>
+         </group>
+         <group resname="tips">
+            <trans-unit id="100" resname="Tips_clickOnTheStartingLabel">
+               <source>Click on the Starting Label.</source>
+               <target>ラベルの開始位置をクリック</target>
+            </trans-unit>
+         </group>
+      </body>
+   </file>
+</xliff>

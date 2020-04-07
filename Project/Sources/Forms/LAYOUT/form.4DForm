@@ -1,0 +1,729 @@
+﻿{
+	"destination": "detailScreen",
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"width": 277,
+	"height": 600,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onActivate",
+		"onLosingFocus",
+		"onUnload",
+		"onBoundVariableChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "595pt",
+		"paperHeight": "842pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"Line": {
+					"type": "line",
+					"top": 8,
+					"left": 158,
+					"height": 583,
+					"visibility": "hidden",
+					"stroke": "#0099FF"
+				}
+			}
+		},
+		{
+			"objects": {
+				"layout.rows": {
+					"type": "input",
+					"top": 55,
+					"left": 165,
+					"width": 30,
+					"height": 14,
+					"dataSourceTypeHint": "number",
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"contextMenu": "none",
+					"numberFormat": "#,###,##0",
+					"entryFilter": "&9",
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/layout.rows.4dm",
+					"events": [
+						"onLosingFocus",
+						"onGettingFocus",
+						"onBeforeKeystroke",
+						"onDataChange"
+					]
+				},
+				"layout.rows.stepper": {
+					"type": "stepper",
+					"top": 51,
+					"left": 201,
+					"width": 14,
+					"height": 22,
+					"visibility": "hidden",
+					"continuousExecution": false,
+					"min": 1,
+					"max": 100,
+					"method": "ObjectMethods/layout.rows.stepper.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"layout.columns": {
+					"type": "input",
+					"top": 78,
+					"left": 165,
+					"width": 30,
+					"height": 14,
+					"dataSourceTypeHint": "number",
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"contextMenu": "none",
+					"numberFormat": "#,###,##0",
+					"entryFilter": "&9",
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/layout.columns.4dm",
+					"events": [
+						"onLosingFocus",
+						"onGettingFocus",
+						"onBeforeKeystroke",
+						"onDataChange"
+					]
+				},
+				"layout.columns.stepper": {
+					"type": "stepper",
+					"top": 74,
+					"left": 200,
+					"width": 14,
+					"height": 22,
+					"visibility": "hidden",
+					"continuousExecution": false,
+					"min": 1,
+					"max": 100,
+					"method": "ObjectMethods/layout.columns.stepper.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"layout.labels-per-record": {
+					"type": "input",
+					"top": 101,
+					"left": 165,
+					"width": 30,
+					"height": 14,
+					"dataSourceTypeHint": "number",
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"contextMenu": "none",
+					"numberFormat": "#,###,##0",
+					"entryFilter": "&9",
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/layout.labels-per-record.4dm",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"layout.printSetup": {
+					"type": "button",
+					"top": 134,
+					"left": 95,
+					"width": 127,
+					"height": 17,
+					"text": ":xliff:printSetup..",
+					"focusable": false,
+					"method": "ObjectMethods/layout.printSetup.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"automatic_resizing": {
+					"type": "checkbox",
+					"top": 246,
+					"left": 79,
+					"width": 166,
+					"height": 16,
+					"text": ":xliff:Labels_automaticResizing",
+					"focusable": false,
+					"method": "ObjectMethods/automatic_resizing.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"size.width.box": {
+					"type": "input",
+					"top": 279,
+					"left": 87,
+					"width": 50,
+					"height": 14,
+					"dataSourceTypeHint": "number",
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"contextMenu": "none",
+					"numberFormat": "#,###,##0.0",
+					"entryFilter": "&\"0-9;,;.\"",
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/size.width.box.4dm",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"size.height.box": {
+					"type": "input",
+					"top": 278,
+					"left": 210,
+					"width": 50,
+					"height": 14,
+					"dataSourceTypeHint": "number",
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"contextMenu": "none",
+					"numberFormat": "#,###,##0.0",
+					"entryFilter": "&\"0-9;,;.\"",
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/size.height.box.4dm",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"size.title.1.line": {
+					"type": "line",
+					"top": 235,
+					"left": 59,
+					"width": 209,
+					"stroke": "#C0C0C0"
+				},
+				"size.width.label": {
+					"type": "text",
+					"top": 279,
+					"left": 17,
+					"width": 65,
+					"height": 14,
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:width"
+				},
+				"size.height.label": {
+					"type": "text",
+					"top": 278,
+					"left": 143,
+					"width": 60,
+					"height": 14,
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:height"
+				},
+				"size.title.1": {
+					"type": "text",
+					"top": 225,
+					"left": 16,
+					"width": 98,
+					"height": 15,
+					"textAlign": "left",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:label"
+				},
+				"size.top.box": {
+					"type": "input",
+					"top": 375,
+					"left": 87,
+					"width": 50,
+					"height": 14,
+					"dataSourceTypeHint": "number",
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"contextMenu": "none",
+					"numberFormat": "#,###,##0.0",
+					"entryFilter": "&\"0-9;,;.\"",
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/size.top.box.4dm",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"size.left.box": {
+					"type": "input",
+					"top": 374,
+					"left": 210,
+					"width": 50,
+					"height": 14,
+					"dataSourceTypeHint": "number",
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"contextMenu": "none",
+					"numberFormat": "#,###,##0.0",
+					"entryFilter": "&\"0-9;,;.\"",
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/size.left.box.4dm",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"size.right.box": {
+					"type": "input",
+					"top": 400,
+					"left": 87,
+					"width": 50,
+					"height": 14,
+					"dataSourceTypeHint": "number",
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"contextMenu": "none",
+					"numberFormat": "#,###,##0.0",
+					"entryFilter": "&\"0-9;,;.\"",
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/size.right.box.4dm",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"size.bottom.box": {
+					"type": "input",
+					"top": 399,
+					"left": 210,
+					"width": 50,
+					"height": 14,
+					"dataSourceTypeHint": "number",
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"contextMenu": "none",
+					"numberFormat": "#,###,##0.0",
+					"entryFilter": "&\"0-9;,;.\"",
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/size.bottom.box.4dm",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"size.line.label.3": {
+					"type": "text",
+					"top": 375,
+					"left": 17,
+					"width": 65,
+					"height": 14,
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:top"
+				},
+				"size.line.label.4": {
+					"type": "text",
+					"top": 374,
+					"left": 143,
+					"width": 60,
+					"height": 15,
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:left"
+				},
+				"size.line.label.5": {
+					"type": "text",
+					"top": 400,
+					"left": 17,
+					"width": 65,
+					"height": 14,
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:right"
+				},
+				"size.line.label.6": {
+					"type": "text",
+					"top": 399,
+					"left": 143,
+					"width": 60,
+					"height": 15,
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:bottom"
+				},
+				"size.title.2": {
+					"type": "text",
+					"top": 323,
+					"left": 16,
+					"width": 98,
+					"height": 15,
+					"textAlign": "left",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:margins"
+				},
+				"size.title.2.line": {
+					"type": "line",
+					"top": 333,
+					"left": 64,
+					"width": 204,
+					"stroke": "#C0C0C0"
+				},
+				"printer_margins": {
+					"type": "button",
+					"top": 342,
+					"left": 48,
+					"width": 221,
+					"height": 17,
+					"text": ":xliff:usePrintMargins",
+					"fontFamily": ".Helvetica Neue DeskInterface Regular",
+					"fontSize": 11,
+					"stroke": "#444444",
+					"focusable": false,
+					"method": "ObjectMethods/printer_margins.4dm",
+					"events": [
+						"onClick",
+						"onMouseEnter",
+						"onMouseLeave"
+					]
+				},
+				"size.unit.menu": {
+					"type": "dropdown",
+					"top": 199,
+					"left": 112,
+					"width": 111,
+					"height": 19,
+					"dataSourceTypeHint": "integer",
+					"focusable": false,
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"method": "ObjectMethods/size.unit.menu.4dm",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"size.unit.label": {
+					"type": "text",
+					"top": 201,
+					"left": 62,
+					"width": 45,
+					"height": 14,
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:unit"
+				},
+				"size.horizontal.box": {
+					"type": "input",
+					"top": 474,
+					"left": 87,
+					"width": 50,
+					"height": 14,
+					"dataSourceTypeHint": "number",
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"contextMenu": "none",
+					"numberFormat": "#,###,##0.0",
+					"entryFilter": "&\"0-9;,;.\"",
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/size.horizontal.box.4dm",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"size.vertical.box": {
+					"type": "input",
+					"top": 473,
+					"left": 210,
+					"width": 50,
+					"height": 14,
+					"dataSourceTypeHint": "number",
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"contextMenu": "none",
+					"numberFormat": "#,###,##0.0",
+					"entryFilter": "&\"0-9;,;.\"",
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/size.vertical.box.4dm",
+					"events": [
+						"onLosingFocus",
+						"onDataChange"
+					]
+				},
+				"size.line.label.7": {
+					"type": "text",
+					"top": 474,
+					"left": 17,
+					"width": 65,
+					"height": 14,
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:gap_horizontal"
+				},
+				"size.line.label.8": {
+					"type": "text",
+					"top": 473,
+					"left": 143,
+					"width": 60,
+					"height": 15,
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:gap_vertical"
+				},
+				"size.title.3": {
+					"type": "text",
+					"top": 446,
+					"left": 16,
+					"width": 98,
+					"height": 15,
+					"textAlign": "left",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:gaps"
+				},
+				"size.title.3.line": {
+					"type": "line",
+					"top": 456,
+					"left": 52,
+					"width": 216,
+					"stroke": "#C0C0C0"
+				},
+				"method.radio.label": {
+					"type": "radio",
+					"top": 574,
+					"left": 180,
+					"width": 93,
+					"height": 15,
+					"text": ":xliff:label",
+					"focusable": false,
+					"radioGroup": "Group11",
+					"method": "ObjectMethods/method.radio.label.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"method.radio.record": {
+					"type": "radio",
+					"top": 574,
+					"left": 79,
+					"width": 100,
+					"height": 15,
+					"text": ":xliff:record",
+					"focusable": false,
+					"radioGroup": "Group11",
+					"method": "ObjectMethods/method.radio.record.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"layout.label": {
+					"type": "text",
+					"top": -1,
+					"left": 16,
+					"width": 97,
+					"height": 17,
+					"fontWeight": "bold",
+					"text": ":xliff:layout"
+				},
+				"layout.line.2": {
+					"type": "text",
+					"top": 29,
+					"left": 11,
+					"width": 147,
+					"height": 15,
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:labelsOrder"
+				},
+				"layout.order": {
+					"type": "dropdown",
+					"top": 27,
+					"left": 163,
+					"width": 97,
+					"height": 19,
+					"dataSourceTypeHint": "integer",
+					"focusable": false,
+					"method": "ObjectMethods/layout.order.4dm",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"layout.line.3": {
+					"type": "text",
+					"top": 55,
+					"left": 85,
+					"width": 73,
+					"height": 14,
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:rows"
+				},
+				"layout.line.4": {
+					"type": "text",
+					"top": 78,
+					"left": 85,
+					"width": 73,
+					"height": 14,
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:columns"
+				},
+				"layout.line.5": {
+					"type": "text",
+					"top": 101,
+					"left": 7,
+					"width": 151,
+					"height": 15,
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:labelsPerRecord"
+				},
+				"size.label": {
+					"type": "text",
+					"top": 170,
+					"left": 16,
+					"width": 119,
+					"height": 17,
+					"fontWeight": "bold",
+					"text": ":xliff:measurements"
+				},
+				"method.label": {
+					"type": "text",
+					"top": 521,
+					"left": 16,
+					"width": 78,
+					"height": 17,
+					"fontWeight": "bold",
+					"text": ":xliff:method"
+				},
+				"method.list": {
+					"type": "dropdown",
+					"top": 549,
+					"left": 79,
+					"width": 181,
+					"height": 17,
+					"dataSourceTypeHint": "integer",
+					"focusable": false,
+					"method": "ObjectMethods/method.list.4dm",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"method.line.label.1": {
+					"type": "text",
+					"top": 551,
+					"left": 14,
+					"width": 60,
+					"height": 15,
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:apply"
+				},
+				"method.line.label.2": {
+					"type": "text",
+					"top": 574,
+					"left": 11,
+					"width": 63,
+					"height": 15,
+					"textAlign": "right",
+					"fontFamily": ".Helvetica Neue DeskInterface",
+					"fontSize": 11,
+					"text": ":xliff:forEach"
+				},
+				"automatic_font": {
+					"type": "input",
+					"top": 8,
+					"left": 335,
+					"width": 150,
+					"height": 16,
+					"visibility": "hidden",
+					"stroke": "#FF6600",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "dotted",
+					"enterable": false,
+					"hideFocusRing": true,
+					"dragging": "none",
+					"dropping": "none",
+					"method": "ObjectMethods/automatic_font.4dm",
+					"events": [
+						"onLoad"
+					]
+				},
+				"object": {
+					"type": "input",
+					"top": 613,
+					"left": 0,
+					"width": 100,
+					"height": 18,
+					"dataSourceTypeHint": "object",
+					"stroke": "#FF6600",
+					"fontFamily": "Monaco",
+					"fontSize": 13,
+					"focusable": false,
+					"fill": "#FFFF00",
+					"borderStyle": "dotted",
+					"enterable": false,
+					"hideFocusRing": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none",
+					"events": [
+						"onGettingFocus"
+					]
+				}
+			},
+			"entryOrder": [
+				"layout.rows",
+				"layout.rows.stepper",
+				"layout.columns",
+				"layout.columns.stepper",
+				"layout.labels-per-record",
+				"layout.printSetup",
+				"automatic_resizing",
+				"size.width.box",
+				"size.height.box",
+				"size.top.box",
+				"size.left.box",
+				"size.right.box",
+				"size.bottom.box",
+				"printer_margins",
+				"size.horizontal.box",
+				"size.vertical.box",
+				"Group11",
+				"method.radio.label",
+				"method.radio.record"
+			]
+		}
+	],
+	"editor": {
+		"groups": {
+			"Group11": [
+				"method.radio.label",
+				"method.radio.record"
+			]
+		}
+	}
+}

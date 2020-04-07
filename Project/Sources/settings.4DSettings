@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><preferences stamp="28858">
+	<com.4d>
+		<web>
+			<standalone_server>
+				<misc/>
+				<configuration automatic_session_management="true"/>
+				<options>
+					<cache use_4d_web_cache="false"/>
+				</options>
+			</standalone_server>
+			<remote>
+				<misc/>
+				<configuration automatic_session_management="true"/>
+				<options>
+					<cache use_4d_web_cache="false"/>
+				</options>
+			</remote>
+		</web>
+		<sql>
+			<engine case_sensitive="true"/>
+		</sql>
+		<interface>
+			<user flush_window="false" print_progress="false"/>
+			<shortcuts>
+				<accept_input_form alt="false" command="false" ctrl="false" key_code="0" shift="false"/>
+				<add_subform alt="false" command="false" ctrl="false" key_code="0" shift="false"/>
+			</shortcuts>
+		</interface>
+		<database>
+			<cpu_priority/>
+			<misc/>
+		</database>
+		<general allow_user_settings="false" execute_host_database_event="true" startup_environnement="0">
+			<mover filters="3" forms="3" lists="3" menu_bars="3" pictures="3" style_sheets="3" tips="3"/>
+		</general>
+		<compiler>
+			<typage default_for_button="2" default_for_numeric="2"/>
+			<options compilation_path="3" fat_binary="true"/>
+			<method_suffix arrays="" interprocess_arrays="" interprocess_variables="" methods="" variables=""/>
+		</compiler>
+		<server>
+			<network>
+				<options publish_at_startup="false" use_legacy_network_layer="false"/>
+			</network>
+		</server>
+		<deployment>
+			<options/>
+		</deployment>
+	</com.4d>
+</preferences>
