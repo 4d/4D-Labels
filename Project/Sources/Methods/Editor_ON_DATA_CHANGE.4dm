@@ -348,7 +348,12 @@ If (Not:C34(Is nil pointer:C315(OBJECT Get pointer:C1124(Object subform containe
 							  //________________________________________
 						: ($Txt_type="variable")
 							
-							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"value";$Txt_textValue)
+							  //#ACI0096880
+							  //DOM GET XML ATTRIBUTE BY NAME($Dom_object;"value";$Txt_textValue)
+							C_LONGINT:C283($Lon_table;$Lon_field)
+							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"table";$Lon_table)
+							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"field";$Lon_field)
+							$Txt_textValue:=Parse formula:C1576("[:"+String:C10($Lon_table)+"]:"+String:C10($Lon_field)+"")
 							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"font-name";$Txt_fontName)
 							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"font-size";$Lon_fontSize)
 							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"style";$Txt_style)

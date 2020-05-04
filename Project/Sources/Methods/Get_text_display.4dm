@@ -80,12 +80,16 @@ If ($Lon_countTableFieldPairs>0)
 						  //______________________________________________________
 					: (Is field number valid:C1000($tLon_tables{$Lon_i};$tLon_fields{$Lon_i}))
 						
-						$Txt_value:="["+Table name:C256($tLon_tables{$Lon_i})+"]"+Field name:C257($tLon_tables{$Lon_i};$tLon_fields{$Lon_i})
+						  //#ACI0096880
+						  //$Txt_value:="["+Table name($tLon_tables{$Lon_i})+"]"+Field name($tLon_tables{$Lon_i};$tLon_fields{$Lon_i})
+						$Txt_value:=Parse formula:C1576("[:"+String:C10($tLon_tables{$Lon_i})+"]:"+String:C10($tLon_fields{$Lon_i});Formula out with virtual structure:K88:2)
 						
 						  //______________________________________________________
 					: (Is table number valid:C999($tLon_tables{$Lon_i}))
 						
-						$Txt_value:="["+Table name:C256($tLon_tables{$Lon_i})+"]•"+$tTxt_keywords{2}+"•"
+						  //#ACI0096880
+						  //$Txt_value:="["+Table name($tLon_tables{$Lon_i})+"]•"+$tTxt_keywords{2}+"•"
+						$Txt_value:=Parse formula:C1576("[:"+String:C10($tLon_tables{$Lon_i})+"]";Formula out with virtual structure:K88:2)+"•"+$tTxt_keywords{2}+"•"
 						
 						  //______________________________________________________
 					Else 

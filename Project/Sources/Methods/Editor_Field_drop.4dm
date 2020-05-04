@@ -142,7 +142,9 @@ If (BLOB size:C605($Blb_table)#0)
 				$Lon_tableID:=$tLon_tableIDs{$Lon_i}
 				$Lon_fieldID:=$tLon_fieldIDs{$Lon_i}
 				
-				$Txt_value:="["+Table name:C256($Lon_tableID)+"]"+Field name:C257($Lon_tableID;$Lon_fieldID)
+				  //#ACI0096880
+				  //$Txt_value:="["+Table name($Lon_tableID)+"]"+Field name($Lon_tableID;$Lon_fieldID)
+				$Txt_value:=Parse formula:C1576("[:"+String:C10($Lon_tableID)+"]:"+String:C10($Lon_fieldID);Formula out with virtual structure:K88:2)
 				
 				  //compute text sizes
 				OB SET:C1220($Obj_buffer;\

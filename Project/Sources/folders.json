@@ -23,9 +23,6 @@
 	},
 	"(unitTest)": {},
 	"0_DEV": {
-		"tables": [
-			"Table_1"
-		],
 		"methods": [
 			"00_LABEL_OPEN_EDITOR",
 			"00_PRINT_LABEL",
@@ -36,10 +33,6 @@
 			"DEBUG_EXPORT",
 			"DEBUG_Update",
 			"OLD_LABEL_EDITOR"
-		],
-		"forms": [
-			"[Table_1]Input",
-			"[Table_1]Output"
 		]
 	},
 	"00_Editor": {

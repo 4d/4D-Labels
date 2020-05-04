@@ -190,8 +190,6 @@ Case of
 		FORM GET PROPERTIES:C674($Ptr_table->;$Txt_form;$Lon_width;$Lon_height)
 		
 		  //#ACI0100146 ===========================================================================================================
-		ON ERR CALL:C155("4D_NO_ERROR")
-		
 		If (Bool:C1537(Get database parameter:C643(Is host database a project:K37:99)))
 			
 			If (Is compiled mode:C492(*))
@@ -240,8 +238,6 @@ Case of
 			CLEAR VARIABLE:C89($Pic_buffer)
 			
 		End if 
-		
-		ON ERR CALL:C155("")
 		  //===========================================================================================================================
 		
 		DOM SET XML ATTRIBUTE:C866(DOM Find XML element by ID:C1010($Dom_label;"size");\

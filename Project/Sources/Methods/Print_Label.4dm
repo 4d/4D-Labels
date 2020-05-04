@@ -235,8 +235,17 @@ If (print_ERROR=0)
 		
 	Else 
 		
-		$Lon_hStartIndex:=Choose:C955(($Lon_startIndex%$Lon_columns)=0;$Lon_columns;$Lon_startIndex%$Lon_columns)
-		$Lon_vStartIndex:=($Lon_startIndex\$Lon_columns)+Num:C11(0#($Lon_startIndex%$Lon_columns))
+		If ($Lon_columns=0)  //#ACI0099724
+			
+			$Lon_hStartIndex:=1
+			$Lon_vStartIndex:=1
+			
+		Else 
+			
+			$Lon_hStartIndex:=Choose:C955(($Lon_startIndex%$Lon_columns)=0;$Lon_columns;$Lon_startIndex%$Lon_columns)
+			$Lon_vStartIndex:=($Lon_startIndex\$Lon_columns)+Num:C11(0#($Lon_startIndex%$Lon_columns))
+			
+		End if 
 		
 		If ($Lon_hStartIndex>$Lon_columns)\
 			 | ($Lon_hStartIndex<1)
@@ -391,18 +400,18 @@ If (print_ERROR=0)
 				
 				  //aci0099065 : the Y doesn't have to grow for the preview
 				  //OB SET($Obj_desc;\
-										"x";$Num_xPosition-1.5;\
-										"y";$Num_yPosition-1.5;\
-										"h-offset";$Num_hOffset;\
-										"v-offset";$Num_vOffset;\
-										"width";$Lon_labelWidth-0.5;\
-										"height";$Lon_labelHeight-0.5;\
-										"stroke";"gray";\
-										"stroke-width";0.5;\
-										"stroke-opacity";0.5;\
-										"fill";"none";\
-										"fill-opacity";0;\
-										"stroke-dasharray";"1")
+																				"x";$Num_xPosition-1.5;\
+																				"y";$Num_yPosition-1.5;\
+																				"h-offset";$Num_hOffset;\
+																				"v-offset";$Num_vOffset;\
+																				"width";$Lon_labelWidth-0.5;\
+																				"height";$Lon_labelHeight-0.5;\
+																				"stroke";"gray";\
+																				"stroke-width";0.5;\
+																				"stroke-opacity";0.5;\
+																				"fill";"none";\
+																				"fill-opacity";0;\
+																				"stroke-dasharray";"1")
 				
 				OB SET:C1220($Obj_desc;\
 					"x";0;\
@@ -513,6 +522,7 @@ If (print_ERROR=0)
 						  // Text
 						  // DOM GET XML ATTRIBUTE BY NAME($Dom_object;"value";$Txt_value) // #ACI0099899
 						xml_GET_ATTRIBUTE_BY_NAME ($Dom_object;"value";->$Txt_value)
+						
 						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"font-name";$Txt_fontFamilly)
 						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"font-color";$Txt_fontColor)
 						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"font-size";$Lon_fontSize)
@@ -557,7 +567,13 @@ If (print_ERROR=0)
 					: ($Txt_type="variable")  // Field and more
 						
 						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"field-type";$Lon_type)
-						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"value";$Txt_value)
+						
+						  //#ACI0096880
+						  //DOM GET XML ATTRIBUTE BY NAME($Dom_object;"value";$Txt_value)
+						C_LONGINT:C283($Lon_table;$Lon_field)
+						xml_GET_ATTRIBUTE_BY_NAME ($Dom_object;"field";->$Lon_field)
+						xml_GET_ATTRIBUTE_BY_NAME ($Dom_object;"table";->$Lon_table)
+						$Txt_value:=Parse formula:C1576("[:"+String:C10($Lon_table)+"]:"+String:C10($Lon_field))
 						
 						Case of 
 								
