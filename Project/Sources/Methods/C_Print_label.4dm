@@ -251,6 +251,35 @@ Case of
 			"right";$Lon_right;\
 			"bottom";$Lon_bottom)
 		
+/*
+calculate the default number of rows and columns
+this is for when a form was specified without a .4lbp file
+otherwise, the values in .4lbp should be respected
+*/
+		
+		C_TEXT:C284($Dom_buffer)
+		$Dom_buffer:=DOM Find XML element by ID:C1010($Dom_label;"gap")
+		C_LONGINT:C283($Lon_hGap;$Lon_vGap)
+		If (OK=1)
+			DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer;"horizontal";$Lon_hGap)
+			DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer;"vertical";$Lon_vGap)
+		End if 
+		C_LONGINT:C283($Lon_printableHeight;$Lon_printableWidth)
+		GET PRINTABLE AREA:C703($Lon_printableHeight;$Lon_printableWidth)
+		C_LONGINT:C283($Lon_columns;$Lon_rows)
+		$Lon_printableWidth:=$Lon_printableWidth-$Lon_left-$Lon_right
+		While ($Lon_printableWidth>=$Lon_width)
+			$Lon_columns:=$Lon_columns+1
+			$Lon_printableWidth:=$Lon_printableWidth-$Lon_width-$Lon_hGap
+		End while 
+		$Lon_printableHeight:=$Lon_printableHeight-$Lon_top-$Lon_bottom
+		While ($Lon_printableHeight>=$Lon_height)
+			$Lon_rows:=$Lon_rows+1
+			$Lon_printableHeight:=$Lon_printableHeight-$Lon_height-$Lon_vGap
+		End while 
+		
+		DOM SET XML ATTRIBUTE:C866($Dom_label;"columns";$Lon_columns;"rows";$Lon_rows)
+		
 		$Boo_OK:=(OK=1)
 		
 		  //______________________________________________________

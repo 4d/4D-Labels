@@ -116,33 +116,17 @@ DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer;"name";$Txt_form)
 $Boo_form:=(Length:C16($Txt_form)>0)
 
 If ($Boo_form)
-	
-	  // Calculate columns & rows number according to the form dimensions
-	GET PRINTABLE AREA:C703($Lon_height;$Lon_width)
-	GET PRINT OPTION:C734(Orientation option:K47:2;$Lon_orientation)
-	
-	  //#ACI0099200: test below is now commented/
-	  //If ($Lon_orientation=2)  // Landscape
-	  //$Lon_columns:=$Lon_width\$Lon_labelHeight
-	  //$Lon_rows:=$Lon_height\$Lon_labelWidth
-	  //Else 
-	
-	$Lon_columns:=$Lon_width\$Lon_labelWidth
-	$Lon_rows:=$Lon_height\$Lon_labelHeight
-	
-	  //End if 
-	
+	  //the differentiation between form by 4lbp and "form:" should be done upstream in L_Print_label
+	  //according to ACI0099882, the printable margin should not be set to 0 for 32-bit compatible result
 Else 
-	
 	  //#ACI0099882 {
 	  // Ignore the printer margins but consider the paper's margin
 	SET PRINTABLE MARGIN:C710(0;0;0;0)
 	  //}
-	
-	DOM GET XML ATTRIBUTE BY NAME:C728($Dom_label;"columns";$Lon_columns)
-	DOM GET XML ATTRIBUTE BY NAME:C728($Dom_label;"rows";$Lon_rows)
-	
 End if 
+
+DOM GET XML ATTRIBUTE BY NAME:C728($Dom_label;"columns";$Lon_columns)
+DOM GET XML ATTRIBUTE BY NAME:C728($Dom_label;"rows";$Lon_rows)
 
 DOM GET XML ATTRIBUTE BY NAME:C728($Dom_label;"labels-per-record";$Lon_perRecord)
 DOM GET XML ATTRIBUTE BY NAME:C728($Dom_label;"start";$Lon_startIndex)
@@ -400,18 +384,18 @@ If (print_ERROR=0)
 				
 				  //aci0099065 : the Y doesn't have to grow for the preview
 				  //OB SET($Obj_desc;\
-																				"x";$Num_xPosition-1.5;\
-																				"y";$Num_yPosition-1.5;\
-																				"h-offset";$Num_hOffset;\
-																				"v-offset";$Num_vOffset;\
-																				"width";$Lon_labelWidth-0.5;\
-																				"height";$Lon_labelHeight-0.5;\
-																				"stroke";"gray";\
-																				"stroke-width";0.5;\
-																				"stroke-opacity";0.5;\
-																				"fill";"none";\
-																				"fill-opacity";0;\
-																				"stroke-dasharray";"1")
+																									"x";$Num_xPosition-1.5;\
+																									"y";$Num_yPosition-1.5;\
+																									"h-offset";$Num_hOffset;\
+																									"v-offset";$Num_vOffset;\
+																									"width";$Lon_labelWidth-0.5;\
+																									"height";$Lon_labelHeight-0.5;\
+																									"stroke";"gray";\
+																									"stroke-width";0.5;\
+																									"stroke-opacity";0.5;\
+																									"fill";"none";\
+																									"fill-opacity";0;\
+																									"stroke-dasharray";"1")
 				
 				OB SET:C1220($Obj_desc;\
 					"x";0;\
