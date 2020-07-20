@@ -351,9 +351,39 @@ If (Not:C34(Is nil pointer:C315(OBJECT Get pointer:C1124(Object subform containe
 							  //#ACI0096880
 							  //DOM GET XML ATTRIBUTE BY NAME($Dom_object;"value";$Txt_textValue)
 							C_LONGINT:C283($Lon_table;$Lon_field)
-							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"table";$Lon_table)
-							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"field";$Lon_field)
-							$Txt_textValue:=Parse formula:C1576("[:"+String:C10($Lon_table)+"]:"+String:C10($Lon_field)+"")
+							  //#ACI0100890
+							  //DOM GET XML ATTRIBUTE BY NAME($Dom_object;"table";$Lon_table)
+							  //DOM GET XML ATTRIBUTE BY NAME($Dom_object;"field";$Lon_field)
+							C_COLLECTION:C1488($c)
+							xml_GET_ATTRIBUTE_BY_NAME ($Dom_object;"table";->$Lon_table)
+							
+							If ($Lon_table#0)
+								
+								xml_GET_ATTRIBUTE_BY_NAME ($Dom_object;"field";->$Lon_field)
+								$Txt_textValue:=Parse formula:C1576("[:"+String:C10($Lon_table)+"]:"+String:C10($Lon_field)+"")
+								
+							Else 
+								
+								xml_GET_ATTRIBUTE_BY_NAME ($Dom_object;"tableList";->$Txt_buffer)
+								
+								If (Length:C16($Txt_buffer)#0)
+									
+									$c:=JSON Parse:C1218($Txt_buffer)
+									$Lon_table:=$c[0]
+									
+									xml_GET_ATTRIBUTE_BY_NAME ($Dom_object;"fieldList";->$Txt_buffer)
+									$c:=JSON Parse:C1218($Txt_buffer)
+									$Lon_field:=$c[0]
+									
+									$Txt_textValue:=Parse formula:C1576("[:"+String:C10($Lon_table)+"]:"+String:C10($Lon_field)+"")
+									
+								Else 
+									
+									DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"value";$Txt_textValue)
+									
+								End if 
+							End if 
+							
 							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"font-name";$Txt_fontName)
 							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"font-size";$Lon_fontSize)
 							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"style";$Txt_style)

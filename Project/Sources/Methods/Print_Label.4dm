@@ -1,14 +1,14 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Print_Label
-  // Database: 4D Labels
-  // ID[6349290659384A0499FF195E19B79FC1]
-  // Created #19-2-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
+// ----------------------------------------------------
+// Project method : Print_Label
+// Database: 4D Labels
+// ID[6349290659384A0499FF195E19B79FC1]
+// Created #19-2-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
 C_LONGINT:C283($0)
 C_LONGINT:C283($1)
 C_TEXT:C284($2)
@@ -34,32 +34,32 @@ C_OBJECT:C1216($Obj_desc;$Obj_print)
 ARRAY TEXT:C222($tTxt_objects;0)
 
 If (False:C215)
-	C_LONGINT:C283(Print_Label ;$0)
-	C_LONGINT:C283(Print_Label ;$1)
-	C_TEXT:C284(Print_Label ;$2)
-	C_BOOLEAN:C305(Print_Label ;$3)
+	C_LONGINT:C283(Print_Label;$0)
+	C_LONGINT:C283(Print_Label;$1)
+	C_TEXT:C284(Print_Label;$2)
+	C_BOOLEAN:C305(Print_Label;$3)
 End if 
 
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
 If (Asserted:C1132($Lon_parameters>=2;"Missing parameter"))
 	
-	  // Required parameters
+	// Required parameters
 	$Lon_table:=$1  // No de la table
 	$Dom_label:=$2  // Reference XML
 	
-	  // Optional parameters
+	// Optional parameters
 	If ($Lon_parameters>=3)
 		
-		  //#redmine:18107
+		//#redmine:18107
 		$Boo_preview:=$3
 		
 	End if 
 	
-	COMPILER_LABELS 
-	COMPILER_PRINT 
+	COMPILER_LABELS
+	COMPILER_PRINT
 	
 	$Ptr_table:=Table:C252($Lon_table)
 	
@@ -69,20 +69,20 @@ If (Asserted:C1132($Lon_parameters>=2;"Missing parameter"))
 	
 	ON ERR CALL:C155(Choose:C955(<>Boo_debug;"";"Print_CATCH_ERROR"))
 	
-	  // Backup the current print settings
-	  // Must call before opening job
-	  // Need also to turn off progress in database settings
+	// Backup the current print settings
+	// Must call before opening job
+	// Need also to turn off progress in database settings
 	GET PRINT OPTION:C734(Hide printing progress option:K47:12;$Lon_backupProgress)
 	GET PRINT OPTION:C734(Orientation option:K47:2;$Lon_backupOrientation)
 	
-	  //#ACI0099882 {
-	  // Ignore the printer margins but consider the paper's margin
-	  //SET PRINTABLE MARGIN(0;0;0;0)
-	  //}
+	//#ACI0099882 {
+	// Ignore the printer margins but consider the paper's margin
+	//SET PRINTABLE MARGIN(0;0;0;0)
+	//}
 	
-	  //#ACI0097380
-	  // $Lon_backupCaseSensitivity:=Get database parameter(SQL engine case sensitivity)
-	  // SET DATABASE PARAMETER(SQL engine case sensitivity;0)
+	//#ACI0097380
+	// $Lon_backupCaseSensitivity:=Get database parameter(SQL engine case sensitivity)
+	// SET DATABASE PARAMETER(SQL engine case sensitivity;0)
 	
 Else 
 	
@@ -90,26 +90,26 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
-  // Size
+// ----------------------------------------------------
+// Size
 $Dom_buffer:=DOM Find XML element by ID:C1010($Dom_label;"size")
 DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer;"width";$Lon_labelWidth)
 DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer;"height";$Lon_labelHeight)
 
-  // ----------------------------------------------------
-  // Settings
+// ----------------------------------------------------
+// Settings
 $Dom_buffer:=DOM Find XML element by ID:C1010($Dom_label;"setting")
 DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer;"landscape";$Boo_landscape)
 DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer;"vertical";$Boo_vertical)
 
-  // Set the print settings
+// Set the print settings
 
 SET PRINT OPTION:C733(Hide printing progress option:K47:12;1)
 
 SET PRINT OPTION:C733(Orientation option:K47:2;1+Num:C11($Boo_landscape))
 
-  // ----------------------------------------------------
-  // Form to use
+// ----------------------------------------------------
+// Form to use
 $Dom_buffer:=DOM Find XML element by ID:C1010($Dom_label;"form")
 DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer;"name";$Txt_form)
 
@@ -117,27 +117,27 @@ $Boo_form:=(Length:C16($Txt_form)>0)
 
 If ($Boo_form)
 	
-	  // Calculate columns & rows number according to the form dimensions
+	// Calculate columns & rows number according to the form dimensions
 	GET PRINTABLE AREA:C703($Lon_height;$Lon_width)
 	GET PRINT OPTION:C734(Orientation option:K47:2;$Lon_orientation)
 	
-	  //#ACI0099200: test below is now commented/
-	  //If ($Lon_orientation=2)  // Landscape
-	  //$Lon_columns:=$Lon_width\$Lon_labelHeight
-	  //$Lon_rows:=$Lon_height\$Lon_labelWidth
-	  //Else 
+	//#ACI0099200: test below is now commented/
+	//If ($Lon_orientation=2)  // Landscape
+	//$Lon_columns:=$Lon_width\$Lon_labelHeight
+	//$Lon_rows:=$Lon_height\$Lon_labelWidth
+	//Else 
 	
 	$Lon_columns:=$Lon_width\$Lon_labelWidth
 	$Lon_rows:=$Lon_height\$Lon_labelHeight
 	
-	  //End if 
+	//End if 
 	
 Else 
 	
-	  //#ACI0099882 {
-	  // Ignore the printer margins but consider the paper's margin
+	//#ACI0099882 {
+	// Ignore the printer margins but consider the paper's margin
 	SET PRINTABLE MARGIN:C710(0;0;0;0)
-	  //}
+	//}
 	
 	DOM GET XML ATTRIBUTE BY NAME:C728($Dom_label;"columns";$Lon_columns)
 	DOM GET XML ATTRIBUTE BY NAME:C728($Dom_label;"rows";$Lon_rows)
@@ -150,21 +150,21 @@ DOM GET XML ATTRIBUTE BY NAME:C728($Dom_label;"start";$Lon_startIndex)
 $Lon_xOffset:=(OB Get:C1224(<>label_params;"width";Is longint:K8:6)-$Lon_labelWidth)/2
 $Lon_yOffset:=(OB Get:C1224(<>label_params;"height";Is longint:K8:6)-$Lon_labelHeight)/2
 
-  // ----------------------------------------------------
-  // Margins
+// ----------------------------------------------------
+// Margins
 $Dom_buffer:=DOM Find XML element by ID:C1010($Dom_label;"margin")
 DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer;"left";$Lon_leftMargin)
 DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer;"right";$Lon_rightMargin)
 DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer;"top";$Lon_topMargin)
 
-  // ----------------------------------------------------
-  // Gaps
+// ----------------------------------------------------
+// Gaps
 $Dom_buffer:=DOM Find XML element by ID:C1010($Dom_label;"gap")
 DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer;"horizontal";$Lon_hGap)
 DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer;"vertical";$Lon_vGap)
 
-  // ----------------------------------------------------
-  // Method
+// ----------------------------------------------------
+// Method
 $Dom_buffer:=DOM Find XML element by ID:C1010($Dom_label;"method")
 
 If (OK=1)
@@ -196,10 +196,10 @@ OB SET:C1220($Obj_print;\
 "label-per-record";$Lon_perRecord;\
 "table";$Lon_table)
 
-  //======================================================================
+//======================================================================
 OPEN PRINTING JOB:C995
 
-  //======================================================================
+//======================================================================
 If (print_ERROR=0)
 	
 	If ($Boo_vertical)
@@ -281,9 +281,9 @@ If (print_ERROR=0)
 	If (Length:C16($Txt_labelRecord)#0)\
 		 & (Is record loaded:C669($Ptr_table->))
 		
-		$Txt_onErrorMethod:=4D_NO_ERROR ("ON")
+		$Txt_onErrorMethod:=4D_NO_ERROR("ON")
 		EXECUTE METHOD:C1007($Txt_labelRecord)
-		4D_NO_ERROR ("OFF";$Txt_onErrorMethod)
+		4D_NO_ERROR("OFF";$Txt_onErrorMethod)
 		
 	End if 
 	
@@ -298,17 +298,17 @@ If (print_ERROR=0)
 			
 			If (Length:C16($Txt_labelMethod)#0)
 				
-				$Txt_onErrorMethod:=4D_NO_ERROR ("ON")
+				$Txt_onErrorMethod:=4D_NO_ERROR("ON")
 				EXECUTE METHOD:C1007($Txt_labelMethod)
-				4D_NO_ERROR ("OFF";$Txt_onErrorMethod)
+				4D_NO_ERROR("OFF";$Txt_onErrorMethod)
 				
 			End if 
 			
 			If (Length:C16($Txt_labelRecord)#0)
 				
-				$Txt_onErrorMethod:=4D_NO_ERROR ("ON")
+				$Txt_onErrorMethod:=4D_NO_ERROR("ON")
 				EXECUTE METHOD:C1007($Txt_labelRecord)
-				4D_NO_ERROR ("OFF";$Txt_onErrorMethod)
+				4D_NO_ERROR("OFF";$Txt_onErrorMethod)
 				
 			End if 
 			
@@ -335,7 +335,7 @@ If (print_ERROR=0)
 				"h-offset";$Num_hOffset;\
 				"v-offset";$Num_vOffset)
 			
-			$Boo_stop:=Print_Resume ($Obj_print)
+			$Boo_stop:=Print_Resume($Obj_print)
 			
 			If (Not:C34($Boo_stop))
 				
@@ -355,14 +355,14 @@ If (print_ERROR=0)
 					
 					FORM LOAD:C1103(Table:C252($Lon_table)->;$Txt_form)
 					
-					  // To redraw form
+					// To redraw form
 					RELATE ONE:C42($Ptr_table->)
 					
 					If (Length:C16($Txt_labelRecord)#0)
 						
-						$Txt_onErrorMethod:=4D_NO_ERROR ("ON")
+						$Txt_onErrorMethod:=4D_NO_ERROR("ON")
 						EXECUTE METHOD:C1007($Txt_labelRecord)
-						4D_NO_ERROR ("OFF";$Txt_onErrorMethod)
+						4D_NO_ERROR("OFF";$Txt_onErrorMethod)
 						
 					End if 
 				End if 
@@ -382,36 +382,36 @@ If (print_ERROR=0)
 			
 			If (Length:C16($Txt_labelMethod)#0)
 				
-				$Txt_onErrorMethod:=4D_NO_ERROR ("ON")
+				$Txt_onErrorMethod:=4D_NO_ERROR("ON")
 				EXECUTE METHOD:C1007($Txt_labelMethod)
-				4D_NO_ERROR ("OFF";$Txt_onErrorMethod)
+				4D_NO_ERROR("OFF";$Txt_onErrorMethod)
 				
 			End if 
 			
 			If (Length:C16($Txt_labelRecord)#0)
 				
-				$Txt_onErrorMethod:=4D_NO_ERROR ("ON")
+				$Txt_onErrorMethod:=4D_NO_ERROR("ON")
 				EXECUTE METHOD:C1007($Txt_labelRecord)
-				4D_NO_ERROR ("OFF";$Txt_onErrorMethod)
+				4D_NO_ERROR("OFF";$Txt_onErrorMethod)
 				
 			End if 
 			
 			If ($Boo_preview)  // Print the label rect
 				
-				  //aci0099065 : the Y doesn't have to grow for the preview
-				  //OB SET($Obj_desc;\
-																				"x";$Num_xPosition-1.5;\
-																				"y";$Num_yPosition-1.5;\
-																				"h-offset";$Num_hOffset;\
-																				"v-offset";$Num_vOffset;\
-																				"width";$Lon_labelWidth-0.5;\
-																				"height";$Lon_labelHeight-0.5;\
-																				"stroke";"gray";\
-																				"stroke-width";0.5;\
-																				"stroke-opacity";0.5;\
-																				"fill";"none";\
-																				"fill-opacity";0;\
-																				"stroke-dasharray";"1")
+				//aci0099065 : the Y doesn't have to grow for the preview
+				//OB SET($Obj_desc;\
+																									"x";$Num_xPosition-1.5;\
+																									"y";$Num_yPosition-1.5;\
+																									"h-offset";$Num_hOffset;\
+																									"v-offset";$Num_vOffset;\
+																									"width";$Lon_labelWidth-0.5;\
+																									"height";$Lon_labelHeight-0.5;\
+																									"stroke";"gray";\
+																									"stroke-width";0.5;\
+																									"stroke-opacity";0.5;\
+																									"fill";"none";\
+																									"fill-opacity";0;\
+																									"stroke-dasharray";"1")
 				
 				OB SET:C1220($Obj_desc;\
 					"x";0;\
@@ -427,7 +427,7 @@ If (print_ERROR=0)
 					"fill-opacity";0;\
 					"stroke-dasharray";"1")
 				
-				PRINT_OBJECT ("round-rect";$Obj_desc)
+				PRINT_OBJECT("round-rect";$Obj_desc)
 				
 				CLEAR VARIABLE:C89($Obj_desc)
 				
@@ -472,56 +472,56 @@ If (print_ERROR=0)
 				
 				Case of 
 						
-						  //________________________________________
+						//________________________________________
 					: ($Txt_type="line")
 						
 						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"direction";$Txt_direction)
 						OB SET:C1220($Obj_desc;\
 							"direction";$Txt_direction)
 						
-						PRINT_OBJECT ($Txt_type;$Obj_desc)
+						PRINT_OBJECT($Txt_type;$Obj_desc)
 						
-						  //________________________________________
+						//________________________________________
 					: ($Txt_type="polyline")
 						
 						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"data";$Txt_data)
 						OB SET:C1220($Obj_desc;\
 							"data";$Txt_data)
 						
-						PRINT_OBJECT ($Txt_type;$Obj_desc)
+						PRINT_OBJECT($Txt_type;$Obj_desc)
 						
-						  //________________________________________
+						//________________________________________
 					: ($Txt_type="rect")\
 						 | ($Txt_type="round-rect")
 						
-						PRINT_OBJECT ($Txt_type;$Obj_desc)
+						PRINT_OBJECT($Txt_type;$Obj_desc)
 						
-						  //________________________________________
+						//________________________________________
 					: ($Txt_type="oval")
 						
-						  // ********************
-						  //$Txt_type:="ellipse"
-						  // ********************
+						// ********************
+						//$Txt_type:="ellipse"
+						// ********************
 						
-						PRINT_OBJECT ("ellipse";$Obj_desc)
+						PRINT_OBJECT("ellipse";$Obj_desc)
 						
-						  //________________________________________
+						//________________________________________
 					: ($Txt_type="text")
 						
 						If (False:C215)  // ****** NO BACKGROUND
 							
-							  // Background, if any
+							// Background, if any
 							If (Length:C16($Txt_fill)#0)\
 								 | (Length:C16($Txt_stroke)#0)
 								
-								PRINT_OBJECT ("rect";$Obj_desc)
+								PRINT_OBJECT("rect";$Obj_desc)
 								
 							End if 
 						End if 
 						
-						  // Text
-						  // DOM GET XML ATTRIBUTE BY NAME($Dom_object;"value";$Txt_value) // #ACI0099899
-						xml_GET_ATTRIBUTE_BY_NAME ($Dom_object;"value";->$Txt_value)
+						// Text
+						// DOM GET XML ATTRIBUTE BY NAME($Dom_object;"value";$Txt_value) // #ACI0099899
+						xml_GET_ATTRIBUTE_BY_NAME($Dom_object;"value";->$Txt_value)
 						
 						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"font-name";$Txt_fontFamilly)
 						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"font-color";$Txt_fontColor)
@@ -537,9 +537,9 @@ If (print_ERROR=0)
 							"style";$Txt_style;\
 							"alignment";$Txt_alignment)
 						
-						PRINT_OBJECT ("text";$Obj_desc)
+						PRINT_OBJECT("text";$Obj_desc)
 						
-						  //________________________________________
+						//________________________________________
 					: ($Txt_type="image")
 						
 						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"image-data";$Txt_data)
@@ -548,7 +548,7 @@ If (print_ERROR=0)
 						
 						If (False:C215)
 							$Ptr_image:=OBJECT Get pointer:C1124(Object named:K67:5;Choose:C955($Boo_preserveAspectRatio;"ImageWithAspect";"Image"))
-							$Ptr_image->:=PRINT_Get_image ($Txt_data;$Txt_codec;".png")
+							$Ptr_image->:=PRINT_Get_image($Txt_data;$Txt_codec;".png")
 							
 							$Boo_printed:=Print object:C1095(*;"ImageWithAspect";$Lon_X+$Num_hOffset;$Lon_Y+$Num_vOffset;$Lon_width;$Lon_height)
 							
@@ -560,24 +560,53 @@ If (print_ERROR=0)
 								"preserve-aspect-ratio";$Boo_preserveAspectRatio;\
 								"stroke-width";0)
 							
-							PRINT_OBJECT ("image";$Obj_desc)
+							PRINT_OBJECT("image";$Obj_desc)
 						End if 
 						
-						  //________________________________________
+						//________________________________________
 					: ($Txt_type="variable")  // Field and more
 						
 						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"field-type";$Lon_type)
 						
-						  //#ACI0096880
-						  //DOM GET XML ATTRIBUTE BY NAME($Dom_object;"value";$Txt_value)
+						//#ACI0096880
+						//DOM GET XML ATTRIBUTE BY NAME($Dom_object;"value";$Txt_value)
 						C_LONGINT:C283($Lon_table;$Lon_field)
-						xml_GET_ATTRIBUTE_BY_NAME ($Dom_object;"field";->$Lon_field)
-						xml_GET_ATTRIBUTE_BY_NAME ($Dom_object;"table";->$Lon_table)
-						$Txt_value:=Parse formula:C1576("[:"+String:C10($Lon_table)+"]:"+String:C10($Lon_field))
+						//#ACI0100890
+						//DOM GET XML ATTRIBUTE BY NAME($Dom_object;"table";$Lon_table)
+						//DOM GET XML ATTRIBUTE BY NAME($Dom_object;"field";$Lon_field)
+						C_COLLECTION:C1488($c)
+						xml_GET_ATTRIBUTE_BY_NAME($Dom_object;"table";->$Lon_table)
+						
+						If ($Lon_table#0)
+							
+							xml_GET_ATTRIBUTE_BY_NAME($Dom_object;"field";->$Lon_field)
+							$Txt_value:=Parse formula:C1576("[:"+String:C10($Lon_table)+"]:"+String:C10($Lon_field)+"")
+							
+						Else 
+							
+							xml_GET_ATTRIBUTE_BY_NAME($Dom_object;"tableList";->$Txt_buffer)
+							
+							If (Length:C16($Txt_buffer)#0)
+								
+								$c:=JSON Parse:C1218($Txt_buffer)
+								$Lon_table:=$c[0]
+								
+								xml_GET_ATTRIBUTE_BY_NAME($Dom_object;"fieldList";->$Txt_buffer)
+								$c:=JSON Parse:C1218($Txt_buffer)
+								$Lon_field:=$c[0]
+								
+								$Txt_value:=Parse formula:C1576("[:"+String:C10($Lon_table)+"]:"+String:C10($Lon_field)+"")
+								
+							Else 
+								
+								DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"value";$Txt_value)
+								
+							End if 
+						End if 
 						
 						Case of 
 								
-								  // ----------------------------------------
+								// ----------------------------------------
 							: ($Lon_type=Is picture:K8:10)
 								
 								DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"preserve-aspect-ratio";$Boo_preserveAspectRatio)
@@ -587,18 +616,18 @@ If (print_ERROR=0)
 									"preserve-aspect-ratio";$Boo_preserveAspectRatio;\
 									"stroke-width";0)
 								
-								PRINT_OBJECT ("image";$Obj_desc)
+								PRINT_OBJECT("image";$Obj_desc)
 								
-								  // ----------------------------------------
+								// ----------------------------------------
 							Else 
 								
 								If (False:C215)  // ****** NO BACKGROUND
 									
-									  // Background, if any
+									// Background, if any
 									If (Length:C16($Txt_fill)#0)\
 										 | (Length:C16($Txt_stroke)#0)
 										
-										PRINT_OBJECT ("rect";$Obj_desc)
+										PRINT_OBJECT("rect";$Obj_desc)
 										
 									End if 
 								End if 
@@ -616,35 +645,35 @@ If (print_ERROR=0)
 								
 								Case of 
 										
-										  //……………………………………………………
+										//……………………………………………………
 									: ($Txt_alignment="center")
 										
 										OBJECT SET HORIZONTAL ALIGNMENT:C706(*;"variable";Align center:K42:3)
 										OBJECT SET HORIZONTAL ALIGNMENT:C706(*;"VariableWithStyle";Align center:K42:3)
 										
-										  //……………………………………………………
+										//……………………………………………………
 									: ($Txt_alignment="end")
 										
 										OBJECT SET HORIZONTAL ALIGNMENT:C706(*;"variable";Align right:K42:4)
 										OBJECT SET HORIZONTAL ALIGNMENT:C706(*;"VariableWithStyle";Align right:K42:4)
 										
-										  //……………………………………………………
+										//……………………………………………………
 									Else 
 										
 										OBJECT SET HORIZONTAL ALIGNMENT:C706(*;"variable";Align left:K42:2)
 										OBJECT SET HORIZONTAL ALIGNMENT:C706(*;"VariableWithStyle";Align left:K42:2)
 										
-										  //……………………………………………………
+										//……………………………………………………
 								End case 
 								
 								OBJECT SET FONT SIZE:C165(*;"variable";$Lon_fontSize)
 								OBJECT SET FONT STYLE:C166(*;"variable";$Lon_fontStyle)
-								OBJECT SET FONT:C164(*;"variable";PRINT_Font ($Txt_fontFamilly))
-								OBJECT SET RGB COLORS:C628(*;"variable";Color_to_long ($Txt_fontColor);-2)
+								OBJECT SET FONT:C164(*;"variable";PRINT_Font($Txt_fontFamilly))
+								OBJECT SET RGB COLORS:C628(*;"variable";Color_to_long($Txt_fontColor);-2)
 								
-								$Txt_buffer:=PRINT_Get_text_field ($Txt_value)
+								$Txt_buffer:=PRINT_Get_text_field($Txt_value)
 								
-								If (str_styledText ($Txt_buffer))
+								If (str_styledText($Txt_buffer))
 									
 									(OBJECT Get pointer:C1124(Object named:K67:5;"VariableWithStyle"))->:=$Txt_buffer
 									
@@ -668,10 +697,10 @@ If (print_ERROR=0)
 									
 								End if 
 								
-								  // ----------------------------------------
+								// ----------------------------------------
 						End case 
 						
-						  //________________________________________
+						//________________________________________
 				End case 
 				
 				CLEAR VARIABLE:C89($Obj_desc)
@@ -685,7 +714,7 @@ If (print_ERROR=0)
 				"h-offset";$Num_hOffset;\
 				"v-offset";$Num_vOffset)
 			
-			$Boo_stop:=Print_Resume ($Obj_print)
+			$Boo_stop:=Print_Resume($Obj_print)
 			
 			If (Not:C34($Boo_stop))
 				
@@ -706,9 +735,9 @@ If (print_ERROR=0)
 					
 					If (Length:C16($Txt_labelRecord)#0)
 						
-						$Txt_onErrorMethod:=4D_NO_ERROR ("ON")
+						$Txt_onErrorMethod:=4D_NO_ERROR("ON")
 						EXECUTE METHOD:C1007($Txt_labelRecord)
-						4D_NO_ERROR ("OFF";$Txt_onErrorMethod)
+						4D_NO_ERROR("OFF";$Txt_onErrorMethod)
 						
 					End if 
 				End if 
@@ -726,24 +755,24 @@ Else
 	
 End if 
 
-  //======================================================================
+//======================================================================
 CLOSE PRINTING JOB:C996
 
-  //Case of
-  //  //______________________________________________________
-  //: (End selection($Ptr_table->))
-  //ALERT("fin de selection")
-  //  //______________________________________________________
-  //: (print_ERROR#0)
-  //ALERT("error: "+String(print_ERROR))
-  //  //______________________________________________________
-  //: ($Boo_stop)
-  //ALERT("stopped")
-  //  //______________________________________________________
-  //Else
-  //ALERT("ok")
-  //  //______________________________________________________
-  //End case
+//Case of
+//  //______________________________________________________
+//: (End selection($Ptr_table->))
+//ALERT("fin de selection")
+//  //______________________________________________________
+//: (print_ERROR#0)
+//ALERT("error: "+String(print_ERROR))
+//  //______________________________________________________
+//: ($Boo_stop)
+//ALERT("stopped")
+//  //______________________________________________________
+//Else
+//ALERT("ok")
+//  //______________________________________________________
+//End case
 
 FORM UNLOAD:C1299
 
@@ -751,21 +780,21 @@ CLEAR VARIABLE:C89($Obj_print)
 
 ON ERR CALL:C155($Txt_onErrorCall)
 
-  //======================================================================
+//======================================================================
 
-  // Restore print settings and the printer margins
+// Restore print settings and the printer margins
 SET PRINT OPTION:C733(Hide printing progress option:K47:12;$Lon_backupProgress)
 SET PRINT OPTION:C733(Orientation option:K47:2;$Lon_backupOrientation)
 SET PRINTABLE MARGIN:C710(-1;-1;-1;-1)
 
 
-  //#ACI0097380
+//#ACI0097380
 
-  // SET DATABASE PARAMETER(SQL engine case sensitivity;$Lon_backupCaseSensitivity)
+// SET DATABASE PARAMETER(SQL engine case sensitivity;$Lon_backupCaseSensitivity)
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=print_ERROR
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End
