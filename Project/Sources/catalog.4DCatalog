@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
-<base name="" uuid="18F8F36846FF460D9C1F342BCD5C441C" collation_locale="en">
+<base name="4D Labels" uuid="18F8F36846FF460D9C1F342BCD5C441C" collation_locale="en">
 	<schema name="DEFAULT_SCHEMA"/>
 	<table name="Table_1" uuid="0154F98246B14D86816F5E9B6A855DC9" id="1">
 		<field name="ID" uuid="BE4422DC345D4ED08B14B5314E769F93" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
