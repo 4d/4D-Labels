@@ -117,7 +117,13 @@ $Boo_form:=(Length:C16($Txt_form)>0)
 
 If ($Boo_form)
 	  //the differentiation between form by 4lbp and "form:" should be done upstream in L_Print_label
-	  //according to ACI0099882, the printable margin should not be set to 0 for 32-bit compatible result
+	C_LONGINT:C283($legacyMode)
+	GET PRINT OPTION:C734(Legacy printing layer option:K47:18;$legacyMode)
+	If ($legacyMode=1)
+		  //according to ACI0099882, the printable margin should not be set to 0 for 32-bit compatible result
+	Else 
+		SET PRINTABLE MARGIN:C710(0;0;0;0)
+	End if 
 Else 
 	  //#ACI0099882 {
 	  // Ignore the printer margins but consider the paper's margin
@@ -384,18 +390,18 @@ If (print_ERROR=0)
 				
 				  //aci0099065 : the Y doesn't have to grow for the preview
 				  //OB SET($Obj_desc;\
-																									"x";$Num_xPosition-1.5;\
-																									"y";$Num_yPosition-1.5;\
-																									"h-offset";$Num_hOffset;\
-																									"v-offset";$Num_vOffset;\
-																									"width";$Lon_labelWidth-0.5;\
-																									"height";$Lon_labelHeight-0.5;\
-																									"stroke";"gray";\
-																									"stroke-width";0.5;\
-																									"stroke-opacity";0.5;\
-																									"fill";"none";\
-																									"fill-opacity";0;\
-																									"stroke-dasharray";"1")
+																														"x";$Num_xPosition-1.5;\
+																														"y";$Num_yPosition-1.5;\
+																														"h-offset";$Num_hOffset;\
+																														"v-offset";$Num_vOffset;\
+																														"width";$Lon_labelWidth-0.5;\
+																														"height";$Lon_labelHeight-0.5;\
+																														"stroke";"gray";\
+																														"stroke-width";0.5;\
+																														"stroke-opacity";0.5;\
+																														"fill";"none";\
+																														"fill-opacity";0;\
+																														"stroke-dasharray";"1")
 				
 				OB SET:C1220($Obj_desc;\
 					"x";0;\
