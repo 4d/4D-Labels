@@ -2,91 +2,47 @@
 <!--Translation file.
 This file is distributed under the same license as the product package.-->
 <xliff version="1.0">
-
    <file datatype="x-STR#" original="undefined" product-version="v14" source-language="en-US" target-language="es">
-
       <header>
-
          <prop-group name="Xliff-Editor.4dbase">
-
             <prop prop-type="version">1.0</prop>
-
          </prop-group>
-
       </header>
-
       <body>
-
          <group resname="Message">
-
             <trans-unit id="1" resname="areYouSure">
-
                <source>Are you sure?</source>
-
                <target>¿Está seguro?</target>
-
             </trans-unit>
-
             <trans-unit id="2" resname="cancel">
-
                <source>Cancel</source>
-
                <target>Cancelar</target>
-
             </trans-unit>
-
             <trans-unit id="3" resname="ok">
-
                <source>OK</source>
-
                <target>Aceptar</target>
-
             </trans-unit>
-
             <trans-unit id="4" resname="doNotAskAgain">
-
                <source>Do not ask again</source>
-
                <target>No volver a preguntar</target>
-
             </trans-unit>
-
             <trans-unit id="5" resname="youWillLoseChangesMadeToThisDocument">
-
                <source>You will lose changes made to the document{document}.</source>
-
                <target>Perderá los cambios realizados en el documento {document}.</target>
-
             </trans-unit>
-
             <trans-unit id="6" resname="doYouWantToSaveChanges">
-
                <source>Do you want to save changes?</source>
-
                <target>¿Desea guardar los cambios?</target>
-
             </trans-unit>
-
             <trans-unit id="7" resname="save">
-
                <source>Save</source>
-
                <target>Guardar</target>
-
             </trans-unit>
-
             <trans-unit id="8" resname="doNotSave">
-
                <source>Do not save</source>
-
                <target>No guardar</target>
-
             </trans-unit>
-
          </group>
-
       </body>
-
    </file>
-
 </xliff>

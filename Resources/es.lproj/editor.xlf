@@ -2,719 +2,361 @@
 <!--Translation file.
 This file is distributed under the same license as the product package.-->
 <xliff xmlns="http://www.w3.org/1999/xhtml" version="1.0">
-
    <file datatype="x-STR#" original="undefined" product-version="v13" source-language="en-US" target-language="es">
-
       <header>
-
          <prop-group name="Xliff-Editor.4dbase">
-
             <prop prop-type="version">1.0</prop>
-
          </prop-group>
-
       </header>
-
       <body>
-
          <group resname="menus">
-
             <trans-unit resname="Menus_align">
-
                <source>Align</source>
-
                <target>Alinear</target>
-
             </trans-unit>
-
             <trans-unit id="83" resname="Menus_align_and_distribute">
-
                <source>Align &amp; Distribute</source>
-
                <target>Alinear y distribuir</target>
-
             </trans-unit>
-
             <trans-unit id="42" resname="Menus_alignCenter">
-
                <source>Center</source>
-
                <target>Centro</target>
-
             </trans-unit>
-
             <trans-unit id="41" resname="Menus_alignLeft">
-
                <source>Left</source>
-
                <target>Izquierda</target>
-
             </trans-unit>
-
             <trans-unit id="43" resname="Menus_alignRight">
-
                <source>Right</source>
-
                <target>Derecha</target>
-
             </trans-unit>
-
             <trans-unit resname="Menus_distributehorizontal">
-
                <source>Distribute horizontally</source>
-
                <target>Distribuir horizontalmente</target>
-
             </trans-unit>
-
             <trans-unit resname="Menus_distributevertical">
-
                <source>Distribute vertically</source>
-
                <target>Distribuir verticalmente</target>
-
             </trans-unit>
-
             <trans-unit id="2" resname="Menus_fill">
-
                <source>Fill Color</source>
-
                <target>Relleno</target>
-
             </trans-unit>
-
             <trans-unit id="16" resname="Menus_fillOpacity">
-
                <source>Fill opacity</source>
-
                <target>Opacidad de relleno</target>
-
             </trans-unit>
-
             <trans-unit id="31" resname="Menus_font">
-
                <source>Font</source>
-
                <target>Fuente</target>
-
             </trans-unit>
-
             <trans-unit id="33" resname="Menus_fontSize">
-
                <source>Font size</source>
-
                <target>Tamaño</target>
-
             </trans-unit>
-
             <trans-unit id="93" resname="Menus_fontColor">
-
                <source>Text color</source>
-
                <target>Color de texto</target>
-
             </trans-unit>
-
             <trans-unit id="40" resname="Menus_image">
-
                <source>Image</source>
-
                <target>Imagen</target>
-
             </trans-unit>
-
             <trans-unit id="2" resname="Menus_level">
-
                <source>Level</source>
-
                <target>Nivel</target>
-
             </trans-unit>
-
             <trans-unit id="5" resname="Menus_moveBehind">
-
                <source>Down One Level</source>
-
                <target>Bajar un nivel</target>
-
             </trans-unit>
-
             <trans-unit id="3" resname="Menus_movefrontmost">
-
                <source>Move to Front</source>
-
                <target>Traer al frente</target>
-
             </trans-unit>
-
             <trans-unit id="4" resname="Menus_moveInFront">
-
                <source>Up One Level</source>
-
                <target>Subir un nivel</target>
-
             </trans-unit>
-
             <trans-unit id="6" resname="Menus_moveToBackmost">
-
                <source>Move to Back</source>
-
                <target>Enviar al fondo</target>
-
             </trans-unit>
-
             <trans-unit resname="Menus_objectalignbottom">
-
                <source>Align bottom</source>
-
                <target>Alinear a la parte inferior</target>
-
             </trans-unit>
-
             <trans-unit resname="Menus_objectalignhorizontal">
-
                <source>Center horizontally</source>
-
                <target>Centrar horizontalmente</target>
-
             </trans-unit>
-
             <trans-unit resname="Menus_objectalignleft">
-
                <source>Align left</source>
-
                <target>Align left</target>
-
             </trans-unit>
-
             <trans-unit resname="Menus_objectalignright">
-
                <source>Align right</source>
-
                <target>Alinear a la derecha</target>
-
             </trans-unit>
-
             <trans-unit resname="Menus_objectaligntop">
-
                <source>Align top</source>
-
                <target>Alinear a la parte superior</target>
-
             </trans-unit>
-
             <trans-unit resname="Menus_objectalignvertical">
-
                <source>Center vertically</source>
-
                <target>Centrar verticalmente</target>
-
             </trans-unit>
-
             <trans-unit id="92" resname="Menus_opacity">
-
                <source>{n} %</source>
-
                <target>{n} %</target>
-
             </trans-unit>
-
             <trans-unit id="39" resname="Menus_scaledToFitPropCentered">
-
                <source>Scaled to fit prop centered </source>
-
                <target>Proporcional centrado</target>
-
             </trans-unit>
-
             <trans-unit id="32" resname="Menus_showFonts">
-
                <source>Show Fonts</source>
-
                <target>Mostrar fuentes</target>
-
             </trans-unit>
-
             <trans-unit id="15" resname="Menus_stroke">
-
                <source>Line Color</source>
-
                <target>Color de línea</target>
-
             </trans-unit>
-
             <trans-unit id="28" resname="Menus_strokeOpacity">
-
                <source>Line Opacity</source>
-
                <target>Opacidad de línea</target>
-
             </trans-unit>
-
             <trans-unit id="30" resname="Menus_strokeWidth">
-
                <source>Lineweight</source>
-
                <target>Grosor de línea</target>
-
             </trans-unit>
-
             <trans-unit id="34" resname="Menus_systemFont">
-
                <source>System Font</source>
-
                <target>Fuente del Sistema</target>
-
             </trans-unit>
-
             <trans-unit id="44" resname="Menus_textAlignment">
-
                <source>Text Alignment</source>
-
                <target>Alineación de texto</target>
-
             </trans-unit>
-
             <trans-unit id="35" resname="Menus_textStyle">
-
                <source>Text Style</source>
-
                <target>Estilo de texto</target>
-
             </trans-unit>
-
             <trans-unit id="36" resname="Menus_textStyleBold">
-
                <source>Bold</source>
-
                <target>Negrita</target>
-
             </trans-unit>
-
             <trans-unit id="37" resname="Menus_textStyleItalic">
-
                <source>Italic</source>
-
                <target>Itálica</target>
-
             </trans-unit>
-
             <trans-unit id="38" resname="Menus_textStyleUnderline">
-
                <source>Underline</source>
-
                <target>Subrayado</target>
-
             </trans-unit>
-
             <trans-unit id="8" resname="Menus_tool">
-
                <source>Tool</source>
-
                <target>Herramienta</target>
-
             </trans-unit>
-
             <trans-unit id="12" resname="Menus_toolLine">
-
                <source>Line</source>
-
                <target>Línea</target>
-
             </trans-unit>
-
             <trans-unit id="14" resname="Menus_toolOval">
-
                <source>Circle</source>
-
                <target>Círculo</target>
-
             </trans-unit>
-
             <trans-unit id="10" resname="Menus_toolPolyline">
-
                <source>Freehand line</source>
-
                <target>Línea a mano alzada</target>
-
             </trans-unit>
-
             <trans-unit id="13" resname="Menus_toolRectangle">
-
                <source>Rectangle</source>
-
                <target>Rectángulo</target>
-
             </trans-unit>
-
             <trans-unit id="9" resname="Menus_toolSelect">
-
                <source>Selection</source>
-
                <target>Selección</target>
-
             </trans-unit>
-
             <trans-unit id="11" resname="Menus_toolText">
-
                <source>Text</source>
-
                <target>Texto</target>
-
             </trans-unit>
-
             <trans-unit id="28" resname="Menus_width_0">
-
                <source>None</source>
-
                <target>Ninguno</target>
-
             </trans-unit>
-
             <trans-unit id="29" resname="Menus_width_N">
-
                <source>{n} Pt</source>
-
                <target>{n} Pt</target>
-
             </trans-unit>
-
             <trans-unit id="84" resname="Menus_rect">
-
                <source>Rectangle</source>
-
                <target>Rectángulo</target>
-
             </trans-unit>
-
             <trans-unit id="85" resname="Menus_roundRect">
-
                <source>Rounded Rectangle</source>
-
                <target>Rectángulo Redondeado</target>
-
             </trans-unit>
-
          </group>
-
          <group resname="labels">
-
             <trans-unit id="45" resname="Labels_sampletext">
-
                <source>Sample text</source>
-
                <target>Texto de ejemplo</target>
-
             </trans-unit>
-
             <trans-unit id="91" resname="Labels_automaticResizing">
-
                <source>Automatic resizing</source>
-
                <target>Redimensión automática</target>
-
             </trans-unit>
-
          </group>
-
          <group resname="backColors">
-
             <trans-unit id="46" resname="back_0">
-
                <source>None</source>
-
                <target>Ninguno</target>
-
             </trans-unit>
-
             <trans-unit id="47" resname="back_1">
-
                <source>Sable</source>
-
                <target>Arena</target>
-
             </trans-unit>
-
             <trans-unit id="48" resname="back_2">
-
                <source>Melon</source>
-
                <target>Melón</target>
-
             </trans-unit>
-
             <trans-unit id="49" resname="back_3">
-
                <source>Orange</source>
-
                <target>Naranja</target>
-
             </trans-unit>
-
             <trans-unit id="50" resname="back_4">
-
                <source>Salmon</source>
-
                <target>Salmón</target>
-
             </trans-unit>
-
             <trans-unit id="51" resname="back_5">
-
                <source>Lilac</source>
-
                <target>Lila</target>
-
             </trans-unit>
-
             <trans-unit id="52" resname="back_6">
-
                <source>Light Violet</source>
-
                <target>Violeta claro</target>
-
             </trans-unit>
-
             <trans-unit id="53" resname="back_7">
-
                <source>Pigeon Blue</source>
-
                <target>Azul colombino</target>
-
             </trans-unit>
-
             <trans-unit id="54" resname="back_8">
-
                <source>Turkish Blue</source>
-
                <target>Azul turquesa</target>
-
             </trans-unit>
-
             <trans-unit id="55" resname="back_9">
-
                <source>Pale Green</source>
-
                <target>Verde claro</target>
-
             </trans-unit>
-
             <trans-unit id="56" resname="back_10">
-
                <source>Yellow Green</source>
-
                <target>Verde amarillento</target>
-
             </trans-unit>
-
             <trans-unit id="57" resname="back_11">
-
                <source>Golden Maize</source>
-
                <target>Amarillo verdoso</target>
-
             </trans-unit>
-
             <trans-unit id="58" resname="back_12">
-
                <source>Grayish Brown</source>
-
                <target>Pardo grisaceo</target>
-
             </trans-unit>
-
             <trans-unit id="59" resname="back_13">
-
                <source>Dark Sable</source>
-
                <target>Arena oscura</target>
-
             </trans-unit>
-
             <trans-unit id="60" resname="back_14">
-
                <source>Antelope</source>
-
                <target>Antílope</target>
-
             </trans-unit>
-
             <trans-unit id="61" resname="back_15">
-
                <source>Pale Blue</source>
-
                <target>Azul pálido</target>
-
             </trans-unit>
-
             <trans-unit id="62" resname="back_16">
-
                <source>Cold Gray</source>
-
                <target>Gris frío</target>
-
             </trans-unit>
-
             <trans-unit id="63" resname="back_17">
-
                <source>Personalized...</source>
-
                <target>Personalizado…</target>
-
             </trans-unit>
-
          </group>
-
          <group resname="fontColors">
-
             <trans-unit id="64" resname="front_0">
-
                <source>Automatic</source>
-
                <target>Automático</target>
-
             </trans-unit>
-
             <trans-unit id="65" resname="front_1">
-
                <source>Beige</source>
-
                <target>Beige</target>
-
             </trans-unit>
-
             <trans-unit id="66" resname="front_2">
-
                <source>Brown</source>
-
                <target>Marrón</target>
-
             </trans-unit>
-
             <trans-unit id="67" resname="front_3">
-
                <source>Orange</source>
-
                <target>Naranja</target>
-
             </trans-unit>
-
             <trans-unit id="68" resname="front_4">
-
                <source>Red</source>
-
                <target>Rojo</target>
-
             </trans-unit>
-
             <trans-unit id="69" resname="front_5">
-
                <source>Purple</source>
-
                <target>Púrpura</target>
-
             </trans-unit>
-
             <trans-unit id="70" resname="front_6">
-
                <source>Violet</source>
-
                <target>Violeta</target>
-
             </trans-unit>
-
             <trans-unit id="71" resname="front_7">
-
                <source>Signal Blue</source>
-
                <target>Azul oscuro</target>
-
             </trans-unit>
-
             <trans-unit id="72" resname="front_8">
-
                <source>Water Blue</source>
-
                <target>Azul aguamarina</target>
-
             </trans-unit>
-
             <trans-unit id="73" resname="front_9">
-
                <source>Leaf Green</source>
-
                <target>Verde oscuro</target>
-
             </trans-unit>
-
             <trans-unit id="74" resname="front_10">
-
                <source>Signal Green</source>
-
                <target>Verde claro</target>
-
             </trans-unit>
-
             <trans-unit id="75" resname="front_11">
-
                <source>Brillant Yellow Green</source>
-
                <target>Verde amarillento</target>
-
             </trans-unit>
-
             <trans-unit id="76" resname="front_12">
-
                <source>Olive</source>
-
                <target>Oliva</target>
-
             </trans-unit>
-
             <trans-unit id="77" resname="front_13">
-
                <source>Saddle Brown</source>
-
                <target>Marrón oscuro</target>
-
             </trans-unit>
-
             <trans-unit id="78" resname="front_14">
-
                <source>Beaver Brown</source>
-
                <target>Marrón castor</target>
-
             </trans-unit>
-
             <trans-unit id="79" resname="front_15">
-
                <source>Moderate blue</source>
-
                <target>Azul grisáceo </target>
-
             </trans-unit>
-
             <trans-unit id="80" resname="front_16">
-
                <source>Dark Cold Gray</source>
-
                <target>Gris oscuro</target>
-
             </trans-unit>
-
             <trans-unit id="81" resname="front_17">
-
                <source>Personalized...</source>
-
                <target>Personalizado…</target>
-
             </trans-unit>
-
          </group>
-
       </body>
-
    </file>
-
 </xliff>

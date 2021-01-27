@@ -15,7 +15,7 @@ C_TEXT:C284($2)
 C_BOOLEAN:C305($3)
 
 C_BOOLEAN:C305($Boo_form; $Boo_landscape; $Boo_perLabel; $Boo_preserveAspectRatio; $Boo_preview; $Boo_printed)
-C_BOOLEAN:C305($stop; $Boo_vertical; $boo_autoWidth)
+C_BOOLEAN:C305($stop; $Boo_vertical)
 C_LONGINT:C283($Lon_backupOrientation; $Lon_backupProgress; $Lon_bottom; $Lon_columns; $Lon_fontSize; $Lon_fontStyle)
 C_LONGINT:C283($Lon_height; $Lon_hGap; $Lon_hStartIndex; $Lon_i; $Lon_labelCount; $Lon_labelHeight)
 C_LONGINT:C283($Lon_labelWidth; $Lon_left; $Lon_leftMargin; $Lon_objectCount; $Lon_orientation)
@@ -88,7 +88,6 @@ DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "height"; $Lon_labelHeight)
 $Dom_buffer:=DOM Find XML element by ID:C1010($root; "setting")
 DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "landscape"; $Boo_landscape)
 DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "vertical"; $Boo_vertical)
-DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "auto-width"; $boo_autoWidth)  //ACI0101397
 
 // Set the print settings
 SET PRINT OPTION:C733(_o_Hide printing progress option:K47:12; 1)
@@ -101,11 +100,11 @@ DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "name"; $Txt_form)
 
 $Boo_form:=(Length:C16($Txt_form)>0)
 
-//If ($Boo_form) ACI0101397 : use of the defined columns and rows. 
-If ($Boo_form & $boo_autoWidth)
+If ($Boo_form)
 	
 	// Calculate columns & rows number according to the form dimensions
 	GET PRINTABLE AREA:C703($Lon_height; $Lon_width)
+	GET PRINT OPTION:C734(Orientation option:K47:2; $Lon_orientation)
 	
 	$Lon_columns:=$Lon_width\$Lon_labelWidth
 	$Lon_rows:=$Lon_height\$Lon_labelHeight
@@ -310,7 +309,6 @@ If (print_ERROR=0)
 				"y"; $Num_yPosition; \
 				"h-offset"; $Num_hOffset; \
 				"v-offset"; $Num_vOffset)
-			
 			
 			$stop:=Print_Resume($Obj_print)
 			
