@@ -67,13 +67,13 @@ If (OK=1)
 	$Obj_path:=Path to object:C1547(DOCUMENT)
 	$Obj_path.extension:=$kTxt_extension
 	$File_pathname:=Object to path:C1548($Obj_path)
-	TRACE:C157
+	//ACI0101350{
 	If (Is Windows:C1573)
 		If (Substring:C12($File_pathname; Length:C16($File_pathname)-9)=".4lbp.4lbp")
 			$File_pathname:=Substring:C12($File_pathname; 0; Length:C16($File_pathname)-5)
 		End if 
 	End if 
-	
+	//}
 	C_LABEL_DOCUMENT:=$File_pathname
 	
 	$Obj_form:=(OBJECT Get pointer:C1124(Object named:K67:5; "object"))->
