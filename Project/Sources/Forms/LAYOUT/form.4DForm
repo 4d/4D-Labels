@@ -1,4 +1,4 @@
-﻿{
+{
 	"destination": "detailScreen",
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
@@ -389,7 +389,7 @@
 					"text": ":xliff:usePrintMargins",
 					"fontFamily": ".Helvetica Neue DeskInterface Regular",
 					"fontSize": 11,
-					"stroke": "#444444",
+					"stroke": "automatic",
 					"focusable": false,
 					"method": "ObjectMethods/printer_margins.4dm",
 					"events": [
@@ -725,5 +725,9 @@
 				"method.radio.record"
 			]
 		}
+	},
+	"$4d": {
+		"version": "1",
+		"kind": "form"
 	}
 }

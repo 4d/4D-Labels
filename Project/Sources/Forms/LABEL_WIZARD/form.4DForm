@@ -1,4 +1,4 @@
-﻿{
+{
 	"destination": "detailScreen",
 	"windowTitle": ":xliff:label_wizard_windowTitle",
 	"windowMinWidth": 750,
@@ -36,7 +36,8 @@
 					"height": 493,
 					"sizingX": "grow",
 					"sizingY": "grow",
-					"stroke": "transparent"
+					"stroke": "transparent",
+					"fill": "automatic"
 				},
 				"toolbar.background": {
 					"type": "rectangle",
@@ -45,7 +46,7 @@
 					"width": 750,
 					"height": 93,
 					"sizingX": "grow",
-					"fill": "#F0F0F0",
+					"fill": "automatic",
 					"stroke": "transparent"
 				},
 				"template_1": {
@@ -301,7 +302,8 @@
 					"left": 18,
 					"width": 268,
 					"height": 22,
-					"stroke": "#AAAAAA"
+					"stroke": "automatic",
+					"fill": "transparent"
 				},
 				"editor": {
 					"type": "subform",
@@ -367,7 +369,7 @@
 					"left": 17,
 					"width": 212,
 					"height": 16,
-					"stroke": "#000000",
+					"stroke": "automatic",
 					"fontWeight": "bold",
 					"text": ":xliff:listOfFields"
 				},
@@ -638,8 +640,9 @@
 		"kind": "form"
 	},
 	"editor": {
-		"activeLayer": "default",
-		"layers": {
+		"activeView": "default",
+		"defaultView": "default",
+		"views": {
 			"default": {},
 			"View 1": {},
 			"View 2": {},
