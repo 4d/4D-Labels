@@ -490,6 +490,9 @@ If (print_ERROR=0)
 						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "style"; $Txt_style)
 						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "alignment"; $Txt_alignment)
 						
+						//#ACI0100864
+						$Txt_fontFamilly:=PRINT_Font($Txt_fontFamilly)
+						
 						OB SET:C1220($Obj_desc; \
 							"value"; $Txt_value; \
 							"font-name"; $Txt_fontFamilly; \

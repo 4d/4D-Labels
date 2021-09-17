@@ -28,7 +28,9 @@
 					"left": 0,
 					"width": 420,
 					"height": 160,
-					"borderRadius": 5
+					"borderRadius": 5,
+					"fill": "transparent",
+					"stroke": "automatic"
 				},
 				"ok": {
 					"type": "button",
@@ -102,5 +104,9 @@
 				}
 			}
 		}
-	]
+	],
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
 }
