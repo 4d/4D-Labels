@@ -347,51 +347,56 @@ If (Not:C34(Is nil pointer:C315(OBJECT Get pointer:C1124(Object subform containe
 							
 							xml_GET_ATTRIBUTE_BY_NAME($Dom_object; "tableList"; ->$t)
 							
+							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "value"; $Txt_textValue)
+							
+							
 							If (Length:C16($t)>0)
 								
-								$tables:=JSON Parse:C1218($t)
+/*
+$tables:=JSON Parse($t)
 								
-								xml_GET_ATTRIBUTE_BY_NAME($Dom_object; "fieldList"; ->$t)
-								$fields:=JSON Parse:C1218($t)
+xml_GET_ATTRIBUTE_BY_NAME($Dom_object; "fieldList"; ->$t)
+$fields:=JSON Parse($t)
 								
-								$c:=New collection:C1472
+$c:=New collection
 								
-								For ($j; 0; $tables.length-1; 1)
-									
-									$c.push(Parse formula:C1576("[:"+String:C10($tables[$j])+"]:"+String:C10($fields[$j])+""))
-									
-								End for 
+For ($j; 0; $tables.length-1; 1)
 								
-								DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "value"; $t)
+$c.push(Parse formula("[:"+String($tables[$j])+"]:"+String($fields[$j])+""))
 								
-								var $i; $start; $plus; $linefeed; $pos : Integer
+End for 
 								
-								For ($i; 0; $c.length-1; 1)
-									
-									If ($i=0)
-										
-										$Txt_textValue:=$c[$i]
-										
-									Else 
-										
-										$pos:=$start
-										$plus:=Position:C15("+"; $t; $pos)
-										$linefeed:=Position:C15("\n"; $t; $pos)
-										
-										If ($linefeed>0)\
-											 & (($plus=0) | ($plus>$linefeed))
-											
-											$start:=$linefeed+1
-											$Txt_textValue:=$Txt_textValue+"\n"+$c[$i]
-											
-										Else 
-											
-											$start:=$plus+1
-											$Txt_textValue:=$Txt_textValue+"+"+$c[$i]
-											
-										End if 
-									End if 
-								End for 
+DOM GET XML ATTRIBUTE BY NAME($Dom_object; "value"; $t)
+								
+var $i; $start; $plus; $linefeed; $pos : Integer
+								
+For ($i; 0; $c.length-1; 1)
+								
+If ($i=0)
+								
+$Txt_textValue:=$c[$i]
+								
+Else 
+								
+$pos:=$start
+$plus:=Position("+"; $t; $pos)
+$linefeed:=Position("\n"; $t; $pos)
+								
+								If ($linefeed>0)\
+									 & (($plus=0) | ($plus>$linefeed))
+								
+$start:=$linefeed+1
+$Txt_textValue:=$Txt_textValue+"\n"+$c[$i]
+								
+Else 
+								
+$start:=$plus+1
+$Txt_textValue:=$Txt_textValue+"+"+$c[$i]
+								
+End if 
+End if 
+End for 
+*/
 								
 							Else 
 								
@@ -408,6 +413,7 @@ If (Not:C34(Is nil pointer:C315(OBJECT Get pointer:C1124(Object subform containe
 									
 								End if 
 							End if 
+							
 							//====================================================================== ]
 							
 							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "font-name"; $Txt_fontName)

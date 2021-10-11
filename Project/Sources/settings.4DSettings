@@ -28,7 +28,7 @@
 		</interface>
 		<database>
 			<cpu_priority/>
-			<misc/>
+			<misc win_form_text_directwrite="true"/>
 		</database>
 		<general allow_user_settings="false" execute_host_database_event="true" startup_environnement="0">
 			<mover filters="3" forms="3" lists="3" menu_bars="3" pictures="3" style_sheets="3" tips="3"/>

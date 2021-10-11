@@ -302,8 +302,8 @@
 					"left": 18,
 					"width": 268,
 					"height": 22,
-					"stroke": "automatic",
-					"fill": "transparent"
+					"stroke": "#AAAAAA",
+					"fill": "automatic"
 				},
 				"editor": {
 					"type": "subform",
@@ -339,7 +339,8 @@
 						"onLosingFocus",
 						"onGettingFocus",
 						"onAfterEdit"
-					]
+					],
+					"fill": "transparent"
 				},
 				"field.list": {
 					"type": "list",

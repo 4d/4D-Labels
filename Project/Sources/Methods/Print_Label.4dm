@@ -523,10 +523,14 @@ If (print_ERROR=0)
 						
 						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "field-type"; $Lon_type)
 						
-						//#ACI0101240 ========================================================= [
-						var $t : Text
-						var $j; $fieldNumber; $tableNumber : Integer
-						var $c; $fields; $tables : Collection
+						//#ACI0101759 ========================================================= [
+						var $t; $formula : Text
+						var $linefeed : Integer
+						var $tables : Collection
+						var $boo_genericCase : Boolean
+						
+						CLEAR VARIABLE:C89($Txt_value)
+						$boo_genericCase:=False:C215
 						
 						xml_GET_ATTRIBUTE_BY_NAME($Dom_object; "tableList"; ->$t)
 						
@@ -534,65 +538,52 @@ If (print_ERROR=0)
 							
 							$tables:=JSON Parse:C1218($t)
 							
-							xml_GET_ATTRIBUTE_BY_NAME($Dom_object; "fieldList"; ->$t)
-							$fields:=JSON Parse:C1218($t)
-							
-							$c:=New collection:C1472
-							
-							For ($j; 0; $tables.length-1; 1)
+							If ($tables.length>1)  // if there is multiples field it's become 
 								
-								$c.push(Parse formula:C1576("[:"+String:C10($tables[$j])+"]:"+String:C10($fields[$j])+""))
+								DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "value"; $t)
+								// parse formula doesnt parse correctly \n and \r
 								
-							End for 
-							
-							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "value"; $t)
-							
-							var $i; $start; $plus; $linefeed; $pos : Integer
-							
-							CLEAR VARIABLE:C89($start)
-							
-							For ($i; 0; $c.length-1; 1)
-								
-								If ($i=0)
+								Repeat 
 									
-									$Txt_value:=$c[$i]
+									$linefeed:=Position:C15("\n"; $t)
 									
-								Else 
+									If ($linefeed=0)
+										$linefeed:=Position:C15("\r"; $t)
+									End if 
 									
-									$pos:=$start
-									$plus:=Position:C15("+"; $t; $pos)
-									$linefeed:=Position:C15("\n"; $t; $pos)
-									
-									If ($linefeed>0)\
-										 & (($plus=0) | ($plus>$linefeed))
+									If ($linefeed=0)
 										
-										$start:=$linefeed+1
-										$Txt_value:=$Txt_value+"\n"+$c[$i]
+										$Txt_value:=$Txt_value+Parse formula:C1576($t)
 										
 									Else 
 										
-										$start:=$plus+1
-										$Txt_value:=$Txt_value+"+"+$c[$i]
+										$formula:=Substring:C12($t; 0; $linefeed)
+										$Txt_value:=$Txt_value+Parse formula:C1576($formula)+"+"+Char:C90(Line feed:K15:40)+"+"
+										$t:=Substring:C12($t; $linefeed+1)
 										
 									End if 
-								End if 
-							End for 
-							
-						Else 
-							
-							xml_GET_ATTRIBUTE_BY_NAME($Dom_object; "table"; ->$tableNumber)
-							
-							If ($tableNumber#0)
-								
-								xml_GET_ATTRIBUTE_BY_NAME($Dom_object; "field"; ->$fieldNumber)
-								$Txt_value:=Parse formula:C1576("[:"+String:C10($tableNumber)+"]:"+String:C10($fieldNumber)+"")
+									
+								Until ($linefeed=0)
 								
 							Else 
 								
-								DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "value"; $Txt_value)
+								$boo_genericCase:=True:C214
 								
 							End if 
+							
+						Else 
+							
+							$boo_genericCase:=True:C214
+							
 						End if 
+						
+						If ($boo_genericCase)
+							//#ACI0101759
+							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "value"; $t)
+							$Txt_value:=Parse formula:C1576($t)
+							
+						End if 
+						
 						//====================================================================== ]
 						
 						Case of 
