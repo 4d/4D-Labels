@@ -47,17 +47,6 @@ For ($i; 6; 36; 1)
 	Case of 
 			
 			//______________________________________________________
-		: ($i<=8)  // Only pair values
-			
-			If (($i%2)=0)
-				
-				APPEND MENU ITEM:C411($fontSizeMenu; String:C10($i))
-				SET MENU ITEM PARAMETER:C1004($fontSizeMenu; -1; "font-size-"+String:C10($i))
-				SET MENU ITEM MARK:C208($fontSizeMenu; -1; Char:C90(18)*Num:C11($fontSize=$i))
-				
-			End if 
-			
-			//______________________________________________________
 		: ($i<=14)
 			
 			APPEND MENU ITEM:C411($fontSizeMenu; String:C10($i))
