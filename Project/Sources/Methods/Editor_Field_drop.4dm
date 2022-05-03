@@ -121,6 +121,7 @@ If (BLOB size:C605($blob)#0)
 			
 			$Lon_stepX:=OB Get:C1224($formData; "step-X"; Is longint:K8:6)
 			$Lon_stepY:=OB Get:C1224($formData; "step-Y"; Is longint:K8:6)
+			$label:=""
 			
 			For ($i; 1; Size of array:C274($tableNumbers); 1)
 				
@@ -128,7 +129,7 @@ If (BLOB size:C605($blob)#0)
 				$tableID:=$tableNumbers{$i}
 				$fieldID:=$fieldNumbers{$i}
 				
-				$label:=Parse formula:C1576("[:"+String:C10($tableID)+"]:"+String:C10($fieldID); Formula out with virtual structure:K88:2)
+				$label:=$label+Parse formula:C1576("[:"+String:C10($tableID)+"]:"+String:C10($fieldID); Formula out with virtual structure:K88:2)
 				
 				// Compute text sizes
 				OB SET:C1220($o; \

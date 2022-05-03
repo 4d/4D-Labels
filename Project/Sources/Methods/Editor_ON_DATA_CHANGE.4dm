@@ -382,8 +382,8 @@ $pos:=$start
 $plus:=Position("+"; $t; $pos)
 $linefeed:=Position("\n"; $t; $pos)
 								
-								If ($linefeed>0)\
-									 & (($plus=0) | ($plus>$linefeed))
+																																								If ($linefeed>0)\
+																																													 & (($plus=0) | ($plus>$linefeed))
 								
 $start:=$linefeed+1
 $Txt_textValue:=$Txt_textValue+"\n"+$c[$i]
@@ -410,8 +410,10 @@ End for
 								Else 
 									
 									DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "value"; $Txt_textValue)
+									$Txt_textValue:=Parse formula:C1576("[:"+String:C10($tableNumber)+"]:"+String:C10($fieldNumber)+"")
 									
 								End if 
+								
 							End if 
 							
 							//====================================================================== ]

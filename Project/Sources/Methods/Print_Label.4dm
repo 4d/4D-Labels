@@ -525,9 +525,9 @@ If (print_ERROR=0)
 						
 						//#ACI0101759 ========================================================= [
 						var $t; $formula : Text
-						var $linefeed : Integer
+						var $linefeed; $plus; $break : Integer
 						var $tables : Collection
-						var $boo_genericCase : Boolean
+						var $boo_genericCase; $isLinefeed : Boolean
 						
 						CLEAR VARIABLE:C89($Txt_value)
 						$boo_genericCase:=False:C215
@@ -538,32 +538,56 @@ If (print_ERROR=0)
 							
 							$tables:=JSON Parse:C1218($t)
 							
-							If ($tables.length>1)  // if there is multiples field it's become 
+							If ($tables.length>1)  // if there is multiples field it's goes here 
 								
 								DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "value"; $t)
 								// parse formula doesnt parse correctly \n and \r
 								
+								$Txt_value:=""
 								Repeat 
 									
 									$linefeed:=Position:C15("\n"; $t)
+									$plus:=Position:C15("+"; $t)
 									
 									If ($linefeed=0)
 										$linefeed:=Position:C15("\r"; $t)
 									End if 
 									
-									If ($linefeed=0)
+									If (($plus=0) & ($linefeed=0))
 										
-										$Txt_value:=$Txt_value+Parse formula:C1576($t)
+										$Txt_value:=$Txt_value+Parse formula:C1576($t; Formula in with virtual structure:K88:1)
 										
 									Else 
 										
-										$formula:=Substring:C12($t; 0; $linefeed)
-										$Txt_value:=$Txt_value+Parse formula:C1576($formula)+"+"+Char:C90(Line feed:K15:40)+"+"
-										$t:=Substring:C12($t; $linefeed+1)
+										
+										If ((($plus>$linefeed) & ($linefeed#0)) | ($plus=0))
+											
+											$break:=$linefeed
+											$isLinefeed:=True:C214
+										Else 
+											
+											$break:=$plus
+											$isLinefeed:=False:C215
+											
+										End if 
+										
+										$formula:=Substring:C12($t; 0; $break)
+										
+										If ($isLinefeed=False:C215)
+											
+											$Txt_value:=$Txt_value+Parse formula:C1576($formula; Formula in with virtual structure:K88:1)
+											
+										Else 
+											
+											$Txt_value:=$Txt_value+Parse formula:C1576($formula; Formula in with virtual structure:K88:1)+"+"+Char:C90(Line feed:K15:40)+"+"
+											
+										End if 
+										
+										$t:=Substring:C12($t; $break+1)
 										
 									End if 
 									
-								Until ($linefeed=0)
+								Until (($linefeed=0) & ($plus=0))
 								
 							Else 
 								
@@ -580,7 +604,7 @@ If (print_ERROR=0)
 						If ($boo_genericCase)
 							//#ACI0101759
 							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "value"; $t)
-							$Txt_value:=Parse formula:C1576($t)
+							$Txt_value:=Parse formula:C1576($t; Formula in with virtual structure:K88:1)
 							
 						End if 
 						

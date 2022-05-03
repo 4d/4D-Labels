@@ -296,6 +296,15 @@
 		},
 		{
 			"objects": {
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 124,
+					"left": 17,
+					"width": 269,
+					"height": 22,
+					"class": "background",
+					"stroke": "transparent"
+				},
 				"field.search.frame": {
 					"type": "rectangle",
 					"top": 124,
@@ -303,7 +312,7 @@
 					"width": 268,
 					"height": 22,
 					"stroke": "#AAAAAA",
-					"fill": "automatic"
+					"fill": "transparent"
 				},
 				"editor": {
 					"type": "subform",
@@ -666,5 +675,6 @@
 			"View 8": {},
 			"View 9": {}
 		}
-	}
+	},
+	"geometryStamp": 19
 }
