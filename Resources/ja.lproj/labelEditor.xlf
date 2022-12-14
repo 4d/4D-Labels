@@ -28,6 +28,7 @@
             <trans-unit id="66" resname="columns">
                <source>Columns</source>
                <target>カラム</target>
+               <note>just for test</note>
             </trans-unit>
             <trans-unit id="64" resname="forEach">
                <source>For each</source>
