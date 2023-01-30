@@ -95,7 +95,7 @@ If (OK=1)
 		SVG EXPORT TO PICTURE:C1017($Dom_root; $Pic_buffer)
 		CONVERT PICTURE:C1002($Pic_buffer; ".png")
 		
-		(OBJECT Get pointer:C1124(Object named:K67:5; $Txt_tool))->:=$Pic_buffer
+		OBJECT SET VALUE:C1742($Txt_tool; $Pic_buffer)
 		
 	End if 
 	
