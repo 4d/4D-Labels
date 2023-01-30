@@ -1,12 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <g fill="none" fill-rule="evenodd">
-    <rect width="30.5" height="30.5" x=".5" y=".5" fill="#FFF" fill-rule="nonzero" stroke="#000" stroke-width=".2"/>
-    <rect width="28.5" height="28.5" x="1.5" y="1.5" fill="#000" fill-rule="nonzero" stroke="#FFF"/>
-    <rect width="18.5" height="18.5" x="6.5" y="6.5" fill="#FFF" fill-rule="nonzero" stroke="#FFF"/>
-    <rect width="16.5" height="16" x="7.5" y="8" stroke="gray" stroke-width=".3"/>
-    <g fill-rule="nonzero" transform="translate(23.2 23.2)">
-      <rect width="7.2" height="7.2" fill="#FFF"/>
-      <polygon fill="#000" points="1.2 2.4 5.6 2.4 3.6 5.6"/>
-    </g>
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<svg xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+
+  <metadata xmlns="http://www.4D.com/4DSVG">
+    <generator>4D SVG Component version 15.0 ©2008-2015 4D SAS.</generator>
+    <about>4D SVG is the quintessential vector drawing tool for 4D developers.</about>
+    <generation date="2015-06-10Z" system="Mac OSX 10.10.3" time="PT16H40M24S"/>
+  </metadata>
+
+  <defs id="4D"/>
+
+  <!--background-->
+
+  <rect fill="white" height="30.5" stroke="black" stroke-width="0.2" transform="translate(0.5,0.5)" width="30.5" x="0" y="0"/>
+
+  <!--tool-->
+
+  <rect fill="black" height="28.5" id="tool" stroke="white" stroke-width="1" transform="translate(1.5,1.5)" width="28.5" x="0" y="0"/>
+
+  <rect fill="white" height="18.5" stroke="white" stroke-width="1" width="18.5" x="6.5" y="6.5"/>
+
+  <rect fill="none" height="16" stroke="grey" stroke-width="0.3" width="16.5" x="7.5" y="8"/>
+
+  <!--arrow-->
+
+  <g transform="scale(0.8) translate(8,8)">
+    <rect fill="white" height="9" stroke="none" stroke-width="0.1" width="9" x="21" y="21"/>
+    <path d="M22.5,24 L28,24 L25.5,28z" fill="black" stroke="none"/>
   </g>
+
 </svg>
