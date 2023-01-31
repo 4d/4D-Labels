@@ -1,0 +1,94 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 250,
+					"height": 160,
+					"stroke": "transparent",
+					"fill": "#fffacd"
+				},
+				"Input1": {
+					"type": "input",
+					"left": 73,
+					"top": 19,
+					"width": 150,
+					"height": 17,
+					"dataSource": "[Table_1:1]ID:1",
+					"dataSourceTypeHint": "integer"
+				},
+				"Input": {
+					"type": "input",
+					"left": 73,
+					"top": 56,
+					"width": 150,
+					"height": 17,
+					"dataSource": "[Table_1:1]Field_2:2"
+				},
+				"Text": {
+					"type": "text",
+					"text": "ID",
+					"top": 19,
+					"left": 10,
+					"width": 56,
+					"height": 16,
+					"textAlign": "right"
+				},
+				"Text1": {
+					"type": "text",
+					"text": "Field",
+					"top": 56,
+					"left": 10,
+					"width": 56,
+					"height": 16,
+					"textAlign": "right"
+				}
+			}
+		}
+	],
+	"geometryStamp": 32,
+	"width": 250,
+	"height": 160,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}
