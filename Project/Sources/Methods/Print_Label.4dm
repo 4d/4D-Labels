@@ -5,341 +5,307 @@
 // ID[6349290659384A0499FF195E19B79FC1]
 // Created #19-2-2015 by Vincent de Lachaux
 // ----------------------------------------------------
-// Description:
-//
-// ----------------------------------------------------
-// Declarations
-C_LONGINT:C283($0)
-C_LONGINT:C283($1)
-C_TEXT:C284($2)
-C_BOOLEAN:C305($3)
-
-C_BOOLEAN:C305($Boo_form; $Boo_landscape; $Boo_perLabel; $Boo_preserveAspectRatio; $Boo_preview; $Boo_printed)
-C_BOOLEAN:C305($stop; $Boo_vertical; $boo_autoWidth)
-C_LONGINT:C283($Lon_backupOrientation; $Lon_backupProgress; $Lon_bottom; $Lon_columns; $Lon_fontSize; $Lon_fontStyle)
-C_LONGINT:C283($Lon_height; $Lon_hGap; $Lon_hStartIndex; $Lon_i; $Lon_labelCount; $Lon_labelHeight)
-C_LONGINT:C283($Lon_labelWidth; $Lon_left; $Lon_leftMargin; $Lon_objectCount; $Lon_orientation)
-C_LONGINT:C283($Lon_perRecord; $Lon_right; $Lon_rightMargin; $Lon_rows; $Lon_startIndex; $tableNumber)
-C_LONGINT:C283($Lon_top; $Lon_topMargin; $Lon_type; $Lon_vGap; $Lon_vStartIndex; $Lon_width)
-C_LONGINT:C283($Lon_X; $Lon_xOffset; $Lon_Y; $Lon_yOffset)
-C_POINTER:C301($Ptr_image; $tablePtr)
-C_REAL:C285($Num_fillOpacity; $Num_hOffset; $Num_strokeOpacity; $Num_strokeWidth; $Num_vOffset; $Num_xPosition)
-C_REAL:C285($Num_yPosition)
-C_TEXT:C284($Dom_buffer; $root; $Dom_object; $Dom_objects; $Txt_alignment; $Txt_buffer)
-C_TEXT:C284($Txt_codec; $Txt_data; $Txt_direction; $Txt_fill; $Txt_fontColor; $Txt_fontFamilly)
-C_TEXT:C284($Txt_form; $Txt_labelMethod; $Txt_labelRecord; $Txt_onErrorCall; $Txt_onErrorMethod; $Txt_stroke)
-C_TEXT:C284($Txt_style; $Txt_type; $Txt_value)
-C_OBJECT:C1216($Obj_desc; $Obj_print)
-
-ARRAY TEXT:C222($tTxt_objects; 0)
+#DECLARE($tableNumber : Integer; $root : Text; $preview : Boolean) : Integer
 
 If (False:C215)
-	C_LONGINT:C283(Print_Label; $0)
 	C_LONGINT:C283(Print_Label; $1)
 	C_TEXT:C284(Print_Label; $2)
 	C_BOOLEAN:C305(Print_Label; $3)
+	C_LONGINT:C283(Print_Label; $0)
 End if 
 
-// ----------------------------------------------------
-// Initialisations
-If (Asserted:C1132(Count parameters:C259>=2; "Missing parameter"))
-	
-	// Required parameters
-	$tableNumber:=$1  // No de la table
-	$root:=$2  // Reference XML
-	
-	// Optional parameters
-	If (Count parameters:C259>=3)
-		
-		$Boo_preview:=$3  //#redmine:18107
-		
-	End if 
-	
-	COMPILER_LABELS
-	COMPILER_PRINT
-	
-	$tablePtr:=Table:C252($tableNumber)
-	
-	print_ERROR:=0
-	
-	$Txt_onErrorCall:=Method called on error:C704
-	ON ERR CALL:C155(Choose:C955(<>Boo_debug; ""; "Print_CATCH_ERROR"))
-	
-	// Backup the current print settings
-	// Must call before opening job
-	// Need also to turn off progress in database settings
-	GET PRINT OPTION:C734(_o_Hide printing progress option:K47:12; $Lon_backupProgress)
-	GET PRINT OPTION:C734(Orientation option:K47:2; $Lon_backupOrientation)
-	
-Else 
-	
-	ABORT:C156
-	
-End if 
+var $fillOpacity; $horizontalOffset; $strokeOpacity; $strokeWidth; $verticalOffset; $x : Real
+var $y : Real
+var $alignment; $codec; $data; $direction; $fill; $fontColor : Text
+var $fontFamilly; $formName; $formula; $labelMethod; $methodCalledOnError; $node : Text
+var $objects; $onErrorMethod; $recordMethod; $stroke; $style; $t : Text
+var $target; $value : Text
+var $automaticWidth; $genericCase; $isLinefeed; $landscape; $perLabel; $preserveAspectRatio : Boolean
+var $printed; $stop; $useForm; $vertical : Boolean
+var $backupOrientation; $backupProgress; $bottom; $break; $columns; $fontSize : Integer
+var $fontStyle; $height; $horizontalGap; $horizontalStartIndex; $i; $labelCount : Integer
+var $labelHeight; $labelWidth; $left; $leftMargin; $leftPos; $linefeed : Integer
+var $objectNumber; $objecty; $perRecord; $plus; $right; $rightMargin : Integer
+var $rows; $startIndex; $top; $topMargin; $topPos; $type : Integer
+var $verticalGap; $verticalStartIndex; $width; $xOffset; $yOffset : Integer
+var $tablePtr : Pointer
+var $o; $object : Object
+var $tables : Collection
+
+ARRAY TEXT:C222($formObjects; 0)
 
 // ----------------------------------------------------
-// Size
-$Dom_buffer:=DOM Find XML element by ID:C1010($root; "size")
-DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "width"; $Lon_labelWidth)
-DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "height"; $Lon_labelHeight)
+// Required parameters
+ASSERT:C1129(Count parameters:C259>=2)
 
-// ----------------------------------------------------
-// Settings
-$Dom_buffer:=DOM Find XML element by ID:C1010($root; "setting")
-DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "landscape"; $Boo_landscape)
-DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "vertical"; $Boo_vertical)
-DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "auto-width"; $boo_autoWidth)  //ACI0101397
+COMPILER_LABELS
+COMPILER_PRINT
+
+$tablePtr:=Table:C252($tableNumber)
+
+print_ERROR:=0
+
+$methodCalledOnError:=Method called on error:C704
+ON ERR CALL:C155(Choose:C955(<>Boo_debug; ""; "Print_CATCH_ERROR"))
+
+// Backup the current print settings
+// Must call before opening job
+// Need also to turn off progress in database settings
+GET PRINT OPTION:C734(_o_Hide printing progress option:K47:12; $backupProgress)
+GET PRINT OPTION:C734(Orientation option:K47:2; $backupOrientation)
+
+// mark:Size
+$node:=DOM Find XML element by ID:C1010($root; "size")
+DOM GET XML ATTRIBUTE BY NAME:C728($node; "width"; $labelWidth)
+DOM GET XML ATTRIBUTE BY NAME:C728($node; "height"; $labelHeight)
+
+// mark:Settings
+$node:=DOM Find XML element by ID:C1010($root; "setting")
+DOM GET XML ATTRIBUTE BY NAME:C728($node; "landscape"; $landscape)
+DOM GET XML ATTRIBUTE BY NAME:C728($node; "vertical"; $vertical)
+DOM GET XML ATTRIBUTE BY NAME:C728($node; "auto-width"; $automaticWidth)
 
 // Set the print settings
 SET PRINT OPTION:C733(_o_Hide printing progress option:K47:12; 1)
-SET PRINT OPTION:C733(Orientation option:K47:2; 1+Num:C11($Boo_landscape))
+SET PRINT OPTION:C733(Orientation option:K47:2; 1+Num:C11($landscape))
 
-// ----------------------------------------------------
-// Form to use
-$Dom_buffer:=DOM Find XML element by ID:C1010($root; "form")
-DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "name"; $Txt_form)
+// mark:Form to use
+$node:=DOM Find XML element by ID:C1010($root; "form")
+DOM GET XML ATTRIBUTE BY NAME:C728($node; "name"; $formName)
 
-$Boo_form:=(Length:C16($Txt_form)>0)
+$useForm:=(Length:C16($formName)>0)
 
-//If ($Boo_form) ACI0101397 : use of the defined columns and rows. 
-If ($Boo_form & $boo_autoWidth)
+If ($useForm & $automaticWidth)
 	
 	// Calculate columns & rows number according to the form dimensions
-	GET PRINTABLE AREA:C703($Lon_height; $Lon_width)
+	GET PRINTABLE AREA:C703($height; $width)
 	
-	$Lon_columns:=$Lon_width\$Lon_labelWidth
-	$Lon_rows:=$Lon_height\$Lon_labelHeight
+	$columns:=$width\$labelWidth
+	$rows:=$height\$labelHeight
 	
 Else 
 	
 	// Ignore the printer margins but consider the paper's margin
 	SET PRINTABLE MARGIN:C710(0; 0; 0; 0)
 	
-	DOM GET XML ATTRIBUTE BY NAME:C728($root; "columns"; $Lon_columns)
-	DOM GET XML ATTRIBUTE BY NAME:C728($root; "rows"; $Lon_rows)
+	DOM GET XML ATTRIBUTE BY NAME:C728($root; "columns"; $columns)
+	DOM GET XML ATTRIBUTE BY NAME:C728($root; "rows"; $rows)
 	
 End if 
 
-DOM GET XML ATTRIBUTE BY NAME:C728($root; "labels-per-record"; $Lon_perRecord)
-DOM GET XML ATTRIBUTE BY NAME:C728($root; "start"; $Lon_startIndex)
+DOM GET XML ATTRIBUTE BY NAME:C728($root; "labels-per-record"; $perRecord)
+DOM GET XML ATTRIBUTE BY NAME:C728($root; "start"; $startIndex)
 
-$Lon_xOffset:=(OB Get:C1224(<>label_params; "width"; Is longint:K8:6)-$Lon_labelWidth)/2
-$Lon_yOffset:=(OB Get:C1224(<>label_params; "height"; Is longint:K8:6)-$Lon_labelHeight)/2
+$xOffset:=(OB Get:C1224(<>label_params; "width"; Is longint:K8:6)-$labelWidth)/2
+$yOffset:=(OB Get:C1224(<>label_params; "height"; Is longint:K8:6)-$labelHeight)/2
 
-// ----------------------------------------------------
-// Margins
-$Dom_buffer:=DOM Find XML element by ID:C1010($root; "margin")
-DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "left"; $Lon_leftMargin)
-DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "right"; $Lon_rightMargin)
-DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "top"; $Lon_topMargin)
+// mark:Margins
+$node:=DOM Find XML element by ID:C1010($root; "margin")
+DOM GET XML ATTRIBUTE BY NAME:C728($node; "left"; $leftMargin)
+DOM GET XML ATTRIBUTE BY NAME:C728($node; "right"; $rightMargin)
+DOM GET XML ATTRIBUTE BY NAME:C728($node; "top"; $topMargin)
 
-// ----------------------------------------------------
-// Gaps
-$Dom_buffer:=DOM Find XML element by ID:C1010($root; "gap")
-DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "horizontal"; $Lon_hGap)
-DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "vertical"; $Lon_vGap)
+// mark:Gaps
+$node:=DOM Find XML element by ID:C1010($root; "gap")
+DOM GET XML ATTRIBUTE BY NAME:C728($node; "horizontal"; $horizontalGap)
+DOM GET XML ATTRIBUTE BY NAME:C728($node; "vertical"; $verticalGap)
 
-// ----------------------------------------------------
-// Method
-$Dom_buffer:=DOM Find XML element by ID:C1010($root; "method")
+// mark:Method
+$node:=DOM Find XML element by ID:C1010($root; "method")
 
 If (OK=1)
 	
-	DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "evaluate-per-label"; $Boo_perLabel)
+	DOM GET XML ATTRIBUTE BY NAME:C728($node; "evaluate-per-label"; $perLabel)
 	
-	If ($Boo_perLabel)
+	If ($perLabel)
 		
-		DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "name"; $Txt_labelMethod)
+		DOM GET XML ATTRIBUTE BY NAME:C728($node; "name"; $labelMethod)
 		
 	Else 
 		
-		DOM GET XML ATTRIBUTE BY NAME:C728($Dom_buffer; "name"; $Txt_labelRecord)
+		DOM GET XML ATTRIBUTE BY NAME:C728($node; "name"; $recordMethod)
 		
 	End if 
 End if 
 
-OB SET:C1220($Obj_print; \
-"vertical"; $Boo_vertical; \
-"preview"; $Boo_preview; \
-"rows"; $Lon_rows; \
-"columns"; $Lon_columns; \
-"width"; $Lon_labelWidth; \
-"height"; $Lon_labelHeight; \
-"left-margin"; $Lon_leftMargin; \
-"top-margin"; $Lon_topMargin; \
-"h-gap"; $Lon_hGap; \
-"v-gap"; $Lon_vGap; \
-"label-per-record"; $Lon_perRecord; \
-"table"; $tableNumber)
+$o:=New object:C1471
+$o.vertical:=$vertical
+$o.preview:=$preview
+$o.rows:=$rows
+$o.columns:=$columns
+$o.width:=$labelWidth
+$o.height:=$labelHeight
+$o["left-margin"]:=$leftMargin
+$o["top-margin"]:=$topMargin
+$o["h-gap"]:=$horizontalGap
+$o["v-gap"]:=$verticalGap
+$o["label-per-record"]:=$perRecord
+$o.table:=$tableNumber
 
-//======================================================================
 OPEN PRINTING JOB:C995
 
-//======================================================================
 If (print_ERROR=0)
 	
-	If ($Boo_vertical)
+	If ($vertical)
 		
-		$Lon_vStartIndex:=Choose:C955(($Lon_startIndex%$Lon_rows)=0; $Lon_rows; $Lon_startIndex%$Lon_rows)
-		$Lon_hStartIndex:=($Lon_startIndex\$Lon_rows)+Num:C11(0#($Lon_startIndex%$Lon_rows))
+		$verticalStartIndex:=Choose:C955(($startIndex%$rows)=0; $rows; $startIndex%$rows)
+		$horizontalStartIndex:=($startIndex\$rows)+Num:C11(0#($startIndex%$rows))
 		
-		If ($Lon_hStartIndex>$Lon_columns)\
-			 | ($Lon_hStartIndex<1)
+		If ($horizontalStartIndex>$columns)\
+			 | ($horizontalStartIndex<1)
 			
-			$Num_xPosition:=1
-			$Num_hOffset:=$Lon_leftMargin
+			$x:=1
+			$horizontalOffset:=$leftMargin
 			
 		Else 
 			
-			$Num_xPosition:=$Lon_hStartIndex
-			$Num_hOffset:=$Lon_leftMargin+(($Num_xPosition-1)*($Lon_labelWidth+$Lon_hGap))
+			$x:=$horizontalStartIndex
+			$horizontalOffset:=$leftMargin+(($x-1)*($labelWidth+$horizontalGap))
 			
 		End if 
 		
-		If ($Lon_vStartIndex>$Lon_rows)\
-			 | ($Lon_vStartIndex<1)
+		If ($verticalStartIndex>$rows)\
+			 | ($verticalStartIndex<1)
 			
-			$Num_yPosition:=1
-			$Num_vOffset:=$Lon_topMargin
+			$y:=1
+			$verticalOffset:=$topMargin
 			
 		Else 
 			
-			$Num_yPosition:=$Lon_vStartIndex
-			$Num_vOffset:=$Lon_topMargin+(($Num_yPosition-1)*($Lon_labelHeight+$Lon_vGap))
+			$y:=$verticalStartIndex
+			$verticalOffset:=$topMargin+(($y-1)*($labelHeight+$verticalGap))
 			
 		End if 
 		
 	Else 
 		
-		If ($Lon_columns=0)  //#ACI0099724
+		If ($columns=0)  //#ACI0099724
 			
-			$Lon_hStartIndex:=1
-			$Lon_vStartIndex:=1
+			$horizontalStartIndex:=1
+			$verticalStartIndex:=1
 			
 		Else 
 			
-			$Lon_hStartIndex:=Choose:C955(($Lon_startIndex%$Lon_columns)=0; $Lon_columns; $Lon_startIndex%$Lon_columns)
-			$Lon_vStartIndex:=($Lon_startIndex\$Lon_columns)+Num:C11(0#($Lon_startIndex%$Lon_columns))
+			$horizontalStartIndex:=Choose:C955(($startIndex%$columns)=0; $columns; $startIndex%$columns)
+			$verticalStartIndex:=($startIndex\$columns)+Num:C11(0#($startIndex%$columns))
 			
 		End if 
 		
-		If ($Lon_hStartIndex>$Lon_columns)\
-			 | ($Lon_hStartIndex<1)
+		If ($horizontalStartIndex>$columns)\
+			 | ($horizontalStartIndex<1)
 			
-			$Num_xPosition:=1
-			$Num_hOffset:=$Lon_leftMargin
+			$x:=1
+			$horizontalOffset:=$leftMargin
 			
 		Else 
 			
-			$Num_xPosition:=$Lon_hStartIndex
-			$Num_hOffset:=$Lon_leftMargin+(($Num_xPosition-1)*($Lon_labelWidth+$Lon_hGap))
+			$x:=$horizontalStartIndex
+			$horizontalOffset:=$leftMargin+(($x-1)*($labelWidth+$horizontalGap))
 			
 		End if 
 		
-		If ($Lon_vStartIndex>$Lon_rows)\
-			 | ($Lon_vStartIndex<1)
+		If ($verticalStartIndex>$rows)\
+			 | ($verticalStartIndex<1)
 			
-			$Num_yPosition:=1
-			$Num_vOffset:=$Lon_topMargin
+			$y:=1
+			$verticalOffset:=$topMargin
 			
 		Else 
 			
-			$Num_yPosition:=$Lon_vStartIndex
-			$Num_vOffset:=$Lon_topMargin+(($Num_yPosition-1)*($Lon_labelHeight+$Lon_vGap))
+			$y:=$verticalStartIndex
+			$verticalOffset:=$topMargin+(($y-1)*($labelHeight+$verticalGap))
 			
 		End if 
 	End if 
 	
-	$Lon_labelCount:=1
+	$labelCount:=1
 	
 	FIRST RECORD:C50($tablePtr->)
 	
-	If (Length:C16($Txt_labelRecord)#0)\
+	If (Length:C16($recordMethod)#0)\
 		 & (Is record loaded:C669($tablePtr->))
 		
-		$Txt_onErrorMethod:=4D_NO_ERROR("ON")
-		EXECUTE METHOD:C1007($Txt_labelRecord)
-		4D_NO_ERROR("OFF"; $Txt_onErrorMethod)
+		$onErrorMethod:=4D_NO_ERROR("ON")
+		EXECUTE METHOD:C1007($recordMethod)
+		4D_NO_ERROR("OFF"; $onErrorMethod)
 		
 	End if 
 	
 	RELATE ONE:C42($tablePtr->)
 	
-	If ($Boo_form)
+	If ($useForm)
 		
-		FORM LOAD:C1103($tablePtr->; $Txt_form)
-		FORM GET OBJECTS:C898($tTxt_objects; *)
+		FORM LOAD:C1103($tablePtr->; $formName)
+		FORM GET OBJECTS:C898($formObjects; *)
 		
 		Repeat 
 			
-			If (Length:C16($Txt_labelMethod)#0)
+			If (Length:C16($labelMethod)#0)
 				
-				$Txt_onErrorMethod:=4D_NO_ERROR("ON")
-				EXECUTE METHOD:C1007($Txt_labelMethod)
-				4D_NO_ERROR("OFF"; $Txt_onErrorMethod)
-				
-			End if 
-			
-			If (Length:C16($Txt_labelRecord)#0)
-				
-				$Txt_onErrorMethod:=4D_NO_ERROR("ON")
-				EXECUTE METHOD:C1007($Txt_labelRecord)
-				4D_NO_ERROR("OFF"; $Txt_onErrorMethod)
+				$onErrorMethod:=4D_NO_ERROR("ON")
+				EXECUTE METHOD:C1007($labelMethod)
+				4D_NO_ERROR("OFF"; $onErrorMethod)
 				
 			End if 
 			
-			For ($Lon_i; 1; Size of array:C274($tTxt_objects); 1)
+			If (Length:C16($recordMethod)#0)
 				
-				If (OBJECT Get visible:C1075(*; $tTxt_objects{$Lon_i}))
+				$onErrorMethod:=4D_NO_ERROR("ON")
+				EXECUTE METHOD:C1007($recordMethod)
+				4D_NO_ERROR("OFF"; $onErrorMethod)
+				
+			End if 
+			
+			For ($i; 1; Size of array:C274($formObjects); 1)
+				
+				If (OBJECT Get visible:C1075(*; $formObjects{$i}))
 					
-					OBJECT GET COORDINATES:C663(*; $tTxt_objects{$Lon_i}; $Lon_X; $Lon_Y; $Lon_right; $Lon_bottom)
+					OBJECT GET COORDINATES:C663(*; $formObjects{$i}; $left; $top; $right; $bottom)
 					
-					$Boo_printed:=Print object:C1095(*; \
-						$tTxt_objects{$Lon_i}; \
-						$Lon_X+$Num_hOffset; \
-						$Lon_Y+$Num_vOffset; \
-						$Lon_right-$Lon_X; \
-						$Lon_bottom-$Lon_Y)
+					$printed:=Print object:C1095(*; \
+						$formObjects{$i}; \
+						$left+$horizontalOffset; \
+						$top+$verticalOffset; \
+						$right-$left; \
+						$bottom-$top)
 					
 				End if 
 			End for 
 			
-			OB SET:C1220($Obj_print; \
-				"label-count"; $Lon_labelCount; \
-				"x"; $Num_xPosition; \
-				"y"; $Num_yPosition; \
-				"h-offset"; $Num_hOffset; \
-				"v-offset"; $Num_vOffset)
+			$o["label-count"]:=$labelCount
+			$o.x:=$x
+			$o.y:=$y
+			$o["h-offset"]:=$horizontalOffset
+			$o["v-offset"]:=$verticalOffset
 			
-			
-			$stop:=Print_Resume($Obj_print)
+			$stop:=Print_Resume($o)
 			
 			If (Not:C34($stop))
 				
-				$Num_xPosition:=OB Get:C1224($Obj_print; "x"; Is real:K8:4)
-				$Num_yPosition:=OB Get:C1224($Obj_print; "y"; Is real:K8:4)
-				$Num_hOffset:=OB Get:C1224($Obj_print; "h-offset"; Is real:K8:4)
-				$Num_vOffset:=OB Get:C1224($Obj_print; "v-offset"; Is real:K8:4)
+				$x:=OB Get:C1224($o; "x"; Is real:K8:4)
+				$y:=OB Get:C1224($o; "y"; Is real:K8:4)
+				$horizontalOffset:=OB Get:C1224($o; "h-offset"; Is real:K8:4)
+				$verticalOffset:=OB Get:C1224($o; "v-offset"; Is real:K8:4)
 				
-				If ($Lon_labelCount<$Lon_perRecord)
+				If ($labelCount<$perRecord)
 					
-					$Lon_labelCount:=$Lon_labelCount+1
+					$labelCount:=$labelCount+1
 					
 				Else 
 					
-					$Lon_labelCount:=1
+					$labelCount:=1
 					NEXT RECORD:C51($tablePtr->)
 					
-					FORM LOAD:C1103(Table:C252($tableNumber)->; $Txt_form)
+					FORM LOAD:C1103(Table:C252($tableNumber)->; $formName)
 					
 					// To redraw form
 					RELATE ONE:C42($tablePtr->)
 					
-					If (Length:C16($Txt_labelRecord)#0)
+					If (Length:C16($recordMethod)#0)
 						
-						$Txt_onErrorMethod:=4D_NO_ERROR("ON")
-						EXECUTE METHOD:C1007($Txt_labelRecord)
-						4D_NO_ERROR("OFF"; $Txt_onErrorMethod)
+						$onErrorMethod:=4D_NO_ERROR("ON")
+						EXECUTE METHOD:C1007($recordMethod)
+						4D_NO_ERROR("OFF"; $onErrorMethod)
 						
 					End if 
 				End if 
@@ -351,219 +317,215 @@ If (print_ERROR=0)
 		
 		FORM LOAD:C1103("print")
 		
-		$Dom_objects:=DOM Find XML element by ID:C1010($root; "objects")
-		$Lon_objectCount:=DOM Count XML elements:C726($Dom_objects; "object")
-		
+		$objects:=DOM Find XML element by ID:C1010($root; "objects")
+		$objectNumber:=DOM Count XML elements:C726($objects; "object")
 		
 		Repeat 
 			
-			If (Length:C16($Txt_labelMethod)#0)
+			If (Length:C16($labelMethod)#0)
 				
-				$Txt_onErrorMethod:=4D_NO_ERROR("ON")
-				EXECUTE METHOD:C1007($Txt_labelMethod)
-				4D_NO_ERROR("OFF"; $Txt_onErrorMethod)
-				
-			End if 
-			
-			If (Length:C16($Txt_labelRecord)#0)
-				
-				$Txt_onErrorMethod:=4D_NO_ERROR("ON")
-				EXECUTE METHOD:C1007($Txt_labelRecord)
-				4D_NO_ERROR("OFF"; $Txt_onErrorMethod)
+				$onErrorMethod:=4D_NO_ERROR("ON")
+				EXECUTE METHOD:C1007($labelMethod)
+				4D_NO_ERROR("OFF"; $onErrorMethod)
 				
 			End if 
 			
-			If ($Boo_preview)  // Print the label rect
+			If (Length:C16($recordMethod)#0)
 				
-				OB SET:C1220($Obj_desc; \
-					"x"; 0; \
-					"y"; 0; \
-					"h-offset"; $Num_hOffset; \
-					"v-offset"; $Num_vOffset; \
-					"width"; $Lon_labelWidth-0.5; \
-					"height"; $Lon_labelHeight-0.5; \
-					"stroke"; "gray"; \
-					"stroke-width"; 0.5; \
-					"stroke-opacity"; 0.5; \
-					"fill"; "none"; \
-					"fill-opacity"; 0; \
-					"stroke-dasharray"; "1")
-				
-				PRINT_OBJECT("round-rect"; $Obj_desc)
-				
-				CLEAR VARIABLE:C89($Obj_desc)
+				$onErrorMethod:=4D_NO_ERROR("ON")
+				EXECUTE METHOD:C1007($recordMethod)
+				4D_NO_ERROR("OFF"; $onErrorMethod)
 				
 			End if 
 			
-			For ($Lon_i; 1; $Lon_objectCount; 1)
+			If ($preview)  // Print the label rect
 				
-				$Dom_object:=DOM Find XML element:C864($Dom_objects; "objects/object["+String:C10($Lon_i)+"]")
+				$object:=New object:C1471
+				$object.x:=0
+				$objecty:=0
+				$object["h-offset"]:=$horizontalOffset
+				$object["v-offset"]:=$verticalOffset
+				$object.width:=$labelWidth-0.5
+				$object.height:=$labelHeight-0.5
+				$object.stroke:="gray"
+				$object["stroke-width"]:=0.5
+				$object["stroke-opacity"]:=0.5
+				$object.fill:="none"
+				$object["fill-opacity"]:=0
+				$object["stroke-dasharray"]:="1"
 				
-				DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "type"; $Txt_type)
+				PRINT_OBJECT("round-rect"; $object)
 				
-				DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "left"; $Lon_left)
-				DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "top"; $Lon_top)
-				DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "right"; $Lon_right)
-				DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "bottom"; $Lon_bottom)
+				CLEAR VARIABLE:C89($object)
 				
-				DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "fill-color"; $Txt_fill)
-				DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "fill-opacity"; $Num_fillOpacity)
+			End if 
+			
+			For ($i; 1; $objectNumber; 1)
 				
-				DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "stroke-color"; $Txt_stroke)
-				DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "stroke-width"; $Num_strokeWidth)
-				DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "stroke-opacity"; $Num_strokeOpacity)
+				$node:=DOM Find XML element:C864($objects; "objects/object["+String:C10($i)+"]")
 				
-				$Lon_width:=$Lon_right-$Lon_left
-				$Lon_height:=$Lon_bottom-$Lon_top
+				//mark:-Common attributes
+				DOM GET XML ATTRIBUTE BY NAME:C728($node; "left"; $leftPos)
+				DOM GET XML ATTRIBUTE BY NAME:C728($node; "top"; $topPos)
+				DOM GET XML ATTRIBUTE BY NAME:C728($node; "right"; $right)
+				DOM GET XML ATTRIBUTE BY NAME:C728($node; "bottom"; $bottom)
+				$width:=$right-$leftPos
+				$height:=$bottom-$topPos
+				$left:=-$xOffset+$leftPos-OB Get:C1224(<>label_params; "left"; Is longint:K8:6)
+				$top:=-$yOffset+$topPos-OB Get:C1224(<>label_params; "top"; Is longint:K8:6)
 				
-				$Lon_X:=-$Lon_xOffset+$Lon_left-OB Get:C1224(<>label_params; "left"; Is longint:K8:6)
-				$Lon_Y:=-$Lon_yOffset+$Lon_top-OB Get:C1224(<>label_params; "top"; Is longint:K8:6)
+				$object:=New object:C1471
+				$object.x:=$left
+				$object.y:=$top
+				$object["h-offset"]:=$horizontalOffset
+				$object["v-offset"]:=$verticalOffset
+				$object.width:=$width
+				$object.height:=$height
 				
-				OB SET:C1220($Obj_desc; \
-					"x"; $Lon_X; \
-					"y"; $Lon_Y; \
-					"h-offset"; $Num_hOffset; \
-					"v-offset"; $Num_vOffset; \
-					"width"; $Lon_width; \
-					"height"; $Lon_height; \
-					"stroke"; $Txt_stroke; \
-					"stroke-width"; $Num_strokeWidth; \
-					"stroke-opacity"; $Num_strokeOpacity; \
-					"fill"; $Txt_fill; \
-					"fill-opacity"; $Num_fillOpacity)
+				DOM GET XML ATTRIBUTE BY NAME:C728($node; "stroke-color"; $stroke)
+				$object.stroke:=$stroke
+				
+				DOM GET XML ATTRIBUTE BY NAME:C728($node; "stroke-width"; $strokeWidth)
+				$object["stroke-width"]:=$strokeWidth
+				
+				DOM GET XML ATTRIBUTE BY NAME:C728($node; "stroke-opacity"; $strokeOpacity)
+				$object["stroke-opacity"]:=$strokeOpacity
+				
+				DOM GET XML ATTRIBUTE BY NAME:C728($node; "fill-color"; $fill)
+				$object.fill:=$fill
+				
+				DOM GET XML ATTRIBUTE BY NAME:C728($node; "fill-opacity"; $fillOpacity)
+				$object["fill-opacity"]:=$fillOpacity
+				
+				//mark:-Specific attributes
+				DOM GET XML ATTRIBUTE BY NAME:C728($node; "type"; $target)
 				
 				Case of 
 						
-						//________________________________________
-					: ($Txt_type="line")
+						//mark:line
+					: ($target="line")
 						
-						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "direction"; $Txt_direction)
-						OB SET:C1220($Obj_desc; \
-							"direction"; $Txt_direction)
+						DOM GET XML ATTRIBUTE BY NAME:C728($node; "direction"; $direction)
+						$object.direction:=$direction
 						
-						PRINT_OBJECT($Txt_type; $Obj_desc)
+						PRINT_OBJECT($target; $object)
 						
-						//________________________________________
-					: ($Txt_type="polyline")
+						//mark:polyline
+					: ($target="polyline")
 						
-						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "data"; $Txt_data)
-						OB SET:C1220($Obj_desc; \
-							"data"; $Txt_data)
+						DOM GET XML ATTRIBUTE BY NAME:C728($node; "data"; $data)
+						$object.data:=$data
 						
-						PRINT_OBJECT($Txt_type; $Obj_desc)
+						PRINT_OBJECT($target; $object)
 						
-						//________________________________________
-					: ($Txt_type="rect")\
-						 | ($Txt_type="round-rect")
+						//mark:rect & round-rect
+					: ($target="rect")\
+						 | ($target="round-rect")
 						
-						PRINT_OBJECT($Txt_type; $Obj_desc)
+						PRINT_OBJECT($target; $object)
 						
-						//________________________________________
-					: ($Txt_type="oval")
+						//mark:ellipse (oval)
+					: ($target="oval")
 						
-						// ********************
-						//$Txt_type:="ellipse"
-						// ********************
+						PRINT_OBJECT("ellipse"; $object)
 						
-						PRINT_OBJECT("ellipse"; $Obj_desc)
-						
-						//________________________________________
-					: ($Txt_type="text")
+						//mark:text
+					: ($target="text")
 						
 						If (False:C215)  // ****** NO BACKGROUND
 							
 							// Background, if any
-							If (Length:C16($Txt_fill)#0)\
-								 | (Length:C16($Txt_stroke)#0)
+							If (Length:C16($fill)#0)\
+								 | (Length:C16($stroke)#0)
 								
-								PRINT_OBJECT("rect"; $Obj_desc)
+								PRINT_OBJECT("rect"; $object)
 								
 							End if 
 						End if 
 						
-						// Text
-						xml_GET_ATTRIBUTE_BY_NAME($Dom_object; "value"; ->$Txt_value)
+						xml_GET_ATTRIBUTE_BY_NAME($node; "value"; ->$value)
+						$object.value:=$value
 						
-						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "font-name"; $Txt_fontFamilly)
-						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "font-color"; $Txt_fontColor)
-						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "font-size"; $Lon_fontSize)
-						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "style"; $Txt_style)
-						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "alignment"; $Txt_alignment)
+						DOM GET XML ATTRIBUTE BY NAME:C728($node; "font-name"; $fontFamilly)
+						//fixme:ACI0100864
+						$fontFamilly:=PRINT_Font($fontFamilly)
+						$object["font-name"]:=$fontFamilly
 						
-						//#ACI0100864
-						$Txt_fontFamilly:=PRINT_Font($Txt_fontFamilly)
+						DOM GET XML ATTRIBUTE BY NAME:C728($node; "font-size"; $fontSize)
+						$object["font-size"]:=$fontSize
 						
-						OB SET:C1220($Obj_desc; \
-							"value"; $Txt_value; \
-							"font-name"; $Txt_fontFamilly; \
-							"font-size"; $Lon_fontSize; \
-							"font-color"; $Txt_fontColor; \
-							"style"; $Txt_style; \
-							"alignment"; $Txt_alignment)
+						DOM GET XML ATTRIBUTE BY NAME:C728($node; "font-color"; $fontColor)
+						$object["font-color"]:=$fontColor
 						
-						PRINT_OBJECT("text"; $Obj_desc)
+						DOM GET XML ATTRIBUTE BY NAME:C728($node; "style"; $style)
+						$object.style:=$style
 						
-						//________________________________________
-					: ($Txt_type="image")
+						DOM GET XML ATTRIBUTE BY NAME:C728($node; "alignment"; $alignment)
+						$object.alignment:=$alignment
 						
-						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "image-data"; $Txt_data)
-						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "image-codec"; $Txt_codec)
-						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "preserve-aspect-ratio"; $Boo_preserveAspectRatio)
+						PRINT_OBJECT("text"; $object)
 						
-						OB SET:C1220($Obj_desc; \
-							"image-data"; $Txt_data; \
-							"image-codec"; $Txt_codec; \
-							"preserve-aspect-ratio"; $Boo_preserveAspectRatio; \
-							"stroke-width"; 0)
+						//mark:image
+					: ($target="image")
 						
-						PRINT_OBJECT("image"; $Obj_desc)
+						DOM GET XML ATTRIBUTE BY NAME:C728($node; "image-data"; $data)
+						$object["image-data"]:=$data
 						
-						//________________________________________
-					: ($Txt_type="variable")  // Field and more
+						DOM GET XML ATTRIBUTE BY NAME:C728($node; "image-codec"; $codec)
+						$object["image-codec"]:=$codec
 						
-						DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "field-type"; $Lon_type)
+						DOM GET XML ATTRIBUTE BY NAME:C728($node; "preserve-aspect-ratio"; $preserveAspectRatio)
+						$object["preserve-aspect-ratio"]:=$preserveAspectRatio
 						
-						//#ACI0101759 ========================================================= [
-						var $t; $formula : Text
-						var $linefeed; $plus; $break : Integer
-						var $tables : Collection
-						var $boo_genericCase; $isLinefeed : Boolean
+						$object["stroke-width"]:=0
 						
-						CLEAR VARIABLE:C89($Txt_value)
-						$boo_genericCase:=False:C215
+						PRINT_OBJECT("image"; $object)
 						
-						xml_GET_ATTRIBUTE_BY_NAME($Dom_object; "tableList"; ->$t)
+						//mark:variable
+					: ($target="variable")  // Field and more
+						
+						DOM GET XML ATTRIBUTE BY NAME:C728($node; "field-type"; $type)
+						
+						//fixme:ACI0101759
+						
+						xml_GET_ATTRIBUTE_BY_NAME($node; "tableList"; ->$t)
 						
 						If (Length:C16($t)>0)
 							
 							$tables:=JSON Parse:C1218($t)
 							
-							If ($tables.length>1)  // if there is multiples field it's goes here 
+							If ($tables.length>1)  // If there is multiples field it's goes here
 								
-								DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "value"; $t)
-								// parse formula doesnt parse correctly \n and \r
+								DOM GET XML ATTRIBUTE BY NAME:C728($node; "value"; $t)
 								
-								$Txt_value:=""
+								// ⚠️ Parse formula doesnt parse correctly \n and \r
+								CLEAR VARIABLE:C89($value)
+								
 								Repeat 
 									
 									$linefeed:=Position:C15("\n"; $t)
 									$plus:=Position:C15("+"; $t)
 									
 									If ($linefeed=0)
+										
 										$linefeed:=Position:C15("\r"; $t)
+										
 									End if 
 									
-									If (($plus=0) & ($linefeed=0))
+									If (($plus=0)\
+										 & ($linefeed=0))
 										
-										$Txt_value:=$Txt_value+Parse formula:C1576($t; Formula in with virtual structure:K88:1)
+										$value+=Parse formula:C1576($t; Formula in with virtual structure:K88:1)
 										
 									Else 
 										
-										
-										If ((($plus>$linefeed) & ($linefeed#0)) | ($plus=0))
+										If ((($plus>$linefeed)\
+											 & ($linefeed#0))\
+											 | ($plus=0))
 											
 											$break:=$linefeed
 											$isLinefeed:=True:C214
+											
 										Else 
 											
 											$break:=$plus
@@ -575,11 +537,11 @@ If (print_ERROR=0)
 										
 										If ($isLinefeed=False:C215)
 											
-											$Txt_value:=$Txt_value+Parse formula:C1576($formula; Formula in with virtual structure:K88:1)
+											$value+=Parse formula:C1576($formula; Formula in with virtual structure:K88:1)
 											
 										Else 
 											
-											$Txt_value:=$Txt_value+Parse formula:C1576($formula; Formula in with virtual structure:K88:1)+"+"+Char:C90(Line feed:K15:40)+"+"
+											$value+=Parse formula:C1576($formula; Formula in with virtual structure:K88:1)+"+"+Char:C90(Line feed:K15:40)+"+"
 											
 										End if 
 										
@@ -591,38 +553,35 @@ If (print_ERROR=0)
 								
 							Else 
 								
-								$boo_genericCase:=True:C214
+								$genericCase:=True:C214
 								
 							End if 
 							
 						Else 
 							
-							$boo_genericCase:=True:C214
+							$genericCase:=True:C214
 							
 						End if 
 						
-						If ($boo_genericCase)
-							//#ACI0101759
-							DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "value"; $t)
-							$Txt_value:=Parse formula:C1576($t; Formula in with virtual structure:K88:1)
+						If ($genericCase)
+							
+							DOM GET XML ATTRIBUTE BY NAME:C728($node; "value"; $t)
+							$value:=Parse formula:C1576($t; Formula in with virtual structure:K88:1)
 							
 						End if 
-						
-						//====================================================================== ]
 						
 						Case of 
 								
 								// ----------------------------------------
-							: ($Lon_type=Is picture:K8:10)
+							: ($type=Is picture:K8:10)
 								
-								DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "preserve-aspect-ratio"; $Boo_preserveAspectRatio)
+								$object.value:=$value
+								$object["stroke-width"]:=0
 								
-								OB SET:C1220($Obj_desc; \
-									"value"; $Txt_value; \
-									"preserve-aspect-ratio"; $Boo_preserveAspectRatio; \
-									"stroke-width"; 0)
+								DOM GET XML ATTRIBUTE BY NAME:C728($node; "preserve-aspect-ratio"; $preserveAspectRatio)
+								$object["preserve-aspect-ratio"]:=$preserveAspectRatio
 								
-								PRINT_OBJECT("image"; $Obj_desc)
+								PRINT_OBJECT("image"; $object)
 								
 								// ----------------------------------------
 							Else 
@@ -630,35 +589,26 @@ If (print_ERROR=0)
 								If (False:C215)  // ****** NO BACKGROUND
 									
 									// Background, if any
-									If (Length:C16($Txt_fill)#0)\
-										 | (Length:C16($Txt_stroke)#0)
+									If (Length:C16($fill)#0)\
+										 | (Length:C16($stroke)#0)
 										
-										PRINT_OBJECT("rect"; $Obj_desc)
+										PRINT_OBJECT("rect"; $object)
 										
 									End if 
 								End if 
 								
-								DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "font-name"; $Txt_fontFamilly)
-								DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "font-size"; $Lon_fontSize)
-								DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "font-color"; $Txt_fontColor)
-								DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "style"; $Txt_style)
-								DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "alignment"; $Txt_alignment)
-								
-								$Lon_fontStyle:=Plain:K14:1
-								$Lon_fontStyle:=Choose:C955($Txt_style="@italic@"; $Lon_fontStyle | Italic:K14:3; $Lon_fontStyle)
-								$Lon_fontStyle:=Choose:C955($Txt_style="@bold@"; $Lon_fontStyle | Bold:K14:2; $Lon_fontStyle)
-								$Lon_fontStyle:=Choose:C955($Txt_style="@underline@"; $Lon_fontStyle | Underline:K14:4; $Lon_fontStyle)
+								DOM GET XML ATTRIBUTE BY NAME:C728($node; "alignment"; $alignment)
 								
 								Case of 
 										
 										//……………………………………………………
-									: ($Txt_alignment="center")
+									: ($alignment="center")
 										
 										OBJECT SET HORIZONTAL ALIGNMENT:C706(*; "variable"; Align center:K42:3)
 										OBJECT SET HORIZONTAL ALIGNMENT:C706(*; "VariableWithStyle"; Align center:K42:3)
 										
 										//……………………………………………………
-									: ($Txt_alignment="end")
+									: ($alignment="end")
 										
 										OBJECT SET HORIZONTAL ALIGNMENT:C706(*; "variable"; Align right:K42:4)
 										OBJECT SET HORIZONTAL ALIGNMENT:C706(*; "VariableWithStyle"; Align right:K42:4)
@@ -672,34 +622,45 @@ If (print_ERROR=0)
 										//……………………………………………………
 								End case 
 								
-								OBJECT SET FONT SIZE:C165(*; "variable"; $Lon_fontSize)
-								OBJECT SET FONT STYLE:C166(*; "variable"; $Lon_fontStyle)
-								OBJECT SET FONT:C164(*; "variable"; PRINT_Font($Txt_fontFamilly))
-								OBJECT SET RGB COLORS:C628(*; "variable"; Color_to_long($Txt_fontColor); -2)
+								DOM GET XML ATTRIBUTE BY NAME:C728($node; "font-size"; $fontSize)
+								OBJECT SET FONT SIZE:C165(*; "variable"; $fontSize)
 								
-								$Txt_buffer:=PRINT_Get_text_field($Txt_value)
+								DOM GET XML ATTRIBUTE BY NAME:C728($node; "style"; $style)
+								$fontStyle:=Plain:K14:1
+								$fontStyle:=Choose:C955($style="@italic@"; $fontStyle | Italic:K14:3; $fontStyle)
+								$fontStyle:=Choose:C955($style="@bold@"; $fontStyle | Bold:K14:2; $fontStyle)
+								$fontStyle:=Choose:C955($style="@underline@"; $fontStyle | Underline:K14:4; $fontStyle)
+								OBJECT SET FONT STYLE:C166(*; "variable"; $fontStyle)
 								
-								If (str_styledText($Txt_buffer))
+								DOM GET XML ATTRIBUTE BY NAME:C728($node; "font-name"; $fontFamilly)
+								OBJECT SET FONT:C164(*; "variable"; PRINT_Font($fontFamilly))
+								
+								DOM GET XML ATTRIBUTE BY NAME:C728($node; "font-color"; $fontColor)
+								OBJECT SET RGB COLORS:C628(*; "variable"; Color_to_long($fontColor); -2)
+								
+								$t:=PRINT_Get_text_field($value)
+								
+								If (str_styledText($t))
 									
-									(OBJECT Get pointer:C1124(Object named:K67:5; "VariableWithStyle"))->:=$Txt_buffer
+									(OBJECT Get pointer:C1124(Object named:K67:5; "VariableWithStyle"))->:=$t
 									
-									$Boo_printed:=Print object:C1095(*; \
+									$printed:=Print object:C1095(*; \
 										"VariableWithStyle"; \
-										$Lon_X+$Num_hOffset; \
-										$Lon_Y+$Num_vOffset; \
-										$Lon_width; \
-										$Lon_height)
+										$left+$horizontalOffset; \
+										$top+$verticalOffset; \
+										$width; \
+										$height)
 									
 								Else 
 									
-									(OBJECT Get pointer:C1124(Object named:K67:5; "variable"))->:=$Txt_buffer
+									(OBJECT Get pointer:C1124(Object named:K67:5; "variable"))->:=$t
 									
-									$Boo_printed:=Print object:C1095(*; \
+									$printed:=Print object:C1095(*; \
 										"variable"; \
-										$Lon_X+$Num_hOffset+0.5; \
-										$Lon_Y+$Num_vOffset+0.5; \
-										$Lon_width; \
-										$Lon_height)
+										$left+$horizontalOffset+0.5; \
+										$top+$verticalOffset+0.5; \
+										$width; \
+										$height)
 									
 								End if 
 								
@@ -709,41 +670,40 @@ If (print_ERROR=0)
 						//________________________________________
 				End case 
 				
-				CLEAR VARIABLE:C89($Obj_desc)
+				CLEAR VARIABLE:C89($object)
 				
 			End for 
 			
-			OB SET:C1220($Obj_print; \
-				"label-count"; $Lon_labelCount; \
-				"x"; $Num_xPosition; \
-				"y"; $Num_yPosition; \
-				"h-offset"; $Num_hOffset; \
-				"v-offset"; $Num_vOffset)
+			$o["label-count"]:=$labelCount
+			$o.x:=$x
+			$o.y:=$y
+			$o["h-offset"]:=$horizontalOffset
+			$o["v-offset"]:=$verticalOffset
 			
-			$stop:=Print_Resume($Obj_print)
+			$stop:=Print_Resume($o)
 			
 			If (Not:C34($stop))
 				
-				$Num_xPosition:=OB Get:C1224($Obj_print; "x"; Is real:K8:4)
-				$Num_yPosition:=OB Get:C1224($Obj_print; "y"; Is real:K8:4)
-				$Num_hOffset:=OB Get:C1224($Obj_print; "h-offset"; Is real:K8:4)
-				$Num_vOffset:=OB Get:C1224($Obj_print; "v-offset"; Is real:K8:4)
+				$x:=Num:C11($o.x)
+				$y:=Num:C11($o.y)
+				$horizontalOffset:=Num:C11($o["h-offset"])
+				$verticalOffset:=Num:C11($o["v-offset"])
 				
-				If ($Lon_labelCount<$Lon_perRecord)
+				If ($labelCount<$perRecord)
 					
-					$Lon_labelCount:=$Lon_labelCount+1
+					$labelCount+=1
 					
 				Else 
 					
-					$Lon_labelCount:=1
+					$labelCount:=1
 					NEXT RECORD:C51($tablePtr->)
 					RELATE ONE:C42($tablePtr->)
 					
-					If (Length:C16($Txt_labelRecord)#0)
+					If (Length:C16($recordMethod)#0)
 						
-						$Txt_onErrorMethod:=4D_NO_ERROR("ON")
-						EXECUTE METHOD:C1007($Txt_labelRecord)
-						4D_NO_ERROR("OFF"; $Txt_onErrorMethod)
+						$onErrorMethod:=4D_NO_ERROR("ON")
+						EXECUTE METHOD:C1007($recordMethod)
+						4D_NO_ERROR("OFF"; $onErrorMethod)
 						
 					End if 
 				End if 
@@ -751,7 +711,6 @@ If (print_ERROR=0)
 			
 		Until (End selection:C36($tablePtr->)\
 			 | (print_ERROR#0) | $stop)
-		
 		
 	End if 
 	
@@ -761,22 +720,15 @@ Else
 	
 End if 
 
-//======================================================================
 CLOSE PRINTING JOB:C996
 FORM UNLOAD:C1299
 
-CLEAR VARIABLE:C89($Obj_print)
-ON ERR CALL:C155($Txt_onErrorCall)
+CLEAR VARIABLE:C89($o)
+ON ERR CALL:C155($methodCalledOnError)
 
-//======================================================================
 // Restore print settings and the printer margins
-SET PRINT OPTION:C733(_o_Hide printing progress option:K47:12; $Lon_backupProgress)
-SET PRINT OPTION:C733(Orientation option:K47:2; $Lon_backupOrientation)
+SET PRINT OPTION:C733(_o_Hide printing progress option:K47:12; $backupProgress)
+SET PRINT OPTION:C733(Orientation option:K47:2; $backupOrientation)
 SET PRINTABLE MARGIN:C710(-1; -1; -1; -1)
 
-// ----------------------------------------------------
-// Return
-$0:=print_ERROR
-
-// ----------------------------------------------------
-// End
+return print_ERROR
