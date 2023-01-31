@@ -1,4 +1,4 @@
-﻿{
+{
 	"destination": "detailScreen",
 	"width": 250,
 	"height": 300,
@@ -6,11 +6,6 @@
 	"markerBody": 200,
 	"markerBreak": 220,
 	"markerFooter": 240,
-	"pageFormat": {
-		"paperName": "A4",
-		"paperWidth": "595pt",
-		"paperHeight": "842pt"
-	},
 	"pages": [
 		null,
 		{
@@ -155,5 +150,9 @@
 				}
 			}
 		}
-	]
+	],
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
 }
