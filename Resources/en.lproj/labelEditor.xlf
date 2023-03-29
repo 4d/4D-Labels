@@ -1,6 +1,12 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-   <!--                     Translation file for 4D products.   Copyright (C) 2013 4D SAS.   This file is distributed under the same license as the 4D product package.-->
-<xliff version="1.0">
+<?xml version="1.0" encoding="utf-8"?>
+
+   <!--                  
+   Translation file for 4D products.
+   Copyright (C) 2013 4D SAS.
+   This file is distributed under the same license as the 4D product package.
+-->
+
+<xliff version="1.0">
    <file datatype="x-STR#" original="undefined" product-version="v14" source-language="en-US" target-language="en">
       <header>
          <prop-group name="Xliff-Editor.4dbase">
