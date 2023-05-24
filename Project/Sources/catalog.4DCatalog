@@ -19,7 +19,7 @@
 			<table_ref uuid="0154F98246B14D86816F5E9B6A855DC9" name="Table_1"/>
 		</field_ref>
 	</index>
-	<base_extra package_name="4D Labels" structure_file_name="4D Labels" data_file_path=":4D Labels.4DD" __stringCompHash="icu:68.1.0" __keywordBuildingHash="icu:68.1.0">
+	<base_extra package_name="4D Labels" structure_file_name="4D Labels" data_file_path=":4D Labels.4DD" __stringCompHash="icu:72.1.0" __keywordBuildingHash="icu:72.1.0">
 		<temp_folder folder_selector="system"/>
 		<journal_file journal_file_enabled="false"/>
 	</base_extra>
