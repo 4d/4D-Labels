@@ -53,7 +53,7 @@
 					"focusable": false,
 					"icon": "/RESOURCES/images/editor/tools/text.png",
 					"iconFrames": 4,
-					"style": "toolbar",
+					"style": "custom",
 					"radioGroup": "Group27",
 					"method": "ObjectMethods/tool.3.4dm",
 					"events": [
@@ -72,7 +72,7 @@
 					"focusable": false,
 					"icon": "/RESOURCES/images/editor/tools/select.png",
 					"iconFrames": 4,
-					"style": "toolbar",
+					"style": "custom",
 					"radioGroup": "Group27",
 					"method": "ObjectMethods/tool.1.4dm",
 					"events": [
@@ -92,7 +92,7 @@
 					"focusable": false,
 					"icon": "/RESOURCES/images/editor/tools/polyline.png",
 					"iconFrames": 4,
-					"style": "toolbar",
+					"style": "custom",
 					"radioGroup": "Group27",
 					"method": "ObjectMethods/tool.2.4dm",
 					"events": [
@@ -111,7 +111,7 @@
 					"focusable": false,
 					"icon": "/RESOURCES/images/editor/tools/line.png",
 					"iconFrames": 4,
-					"style": "toolbar",
+					"style": "custom",
 					"radioGroup": "Group27",
 					"method": "ObjectMethods/tool.4.4dm",
 					"events": [
@@ -131,7 +131,7 @@
 					"icon": "/RESOURCES/images/editor/tools/rect.png",
 					"iconFrames": 4,
 					"popupPlacement": "separated",
-					"style": "toolbar",
+					"style": "custom",
 					"radioGroup": "Group27",
 					"method": "ObjectMethods/tool.5.4dm",
 					"events": [
@@ -151,7 +151,7 @@
 					"focusable": false,
 					"icon": "/RESOURCES/images/editor/tools/circle.png",
 					"iconFrames": 4,
-					"style": "toolbar",
+					"style": "custom",
 					"radioGroup": "Group27",
 					"method": "ObjectMethods/tool.6.4dm",
 					"events": [
