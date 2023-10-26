@@ -74,12 +74,7 @@ End if
 $Ptr_table:=Table:C252(C_MASTER_TABLE)
 
 // Get the available forms for the current table
-// MARK:ACI0104292
-If (Not:C34(Is nil pointer:C315($Ptr_table)))
-	
-	FORM GET NAMES:C1167($Ptr_table->; $tTxt_forms; *)
-	
-End if 
+FORM GET NAMES:C1167($Ptr_table->; $tTxt_forms; *)
 
 //restrict the list, if necessary, according to user instructions
 $Boo_prefilled:=($tObj_param>0)
