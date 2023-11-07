@@ -20,7 +20,7 @@ C_LONGINT:C283($right; $Lon_stepX; $Lon_stepY; $tableID; $textHeight; $textWidth
 C_LONGINT:C283($top; $type; $Lon_viewPortHeight; $Lon_viewPortWidth; $editorWidth)
 C_REAL:C285($Num_cx; $Num_cy; $Num_offsetX; $Num_offsetY; $rotation; $Num_tx)
 C_REAL:C285($Num_ty; $x; $y; $zoom)
-C_TEXT:C284($node; $canvas; $defs; $group; $root; $node)
+C_TEXT:C284($node; $canvas; $defs; $group; $root)
 C_TEXT:C284($groupObjects; $rect; $textArea; $t; $dragOverObject; $fontColor)
 C_TEXT:C284($font; $ID; $label)
 C_OBJECT:C1216($o; $formData)

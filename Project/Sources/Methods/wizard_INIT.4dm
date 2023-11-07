@@ -5,201 +5,150 @@
 // ID[E9019810C6A346A4804BB0DF82566898]
 // Created #16-12-2014 by Vincent de Lachaux
 // ----------------------------------------------------
-// Description:
-//
-// ----------------------------------------------------
-// Declarations
-#DECLARE($initDialog : Boolean)
-
-C_BOOLEAN:C305($Boo_mode; $Boo_prefilled)
-C_LONGINT:C283($Lon_i; $Lon_parameters)
-C_POINTER:C301($Ptr_table)
-C_TEXT:C284($Dir_user; $File_user; $Txt_buffer)
-C_OBJECT:C1216($Obj_toolbar)
-
-ARRAY TEXT:C222($tTxt_buffer; 0)
-ARRAY TEXT:C222($tTxt_forms; 0)
-ARRAY OBJECT:C1221($tObj_param; 0)
+#DECLARE($init : Boolean)
 
 If (False:C215)
 	C_BOOLEAN:C305(wizard_INIT; $1)
 End if 
 
+var $t : Text
+var $prefilled; $visible : Boolean
+var $i : Integer
+var $ptr : Pointer
+var $objects : Collection
+var $file : 4D:C1709.File
+
+ARRAY TEXT:C222($forms; 0)
+ARRAY OBJECT:C1221($restrictions; 0)
+
 LABELS_INIT
 
-If (Not:C34($initDialog))
+If (Not:C34($init))
 	
 	return 
 	
 End if 
 
-//==================== display the debug objects, if any
+// Display the debug objects, if any
 OBJECT SET VISIBLE:C603(*; "Debug@"; <>Boo_debug)
 
-//==================== set the focus rings color
+// Adjust display according to the platform
+OBJECT SET VISIBLE:C603(*; Is macOS:C1572 ? "win.@" : "mac.@"; False:C215)
+
+// Set the focus rings color
 OBJECT SET RGB COLORS:C628(*; "@.focus"; Highlight text background color:K23:5; Background color none:K23:10)
 
-//==================== adjust display according to the platform
-If (Is macOS:C1572)
-	
-	OBJECT SET VISIBLE:C603(*; "win.@"; False:C215)
-	
-Else 
-	
-	OBJECT SET VISIBLE:C603(*; "mac.@"; False:C215)
-	
-End if 
+// Check for user's restrictions
+$file:=File:C1566("/RESOURCES/labels.json"; *)
 
-//==================== check for user's restrictions
-$File_user:=Get 4D folder:C485(Current resources folder:K5:16; *)+"labels.json"
-
-If (Test path name:C476($File_user)=Is a document:K24:1)
+If ($file.exists)
 	
-	$Txt_buffer:=Document to text:C1236($File_user)
+	JSON PARSE ARRAY:C1219($file.getText(); $restrictions)
 	
-	JSON PARSE ARRAY:C1219($Txt_buffer; $tObj_param)
-	
-	For ($Lon_i; 1; Size of array:C274($tObj_param); 1)
+	For ($i; 1; Size of array:C274($restrictions); 1)
 		
-		If (C_MASTER_TABLE=OB Get:C1224($tObj_param{$Lon_i}; "tableId"; Is longint:K8:6))
+		If (C_MASTER_TABLE=Num:C11($restrictions{$i}.tableId))
 			
-			$tObj_param:=$Lon_i
-			$Lon_i:=MAXLONG:K35:2-1
+			$restrictions:=$i
+			break
 			
 		End if 
 	End for 
 End if 
 
-//==================== determine if the mode menu should be displayed
-$Ptr_table:=Table:C252(C_MASTER_TABLE)
+// MARK:-Determine if the mode menu should be displayed
+$ptr:=Table:C252(C_MASTER_TABLE)
 
 // Get the available forms for the current table
-FORM GET NAMES:C1167($Ptr_table->; $tTxt_forms; *)
+FORM GET NAMES:C1167($ptr->; $forms; *)
 
-//restrict the list, if necessary, according to user instructions
-$Boo_prefilled:=($tObj_param>0)
+// Restrict the list, if necessary, according to user instructions
+$prefilled:=($restrictions>0)
 
-If ($Boo_prefilled)
+If ($prefilled)
 	
-	$Boo_prefilled:=OB Is defined:C1231($tObj_param{$tObj_param}; "forms")
+	$prefilled:=$restrictions{$restrictions}.forms#Null:C1517
 	
-	If ($Boo_prefilled)
+	If ($prefilled)
 		
-		OB GET ARRAY:C1229($tObj_param{$tObj_param}; "forms"; $tTxt_buffer)
-		
-		For ($Lon_i; 1; Size of array:C274($tTxt_buffer); 1)
+		For each ($t; $restrictions{$restrictions}.forms)
 			
-			If (Find in array:C230($tTxt_forms; $tTxt_buffer{$Lon_i})>0)
+			If (Find in array:C230($forms; $t)>0)
 				
-				$Boo_mode:=True:C214
-				$Lon_i:=MAXLONG:K35:2-1
+				$visible:=True:C214
+				
+				break
 				
 			End if 
-		End for 
+		End for each 
 	End if 
 End if 
 
-//if not user defined, lists the forms
-If (Not:C34($Boo_prefilled))
+// If not user defined, lists the forms
+If (Not:C34($prefilled))
 	
-	// #20-10-2015 - no restriction to use forms
-	//For ($Lon_i;1;Size of array($tTxt_forms);1)
-	//  //we limit the use of forms with only one page and fixed dimensions
-	//FORM GET PROPERTIES($Ptr_table->;$tTxt_forms{$Lon_i};$Lon_;$Lon_;$Lon_pages;$Boo_fixedWidth;$Boo_fixedHeight)
-	//If ($Lon_pages=1) & ($Boo_fixedWidth & $Boo_fixedHeight)
-	//$Boo_mode:=True
-	//$Lon_i:=MAXLONG-1
-	//End if
-	//End for
-	
-	$Boo_mode:=(Size of array:C274($tTxt_forms)>0)
+	$visible:=(Size of array:C274($forms)>0)
 	
 End if 
 
-//Test for user label's folder
-$Dir_user:=Get 4D folder:C485(Current resources folder:K5:16; *)+"Labels"+Folder separator:K24:12
-
-If (Test path name:C476($Dir_user)=Is a folder:K24:2)
+// Test for user label's folder
+If (Folder:C1567("/RESOURCES/Labels"; *).exists)
 	
-	//add separate pop-up menu
+	// Add separate pop-up menu
 	OBJECT SET FORMAT:C236(*; "toolbar.load"; ";;;;;;;;;;2")
 	
 End if 
 
-//==================== initialize toolbar
-ARRAY OBJECT:C1221($tObj_objects; 0x0000)
+// MARK:-Initialize toolbar
+$objects:=[]
 
-OB SET:C1220($Obj_toolbar; \
+$objects.push(New object:C1471(\
 "object"; "toolbar.load"; \
 "type"; "button"; \
 "visible"; True:C214; \
-"right-offset"; 10)
-APPEND TO ARRAY:C911($tObj_objects; $Obj_toolbar)
-CLEAR VARIABLE:C89($Obj_toolbar)
+"right-offset"; 10))
 
-OB SET:C1220($Obj_toolbar; \
+$objects.push(New object:C1471(\
 "object"; "toolbar.save"; \
 "type"; "button"; \
-"visible"; True:C214)
-APPEND TO ARRAY:C911($tObj_objects; $Obj_toolbar)
-CLEAR VARIABLE:C89($Obj_toolbar)
+"visible"; True:C214))
 
-OB SET:C1220($Obj_toolbar; \
+$objects.push(New object:C1471(\
 "object"; "toolbar.opened.sep.1"; \
 "type"; "separator"; \
-"visible"; True:C214)
-APPEND TO ARRAY:C911($tObj_objects; $Obj_toolbar)
-CLEAR VARIABLE:C89($Obj_toolbar)
+"visible"; True:C214))
 
-OB SET:C1220($Obj_toolbar; \
+$objects.push(New object:C1471(\
 "object"; "toolbar.preview"; \
 "type"; "button"; \
-"visible"; True:C214)
-APPEND TO ARRAY:C911($tObj_objects; $Obj_toolbar)
-CLEAR VARIABLE:C89($Obj_toolbar)
+"visible"; True:C214))
 
-OB SET:C1220($Obj_toolbar; \
+$objects.push(New object:C1471(\
 "object"; "toolbar.print"; \
 "type"; "button"; \
-"visible"; True:C214)
-APPEND TO ARRAY:C911($tObj_objects; $Obj_toolbar)
-CLEAR VARIABLE:C89($Obj_toolbar)
+"visible"; True:C214))
 
-CLEAR VARIABLE:C89($Obj_toolbar)
-OB SET:C1220($Obj_toolbar; \
+$objects.push(New object:C1471(\
 "object"; "toolbar.opened.sep.2"; \
 "type"; "separator"; \
-"visible"; True:C214)
-APPEND TO ARRAY:C911($tObj_objects; $Obj_toolbar)
-CLEAR VARIABLE:C89($Obj_toolbar)
+"visible"; True:C214))
 
-OB SET:C1220($Obj_toolbar; \
+$objects.push(New object:C1471(\
 "object"; "toolbar.tabs"; \
 "type"; "widget"; \
-"visible"; True:C214)
-APPEND TO ARRAY:C911($tObj_objects; $Obj_toolbar)
+"visible"; True:C214))
 
-CLEAR VARIABLE:C89($Obj_toolbar)
-OB SET:C1220($Obj_toolbar; \
+$objects.push(New object:C1471(\
 "object"; "toolbar.opened.sep.3"; \
 "type"; "separator"; \
-"visible"; True:C214)
-APPEND TO ARRAY:C911($tObj_objects; $Obj_toolbar)
-CLEAR VARIABLE:C89($Obj_toolbar)
+"visible"; True:C214))
 
-//#redmine:20131 {
-//OB SET($Obj_toolbar;"object";"toolbar.mode";"type";"widget";"visible";$Boo_mode)
-OB SET:C1220($Obj_toolbar; \
+$objects.push(New object:C1471(\
 "object"; "toolbar.form"; \
 "type"; "button"; \
-"visible"; $Boo_mode)  //}
-APPEND TO ARRAY:C911($tObj_objects; $Obj_toolbar)
-CLEAR VARIABLE:C89($Obj_toolbar)
+"visible"; $visible))
 
-OB SET ARRAY:C1227($Obj_toolbar; "toolbar"; $tObj_objects)
-CLEAR VARIABLE:C89($tObj_objects)
+ALIGN_OBJECTS({toolbar: $objects})
 
-ALIGN_OBJECTS($Obj_toolbar)
-
-//set label's page as default
-(OBJECT Get pointer:C1124(Object named:K67:5; "toolbar.tabs"))->:=1
+// Set label's page as default
+OBJECT SET VALUE:C1742("toolbar.tabs"; 1)
