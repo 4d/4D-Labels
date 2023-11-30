@@ -42,7 +42,7 @@ If (Not:C34(<>inited))\
 	<>Boo_debug:=(Structure file:C489=Structure file:C489(*))\
 		 | Not:C34(Is compiled mode:C492)
 	
-	SET ASSERT ENABLED:C1131(<>Boo_debug)
+	//SET ASSERT ENABLED(<>Boo_debug)
 	
 	//Label editor round rect default rx/ry
 	OB SET:C1220(<>label_params; \
