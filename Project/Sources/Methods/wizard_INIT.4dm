@@ -63,7 +63,7 @@ $ptr:=Table:C252(C_MASTER_TABLE)
 FORM GET NAMES:C1167($ptr->; $forms; *)
 
 // Restrict the list, if necessary, according to user instructions
-$prefilled:=($restrictions>0)
+$prefilled:=(Num:C11($restrictions)>0)
 
 If ($prefilled)
 	
