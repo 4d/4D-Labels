@@ -81,7 +81,7 @@ $Ptr_table:=Table:C252(C_MASTER_TABLE)
 FORM GET NAMES:C1167($Ptr_table->; $tTxt_forms; *)
 
 //restrict the list, if necessary, according to user instructions
-$Boo_prefilled:=($tObj_param>0)
+$Boo_prefilled:=Num:C11($tObj_param)>0
 
 If ($Boo_prefilled)
 	
@@ -153,7 +153,7 @@ APPEND TO LIST:C376($Lst_buffer; Get localized string:C991("noMethod"); -1)
 GET ALLOWED METHODS:C908($tTxt_methods)
 
 //restrict the list, if necessary, according to user instructions
-$Boo_prefilled:=($tObj_param>0)
+$Boo_prefilled:=Num:C11($tObj_param)>0
 
 If ($Boo_prefilled)
 	
