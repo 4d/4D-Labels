@@ -48,6 +48,12 @@ print_ERROR:=0
 $methodCalledOnError:=Method called on error:C704
 ON ERR CALL:C155(Choose:C955(<>Boo_debug; ""; "Print_CATCH_ERROR"))
 
+If (False:C215)
+	var $xml : Text
+	DOM EXPORT TO VAR:C863($root; $xml)
+	SET TEXT TO PASTEBOARD:C523($xml)
+End if 
+
 // Backup the current print settings
 // Must call before opening job
 // Need also to turn off progress in database settings
@@ -597,6 +603,7 @@ If (print_ERROR=0)
 									End if 
 								End if 
 								
+								
 								DOM GET XML ATTRIBUTE BY NAME:C728($node; "alignment"; $alignment)
 								
 								Case of 
@@ -635,8 +642,17 @@ If (print_ERROR=0)
 								DOM GET XML ATTRIBUTE BY NAME:C728($node; "font-name"; $fontFamilly)
 								OBJECT SET FONT:C164(*; "variable"; PRINT_Font($fontFamilly))
 								
+								//mark:- #DD ACI0104353
+								
+								var $backgroundColor : Integer
+								$backgroundColor:=($fill="none") ? Background color none:K23:10 : Background color:K23:2
+								
 								DOM GET XML ATTRIBUTE BY NAME:C728($node; "font-color"; $fontColor)
-								OBJECT SET RGB COLORS:C628(*; "variable"; Color_to_long($fontColor); -2)
+								
+								OBJECT SET RGB COLORS:C628(*; "variable"; Color_to_long($fontColor); $backgroundColor)
+								
+								//~~~
+								
 								
 								$t:=PRINT_Get_text_field($value)
 								
