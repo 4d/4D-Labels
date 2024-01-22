@@ -672,10 +672,15 @@ If (print_ERROR=0)
 										//……………………………………………………
 								End case 
 								
+								//mark:- #DD ACI0104353
+								C_LONGINT:C283($backgroundColor)
+								
+								$backgroundColor:=Choose:C955($Txt_fill="none"; Background color none:K23:10; Background color:K23:2)
+								
 								OBJECT SET FONT SIZE:C165(*; "variable"; $Lon_fontSize)
 								OBJECT SET FONT STYLE:C166(*; "variable"; $Lon_fontStyle)
 								OBJECT SET FONT:C164(*; "variable"; PRINT_Font($Txt_fontFamilly))
-								OBJECT SET RGB COLORS:C628(*; "variable"; Color_to_long($Txt_fontColor); -2)
+								OBJECT SET RGB COLORS:C628(*; "variable"; Color_to_long($Txt_fontColor); $backgroundColor)  //#DD ACI0104353 //-2)
 								
 								$Txt_buffer:=PRINT_Get_text_field($Txt_value)
 								
