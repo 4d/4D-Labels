@@ -9,20 +9,19 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_TEXT:C284($0)
-C_TEXT:C284($1)
-C_BOOLEAN:C305($2)
 
-C_BLOB:C604($Blb_buffer)
-C_BOOLEAN:C305($Boo_converted; $Boo_OK; $Boo_withPrintSettings)
-C_LONGINT:C283($Lon_parameters)
-C_TEXT:C284($Dom_; $Dom_label; $File_path; $Txt_onErrorMethod)
+#DECLARE($File_path : Text; $Boo_withPrintSettings : Boolean) : Text
 
-If (False:C215)
-	C_TEXT:C284(label_Parse_document; $0)
-	C_TEXT:C284(label_Parse_document; $1)
-	C_BOOLEAN:C305(label_Parse_document; $2)
-End if 
+var $Blb_buffer : Blob
+var $Boo_converted; $Boo_OK : Boolean
+var $Lon_parameters : Integer
+var $Lon_version : Integer
+var $Dom_; $Dom_label; $Txt_onErrorMethod : Text
+
+var $i : Integer
+var $t : Text
+
+
 
 // ----------------------------------------------------
 // Initialisations
@@ -31,12 +30,12 @@ $Lon_parameters:=Count parameters:C259
 If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	
 	//Required parameters
-	$File_path:=$1  //path of the label document
+	//$File_path:=$1  //path of the label document
 	
 	//Optional parameters
 	If ($Lon_parameters>=2)
 		
-		$Boo_withPrintSettings:=$2
+		//$Boo_withPrintSettings:=$2
 		
 	End if 
 	
@@ -64,7 +63,6 @@ If ($File_path="@.4lbp")
 	// Don't omit to update Resources/default.4lbp
 	If (OK=1)
 		
-		C_LONGINT:C283($Lon_version)
 		xml_GET_ATTRIBUTE_BY_NAME($Dom_label; "version"; ->$Lon_version)
 		
 		If ($Lon_version<2)
@@ -75,8 +73,6 @@ If ($File_path="@.4lbp")
 			
 			If (OK=1)
 				
-				C_LONGINT:C283($i)
-				C_TEXT:C284($t)
 				
 				For ($i; 1; Size of array:C274($tDom_objects); 1)
 					
@@ -132,11 +128,12 @@ If (Asserted:C1132(xml_IsValidReference($Dom_label)))
 		$Dom_:=DOM Create XML element:C865($Dom_label; "objects"; "id"; "objects")
 		
 	End if 
+	
 End if 
 
 // ----------------------------------------------------
 // Return
-$0:=$Dom_label
+return $Dom_label
 
 // ----------------------------------------------------
 // End

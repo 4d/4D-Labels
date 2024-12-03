@@ -4,11 +4,12 @@
 // Created #1-12-2014 by Vincent de Lachaux
 // ----------------------------------------------------
 // Declarations
-C_BOOLEAN:C305($Boo_scrollbar; $boo_light)
-C_LONGINT:C283($kLon_messagePage; $Lon_; $Lon_bottom; $Lon_color; $Lon_formEvent; $Lon_page)
-C_LONGINT:C283($Lon_top)
-C_PICTURE:C286($Pic_buffer)
-C_TEXT:C284($Txt_object)
+var $Boo_scrollbar; $boo_light : Boolean
+
+var $kLon_messagePage; $Lon_; $Lon_bottom; $Lon_color; $Lon_formEvent; $Lon_page : Integer
+var $Lon_top : Integer
+var $Pic_buffer : Picture
+var $Txt_object : Text
 
 // ----------------------------------------------------
 // Initialisations
@@ -146,10 +147,10 @@ Case of
 				(OBJECT Get pointer:C1124(Object named:K67:5; "Variable"))->:=$Pic_buffer
 				
 				mess_DISPLAY(New object:C1471(\
-					"message"; Get localized string:C991("areYouSure"); \
+					"message"; Localized string:C991("areYouSure"); \
 					"ok-label"; ".Save"; \
-					"no-label"; Get localized string:C991("doNotSave"); \
-					"cancel-label"; Get localized string:C991("cancel"); \
+					"no-label"; Localized string:C991("doNotSave"); \
+					"cancel-label"; Localized string:C991("cancel"); \
 					"doNotAskAgain"; False:C215; \
 					"not-resizable"; True:C214)\
 					; $kLon_messagePage)

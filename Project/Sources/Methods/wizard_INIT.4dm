@@ -7,9 +7,6 @@
 // ----------------------------------------------------
 #DECLARE($init : Boolean)
 
-If (False:C215)
-	C_BOOLEAN:C305(wizard_INIT; $1)
-End if 
 
 var $t : Text
 var $prefilled; $visible : Boolean

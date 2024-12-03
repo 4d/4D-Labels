@@ -1,4 +1,4 @@
-﻿{
+{
 	"_API": {
 		"methods": [
 			"C_OPEN_EDITOR",
@@ -50,6 +50,7 @@
 		],
 		"methods": [
 			"COMPILER_Editor",
+			"Editor_EDIT_FORMULA",
 			"Editor_INIT",
 			"Editor_REDRAW",
 			"Editor_UPDATE",
