@@ -93,19 +93,20 @@ If (Length:C16($Txt_formName)=0)
 							Case of 
 									
 									//………………………………………………………………………………………
-								: ($Txt_objectType="text")
+								: ($Txt_objectType="text") | ($Txt_objectType="variable/text")
+									
 									
 									Editor_TEXT_EDIT_START($Dom_canvas; $Txt_ID)
 									
-								: ($Txt_objectType="variable/text")
+									//: ($Txt_objectType="variable/text")
 									
-									If (Editor_EDIT_FORMULA($Txt_ID))
-										
-										Editor_ON_DATA_CHANGE
-										
-										Editor_UPDATE_UI
-										
-									End if 
+									//If (Editor_EDIT_FORMULA($Txt_ID))
+									
+									//Editor_ON_DATA_CHANGE
+									
+									//Editor_UPDATE_UI
+									
+									//End if 
 									
 									
 									//………………………………………………………………………………………
