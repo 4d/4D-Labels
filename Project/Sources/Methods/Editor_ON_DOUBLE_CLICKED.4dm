@@ -96,9 +96,15 @@ If (Length:C16($Txt_formName)=0)
 								: ($Txt_objectType="text") | ($Txt_objectType="variable/text")
 									
 									
+									
 									Editor_TEXT_EDIT_START($Dom_canvas; $Txt_ID)
 									
-									//: ($Txt_objectType="variable/text")
+									
+									
+									//TODO:Label editor: use formula editor #11777
+									
+									
+									//: ($Txt_objectType="variable/text") //#use formula editor #11777
 									
 									//If (Editor_EDIT_FORMULA($Txt_ID))
 									
