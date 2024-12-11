@@ -19,11 +19,11 @@ jobs:
         with:
           repository: 4d/gitlabsync-action
           ref: main
-          ssh-key: ${{ secrets.CI_GIT_SYNC }}
-          path: .github/workflows
-  
+          path: .github/workflows/external/sync
+          token: ${{ secrets.CI_GIT_SYNC }}
+    
       - id: Sync
-        uses: ./.github/workflows/actions
+        uses: ./.github/workflows/external/sync/
         with:
           target-url: ${{ secrets.TARGET_URL }}
           target-username: ${{ secrets.TARGET_USERNAME }}
