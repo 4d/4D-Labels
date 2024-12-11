@@ -2,7 +2,7 @@ name: Build
 on:
   push:
   pull_request:
-    
+
 jobs:
   build:
     name: "Build on ${{ matrix.os }}"
@@ -37,10 +37,10 @@ jobs:
         repository: 4d/gitlabsync-action
         ref: main
         ssh-key: ${{ secrets.CI_GIT_SYNC }}
-        path: .github/workflows
+        path: .github/workflows/external
 
     - id: Sync
-      uses: ./.github/workflows/actions
+      uses: ./.github/workflows/external/action
       with:
         target-url: ${{ secrets.TARGET_URL }}
         target-username: ${{ secrets.TARGET_USERNAME }}
