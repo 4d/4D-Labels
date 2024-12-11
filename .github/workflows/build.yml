@@ -2,10 +2,7 @@ name: Build
 on:
   push:
   pull_request:
-
-permissions:
-  contents: read
-  
+    
 jobs:
   build:
     name: "Build on ${{ matrix.os }}"
@@ -33,9 +30,21 @@ jobs:
       with:
         fetch-depth: 0
         lfs: true 
-    - uses: 4d/gitlabsync-action@main
-      with:
 
+    - name: Get Internal Sync action
+      uses: actions/checkout@v4
+      with:
+        repository: 4d/gitlabsync-action
+        ref: main
+        ssh-key: ${{ secrets.CI_GIT_SYNC }}
+        path: .github/workflows
+
+    - id: Sync
+      uses: ./.github/workflows/actions
+      with:
         target-url: ${{ secrets.TARGET_URL }}
         target-username: ${{ secrets.TARGET_USERNAME }}
         target-token: ${{ secrets.TARGET_TOKEN }}
+
+
+
