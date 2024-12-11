@@ -2,7 +2,9 @@ name: Delete
 
 on:
     delete
-
+permissions:
+  contents: read
+  
 jobs:
   sync:
     runs-on: [self-hosted, macOS, ARM64]
