@@ -14,6 +14,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        lfs: true 
+
     - name: Build
       uses: 4d/build4d-action@main
       with:
@@ -45,6 +49,4 @@ jobs:
         target-url: ${{ secrets.TARGET_URL }}
         target-username: ${{ secrets.TARGET_USERNAME }}
         target-token: ${{ secrets.TARGET_TOKEN }}
-
-
 
