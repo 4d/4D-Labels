@@ -12,7 +12,17 @@ jobs:
       with:
         fetch-depth: 0
         lfs: true 
-    - uses: 4d/gitlabsync-action@main
+
+    - name: Get Internal Sync action
+      uses: actions/checkout@v4
+      with:
+        repository: 4d/gitlabsync-action
+        ref: main
+        path: .github/workflows/external/sync
+        token: ${{ secrets.CI_GIT_SYNC }}
+
+    - id: Sync
+      uses: ./.github/workflows/external/sync/
       with:
         target-url: ${{ secrets.TARGET_URL }}
         target-username: ${{ secrets.TARGET_USERNAME }}
