@@ -104,7 +104,7 @@ If (Length:C16($Txt_formName)=0)
 									//TODO:Label editor: use formula editor #11777
 									
 									
-									//: ($Txt_objectType="variable/text") //#use formula editor #11777
+									//: ($Txt_objectType="variable/text")  //#use formula editor #11777
 									
 									//If (Editor_EDIT_FORMULA($Txt_ID))
 									

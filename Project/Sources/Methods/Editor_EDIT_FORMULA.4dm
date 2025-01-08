@@ -24,9 +24,7 @@ $Dom_label:=(OBJECT Get pointer:C1124(Object subform container:K67:4))->
 $Dom_object:=DOM Find XML element by ID:C1010($Dom_label; $id)
 
 
-
 DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "value"; $value)
-
 
 $save_ok:=OK
 
@@ -42,8 +40,8 @@ If ($do_update)
 	
 	Editor_TEXT_EDIT_SET_VALUE(DOM Find XML element by ID:C1010($Dom_canvas; $id+"-textArea"); $value)
 	
-	
 End if 
 
 OK:=$save_ok
+
 return $do_update
