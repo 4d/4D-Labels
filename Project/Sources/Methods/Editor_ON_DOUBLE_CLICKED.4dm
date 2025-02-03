@@ -93,7 +93,7 @@ If (Length:C16($Txt_formName)=0)
 							Case of 
 									
 									//………………………………………………………………………………………
-								: ($Txt_objectType="text") | ($Txt_objectType="variable/text")
+								: ($Txt_objectType="text")  //| ($Txt_objectType="variable/text")
 									
 									
 									
@@ -101,18 +101,17 @@ If (Length:C16($Txt_formName)=0)
 									
 									
 									
-									//TODO:Label editor: use formula editor #11777
 									
 									
-									//: ($Txt_objectType="variable/text")  //#use formula editor #11777
+								: ($Txt_objectType="variable/text")  //#use formula editor #11777
 									
-									//If (Editor_EDIT_FORMULA($Txt_ID))
-									
-									//Editor_ON_DATA_CHANGE
-									
-									//Editor_UPDATE_UI
-									
-									//End if 
+									If (Editor_EDIT_FORMULA($Txt_ID))
+										
+										Editor_ON_DATA_CHANGE
+										
+										Editor_UPDATE_UI
+										
+									End if 
 									
 									
 									//………………………………………………………………………………………
