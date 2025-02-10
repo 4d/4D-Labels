@@ -1,40 +1,38 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Editor_Get_zoom
-  // Database: 4D Labels
-  // ID[8CE001B69C3A4F0FA66C0B8D0D63F810]
-  // Created #2-2-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_REAL:C285($0)
+// ----------------------------------------------------
+// Project method : Editor_Get_zoom
+// Database: 4D Labels
+// ID[8CE001B69C3A4F0FA66C0B8D0D63F810]
+// Created #2-2-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+#DECLARE() : Real
 
-C_LONGINT:C283($Lon_parameters)
-C_REAL:C285($Num_zoom)
-C_OBJECT:C1216($Obj_dialog)
+var $Lon_parameters : Integer
+var $zoom : Real
+var $Obj_dialog : Object
 
-If (False:C215)
-	C_REAL:C285(Editor_Get_zoom ;$0)
-End if 
 
-  // ----------------------------------------------------
-  // Initialisations
+
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=0; "Missing parameter"))
 	
-	  //NO PARAMETERS REQUIRED
+	//NO PARAMETERS REQUIRED
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=1)
 		
-		  //NONE
+		//NONE
 		
 	End if 
 	
-	$Obj_dialog:=(OBJECT Get pointer:C1124(Object named:K67:5;"object"))->
+	$Obj_dialog:=(OBJECT Get pointer:C1124(Object named:K67:5; "object"))->
 	
 Else 
 	
@@ -42,12 +40,12 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
-$Num_zoom:=OB Get:C1224($Obj_dialog;"zoom";Is real:K8:4)
+// ----------------------------------------------------
+$zoom:=OB Get:C1224($Obj_dialog; "zoom"; Is real:K8:4)
 
-  // ----------------------------------------------------
-  // Return
-$0:=$Num_zoom
+// ----------------------------------------------------
+// Return
+return $zoom
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

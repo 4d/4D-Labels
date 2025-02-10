@@ -41,6 +41,7 @@
 			"DRAW",
 			"Editor_Private",
 			"EVENTS",
+			"FORMULA",
 			"HISTORY",
 			"MENU",
 			"MISC",
@@ -50,7 +51,6 @@
 		],
 		"methods": [
 			"COMPILER_Editor",
-			"Editor_EDIT_FORMULA",
 			"Editor_INIT",
 			"Editor_REDRAW",
 			"Editor_UPDATE",
@@ -124,6 +124,7 @@
 	},
 	"DRAW": {
 		"methods": [
+			"Compiler_",
 			"Editor_COMMON_BEGIN",
 			"Editor_COMMON_ON_IDLE",
 			"Editor_COMMON_Stop",
@@ -160,6 +161,14 @@
 			"Editor_ON_FOCUS",
 			"Editor_ON_RESIZE",
 			"Editor_ON_TIMER"
+		]
+	},
+	"FORMULA": {
+		"methods": [
+			"Editor_EDIT_FORMULA",
+			"Editor_FORMULA_BEGIN",
+			"Editor_FORMULA_ON_IDLE",
+			"Editor_FORMULA_Stop"
 		]
 	},
 	"HISTORY": {

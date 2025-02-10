@@ -200,11 +200,19 @@ This file is distributed under the same license as the product package.-->
                <source>Rounded Rectangle</source>
                <target>Rectangle arrondi</target>
             </trans-unit>
+            <trans-unit id="32000" resname="Menus_toolFormula">
+               <source>Formula</source>
+               <target>Formule</target>
+            </trans-unit>
          </group>
          <group resname="labels">
             <trans-unit id="45" resname="Labels_sampletext">
                <source>Sample text</source>
                <target>Exemple de texte</target>
+            </trans-unit>
+            <trans-unit id="31999" resname="Labels_sampleformula">
+               <source>Sample formula</source>
+               <target>Exemple de formule</target>
             </trans-unit>
             <trans-unit id="91" resname="Labels_automaticResizing">
                <source>Automatic resizing</source>

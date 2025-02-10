@@ -1,38 +1,39 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Editor_SET_TOOL
-  // Database: 4D Labels
-  // ID[C522AB52D1C2405CADC32BBD079109F9]
-  // Created #6-1-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_TEXT:C284($1)
+// ----------------------------------------------------
+// Project method : Editor_SET_TOOL
+// Database: 4D Labels
+// ID[C522AB52D1C2405CADC32BBD079109F9]
+// Created #6-1-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
 
-C_LONGINT:C283($Lon_i;$Lon_parameters;$Lon_x)
-C_TEXT:C284($Txt_tool)
+#DECLARE($tool : Text)
 
-If (False:C215)
-	C_TEXT:C284(Editor_SET_TOOL ;$1)
-End if 
 
-  // ----------------------------------------------------
-  // Initialisations
-$Lon_parameters:=Count parameters:C259
+var $i; $count_parameters; $index : Integer
 
-If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
+
+// ----------------------------------------------------
+// Initialisations
+$count_parameters:=Count parameters:C259
+
+If (Asserted:C1132($count_parameters>=0; "Missing parameter"))
 	
-	  //NO PARAMETERS REQUIRED
-	$Txt_tool:="select"
+	//NO PARAMETERS REQUIRED
 	
-	  //Optional parameters
-	If ($Lon_parameters>=1)
-		
-		$Txt_tool:=$1  //the select tool, if omitted
-		
-	End if 
+	
+	$tool:=($tool="") ? "select" : $tool
+	
+	////Optional parameters
+	//If ($count_parameters>=1)
+	
+	
+	//Else 
+	
+	//End if 
 	
 Else 
 	
@@ -40,41 +41,44 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
-  //keep the current selected tool
-OB SET:C1220((OBJECT Get pointer:C1124(Object named:K67:5;"object"))->;\
-"tool";$Txt_tool)
+// ----------------------------------------------------
+//keep the current selected tool
+OB SET:C1220((OBJECT Get pointer:C1124(Object named:K67:5; "object"))->; \
+"tool"; $tool)
 
-If ($Txt_tool="@rect")
+If ($tool="@rect")
 	
-	OB SET:C1220((OBJECT Get pointer:C1124(Object named:K67:5;"object"))->;\
-		"rect-tool";$Txt_tool)
+	OB SET:C1220((OBJECT Get pointer:C1124(Object named:K67:5; "object"))->; \
+		"rect-tool"; $tool)
 	
-	OBJECT SET FORMAT:C236(*;"tool.5";";#images/editor/tools/"+$Txt_tool+".png")
+	OBJECT SET FORMAT:C236(*; "tool.5"; ";#images/editor/tools/"+$tool+".png")
 	
 End if 
 
-$Txt_tool:=Choose:C955($Txt_tool="round-rect";"rect";$Txt_tool)
+$tool:=Choose:C955($tool="round-rect"; "rect"; $tool)
 
-  //update UI
-ARRAY TEXT:C222($tTxt_tools;6)
-$tTxt_tools{1}:="select"
-$tTxt_tools{2}:="polyline"  //hidden
-$tTxt_tools{3}:="text"
-$tTxt_tools{4}:="line"
-$tTxt_tools{5}:="rect"
-$tTxt_tools{6}:="ellipse"
+//update UI
+ARRAY TEXT:C222($_tools; 7)  // feature #11777 6->7
+$_tools{1}:="select"
+$_tools{2}:="polyline"  //hidden
+$_tools{3}:="text"
+$_tools{4}:="line"
+$_tools{5}:="rect"
+$_tools{6}:="ellipse"
 
-$Lon_x:=Abs:C99(Find in array:C230($tTxt_tools;$Txt_tool))
+//mark:- feature #11777
+$_tools{7}:="formula"
 
-For ($Lon_i;1;6;1)
+$index:=Abs:C99(Find in array:C230($_tools; $tool))
+
+For ($i; 1; Size of array:C274($_tools); 1)
 	
-	(OBJECT Get pointer:C1124(Object named:K67:5;"tool."+String:C10($Lon_i)))->:=Num:C11($Lon_i=$Lon_x)
+	(OBJECT Get pointer:C1124(Object named:K67:5; "tool."+String:C10($i)))->:=Num:C11($i=$index)
 	
 End for 
 
-  // ----------------------------------------------------
-  // Return
-  // <NONE>
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// Return
+// <NONE>
+// ----------------------------------------------------
+// End

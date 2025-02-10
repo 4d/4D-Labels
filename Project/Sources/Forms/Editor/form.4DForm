@@ -79,26 +79,6 @@
 						"onClick"
 					]
 				},
-				"tool.2": {
-					"type": "radio",
-					"top": 4,
-					"left": 175,
-					"width": 36,
-					"height": 32,
-					"visibility": "hidden",
-					"tooltip": ":xliff:Menus_toolPolyline",
-					"fontFamily": "System Font Regular",
-					"fontSize": 13,
-					"focusable": false,
-					"icon": "/RESOURCES/images/editor/tools/polyline.png",
-					"iconFrames": 4,
-					"style": "custom",
-					"radioGroup": "Group27",
-					"method": "ObjectMethods/tool.2.4dm",
-					"events": [
-						"onClick"
-					]
-				},
 				"tool.4": {
 					"type": "radio",
 					"top": 4,
@@ -1133,6 +1113,46 @@
 					"events": [
 						"onClick"
 					]
+				},
+				"tool.7": {
+					"type": "radio",
+					"top": 4,
+					"left": 175,
+					"width": 36,
+					"height": 32,
+					"visibility": "visible",
+					"tooltip": ":xliff:Menus_toolPolyline",
+					"fontFamily": "System Font Regular",
+					"fontSize": 13,
+					"focusable": false,
+					"icon": "/RESOURCES/images/editor/tools/text.png",
+					"iconFrames": 4,
+					"style": "custom",
+					"radioGroup": "Group27",
+					"method": "ObjectMethods/tool.7.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"tool.2": {
+					"type": "radio",
+					"top": 584,
+					"left": 535,
+					"width": 36,
+					"height": 32,
+					"visibility": "hidden",
+					"tooltip": ":xliff:Menus_toolPolyline",
+					"fontFamily": "System Font Regular",
+					"fontSize": 13,
+					"focusable": false,
+					"icon": "/RESOURCES/images/editor/tools/polyline.png",
+					"iconFrames": 4,
+					"style": "custom",
+					"radioGroup": "Group27",
+					"method": "ObjectMethods/tool.2.4dm",
+					"events": [
+						"onClick"
+					]
 				}
 			}
 		},
@@ -1186,16 +1206,6 @@
 		}
 	],
 	"editor": {
-		"groups": {
-			"Group27": [
-				"tool.3",
-				"tool.1",
-				"tool.2",
-				"tool.4",
-				"tool.5",
-				"tool.6"
-			]
-		},
 		"activeView": "View 1",
 		"defaultView": "View 1",
 		"views": {
@@ -1206,5 +1216,5 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 12
+	"geometryStamp": 73
 }

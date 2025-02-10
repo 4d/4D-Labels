@@ -1,43 +1,45 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Editor_Get_current
-  // Database: 4D Labels
-  // ID[C5EF9D164FE94570AA8665624529EEB4]
-  // Created #2-2-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_TEXT:C284($0)
-C_BOOLEAN:C305($1)
+// ----------------------------------------------------
+// Project method : Editor_Get_current
+// Database: 4D Labels
+// ID[C5EF9D164FE94570AA8665624529EEB4]
+// Created #2-2-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
 
-C_BOOLEAN:C305($Boo_clear)
-C_LONGINT:C283($Lon_parameters)
-C_TEXT:C284($Dom_current)
-C_OBJECT:C1216($Obj_dialog)
+#DECLARE($clear : Boolean) : Text
+
+//C_TEXT($0)
+//C_BOOLEAN($1)
+
+var $count_parameters : Integer
+var $Dom_current : Text
+var $Obj_dialog : Object
 
 If (False:C215)
-	C_TEXT:C284(Editor_Get_current ;$0)
-	C_BOOLEAN:C305(Editor_Get_current ;$1)
+	C_TEXT:C284(Editor_Get_current; $0)
+	C_BOOLEAN:C305(Editor_Get_current; $1)
 End if 
 
-  // ----------------------------------------------------
-  // Initialisations
-$Lon_parameters:=Count parameters:C259
+// ----------------------------------------------------
+// Initialisations
+$count_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
+If (Asserted:C1132($count_parameters>=0; "Missing parameter"))
 	
-	  //NO PARAMETERS REQUIRED
+	//NO PARAMETERS REQUIRED
 	
-	  //Optional parameters
-	If ($Lon_parameters>=1)
+	//Optional parameters
+	If ($count_parameters>=1)
 		
-		$Boo_clear:=$1
+		//$Boo_clear:=$1
 		
 	End if 
 	
-	$Obj_dialog:=(OBJECT Get pointer:C1124(Object named:K67:5;"object"))->
+	$Obj_dialog:=(OBJECT Get pointer:C1124(Object named:K67:5; "object"))->
 	
 Else 
 	
@@ -45,19 +47,19 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
-$Dom_current:=OB Get:C1224($Obj_dialog;"DomCurrent";Is text:K8:3)
+// ----------------------------------------------------
+$Dom_current:=OB Get:C1224($Obj_dialog; "DomCurrent"; Is text:K8:3)
 
-If ($Boo_clear)
+If ($clear)
 	
-	OB SET:C1220($Obj_dialog;\
-		"DomCurrent";"")
+	OB SET:C1220($Obj_dialog; \
+		"DomCurrent"; "")
 	
 End if 
 
-  // ----------------------------------------------------
-  // Return
-$0:=$Dom_current
+// ----------------------------------------------------
+// Return
+return $Dom_current
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End
