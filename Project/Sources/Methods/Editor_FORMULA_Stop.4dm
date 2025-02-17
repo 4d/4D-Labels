@@ -191,27 +191,7 @@ Else
 	$Txt_value:=Localized string:C991("Labels_sampleformula")
 	
 	$Dom_buffer:=DOM Find XML element by ID:C1010($Dom_label; "objects")
-	$Dom_buffer:=DOM Create XML element:C865($Dom_buffer; "object"; \
-		"type"; "text"; \
-		"left"; $Lon_left; \
-		"top"; $Lon_top; \
-		"right"; $Lon_right; \
-		"bottom"; $Lon_bottom; \
-		"field-type"; 0; \
-		"font-name"; OB Get:C1224($Obj_parameters; "default-font"; Is text:K8:3); \
-		"font-color"; $Txt_strokeColor; \
-		"font-size"; 9; \
-		"preserve-aspect-ratio"; "false"; \
-		"stroke-color"; $Txt_strokeColor; \
-		"stroke-width"; Editor_Get_default_stroke_width; \
-		"stroke-opacity"; 1; \
-		"fill-color"; Color_from_long(Editor_Get_color("fill")); \
-		"fill-opacity"; 1; \
-		"direction"; "down"; \
-		"value"; $Txt_value; \
-		"style"; "plain"; \
-		"alignment"; "left"; \
-		"id"; $Txt_ID)
+	
 	
 	
 	var $save_ok : Integer
@@ -224,6 +204,32 @@ Else
 	$do_delete:=OK=0
 	If ($do_delete)
 	Else 
+		
+		
+		
+		$Dom_buffer:=DOM Create XML element:C865($Dom_buffer; "object"; \
+			"type"; "variable"; \
+			"left"; $Lon_left; \
+			"top"; $Lon_top; \
+			"right"; $Lon_right; \
+			"bottom"; $Lon_bottom; \
+			"field-type"; 0; \
+			"font-name"; OB Get:C1224($Obj_parameters; "default-font"; Is text:K8:3); \
+			"font-color"; $Txt_strokeColor; \
+			"font-size"; 9; \
+			"preserve-aspect-ratio"; "false"; \
+			"stroke-color"; $Txt_strokeColor; \
+			"stroke-width"; Editor_Get_default_stroke_width; \
+			"stroke-opacity"; 1; \
+			"fill-color"; Color_from_long(Editor_Get_color("fill")); \
+			"fill-opacity"; 1; \
+			"direction"; "down"; \
+			"value"; $Txt_value; \
+			"style"; "plain"; \
+			"alignment"; "left"; \
+			"id"; $Txt_ID)
+		
+		
 		Editor_TEXT_EDIT_SET_VALUE($Dom_textArea; $Txt_value)
 	End if 
 	
@@ -249,7 +255,7 @@ Editor_REDRAW
 
 // ----------------------------------------------------
 // Return
-$0:=$Boo_update
+return $Boo_update
 
 // ----------------------------------------------------
 // End

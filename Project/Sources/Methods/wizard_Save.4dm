@@ -50,7 +50,7 @@ If (Length:C16($File_pathname)=0)
 	
 	$Txt_name:=Select document:C905(13893; \
 		$kTxt_extension; \
-		Get localized string:C991("Save label settings file..."); \
+		Localized string:C991("Save label settings file..."); \
 		Package open:K24:8+Use sheet window:K24:11 | File name entry:K24:17)
 	
 	
@@ -88,7 +88,7 @@ End if
 
 // ----------------------------------------------------
 // Return
-$0:=$Boo_success
+return $Boo_success
 
 // ----------------------------------------------------
 // End

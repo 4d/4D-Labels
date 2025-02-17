@@ -76,7 +76,7 @@ $Txt_fontName:=Choose:C955($Boo_OK; $Txt_buffer; $kTxt_defaultFont)
 
 // ----------------------------------------------------
 // Return
-$0:=$Txt_fontName
+return $Txt_fontName
 
 // ----------------------------------------------------
 // End

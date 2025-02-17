@@ -78,9 +78,9 @@ SET MENU ITEM MARK:C208($Mnu_tools; -1; Char:C90(18)*Num:C11($Txt_tool="text"))
 //mark:- feature #11777
 
 APPEND MENU ITEM:C411($Mnu_tools; ":xliff:Menus_toolFormula")
-SET MENU ITEM ICON:C984($Mnu_tools; -1; "file:images/editor/tools/m_text.png")
-SET MENU ITEM PARAMETER:C1004($Mnu_tools; -1; "tool-variable")
-SET MENU ITEM MARK:C208($Mnu_tools; -1; Char:C90(18)*Num:C11($Txt_tool="variable"))
+SET MENU ITEM ICON:C984($Mnu_tools; -1; "file:images/editor/tools/m_formula.png")
+SET MENU ITEM PARAMETER:C1004($Mnu_tools; -1; "tool-formula")
+SET MENU ITEM MARK:C208($Mnu_tools; -1; Char:C90(18)*Num:C11($Txt_tool="formula"))
 
 If (<>Boo_debug)
 	

@@ -1121,11 +1121,11 @@
 					"width": 36,
 					"height": 32,
 					"visibility": "visible",
-					"tooltip": ":xliff:Menus_toolPolyline",
+					"tooltip": ":xliff:Menus_toolFormula",
 					"fontFamily": "System Font Regular",
 					"fontSize": 13,
 					"focusable": false,
-					"icon": "/RESOURCES/images/editor/tools/text.png",
+					"icon": "/RESOURCES/images/editor/tools/formula_32.png",
 					"iconFrames": 4,
 					"style": "custom",
 					"radioGroup": "Group27",
@@ -1136,8 +1136,8 @@
 				},
 				"tool.2": {
 					"type": "radio",
-					"top": 584,
-					"left": 535,
+					"top": 599,
+					"left": 547,
 					"width": 36,
 					"height": 32,
 					"visibility": "hidden",
@@ -1216,5 +1216,5 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 73
+	"geometryStamp": 76
 }

@@ -83,7 +83,7 @@ End if
 
 // ----------------------------------------------------
 // Return
-$0:=$Num_value  //converted value
+return $Num_value  //converted value
 
 // ----------------------------------------------------
 // End
