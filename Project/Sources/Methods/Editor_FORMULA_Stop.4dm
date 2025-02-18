@@ -188,59 +188,56 @@ Else
 	
 	$Txt_strokeColor:=Color_from_long(Editor_Get_color("font-color"))
 	
-	$Txt_value:=Localized string:C991("Labels_sampleformula")
+	//$Txt_value:=Localized string("Labels_sampleformula")
 	
 	$Dom_buffer:=DOM Find XML element by ID:C1010($Dom_label; "objects")
 	
+	$Dom_buffer:=DOM Create XML element:C865($Dom_buffer; "object"; \
+		"type"; "variable"; \
+		"left"; $Lon_left; \
+		"top"; $Lon_top; \
+		"right"; $Lon_right; \
+		"bottom"; $Lon_bottom; \
+		"field-type"; 0; \
+		"font-name"; OB Get:C1224($Obj_parameters; "default-font"; Is text:K8:3); \
+		"font-color"; $Txt_strokeColor; \
+		"font-size"; 9; \
+		"preserve-aspect-ratio"; "false"; \
+		"stroke-color"; $Txt_strokeColor; \
+		"stroke-width"; Editor_Get_default_stroke_width; \
+		"stroke-opacity"; 1; \
+		"fill-color"; Color_from_long(Editor_Get_color("fill")); \
+		"fill-opacity"; 1; \
+		"direction"; "down"; \
+		"value"; $Txt_value; \
+		"style"; "plain"; \
+		"alignment"; "left"; \
+		"id"; $Txt_ID)
 	
 	
 	var $save_ok : Integer
-	var $do_delete : Boolean
+	var $do_cancel : Boolean
 	
 	$save_ok:=OK
 	
 	EDIT FORMULA:C806(Table:C252(C_MASTER_TABLE)->; $Txt_value)
 	
-	$do_delete:=OK=0
-	If ($do_delete)
+	$do_cancel:=OK=0
+	If ($do_cancel)
 	Else 
-		
-		
-		
-		$Dom_buffer:=DOM Create XML element:C865($Dom_buffer; "object"; \
-			"type"; "variable"; \
-			"left"; $Lon_left; \
-			"top"; $Lon_top; \
-			"right"; $Lon_right; \
-			"bottom"; $Lon_bottom; \
-			"field-type"; 0; \
-			"font-name"; OB Get:C1224($Obj_parameters; "default-font"; Is text:K8:3); \
-			"font-color"; $Txt_strokeColor; \
-			"font-size"; 9; \
-			"preserve-aspect-ratio"; "false"; \
-			"stroke-color"; $Txt_strokeColor; \
-			"stroke-width"; Editor_Get_default_stroke_width; \
-			"stroke-opacity"; 1; \
-			"fill-color"; Color_from_long(Editor_Get_color("fill")); \
-			"fill-opacity"; 1; \
-			"direction"; "down"; \
-			"value"; $Txt_value; \
-			"style"; "plain"; \
-			"alignment"; "left"; \
-			"id"; $Txt_ID)
-		
+		DOM SET XML ATTRIBUTE:C866($Dom_buffer; "value"; $Txt_value)
 		
 		Editor_TEXT_EDIT_SET_VALUE($Dom_textArea; $Txt_value)
 	End if 
 	
-	Editor_SET_TOOL
-	Editor_SELECT_OBJECT($Dom_object; $Txt_ID)
 	
-	If ($do_delete)
+	Editor_SELECT_OBJECT($Dom_object; $Txt_ID)
+	If ($do_cancel)
 		
 		Editor_SELECT_DELETE
 		
 	End if 
+	Editor_SET_TOOL
 	
 	OK:=$save_ok
 	
