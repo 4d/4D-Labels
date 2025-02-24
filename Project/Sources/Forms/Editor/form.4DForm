@@ -1125,7 +1125,7 @@
 					"fontFamily": "System Font Regular",
 					"fontSize": 13,
 					"focusable": false,
-					"icon": "/RESOURCES/images/editor/tools/formula_32.png",
+					"icon": "/RESOURCES/images/editor/tools/formula.png",
 					"iconFrames": 4,
 					"style": "custom",
 					"radioGroup": "Group27",
