@@ -67,7 +67,7 @@
                <target>Etikettenfolge</target>
             </trans-unit>
             <trans-unit id="59" resname="labelsPerRecord">
-               <source>Labels per record</source>
+               <source>Number per record</source>
                <target>Anzahl pro Datensatz</target>
             </trans-unit>
             <trans-unit id="61" resname="lanscape">
