@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!--Translation file.
 This file is distributed under the same license as the product package.-->
-<xliff xmlns="http://www.w3.org/1999/xhtml" version="1.0">
+<xliff  version="1.0">
    <file datatype="x-STR#" original="undefined" product-version="v13" source-language="en-US" target-language="pt">
       <header>
          <prop-group name="Xliff-Editor.4dbase">
