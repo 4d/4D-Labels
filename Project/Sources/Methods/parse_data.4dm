@@ -12,23 +12,23 @@
 // Parse a binary label file given as blob
 // ----------------------------------------------------
 // Declarations
-C_TEXT:C284($0)
-C_POINTER:C301($1)
-C_BOOLEAN:C305($2)
+var $0 : Text
+var $1 : Pointer
+var $2 : Boolean
 
-C_BLOB:C604($Blb_objectStyle; $Blb_PICT; $Blb_PRNT)
-C_BOOLEAN:C305($Boo_autoWidth; $Boo_includePrintSettings; $Boo_isValid; $Boo_landscape; $Boo_oncePerLabel; $Boo_verticalFill)
-C_LONGINT:C283($kLon_defaultRoundRect; $Lon_borderWidth; $Lon_bottom; $Lon_countElements; $Lon_countTableFieldPairs; $Lon_dummy)
-C_LONGINT:C283($Lon_field; $Lon_frameBackColor; $Lon_frameForeColor; $Lon_hOffset; $Lon_i; $Lon_j)
-C_LONGINT:C283($Lon_justification; $Lon_layoutNb; $Lon_left; $Lon_objectBackColor; $Lon_objectForeColor; $Lon_objectSize)
-C_LONGINT:C283($Lon_objectType; $Lon_objFieldType; $Lon_offset; $Lon_offsetBackup; $Lon_parameters; $Lon_right)
-C_LONGINT:C283($Lon_styleSheet; $Lon_table; $Lon_top; $Lon_unit; $Lon_version; $Lon_vOffset)
-C_PICTURE:C286($Pic_buffer)
-C_POINTER:C301($Ptr_source)
-C_TEXT:C284($Dom_buffer; $Dom_element; $Dom_gap; $Dom_margin; $Dom_printSettings; $Dom_rect)
-C_TEXT:C284($Dom_rects; $Dom_selects; $Dom_setting; $Dom_size; $Dom_xml; $kTxt_objectPrefix)
-C_TEXT:C284($Txt_alignment; $Txt_buffer; $Txt_codec; $Txt_document; $Txt_fontName; $Txt_layoutName)
-C_TEXT:C284($Txt_PRPF; $Txt_PRPS; $Txt_style; $Txt_type; $Txt_variableName)
+var $Blb_objectStyle; $Blb_PICT; $Blb_PRNT : Blob
+var $Boo_autoWidth; $Boo_includePrintSettings; $Boo_isValid; $Boo_landscape; $Boo_oncePerLabel; $Boo_verticalFill : Boolean
+var $kLon_defaultRoundRect; $Lon_borderWidth; $Lon_bottom; $Lon_countElements; $Lon_countTableFieldPairs; $Lon_dummy : Integer
+var $Lon_field; $Lon_frameBackColor; $Lon_frameForeColor; $Lon_hOffset; $Lon_i; $Lon_j : Integer
+var $Lon_justification; $Lon_layoutNb; $Lon_left; $Lon_objectBackColor; $Lon_objectForeColor; $Lon_objectSize : Integer
+var $Lon_objectType; $Lon_objFieldType; $Lon_offset; $Lon_offsetBackup; $Lon_parameters; $Lon_right : Integer
+var $Lon_styleSheet; $Lon_table; $Lon_top; $Lon_unit; $Lon_version; $Lon_vOffset : Integer
+var $Pic_buffer : Picture
+var $Ptr_source : Pointer
+var $Dom_buffer; $Dom_element; $Dom_gap; $Dom_margin; $Dom_printSettings; $Dom_rect : Text
+var $Dom_rects; $Dom_selects; $Dom_setting; $Dom_size; $Dom_xml; $kTxt_objectPrefix : Text
+var $Txt_alignment; $Txt_buffer; $Txt_codec; $Txt_document; $Txt_fontName; $Txt_layoutName : Text
+var $Txt_PRPF; $Txt_PRPS; $Txt_style; $Txt_type; $Txt_variableName : Text
 
 If (False:C215)
 	C_TEXT:C284(parse_data; $0)
@@ -196,13 +196,6 @@ Else
 	
 End if 
 
-If (Caps lock down:C547)
-	
-	TRACE:C157
-	
-End if 
-
-// ----------------------------------------------------
 $Dom_selects:=DOM Create XML element:C865($Dom_xml; "selects"; \
 "id"; "selects")
 
@@ -842,22 +835,19 @@ $Lon_hOffset:=60
 					
 					If ($Boo_includePrintSettings)
 						
-						$Dom_printSettings:=DOM Create XML element:C865($Dom_xml; "printSettings"; \
-							"id"; "print-settings")
+						$Dom_printSettings:=DOM Create XML element:C865($Dom_xml; "printSettings"; "id"; "print-settings")
 						
 						XML SET OPTIONS:C1090($Dom_printSettings; XML binary encoding:K45:37; XML base64:K45:38)
 						
-						DOM SET XML ATTRIBUTE:C866(DOM Create XML element:C865($Dom_printSettings; "PRNT"; \
-							"id"; "print-settings-prnt"); \
-							"value"; $Blb_PRNT)
+/*
+DOM SET XML ATTRIBUTE(DOM Create XML element($Dom_printSettings; "PRNT"; \
+"id"; "print-settings-prnt"); \
+"value"; $Blb_PRNT)
+*/
 						
-						DOM SET XML ELEMENT VALUE:C868(DOM Create XML element:C865($Dom_printSettings; "PRPS"; \
-							"id"; "print-settings-prps"); \
-							$Txt_PRPS; *)
-						
-						DOM SET XML ELEMENT VALUE:C868(DOM Create XML element:C865($Dom_printSettings; "PRPF"; \
-							"id"; "print-settings-prpf"); \
-							$Txt_PRPF; *)
+						DOM SET XML ELEMENT VALUE:C868(DOM Create XML element:C865($Dom_printSettings; "PRNT"; "id"; "print-settings-prnt"); $Blb_PRNT; *)
+						DOM SET XML ELEMENT VALUE:C868(DOM Create XML element:C865($Dom_printSettings; "PRPS"; "id"; "print-settings-prps"); $Txt_PRPS; *)
+						DOM SET XML ELEMENT VALUE:C868(DOM Create XML element:C865($Dom_printSettings; "PRPF"; "id"; "print-settings-prpf"); $Txt_PRPF; *)
 						
 					End if 
 					
@@ -878,9 +868,6 @@ End if
 //#ACI0096524 {
 //End if
 //}
-
-// ----------------------------------------------------
-// Return
 If ($Boo_isValid)
 	
 	return $Dom_xml  //label definition as XML
@@ -890,6 +877,3 @@ Else
 	DOM CLOSE XML:C722($Dom_xml)
 	
 End if 
-
-// ----------------------------------------------------
-// End

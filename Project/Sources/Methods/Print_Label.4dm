@@ -242,7 +242,7 @@ If (print_ERROR=0)
 	If ($useForm)
 		
 		FORM LOAD:C1103($tablePtr->; $formName)
-		FORM GET OBJECTS:C898($formObjects; *)
+		FORM GET OBJECTS:C898($formObjects; Form current page:K67:6)
 		
 		Repeat 
 			
