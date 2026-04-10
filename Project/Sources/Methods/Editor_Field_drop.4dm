@@ -9,21 +9,21 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_BOOLEAN:C305($0)
-C_TEXT:C284($1)
+var $0 : Boolean
+var $1 : Text
 
-C_BLOB:C604($blob)
-C_BOOLEAN:C305($isAdded; $isNewLine; $Boo_OK)
-C_LONGINT:C283($kLon_leftOffset; $kLon_topOffset; $Lon_; $bottom; $count; $fieldID)
-C_LONGINT:C283($editorHeight; $i; $left; $mouseX; $mouseY)
-C_LONGINT:C283($right; $Lon_stepX; $Lon_stepY; $tableID; $textHeight; $textWidth)
-C_LONGINT:C283($top; $type; $Lon_viewPortHeight; $Lon_viewPortWidth; $editorWidth)
-C_REAL:C285($Num_cx; $Num_cy; $Num_offsetX; $Num_offsetY; $rotation; $Num_tx)
-C_REAL:C285($Num_ty; $x; $y; $zoom)
-C_TEXT:C284($node; $canvas; $defs; $group; $root)
-C_TEXT:C284($groupObjects; $rect; $textArea; $t; $dragOverObject; $fontColor)
-C_TEXT:C284($font; $ID; $label)
-C_OBJECT:C1216($o; $formData)
+var $blob : Blob
+var $isAdded; $isNewLine; $Boo_OK : Boolean
+var $kLon_leftOffset; $kLon_topOffset; $Lon_; $bottom; $count; $fieldID : Integer
+var $editorHeight; $i; $left; $mouseX; $mouseY : Integer
+var $right; $Lon_stepX; $Lon_stepY; $tableID; $textHeight; $textWidth : Integer
+var $top; $type; $Lon_viewPortHeight; $Lon_viewPortWidth; $editorWidth : Integer
+var $Num_cx; $Num_cy; $Num_offsetX; $Num_offsetY; $rotation; $Num_tx : Real
+var $Num_ty; $x; $y; $zoom : Real
+var $node; $canvas; $defs; $group; $root : Text
+var $groupObjects; $rect; $textArea; $t; $dragOverObject; $fontColor : Text
+var $font; $ID; $label : Text
+var $o; $formData : Object
 
 ARRAY LONGINT:C221($fieldNumbers; 0)
 ARRAY LONGINT:C221($tableNumbers; 0)
@@ -31,10 +31,6 @@ ARRAY LONGINT:C221($fieldTypes; 0)
 ARRAY TEXT:C222($objects; 0)
 ARRAY TEXT:C222($IDs; 0)
 
-If (False:C215)
-	C_BOOLEAN:C305(Editor_Field_drop; $0)
-	C_TEXT:C284(Editor_Field_drop; $1)
-End if 
 
 // ----------------------------------------------------
 // Initialisations
@@ -43,7 +39,7 @@ If (Asserted:C1132(Count parameters:C259>=1; "Missing parameter"))
 	// Required parameters
 	$root:=$1
 	
-	GET MOUSE:C468($mouseX; $mouseY; $Lon_)
+	MOUSE POSITION:C468($mouseX; $mouseY; $Lon_)
 	
 	$formData:=(OBJECT Get pointer:C1124(Object named:K67:5; "object"))->
 	$canvas:=OB Get:C1224($formData; "canvas"; Is text:K8:3)

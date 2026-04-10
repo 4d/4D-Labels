@@ -9,21 +9,16 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_TEXT:C284($0)
-C_TEXT:C284($1)
+var $0 : Text
+var $1 : Text
 
-C_LONGINT:C283($Lon_parameters; $Lon_start; $Lon_subStart; $Lon_type)
-C_POINTER:C301($Ptr_field)
-C_TEXT:C284($Txt_buffer; $Txt_expression; $Txt_line; $Txt_onErrorMethod; $Txt_result; $Txt_sub)
-C_TEXT:C284($Txt_value)
+var $Lon_parameters; $Lon_start; $Lon_subStart; $Lon_type : Integer
+var $Ptr_field : Pointer
+var $Txt_buffer; $Txt_expression; $Txt_line; $Txt_onErrorMethod; $Txt_result; $Txt_sub : Text
+var $Txt_value : Text
 
 ARRAY LONGINT:C221($tLon_lengths; 0)
 ARRAY LONGINT:C221($tLon_positions; 0)
-
-If (False:C215)
-	C_TEXT:C284(PRINT_Get_text_field; $0)
-	C_TEXT:C284(PRINT_Get_text_field; $1)
-End if 
 
 // ----------------------------------------------------
 // Initialisations

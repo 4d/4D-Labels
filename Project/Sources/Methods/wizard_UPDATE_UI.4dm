@@ -9,17 +9,13 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_TEXT:C284($1)
+var $1 : Text
 
-C_BOOLEAN:C305($Boo_activated)
-C_LONGINT:C283($Lon_i; $Lon_page; $Lon_parameters; $Lon_x)
-C_REAL:C285($Num_buffer)
-C_TEXT:C284($Dom_label; $Dom_node; $Txt_buffer; $Txt_object; $Txt_unit)
-C_OBJECT:C1216($Obj_buffer; $Obj_param)
-
-If (False:C215)
-	C_TEXT:C284(wizard_UPDATE_UI; $1)
-End if 
+var $Boo_activated : Boolean
+var $Lon_i; $Lon_page; $Lon_parameters; $Lon_x : Integer
+var $Num_buffer : Real
+var $Dom_label; $Dom_node; $Txt_buffer; $Txt_object; $Txt_unit : Text
+var $Obj_buffer; $Obj_param : Object
 
 // ----------------------------------------------------
 // Initialisations

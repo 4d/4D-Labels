@@ -1,28 +1,28 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Editor_UPDATE
-  // Database: 4D Labels
-  // ID[095960C647A54E1CBD24AAC6DF83A987]
-  // Created #19-5-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_LONGINT:C283($Lon_parameters)
+// ----------------------------------------------------
+// Project method : Editor_UPDATE
+// Database: 4D Labels
+// ID[095960C647A54E1CBD24AAC6DF83A987]
+// Created #19-5-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $Lon_parameters : Integer
 
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=0; "Missing parameter"))
 	
-	  //NO PARAMETERS REQUIRED
+	//NO PARAMETERS REQUIRED
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=1)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -32,14 +32,14 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 
-Editor_REDRAW 
+Editor_REDRAW
 
-Editor_HISTORY_APPEND 
+Editor_HISTORY_APPEND
 
-  // ----------------------------------------------------
-  // Return
-  // <NONE>
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// Return
+// <NONE>
+// ----------------------------------------------------
+// End

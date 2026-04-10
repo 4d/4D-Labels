@@ -1,35 +1,29 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : IFF_Get_data
-  // Database: 4D Labels
-  // ID[6E8485BE2A724C588C167EFD9FBCC3DF]
-  // Created #18-12-2014 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_BLOB:C604($0)
-C_POINTER:C301($1)
-C_POINTER:C301($2)
+// ----------------------------------------------------
+// Project method : IFF_Get_data
+// Database: 4D Labels
+// ID[6E8485BE2A724C588C167EFD9FBCC3DF]
+// Created #18-12-2014 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Blob
+var $1 : Pointer
+var $2 : Pointer
 
-C_BLOB:C604($Blb_data)
-C_LONGINT:C283($Lon_length;$Lon_parameters)
-C_POINTER:C301($Ptr_offset;$Ptr_source)
+var $Blb_data : Blob
+var $Lon_length; $Lon_parameters : Integer
+var $Ptr_offset; $Ptr_source : Pointer
 
-If (False:C215)
-	C_BLOB:C604(IFF_Get_data ;$0)
-	C_POINTER:C301(IFF_Get_data ;$1)
-	C_POINTER:C301(IFF_Get_data ;$2)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=2;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=2; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	ASSERT:C1129(Not:C34(Is nil pointer:C315($1)))
 	ASSERT:C1129(Type:C295($1->)=Is BLOB:K8:12)
 	
@@ -40,10 +34,10 @@ If (Asserted:C1132($Lon_parameters>=2;"Missing parameter"))
 	
 	$Ptr_offset:=$2  //offset Ptr
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=3)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -53,15 +47,15 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
-$Lon_length:=IFF_Get_long ($Ptr_source;$Ptr_offset)
-COPY BLOB:C558($Ptr_source->;$Blb_data;$Ptr_offset->;0;$Lon_length)
+// ----------------------------------------------------
+$Lon_length:=IFF_Get_long($Ptr_source; $Ptr_offset)
+COPY BLOB:C558($Ptr_source->; $Blb_data; $Ptr_offset->; 0; $Lon_length)
 
 $Ptr_offset->:=$Ptr_offset->+$Lon_length
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=$Blb_data
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

@@ -7,10 +7,6 @@
 // ----------------------------------------------------
 #DECLARE($target : Text; $o : Object)
 
-If (False:C215)
-	C_TEXT:C284(PRINT_OBJECT; $1)
-	C_OBJECT:C1216(PRINT_OBJECT; $2)
-End if 
 
 var $fillOpacity; $height; $hOffset; $rx; $ry; $strokeOpacity : Real
 var $strokeWidth; $vOffset; $width; $wOffset; $X; $x1 : Real

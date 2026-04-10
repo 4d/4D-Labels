@@ -1,35 +1,29 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : IFF_Get_byte
-  // Database: 4D Labels
-  // ID[169BCEECE0BC41E8A0E50DA6FBC6C322]
-  // Created #18-12-2014 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_BLOB:C604($0)
-C_POINTER:C301($1)
-C_POINTER:C301($2)
+// ----------------------------------------------------
+// Project method : IFF_Get_byte
+// Database: 4D Labels
+// ID[169BCEECE0BC41E8A0E50DA6FBC6C322]
+// Created #18-12-2014 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Blob
+var $1 : Pointer
+var $2 : Pointer
 
-C_BLOB:C604($Blb_byte)
-C_LONGINT:C283($Lon_parameters)
-C_POINTER:C301($Ptr_offset;$Ptr_source)
+var $Blb_byte : Blob
+var $Lon_parameters : Integer
+var $Ptr_offset; $Ptr_source : Pointer
 
-If (False:C215)
-	C_BLOB:C604(IFF_Get_byte ;$0)
-	C_POINTER:C301(IFF_Get_byte ;$1)
-	C_POINTER:C301(IFF_Get_byte ;$2)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=2;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=2; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	ASSERT:C1129(Not:C34(Is nil pointer:C315($1)))
 	ASSERT:C1129(Type:C295($1->)=Is BLOB:K8:12)
 	
@@ -40,10 +34,10 @@ If (Asserted:C1132($Lon_parameters>=2;"Missing parameter"))
 	
 	$Ptr_offset:=$2  //offset Ptr
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=3)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -53,13 +47,13 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
-COPY BLOB:C558($Ptr_source->;$Blb_byte;$Ptr_offset->;0;1)
+// ----------------------------------------------------
+COPY BLOB:C558($Ptr_source->; $Blb_byte; $Ptr_offset->; 0; 1)
 $Ptr_offset->:=$Ptr_offset->+1
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=$Blb_byte
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

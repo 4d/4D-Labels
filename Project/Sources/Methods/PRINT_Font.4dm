@@ -9,19 +9,14 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_TEXT:C284($0)
-C_TEXT:C284($1)
+var $0 : Text
+var $1 : Text
 
-C_BOOLEAN:C305($Boo_OK)
-C_LONGINT:C283($Lon_parameters)
-C_TEXT:C284($kTxt_defaultFont; $Txt_buffer; $Txt_fontFamilly; $Txt_fontName)
+var $Boo_OK : Boolean
+var $Lon_parameters : Integer
+var $kTxt_defaultFont; $Txt_buffer; $Txt_fontFamilly; $Txt_fontName : Text
 
 ARRAY TEXT:C222($tTxt_font; 0)
-
-If (False:C215)
-	C_TEXT:C284(PRINT_Font; $0)
-	C_TEXT:C284(PRINT_Font; $1)
-End if 
 
 // ----------------------------------------------------
 // Initialisations
@@ -45,7 +40,7 @@ If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	
 	//#ACI0100864 [
 	ARRAY TEXT:C222($tTxt_recent; 0)
-	C_LONGINT:C283($i)
+	var $i : Integer
 	FONT LIST:C460($tTxt_recent; Recent fonts:K80:3)
 	
 	For ($i; 1; Size of array:C274($tTxt_recent); 1)

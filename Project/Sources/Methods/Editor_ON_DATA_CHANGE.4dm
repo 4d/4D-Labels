@@ -9,29 +9,25 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_BOOLEAN:C305($1)
+var $1 : Boolean
 
-C_BLOB:C604($Blb_image)
-C_BOOLEAN:C305($Boo_keepHistory)
-C_LONGINT:C283($kLon_margin; $Lon_count; $Lon_fieldType; $Lon_fontSize; $Lon_i)
-C_LONGINT:C283($Lon_rx; $Lon_ry; $Lon_viewPortHeight; $Lon_viewPortWidth)
-C_PICTURE:C286($Pic_buffer)
-C_REAL:C285($Num_bottom; $Num_cx; $Num_cy; $Num_editorHeight; $Num_editorWidth; $Num_editorX)
-C_REAL:C285($Num_editorY; $Num_fillOpacity; $Num_height; $Num_left; $Num_offsetX; $Num_offsetY)
-C_REAL:C285($Num_right; $Num_strokeOpacity; $Num_strokeWidth; $Num_top; $Num_width; $Num_x)
-C_REAL:C285($Num_xScaling; $Num_xTranslation; $Num_y; $Num_yScaling; $Num_yTranslation; $Num_zoom)
-C_REAL:C285($Num_zoomX; $Num_zoomY)
-C_TEXT:C284($Dir_tempo; $Dom_buffer; $Dom_canvas; $Dom_defs; $Dom_form; $Dom_groups)
-C_TEXT:C284($Dom_item; $Dom_label; $Dom_object; $Dom_objects; $File_picture; $Svg_root)
-C_TEXT:C284($Txt_alignment; $Txt_buffer; $Txt_data; $Txt_direction; $Txt_extension; $Txt_fillColor)
-C_TEXT:C284($Txt_fontName; $Txt_formName; $Txt_hash; $Txt_objectId; $Txt_preserveAspectRatio; $Txt_scale)
-C_TEXT:C284($Txt_strokeColor; $Txt_style; $Txt_textValue; $Txt_transform; $Txt_translate; $Txt_type)
-C_TEXT:C284($Txt_url)
-C_OBJECT:C1216($Obj_buffer; $Obj_parameters)
-
-If (False:C215)
-	C_BOOLEAN:C305(Editor_ON_DATA_CHANGE; $1)
-End if 
+var $Blb_image : Blob
+var $Boo_keepHistory : Boolean
+var $kLon_margin; $Lon_count; $Lon_fieldType; $Lon_fontSize; $Lon_i : Integer
+var $Lon_rx; $Lon_ry; $Lon_viewPortHeight; $Lon_viewPortWidth : Integer
+var $Pic_buffer : Picture
+var $Num_bottom; $Num_cx; $Num_cy; $Num_editorHeight; $Num_editorWidth; $Num_editorX : Real
+var $Num_editorY; $Num_fillOpacity; $Num_height; $Num_left; $Num_offsetX; $Num_offsetY : Real
+var $Num_right; $Num_strokeOpacity; $Num_strokeWidth; $Num_top; $Num_width; $Num_x : Real
+var $Num_xScaling; $Num_xTranslation; $Num_y; $Num_yScaling; $Num_yTranslation; $Num_zoom : Real
+var $Num_zoomX; $Num_zoomY : Real
+var $Dir_tempo; $Dom_buffer; $Dom_canvas; $Dom_defs; $Dom_form; $Dom_groups : Text
+var $Dom_item; $Dom_label; $Dom_object; $Dom_objects; $File_picture; $Svg_root : Text
+var $Txt_alignment; $Txt_buffer; $Txt_data; $Txt_direction; $Txt_extension; $Txt_fillColor : Text
+var $Txt_fontName; $Txt_formName; $Txt_hash; $Txt_objectId; $Txt_preserveAspectRatio; $Txt_scale : Text
+var $Txt_strokeColor; $Txt_style; $Txt_textValue; $Txt_transform; $Txt_translate; $Txt_type : Text
+var $Txt_url : Text
+var $Obj_buffer; $Obj_parameters : Object
 
 // ----------------------------------------------------
 // Initialisations
@@ -382,7 +378,7 @@ $pos:=$start
 $plus:=Position("+"; $t; $pos)
 $linefeed:=Position("\n"; $t; $pos)
 								
-																																								If ($linefeed>0)\
+If ($linefeed>0)\
 & (($plus=0) | ($plus>$linefeed))
 								
 $start:=$linefeed+1

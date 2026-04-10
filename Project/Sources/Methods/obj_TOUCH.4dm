@@ -1,39 +1,34 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Obj_TOUCH
-  // Database: 4D Labels
-  // ID[3435E427D0454685AD24E4103F98D9AD]
-  // Created #7-7-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_TEXT:C284($1)
+// ----------------------------------------------------
+// Project method : Obj_TOUCH
+// Database: 4D Labels
+// ID[3435E427D0454685AD24E4103F98D9AD]
+// Created #7-7-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $1 : Text
 C_TEXT:C284(${2})
 
-C_LONGINT:C283($Lon_i;$Lon_parameters)
-C_POINTER:C301($Ptr_buffer)
-C_TEXT:C284($Txt_objectName)
+var $Lon_i; $Lon_parameters : Integer
+var $Ptr_buffer : Pointer
+var $Txt_objectName : Text
 
-If (False:C215)
-	C_TEXT:C284(obj_TOUCH ;$1)
-	C_TEXT:C284(obj_TOUCH ;${2})
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=1;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	$Txt_objectName:=$1
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=2)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -43,10 +38,10 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
-For ($Lon_i;1;$Lon_parameters;1)
+// ----------------------------------------------------
+For ($Lon_i; 1; $Lon_parameters; 1)
 	
-	$Ptr_buffer:=OBJECT Get pointer:C1124(Object named:K67:5;${$Lon_i})
+	$Ptr_buffer:=OBJECT Get pointer:C1124(Object named:K67:5; ${$Lon_i})
 	
 	If (Not:C34(Is nil pointer:C315($Ptr_buffer)))
 		
@@ -55,8 +50,8 @@ For ($Lon_i;1;$Lon_parameters;1)
 	End if 
 End for 
 
-  // ----------------------------------------------------
-  // Return
-  // <NONE>
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// Return
+// <NONE>
+// ----------------------------------------------------
+// End

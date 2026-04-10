@@ -1,38 +1,33 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : str_Capitalize
-  // Database: 4D Labels
-  // ID[2922B5434FBB49DBB03C67028704C545]
-  // Created #1-6-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_TEXT:C284($0)
-C_TEXT:C284($1)
+// ----------------------------------------------------
+// Project method : str_Capitalize
+// Database: 4D Labels
+// ID[2922B5434FBB49DBB03C67028704C545]
+// Created #1-6-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Text
+var $1 : Text
 
-C_LONGINT:C283($Lon_length;$Lon_parameters)
-C_TEXT:C284($Txt_in;$Txt_out)
+var $Lon_length; $Lon_parameters : Integer
+var $Txt_in; $Txt_out : Text
 
-If (False:C215)
-	C_TEXT:C284(str_Capitalize ;$0)
-	C_TEXT:C284(str_Capitalize ;$1)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=1;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	$Txt_in:=$1
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=2)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -44,16 +39,16 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 If ($Lon_length>0)
 	
-	$Txt_out:=Uppercase:C13(Substring:C12($Txt_in;1;1);*)+Lowercase:C14(Substring:C12($Txt_in;2);*)
+	$Txt_out:=Uppercase:C13(Substring:C12($Txt_in; 1; 1); *)+Lowercase:C14(Substring:C12($Txt_in; 2); *)
 	
 End if 
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=$Txt_out
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

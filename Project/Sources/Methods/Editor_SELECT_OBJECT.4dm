@@ -13,10 +13,10 @@
 #DECLARE($Dom_object : Text; $Txt_ID : Text; $clear : Boolean) : Boolean
 
 
-C_LONGINT:C283($count_parameters)
-C_REAL:C285($Num_editorHeight; $Num_editorTx; $Num_editorTy; $Num_editorWidth; $Num_editorX; $Num_editorY)
-C_TEXT:C284($Dom_buffer; $Dom_canvas; $Dom_g; $Dom_label)
-C_TEXT:C284($Txt_tranform)
+var $count_parameters : Integer
+var $Num_editorHeight; $Num_editorTx; $Num_editorTy; $Num_editorWidth; $Num_editorX; $Num_editorY : Real
+var $Dom_buffer; $Dom_canvas; $Dom_g; $Dom_label : Text
+var $Txt_tranform : Text
 
 ARRAY TEXT:C222($tDom_selected; 0)
 

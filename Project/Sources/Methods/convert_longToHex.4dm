@@ -1,38 +1,33 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : convert_longToHex
-  // Database: 4D Labels
-  // ID[52377B154EE44F38B5DAE56416AA8916]
-  // Created #7-4-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_TEXT:C284($0)
-C_LONGINT:C283($1)
+// ----------------------------------------------------
+// Project method : convert_longToHex
+// Database: 4D Labels
+// ID[52377B154EE44F38B5DAE56416AA8916]
+// Created #7-4-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Text
+var $1 : Integer
 
-C_LONGINT:C283($Lon_parameters;$Lon_value)
-C_TEXT:C284($Txt_hex)
+var $Lon_parameters; $Lon_value : Integer
+var $Txt_hex : Text
 
-If (False:C215)
-	C_TEXT:C284(convert_longToHex ;$0)
-	C_LONGINT:C283(convert_longToHex ;$1)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=1;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	$Lon_value:=$1
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=2)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -42,14 +37,14 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
-$Txt_hex:="000000"+Replace string:C233(String:C10($Lon_value;"&x");"0x";"";*)
-$Txt_hex:="#"+Substring:C12($Txt_hex;Length:C16($Txt_hex)-5;6)
+// ----------------------------------------------------
+$Txt_hex:="000000"+Replace string:C233(String:C10($Lon_value; "&x"); "0x"; ""; *)
+$Txt_hex:="#"+Substring:C12($Txt_hex; Length:C16($Txt_hex)-5; 6)
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 
 $0:=$Txt_hex
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

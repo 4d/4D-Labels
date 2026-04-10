@@ -7,13 +7,6 @@
 // ----------------------------------------------------
 #DECLARE($tableNumber : Integer; $root : Text; $preview : Boolean) : Integer
 
-If (False:C215)
-	C_LONGINT:C283(Print_Label; $1)
-	C_TEXT:C284(Print_Label; $2)
-	C_BOOLEAN:C305(Print_Label; $3)
-	C_LONGINT:C283(Print_Label; $0)
-End if 
-
 var $fillOpacity; $horizontalOffset; $strokeOpacity; $strokeWidth; $verticalOffset; $x : Real
 var $y : Real
 var $alignment; $codec; $data; $direction; $fill; $fontColor : Text

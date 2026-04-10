@@ -1,43 +1,37 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : DEBUG_Update
-  // Database: 4D Labels
-  // ID[CE020683638949309D246B8F4D39165A]
-  // Created #12-2-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_BOOLEAN:C305($0)
-C_TEXT:C284($1)
-C_LONGINT:C283($2)
-C_LONGINT:C283($3)
+// ----------------------------------------------------
+// Project method : DEBUG_Update
+// Database: 4D Labels
+// ID[CE020683638949309D246B8F4D39165A]
+// Created #12-2-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Boolean
+var $1 : Text
+var $2 : Integer
+var $3 : Integer
 
-C_LONGINT:C283($Lon_parameters)
-C_POINTER:C301($Ptr_buffer)
-C_TEXT:C284($Txt_entrypoint)
+var $Lon_parameters : Integer
+var $Ptr_buffer : Pointer
+var $Txt_entrypoint : Text
 
-If (False:C215)
-	C_BOOLEAN:C305(DEBUG_Update ;$0)
-	C_TEXT:C284(DEBUG_Update ;$1)
-	C_LONGINT:C283(DEBUG_Update ;$2)
-	C_LONGINT:C283(DEBUG_Update ;$3)
-End if 
 
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=1;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	$Txt_entrypoint:=$1
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=2)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -47,24 +41,24 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 Case of 
 		
-		  //________________________________________
-	: (Not:C34(OB Get:C1224((OBJECT Get pointer:C1124(Object named:K67:5;"object"))->;"debug";Is boolean:K8:9)))
+		//________________________________________
+	: (Not:C34(OB Get:C1224((OBJECT Get pointer:C1124(Object named:K67:5; "object"))->; "debug"; Is boolean:K8:9)))
 		
-		  //NOTHING MORE TO DO
+		//NOTHING MORE TO DO
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: ($Txt_entrypoint="redraw")
 		
-		$Ptr_buffer:=OBJECT Get pointer:C1124(Object named:K67:5;"Debug_Redraw")
+		$Ptr_buffer:=OBJECT Get pointer:C1124(Object named:K67:5; "Debug_Redraw")
 		$Ptr_buffer->:=$Ptr_buffer->+1
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: ($Txt_entrypoint="on timer")
 		
-		$Ptr_buffer:=OBJECT Get pointer:C1124(Object named:K67:5;"Debug_TimerCount")
+		$Ptr_buffer:=OBJECT Get pointer:C1124(Object named:K67:5; "Debug_TimerCount")
 		
 		If ($Lon_parameters=2)
 			
@@ -73,36 +67,36 @@ Case of
 		Else 
 			
 			$Ptr_buffer->:=$Ptr_buffer->+1
-			(OBJECT Get pointer:C1124(Object named:K67:5;"Debug_MouseX"))->:=$2
-			(OBJECT Get pointer:C1124(Object named:K67:5;"Debug_MouseY"))->:=$3
+			(OBJECT Get pointer:C1124(Object named:K67:5; "Debug_MouseX"))->:=$2
+			(OBJECT Get pointer:C1124(Object named:K67:5; "Debug_MouseY"))->:=$3
 			
 		End if 
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: ($Txt_entrypoint="clic")
 		
-		(OBJECT Get pointer:C1124(Object named:K67:5;"Debug_ClickX"))->:=$2
-		(OBJECT Get pointer:C1124(Object named:K67:5;"Debug_ClickY"))->:=$3
+		(OBJECT Get pointer:C1124(Object named:K67:5; "Debug_ClickX"))->:=$2
+		(OBJECT Get pointer:C1124(Object named:K67:5; "Debug_ClickY"))->:=$3
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: ($Txt_entrypoint="history")
 		
-		(OBJECT Get pointer:C1124(Object named:K67:5;"Debug_History"))->:=$2
+		(OBJECT Get pointer:C1124(Object named:K67:5; "Debug_History"))->:=$2
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: (False:C215)
 		
-		  //______________________________________________________
+		//______________________________________________________
 	Else   //path
 		
-		(OBJECT Get pointer:C1124(Object named:K67:5;"Debug_Path"))->:=$Txt_entrypoint
+		(OBJECT Get pointer:C1124(Object named:K67:5; "Debug_Path"))->:=$Txt_entrypoint
 		
-		  //______________________________________________________
+		//______________________________________________________
 End case 
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=True:C214  //allow using ASSERT
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

@@ -1,47 +1,39 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Obj_ALIGN
-  // Database: 4D Report
-  // ID[C4AC2C9B6DBB43FBA2AEC05C5201C0F8]
-  // Created #20-1-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_LONGINT:C283($1)
-C_LONGINT:C283($2)
-C_TEXT:C284($3)
-C_TEXT:C284($4)
+// ----------------------------------------------------
+// Project method : Obj_ALIGN
+// Database: 4D Report
+// ID[C4AC2C9B6DBB43FBA2AEC05C5201C0F8]
+// Created #20-1-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $1 : Integer
+var $2 : Integer
+var $3 : Text
+var $4 : Text
 C_TEXT:C284(${5})
 
-C_LONGINT:C283($Lon_;$Lon_align;$Lon_bottom;$Lon_i;$Lon_left;$Lon_offset)
-C_LONGINT:C283($Lon_parameters;$Lon_right;$Lon_top)
-C_TEXT:C284($Txt_object;$Txt_reference)
+var $Lon_; $Lon_align; $Lon_bottom; $Lon_i; $Lon_left; $Lon_offset : Integer
+var $Lon_parameters; $Lon_right; $Lon_top : Integer
+var $Txt_object; $Txt_reference : Text
 
-If (False:C215)
-	C_LONGINT:C283(obj_ALIGN ;$1)
-	C_LONGINT:C283(obj_ALIGN ;$2)
-	C_TEXT:C284(obj_ALIGN ;$3)
-	C_TEXT:C284(obj_ALIGN ;$4)
-	C_TEXT:C284(obj_ALIGN ;${5})
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=4;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=4; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	$Lon_align:=$1
 	$Lon_offset:=$2
 	$Txt_reference:=$3
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=5)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -51,32 +43,32 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
-OBJECT GET COORDINATES:C663(*;$Txt_reference;$Lon_left;$Lon_top;$Lon_right;$Lon_bottom)
+// ----------------------------------------------------
+OBJECT GET COORDINATES:C663(*; $Txt_reference; $Lon_left; $Lon_top; $Lon_right; $Lon_bottom)
 
 Case of 
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: ($Lon_align=Align right:K42:4)
 		
-		For ($Lon_i;4;$Lon_parameters;1)
+		For ($Lon_i; 4; $Lon_parameters; 1)
 			
 			$Txt_object:=${$Lon_i}
-			OBJECT GET COORDINATES:C663(*;$Txt_object;$Lon_;$Lon_;$Lon_right;$Lon_)
-			OBJECT MOVE:C664(*;$Txt_object;($Lon_left-$Lon_right)-20;0)
+			OBJECT GET COORDINATES:C663(*; $Txt_object; $Lon_; $Lon_; $Lon_right; $Lon_)
+			OBJECT MOVE:C664(*; $Txt_object; ($Lon_left-$Lon_right)-20; 0)
 			
 		End for 
 		
-		  //______________________________________________________
+		//______________________________________________________
 	Else 
 		
 		ASSERT:C1129(False:C215)  //#TO_BE_DONE
 		
-		  //______________________________________________________
+		//______________________________________________________
 End case 
 
-  // ----------------------------------------------------
-  // Return
-  // <NONE>
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// Return
+// <NONE>
+// ----------------------------------------------------
+// End
