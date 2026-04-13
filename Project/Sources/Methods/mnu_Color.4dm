@@ -1,35 +1,29 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : mnu_Color
-  // Database: sandbox_14
-  // ID[AEBFD273926047DC981A7CF5AC550B62]
-  // Created #14-2-2014 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_TEXT:C284($0)
-C_LONGINT:C283($1)
-C_TEXT:C284($2)
+// ----------------------------------------------------
+// Project method : mnu_Color
+// Database: sandbox_14
+// ID[AEBFD273926047DC981A7CF5AC550B62]
+// Created #14-2-2014 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Text
+var $1 : Integer
+var $2 : Text
 
-C_BOOLEAN:C305($Boo_front)
-C_LONGINT:C283($Lon_color;$Lon_current_color;$Lon_i;$Lon_parameters;$Lon_selected)
-C_TEXT:C284($Mnu_menuReference;$Txt_mode;$Txt_prefix)
+var $Boo_front : Boolean
+var $Lon_color; $Lon_current_color; $Lon_i; $Lon_parameters; $Lon_selected : Integer
+var $Mnu_menuReference; $Txt_mode; $Txt_prefix : Text
 
-If (False:C215)
-	C_TEXT:C284(mnu_Color ;$0)
-	C_LONGINT:C283(mnu_Color ;$1)
-	C_TEXT:C284(mnu_Color ;$2)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=0; "Missing parameter"))
 	
-	  //Default values
+	//Default values
 	$Lon_color:=-1
 	$Txt_mode:="front"
 	
@@ -44,7 +38,7 @@ If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
 		End if 
 	End if 
 	
-	ARRAY LONGINT:C221($tLon_colors;18)
+	ARRAY LONGINT:C221($tLon_colors; 18)
 	
 	$tLon_colors{1}:=1  //Automatic | None
 	
@@ -99,34 +93,34 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 Case of 
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: ($Lon_current_color=-1)
 		
 		$Lon_selected:=1  //Automatic | None
-		$Lon_current_color:=Choose:C955($Boo_front;Black:K11:16;White:K11:1)
+		$Lon_current_color:=Choose:C955($Boo_front; Black:K11:16; White:K11:1)
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: ($Lon_current_color=Black:K11:16)\
 		 & ($Boo_front)
 		
 		$Lon_selected:=1  //Automatic
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: ($Lon_current_color=White:K11:1)\
 		 & (Not:C34($Boo_front))
 		
 		$Lon_selected:=1  //Automatic
 		
-		  //______________________________________________________
+		//______________________________________________________
 	Else 
 		
-		$Lon_selected:=Find in array:C230($tLon_colors;$Lon_current_color | 0x0000)
-		$Lon_selected:=Choose:C955($Lon_selected>0;$Lon_selected;18)  //Personalized
+		$Lon_selected:=Find in array:C230($tLon_colors; $Lon_current_color | 0x0000)
+		$Lon_selected:=Choose:C955($Lon_selected>0; $Lon_selected; 18)  //Personalized
 		
-		  //______________________________________________________
+		//______________________________________________________
 End case 
 
 If ($Txt_mode="back@")  //& (Length($Txt_mode)>4)
@@ -135,24 +129,24 @@ If ($Txt_mode="back@")  //& (Length($Txt_mode)>4)
 	
 Else 
 	
-	  //front & font
+	//front & font
 	$Txt_prefix:="front_"
 	
 End if 
 
 $Mnu_menuReference:=Create menu:C408
 
-For ($Lon_i;0;17;1)
+For ($Lon_i; 0; 17; 1)
 	
-	APPEND MENU ITEM:C411($Mnu_menuReference;":xliff:"+$Txt_prefix+String:C10($Lon_i))
-	SET MENU ITEM PARAMETER:C1004($Mnu_menuReference;-1;$Txt_mode+"Color_"+String:C10($tLon_colors{$Lon_i+1};"&x"))
-	SET MENU ITEM ICON:C984($Mnu_menuReference;-1;"#Images/colors/"+$Txt_prefix+String:C10($Lon_i)+".png")
+	APPEND MENU ITEM:C411($Mnu_menuReference; ":xliff:"+$Txt_prefix+String:C10($Lon_i))
+	SET MENU ITEM PARAMETER:C1004($Mnu_menuReference; -1; $Txt_mode+"Color_"+String:C10($tLon_colors{$Lon_i+1}; "&x"))
+	SET MENU ITEM ICON:C984($Mnu_menuReference; -1; "#Images/colors/"+$Txt_prefix+String:C10($Lon_i)+".png")
 	
 End for 
 
-SET MENU ITEM MARK:C208($Mnu_menuReference;$Lon_selected;Char:C90(18))
+SET MENU ITEM MARK:C208($Mnu_menuReference; $Lon_selected; Char:C90(18))
 
 $0:=$Mnu_menuReference
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

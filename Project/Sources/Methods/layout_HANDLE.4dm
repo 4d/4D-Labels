@@ -9,13 +9,9 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_LONGINT:C283($1)
+var $1 : Integer
 
-C_LONGINT:C283($Lon_color; $Lon_formEvent; $Lon_parameters)
-
-If (False:C215)
-	C_LONGINT:C283(layout_HANDLE; $1)
-End if 
+var $Lon_color; $Lon_formEvent; $Lon_parameters : Integer
 
 // ----------------------------------------------------
 // Initialisations

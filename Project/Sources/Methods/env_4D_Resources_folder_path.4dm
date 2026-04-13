@@ -13,11 +13,6 @@ var $0 : Text
 
 var $Lon_parameters : Integer
 var $Dir_pathname; $Dir_root : Text
-
-If (False:C215)
-	C_TEXT:C284(env_4D_Resources_folder_path; $0)
-End if 
-
 // ----------------------------------------------------
 // Initialisations
 $Lon_parameters:=Count parameters:C259

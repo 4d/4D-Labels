@@ -9,25 +9,19 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_TEXT:C284($1)
-C_TEXT:C284($2)
-C_TEXT:C284($3)
+var $1 : Text
+var $2 : Text
+var $3 : Text
 
-C_BOOLEAN:C305($Boo_image; $Boo_redraw; $Boo_text)
-C_LONGINT:C283($Lon_i; $Lon_parameters)
-C_TEXT:C284($Dom_canvas; $Dom_label; $Dom_object; $Dom_style; $Txt_; $Txt_buffer)
-C_TEXT:C284($Txt_class; $Txt_data; $Txt_font; $Txt_fontFamily; $Txt_object_id)
+var $Boo_image; $Boo_redraw; $Boo_text : Boolean
+var $Lon_i; $Lon_parameters : Integer
+var $Dom_canvas; $Dom_label; $Dom_object; $Dom_style; $Txt_; $Txt_buffer : Text
+var $Txt_class; $Txt_data; $Txt_font; $Txt_fontFamily; $Txt_object_id : Text
 
 ARRAY LONGINT:C221($tLon_length; 0)
 ARRAY LONGINT:C221($tLon_position; 0)
 ARRAY TEXT:C222($selects; 0)
 ARRAY TEXT:C222($tDom_selected; 0)
-
-If (False:C215)
-	C_TEXT:C284(Editor_SEL_SET_FONT; $1)
-	C_TEXT:C284(Editor_SEL_SET_FONT; $2)
-	C_TEXT:C284(Editor_SEL_SET_FONT; $3)
-End if 
 
 // ----------------------------------------------------
 // Initialisations
@@ -52,7 +46,7 @@ If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	
 	Editor_Get_grips(->$Dom_label; ->$Dom_canvas)
 	
-	If ($Txt_font=Get localized string:C991("Menus_systemFont"))
+	If ($Txt_font=Localized string:C991("Menus_systemFont"))
 		
 		$Txt_font:=OBJECT Get font:C1069(*; "AutoFont")
 		

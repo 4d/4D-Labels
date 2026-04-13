@@ -1,32 +1,27 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : mnu_FontSyle
-  // Database: 4D Report
-  // ID[AB9CB42EA04642FDAE0DCBDB347F31C3]
-  // Created #24-3-2014 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_TEXT:C284($0)
-C_LONGINT:C283($1)
+// ----------------------------------------------------
+// Project method : mnu_FontSyle
+// Database: 4D Report
+// ID[AB9CB42EA04642FDAE0DCBDB347F31C3]
+// Created #24-3-2014 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Text
+var $1 : Integer
 
-C_LONGINT:C283($Lon_parameters;$Lon_styles)
-C_TEXT:C284($Mnu_menuReference)
+var $Lon_parameters; $Lon_styles : Integer
+var $Mnu_menuReference : Text
 
-If (False:C215)
-	C_TEXT:C284(mnu_FontSyle ;$0)
-	C_LONGINT:C283(mnu_FontSyle ;$1)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=0; "Missing parameter"))
 	
-	  //NO PARAMETERS REQUIRED
+	//NO PARAMETERS REQUIRED
 	
 	If ($Lon_parameters>=1)
 		
@@ -40,46 +35,46 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 $Mnu_menuReference:=Create menu:C408
 
-APPEND MENU ITEM:C411($Mnu_menuReference;Get localized string:C991("menu_plain"))
-SET MENU ITEM PARAMETER:C1004($Mnu_menuReference;-1;"fontStyle_plain")
+APPEND MENU ITEM:C411($Mnu_menuReference; Localized string:C991("menu_plain"))
+SET MENU ITEM PARAMETER:C1004($Mnu_menuReference; -1; "fontStyle_plain")
 
 If ($Lon_styles=0)
 	
-	SET MENU ITEM MARK:C208($Mnu_menuReference;-1;Char:C90(18))
+	SET MENU ITEM MARK:C208($Mnu_menuReference; -1; Char:C90(18))
 	
 End if 
 
-APPEND MENU ITEM:C411($Mnu_menuReference;Get localized string:C991("menu_bold"))
-SET MENU ITEM PARAMETER:C1004($Mnu_menuReference;-1;"fontStyle_bold")
+APPEND MENU ITEM:C411($Mnu_menuReference; Localized string:C991("menu_bold"))
+SET MENU ITEM PARAMETER:C1004($Mnu_menuReference; -1; "fontStyle_bold")
 
 If ($Lon_styles ?? 0)
 	
-	SET MENU ITEM MARK:C208($Mnu_menuReference;-1;Char:C90(18))
+	SET MENU ITEM MARK:C208($Mnu_menuReference; -1; Char:C90(18))
 	
 End if 
 
-APPEND MENU ITEM:C411($Mnu_menuReference;Get localized string:C991("menu_italic"))
-SET MENU ITEM PARAMETER:C1004($Mnu_menuReference;-1;"fontStyle_Italic")
+APPEND MENU ITEM:C411($Mnu_menuReference; Localized string:C991("menu_italic"))
+SET MENU ITEM PARAMETER:C1004($Mnu_menuReference; -1; "fontStyle_Italic")
 
 If ($Lon_styles ?? 1)
 	
-	SET MENU ITEM MARK:C208($Mnu_menuReference;-1;Char:C90(18))
+	SET MENU ITEM MARK:C208($Mnu_menuReference; -1; Char:C90(18))
 	
 End if 
 
-APPEND MENU ITEM:C411($Mnu_menuReference;Get localized string:C991("menu_underline"))
-SET MENU ITEM PARAMETER:C1004($Mnu_menuReference;-1;"fontStyle_underline")
+APPEND MENU ITEM:C411($Mnu_menuReference; Localized string:C991("menu_underline"))
+SET MENU ITEM PARAMETER:C1004($Mnu_menuReference; -1; "fontStyle_underline")
 
 If ($Lon_styles ?? 2)
 	
-	SET MENU ITEM MARK:C208($Mnu_menuReference;-1;Char:C90(18))
+	SET MENU ITEM MARK:C208($Mnu_menuReference; -1; Char:C90(18))
 	
 End if 
 
 $0:=$Mnu_menuReference
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

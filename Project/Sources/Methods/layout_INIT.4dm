@@ -9,10 +9,10 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_BOOLEAN:C305($Boo_fixedHeight; $Boo_fixedWidth; $Boo_mode; $Boo_prefilled)
-C_LONGINT:C283($Lon_; $Lon_i; $Lon_pages; $Lon_parameters; $Lon_platform; $Lst_buffer)
-C_POINTER:C301($Ptr_table)
-C_TEXT:C284($File_user; $Txt_buffer)
+var $Boo_fixedHeight; $Boo_fixedWidth; $Boo_mode; $Boo_prefilled : Boolean
+var $Lon_; $Lon_i; $Lon_pages; $Lon_parameters; $Lon_platform; $Lst_buffer : Integer
+var $Ptr_table : Pointer
+var $File_user; $Txt_buffer : Text
 
 ARRAY TEXT:C222($tTxt_buffer; 0)
 ARRAY TEXT:C222($tTxt_forms; 0)
@@ -123,21 +123,21 @@ End if
 
 //==================== build the layout order's menu
 $Lst_buffer:=New list:C375
-APPEND TO LIST:C376($Lst_buffer; Get localized string:C991("vertical"); 1)
+APPEND TO LIST:C376($Lst_buffer; Localized string:C991("vertical"); 1)
 SET LIST ITEM PARAMETER:C986($Lst_buffer; 0; "data"; True:C214)
-APPEND TO LIST:C376($Lst_buffer; Get localized string:C991("horizontal"); 2)
+APPEND TO LIST:C376($Lst_buffer; Localized string:C991("horizontal"); 2)
 SET LIST ITEM PARAMETER:C986($Lst_buffer; 0; "data"; False:C215)
 //obj_BOUND_WITH_LIST($Lst_buffer; "layout.order")
 OBJECT SET VALUE:C1742("layout.order"; $Lst_buffer)
 //==================== build the units' menu
 $Lst_buffer:=New list:C375
-APPEND TO LIST:C376($Lst_buffer; Get localized string:C991("point"); 1)
+APPEND TO LIST:C376($Lst_buffer; Localized string:C991("point"); 1)
 SET LIST ITEM PARAMETER:C986($Lst_buffer; 0; "data"; "pt")
-APPEND TO LIST:C376($Lst_buffer; Get localized string:C991("millimeter"); 2)
+APPEND TO LIST:C376($Lst_buffer; Localized string:C991("millimeter"); 2)
 SET LIST ITEM PARAMETER:C986($Lst_buffer; 0; "data"; "mm")
-APPEND TO LIST:C376($Lst_buffer; Get localized string:C991("centimeter"); 3)
+APPEND TO LIST:C376($Lst_buffer; Localized string:C991("centimeter"); 3)
 SET LIST ITEM PARAMETER:C986($Lst_buffer; 0; "data"; "cm")
-APPEND TO LIST:C376($Lst_buffer; Get localized string:C991("inch"); 4)
+APPEND TO LIST:C376($Lst_buffer; Localized string:C991("inch"); 4)
 SET LIST ITEM PARAMETER:C986($Lst_buffer; 0; "data"; "in")
 SELECT LIST ITEMS BY POSITION:C381($Lst_buffer; 1)
 //obj_BOUND_WITH_LIST($Lst_buffer; "size.unit.menu")
@@ -146,7 +146,7 @@ OBJECT SET VALUE:C1742("size.unit.menu"; $Lst_buffer)
 //==================== build the methods' list
 $Lst_buffer:=New list:C375
 
-APPEND TO LIST:C376($Lst_buffer; Get localized string:C991("noMethod"); -1)
+APPEND TO LIST:C376($Lst_buffer; Localized string:C991("noMethod"); -1)
 //APPEND TO LIST($Lst_buffer;"-";-1)
 
 //get the database's allowed methods

@@ -1,44 +1,39 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Editor_SEL_Get_font
-  // Database: 4D Labels
-  // ID[61FB9353CD524EE5B670441A4F470349]
-  // Created #20-4-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_TEXT:C284($0)
-C_TEXT:C284($1)
+// ----------------------------------------------------
+// Project method : Editor_SEL_Get_font
+// Database: 4D Labels
+// ID[61FB9353CD524EE5B670441A4F470349]
+// Created #20-4-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Text
+var $1 : Text
 
-C_BOOLEAN:C305($Boo_image;$Boo_text)
-C_LONGINT:C283($Lon_i;$Lon_parameters)
-C_TEXT:C284($Dom_label;$Dom_object;$Txt_buffer;$Txt_fontName;$Txt_ID)
+var $Boo_image; $Boo_text : Boolean
+var $Lon_i; $Lon_parameters : Integer
+var $Dom_label; $Dom_object; $Txt_buffer; $Txt_fontName; $Txt_ID : Text
 
-ARRAY TEXT:C222($tDom_selected;0)
+ARRAY TEXT:C222($tDom_selected; 0)
 
-If (False:C215)
-	C_TEXT:C284(Editor_SEL_Get_font ;$0)
-	C_TEXT:C284(Editor_SEL_Get_font ;$1)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=0; "Missing parameter"))
 	
-	  //NO PARAMETERS REQUIRED
+	//NO PARAMETERS REQUIRED
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=1)
 		
 		$Dom_label:=$1
 		
 	Else 
 		
-		Editor_Get_grips (->$Dom_label)
+		Editor_Get_grips(->$Dom_label)
 		
 	End if 
 	
@@ -50,20 +45,20 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
-For ($Lon_i;1;Editor_SEL_Get_count ($Dom_label;->$tDom_selected))
+// ----------------------------------------------------
+For ($Lon_i; 1; Editor_SEL_Get_count($Dom_label; ->$tDom_selected))
 	
-	DOM GET XML ATTRIBUTE BY NAME:C728($tDom_selected{$Lon_i};"object-id";$Txt_ID)
+	DOM GET XML ATTRIBUTE BY NAME:C728($tDom_selected{$Lon_i}; "object-id"; $Txt_ID)
 	
-	$Dom_object:=Editor_OB_Get_type ($Dom_label;$Txt_ID;->$Boo_text;->$Boo_image)
+	$Dom_object:=Editor_OB_Get_type($Dom_label; $Txt_ID; ->$Boo_text; ->$Boo_image)
 	
 	If ($Boo_text)
 		
-		DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object;"font-name";$Txt_buffer)
+		DOM GET XML ATTRIBUTE BY NAME:C728($Dom_object; "font-name"; $Txt_buffer)
 		
 		If ($Txt_fontName="-")
 			
-			  //first one
+			//first one
 			$Txt_fontName:=$Txt_buffer
 			
 		Else 
@@ -78,9 +73,9 @@ For ($Lon_i;1;Editor_SEL_Get_count ($Dom_label;->$tDom_selected))
 	End if 
 End for 
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=$Txt_fontName
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

@@ -9,9 +9,9 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_LONGINT:C283($Lon_parameters)
-C_TEXT:C284($Dom_canvas; $Dom_form; $Dom_label; $Txt_formName; $Txt_tool)
-C_OBJECT:C1216($Obj_parameters)
+var $Lon_parameters : Integer
+var $Dom_canvas; $Dom_form; $Dom_label; $Txt_formName; $Txt_tool : Text
+var $Obj_parameters : Object
 
 // ----------------------------------------------------
 // Initialisations

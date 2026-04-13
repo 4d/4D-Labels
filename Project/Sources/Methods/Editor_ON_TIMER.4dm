@@ -9,9 +9,9 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_BOOLEAN:C305($Boo_update)
-C_LONGINT:C283($Lon_; $Lon_mouseButton; $Lon_parameters)
-C_TEXT:C284($Txt_tool)
+var $Boo_update : Boolean
+var $Lon_; $Lon_mouseButton; $Lon_parameters : Integer
+var $Txt_tool : Text
 
 // ----------------------------------------------------
 // Initialisations

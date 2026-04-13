@@ -1,38 +1,34 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Editor_PUT_USER_FORM
-  // Database: 4D Labels
-  // ID[EBECDF824E4C4479B3E19B1A861C8422]
-  // Created #2-7-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_TEXT:C284($1)
+// ----------------------------------------------------
+// Project method : Editor_PUT_USER_FORM
+// Database: 4D Labels
+// ID[EBECDF824E4C4479B3E19B1A861C8422]
+// Created #2-7-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $1 : Text
 
-C_LONGINT:C283($Lon_parameters)
-C_PICTURE:C286($p)
-C_POINTER:C301($Ptr_table)
-C_TEXT:C284($t;$Txt_name)
+var $Lon_parameters : Integer
+var $p : Picture
+var $Ptr_table : Pointer
+var $t; $Txt_name : Text
 
-If (False:C215)
-	C_TEXT:C284(Editor_PUT_USER_FORM ;$1)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=1;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	
-	  // Required parameters
+	// Required parameters
 	$Txt_name:=$1
 	
-	  // Optional parameters
+	// Optional parameters
 	If ($Lon_parameters>=2)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -44,19 +40,19 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 
-  //=====================================
-$t:=4D_NO_ERROR ("ON")
+//=====================================
+$t:=4D_NO_ERROR("ON")
 
-FORM SCREENSHOT:C940($Ptr_table->;$Txt_name;$p)
-(OBJECT Get pointer:C1124(Object named:K67:5;"Image"))->:=$p
+FORM SCREENSHOT:C940($Ptr_table->; $Txt_name; $p)
+(OBJECT Get pointer:C1124(Object named:K67:5; "Image"))->:=$p
 
-  //=====================================
-4D_NO_ERROR ("OFF";$t)
+//=====================================
+4D_NO_ERROR("OFF"; $t)
 
-  // ----------------------------------------------------
-  // Return
-  // <NONE>
-  // ----------------------------------------------------
-  // Endh
+// ----------------------------------------------------
+// Return
+// <NONE>
+// ----------------------------------------------------
+// Endh

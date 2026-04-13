@@ -5,70 +5,29 @@
 // ID[C4AC2C9B6DBB43FBA2AEC05C5201C0F8]
 // Created #20-1-2015 by Vincent de Lachaux
 // ----------------------------------------------------
-// Description:
-//
-// ----------------------------------------------------
-// Declarations
-var $1 : Integer
-var $2 : Integer
-var $3 : Text
-var $4 : Text
-C_TEXT:C284(${5})
+#DECLARE($alignment : Integer; $offset : Integer; $reference : Text;  ...  : Text)
 
-var $Lon_; $Lon_align; $Lon_bottom; $Lon_i; $Lon_left; $Lon_offset : Integer
-var $Lon_parameters; $Lon_right; $Lon_top : Integer
-var $Txt_object; $Txt_reference : Text
+var $bottom; $dummy; $i; $left; $right; $top : Integer
 
-// ----------------------------------------------------
-// Initialisations
-$Lon_parameters:=Count parameters:C259
-
-If (Asserted:C1132($Lon_parameters>=4; "Missing parameter"))
-	
-	//Required parameters
-	$Lon_align:=$1
-	$Lon_offset:=$2
-	$Txt_reference:=$3
-	
-	//Optional parameters
-	If ($Lon_parameters>=5)
-		
-		// <NONE>
-		
-	End if 
-	
-Else 
-	
-	ABORT:C156
-	
-End if 
-
-// ----------------------------------------------------
-OBJECT GET COORDINATES:C663(*; $Txt_reference; $Lon_left; $Lon_top; $Lon_right; $Lon_bottom)
+OBJECT GET COORDINATES:C663(*; $reference; $left; $top; $right; $bottom)
 
 Case of 
 		
-		//______________________________________________________
-	: ($Lon_align=Align right:K42:4)
+		// ______________________________________________________
+	: ($alignment=Align right:K42:4)
 		
-		For ($Lon_i; 4; $Lon_parameters; 1)
+		For ($i; 4; Count parameters:C259; 1)
 			
-			$Txt_object:=${$Lon_i}
-			OBJECT GET COORDINATES:C663(*; $Txt_object; $Lon_; $Lon_; $Lon_right; $Lon_)
-			OBJECT MOVE:C664(*; $Txt_object; ($Lon_left-$Lon_right)-20; 0)
+			var $name : Text:=${$i}
+			OBJECT GET COORDINATES:C663(*; $name; $dummy; $dummy; $right; $dummy)
+			OBJECT MOVE:C664(*; $name; ($left-$right)-20; 0)
 			
 		End for 
 		
-		//______________________________________________________
+		// ______________________________________________________
 	Else 
 		
-		ASSERT:C1129(False:C215)  //#TO_BE_DONE
+		ASSERT:C1129(False:C215)  // #TO_BE_DONE
 		
-		//______________________________________________________
+		// ______________________________________________________
 End case 
-
-// ----------------------------------------------------
-// Return
-// <NONE>
-// ----------------------------------------------------
-// End

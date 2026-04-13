@@ -15,9 +15,9 @@
 
 //C_TEXT($0)
 
-C_LONGINT:C283($Lon_parameters)
-C_POINTER:C301($Ptr_object)
-C_TEXT:C284($Txt_tool)
+var $Lon_parameters : Integer
+var $Ptr_object : Pointer
+var $Txt_tool : Text
 
 //If (False)
 //C_TEXT(Editor_Get_current_tool; $0)

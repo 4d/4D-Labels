@@ -1,57 +1,51 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : table_Field_list
-  // Database: 4D Labels
-  // ID[9E3958CA682F4D8B9907406D520269F9]
-  // Created #15-12-2014 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_LONGINT:C283($0)
-C_LONGINT:C283($1)
-C_TEXT:C284($2)
+// ----------------------------------------------------
+// Project method : table_Field_list
+// Database: 4D Labels
+// ID[9E3958CA682F4D8B9907406D520269F9]
+// Created #15-12-2014 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Integer
+var $1 : Integer
+var $2 : Text
 
-C_BOOLEAN:C305($Boo_;$Boo_invisible;$Boo_virtualStructure)
-C_LONGINT:C283($Lon_;$Lon_fieldID;$Lon_fieldType;$Lon_i;$Lon_ID;$Lon_j)
-C_LONGINT:C283($Lon_parameters;$Lon_relationFieldID;$Lon_relationFieldType;$Lon_relationTableID;$Lon_tableID;$Lst_child)
-C_LONGINT:C283($Lst_list)
-C_PICTURE:C286($Pic_buffer)
-C_POINTER:C301($Ptr_field)
-C_TEXT:C284($Txt_filter)
+var $Boo_; $Boo_invisible; $Boo_virtualStructure : Boolean
+var $Lon_; $Lon_fieldID; $Lon_fieldType; $Lon_i; $Lon_ID; $Lon_j : Integer
+var $Lon_parameters; $Lon_relationFieldID; $Lon_relationFieldType; $Lon_relationTableID; $Lon_tableID; $Lst_child : Integer
+var $Lst_list : Integer
+var $Pic_buffer : Picture
+var $Ptr_field : Pointer
+var $Txt_filter : Text
 
-ARRAY LONGINT:C221($tLon_fieldIDs;0)
-ARRAY LONGINT:C221($tLon_relationFieldIDs;0)
-ARRAY TEXT:C222($tTxt_fieldNames;0)
-ARRAY TEXT:C222($tTxt_relationFieldNames;0)
+ARRAY LONGINT:C221($tLon_fieldIDs; 0)
+ARRAY LONGINT:C221($tLon_relationFieldIDs; 0)
+ARRAY TEXT:C222($tTxt_fieldNames; 0)
+ARRAY TEXT:C222($tTxt_relationFieldNames; 0)
 
-If (False:C215)
-	C_LONGINT:C283(wizard_Field_list ;$0)
-	C_LONGINT:C283(wizard_Field_list ;$1)
-	C_TEXT:C284(wizard_Field_list ;$2)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=1;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	$Lon_tableID:=$1
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=2)
 		
 		$Txt_filter:=$2
-		$Txt_filter:=Replace string:C233($Txt_filter;"@";"";*)
+		$Txt_filter:=Replace string:C233($Txt_filter; "@"; ""; *)
 		
 	End if 
 	
 	$Lst_list:=New list:C375
 	
-	$Txt_filter:=Choose:C955(Length:C16($Txt_filter)#0;"@"+$Txt_filter+"@";"@")
+	$Txt_filter:=Choose:C955(Length:C16($Txt_filter)#0; "@"+$Txt_filter+"@"; "@")
 	
 	$Boo_virtualStructure:=True:C214
 	
@@ -61,38 +55,38 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 If ($Lon_tableID#0)
 	
 	If ($Boo_virtualStructure)
 		
-		GET FIELD TITLES:C804((Table:C252($Lon_tableID))->;$tTxt_fieldNames;$tLon_fieldIDs)
+		GET FIELD TITLES:C804((Table:C252($Lon_tableID))->; $tTxt_fieldNames; $tLon_fieldIDs)
 		
 	Else 
 		
-		For ($Lon_i;1;Get last field number:C255($Lon_tableID);1)
+		For ($Lon_i; 1; Last field number:C255($Lon_tableID); 1)
 			
-			If (Is field number valid:C1000($Lon_tableID;$Lon_i))
+			If (Is field number valid:C1000($Lon_tableID; $Lon_i))
 				
-				GET FIELD PROPERTIES:C258($Lon_tableID;$Lon_i;$Lon_;$Lon_;$Boo_;$Boo_;$Boo_invisible)
+				GET FIELD PROPERTIES:C258($Lon_tableID; $Lon_i; $Lon_; $Lon_; $Boo_; $Boo_; $Boo_invisible)
 				
 				If (Not:C34($Boo_invisible))
 					
-					APPEND TO ARRAY:C911($tTxt_fieldNames;Field name:C257($Lon_tableID;$Lon_i))
-					APPEND TO ARRAY:C911($tLon_fieldIDs;$Lon_i)
+					APPEND TO ARRAY:C911($tTxt_fieldNames; Field name:C257($Lon_tableID; $Lon_i))
+					APPEND TO ARRAY:C911($tLon_fieldIDs; $Lon_i)
 					
 				End if 
 			End if 
 		End for 
 	End if 
 	
-	For ($Lon_i;1;Size of array:C274($tLon_fieldIDs);1)
+	For ($Lon_i; 1; Size of array:C274($tLon_fieldIDs); 1)
 		
 		$Lon_fieldID:=$tLon_fieldIDs{$Lon_i}
 		
-		$Ptr_field:=Field:C253($Lon_tableID;$Lon_fieldID)
+		$Ptr_field:=Field:C253($Lon_tableID; $Lon_fieldID)
 		
-		GET RELATION PROPERTIES:C686($Ptr_field;$Lon_relationTableID;$Lon_relationFieldID)
+		GET RELATION PROPERTIES:C686($Ptr_field; $Lon_relationTableID; $Lon_relationFieldID)
 		
 		If ($tTxt_fieldNames{$Lon_i}=$Txt_filter)\
 			 | (($Lon_relationTableID#0) & ($Lon_relationFieldID#0))
@@ -101,14 +95,14 @@ If ($Lon_tableID#0)
 			
 			Case of 
 					
-					  //________________________________________
+					//________________________________________
 				: ($Lon_fieldType=Is BLOB:K8:12)\
 					 | ($Lon_fieldType=Is subtable:K8:11)\
 					 | ($Lon_fieldType=Is object:K8:27)
 					
-					  //These objects cannot be used in labels
+					//These objects cannot be used in labels
 					
-					  //________________________________________
+					//________________________________________
 				Else 
 					
 					If ($Lon_relationTableID#0)\
@@ -116,20 +110,20 @@ If ($Lon_tableID#0)
 						
 						If ($Boo_virtualStructure)
 							
-							GET FIELD TITLES:C804((Table:C252($Lon_relationTableID))->;$tTxt_relationFieldNames;$tLon_relationFieldIDs)
+							GET FIELD TITLES:C804((Table:C252($Lon_relationTableID))->; $tTxt_relationFieldNames; $tLon_relationFieldIDs)
 							
 						Else 
 							
-							For ($Lon_j;1;Get last field number:C255($Lon_relationTableID);1)
+							For ($Lon_j; 1; Last field number:C255($Lon_relationTableID); 1)
 								
-								If (Is field number valid:C1000($Lon_relationTableID;$Lon_j))
+								If (Is field number valid:C1000($Lon_relationTableID; $Lon_j))
 									
-									GET FIELD PROPERTIES:C258($Lon_relationTableID;$Lon_j;$Lon_;$Lon_;$Boo_;$Boo_;$Boo_invisible)
+									GET FIELD PROPERTIES:C258($Lon_relationTableID; $Lon_j; $Lon_; $Lon_; $Boo_; $Boo_; $Boo_invisible)
 									
 									If (Not:C34($Boo_invisible))
 										
-										APPEND TO ARRAY:C911($tTxt_relationFieldNames;Field name:C257($Lon_relationTableID;$Lon_j))
-										APPEND TO ARRAY:C911($tLon_relationFieldIDs;$Lon_j)
+										APPEND TO ARRAY:C911($tTxt_relationFieldNames; Field name:C257($Lon_relationTableID; $Lon_j))
+										APPEND TO ARRAY:C911($tLon_relationFieldIDs; $Lon_j)
 										
 									End if 
 								End if 
@@ -138,48 +132,48 @@ If ($Lon_tableID#0)
 						
 						$Lst_child:=New list:C375
 						
-						For ($Lon_j;1;Size of array:C274($tLon_relationFieldIDs);1)
+						For ($Lon_j; 1; Size of array:C274($tLon_relationFieldIDs); 1)
 							
 							$Lon_ID:=$Lon_ID+1
 							$Lon_relationFieldID:=$tLon_relationFieldIDs{$Lon_j}
-							$Lon_relationFieldType:=Type:C295(Field:C253($Lon_relationTableID;$Lon_relationFieldID)->)
+							$Lon_relationFieldType:=Type:C295(Field:C253($Lon_relationTableID; $Lon_relationFieldID)->)
 							
 							Case of 
 									
-									  //________________________________________
+									//________________________________________
 								: ($Lon_relationFieldType=Is BLOB:K8:12)\
 									 | ($Lon_relationFieldType=Is subtable:K8:11)\
 									 | ($Lon_relationFieldType=Is object:K8:27)
 									
-									  //These objects can not be used in labels
+									//These objects can not be used in labels
 									
-									  //________________________________________
+									//________________________________________
 								: ($tTxt_relationFieldNames{$Lon_j}#$Txt_filter)
 									
-									  //________________________________________
+									//________________________________________
 								Else 
 									
-									APPEND TO LIST:C376($Lst_child;$tTxt_relationFieldNames{$Lon_j};$Lon_ID)
-									SET LIST ITEM PARAMETER:C986($Lst_child;0;"tableId";$Lon_relationTableID)
-									SET LIST ITEM PARAMETER:C986($Lst_child;0;"fieldId";$Lon_relationFieldID)
-									SET LIST ITEM PARAMETER:C986($Lst_child;0;"fieldType";$Lon_relationFieldType)
-									$Pic_buffer:=wizard_Field_icon ($Lon_relationFieldType)
-									SET LIST ITEM ICON:C950($Lst_child;0;$Pic_buffer)
+									APPEND TO LIST:C376($Lst_child; $tTxt_relationFieldNames{$Lon_j}; $Lon_ID)
+									SET LIST ITEM PARAMETER:C986($Lst_child; 0; "tableId"; $Lon_relationTableID)
+									SET LIST ITEM PARAMETER:C986($Lst_child; 0; "fieldId"; $Lon_relationFieldID)
+									SET LIST ITEM PARAMETER:C986($Lst_child; 0; "fieldType"; $Lon_relationFieldType)
+									$Pic_buffer:=wizard_Field_icon($Lon_relationFieldType)
+									SET LIST ITEM ICON:C950($Lst_child; 0; $Pic_buffer)
 									
-									  //----------------------------------------
+									//----------------------------------------
 							End case 
 						End for 
 						
 						If (Count list items:C380($Lst_child)>0)
 							
 							$Lon_ID:=$Lon_ID+1
-							APPEND TO LIST:C376($Lst_list;$tTxt_fieldNames{$Lon_i};$Lon_ID;$Lst_child;True:C214)
-							SET LIST ITEM PARAMETER:C986($Lst_list;0;"tableId";$Lon_tableID)
-							SET LIST ITEM PARAMETER:C986($Lst_list;0;"fieldId";$Lon_fieldID)
-							SET LIST ITEM PARAMETER:C986($Lst_list;0;"fieldType";$Lon_fieldType)
-							SET LIST ITEM PROPERTIES:C386($Lst_list;0;False:C215;Bold:K14:2;0)
-							$Pic_buffer:=wizard_Field_icon ($Lon_fieldType)
-							SET LIST ITEM ICON:C950($Lst_list;0;$Pic_buffer)
+							APPEND TO LIST:C376($Lst_list; $tTxt_fieldNames{$Lon_i}; $Lon_ID; $Lst_child; True:C214)
+							SET LIST ITEM PARAMETER:C986($Lst_list; 0; "tableId"; $Lon_tableID)
+							SET LIST ITEM PARAMETER:C986($Lst_list; 0; "fieldId"; $Lon_fieldID)
+							SET LIST ITEM PARAMETER:C986($Lst_list; 0; "fieldType"; $Lon_fieldType)
+							SET LIST ITEM PROPERTIES:C386($Lst_list; 0; False:C215; Bold:K14:2; 0)
+							$Pic_buffer:=wizard_Field_icon($Lon_fieldType)
+							SET LIST ITEM ICON:C950($Lst_list; 0; $Pic_buffer)
 							
 						Else 
 							
@@ -190,24 +184,24 @@ If ($Lon_tableID#0)
 					Else 
 						
 						$Lon_ID:=$Lon_ID+1
-						APPEND TO LIST:C376($Lst_list;$tTxt_fieldNames{$Lon_i};$Lon_ID)
-						SET LIST ITEM PARAMETER:C986($Lst_list;0;"tableId";$Lon_tableID)
-						SET LIST ITEM PARAMETER:C986($Lst_list;0;"fieldId";$Lon_fieldID)
-						SET LIST ITEM PARAMETER:C986($Lst_list;0;"fieldType";$Lon_fieldType)
-						$Pic_buffer:=wizard_Field_icon ($Lon_fieldType)
-						SET LIST ITEM ICON:C950($Lst_list;0;$Pic_buffer)
+						APPEND TO LIST:C376($Lst_list; $tTxt_fieldNames{$Lon_i}; $Lon_ID)
+						SET LIST ITEM PARAMETER:C986($Lst_list; 0; "tableId"; $Lon_tableID)
+						SET LIST ITEM PARAMETER:C986($Lst_list; 0; "fieldId"; $Lon_fieldID)
+						SET LIST ITEM PARAMETER:C986($Lst_list; 0; "fieldType"; $Lon_fieldType)
+						$Pic_buffer:=wizard_Field_icon($Lon_fieldType)
+						SET LIST ITEM ICON:C950($Lst_list; 0; $Pic_buffer)
 						
 					End if 
 					
-					  //________________________________________
+					//________________________________________
 			End case 
 		End if 
 	End for 
 End if 
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=$Lst_list
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

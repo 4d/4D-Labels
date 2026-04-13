@@ -9,19 +9,14 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_LONGINT:C283($0)
-C_TEXT:C284($1)
+var $0 : Integer
+var $1 : Text
 
-C_BOOLEAN:C305($Boo_text)
-C_LONGINT:C283($Lon_fontSize; $Lon_i; $Lon_parameters; $Lon_value)
-C_TEXT:C284($Dom_label; $Dom_object; $Txt_ID)
+var $Boo_text : Boolean
+var $Lon_fontSize; $Lon_i; $Lon_parameters; $Lon_value : Integer
+var $Dom_label; $Dom_object; $Txt_ID : Text
 
 ARRAY TEXT:C222($tDom_selected; 0)
-
-If (False:C215)
-	C_LONGINT:C283(Editor_SEL_Get_font_size; $0)
-	C_TEXT:C284(Editor_SEL_Get_font_size; $1)
-End if 
 
 // ----------------------------------------------------
 // Initialisations

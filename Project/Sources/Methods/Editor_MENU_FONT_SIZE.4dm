@@ -13,12 +13,6 @@ var $0 : Text
 var $1 : Integer
 var $2 : Text
 
-If (False:C215)
-	C_TEXT:C284(Editor_MENU_FONT_SIZE; $0)
-	C_LONGINT:C283(Editor_MENU_FONT_SIZE; $1)
-	C_TEXT:C284(Editor_MENU_FONT_SIZE; $2)
-End if 
-
 var $fontSizeMenu; $parentMenu : Text
 var $fontSize; $i : Integer
 

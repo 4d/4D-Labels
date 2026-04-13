@@ -9,21 +9,14 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_TEXT:C284($1)
-C_TEXT:C284($2)
-C_TEXT:C284($3)
-C_BOOLEAN:C305($4)
+var $1 : Text
+var $2 : Text
+var $3 : Text
+var $4 : Boolean
 
-C_BOOLEAN:C305($Boo_disabled)
-C_LONGINT:C283($Lon_fontSize; $Lon_parameters; $Lon_styles)
-C_TEXT:C284($Dom_canvas; $Dom_label; $Mnu_buffer; $Mnu_pop; $Txt_font; $Txt_style)
-
-If (False:C215)
-	C_TEXT:C284(Editor_MENU_TEXT_ATTRIBUTES; $1)
-	C_TEXT:C284(Editor_MENU_TEXT_ATTRIBUTES; $2)
-	C_TEXT:C284(Editor_MENU_TEXT_ATTRIBUTES; $3)
-	C_BOOLEAN:C305(Editor_MENU_TEXT_ATTRIBUTES; $4)
-End if 
+var $Boo_disabled : Boolean
+var $Lon_fontSize; $Lon_parameters; $Lon_styles : Integer
+var $Dom_canvas; $Dom_label; $Mnu_buffer; $Mnu_pop; $Txt_font; $Txt_style : Text
 
 // ----------------------------------------------------
 // Initialisations
@@ -98,7 +91,7 @@ If ($Boo_disabled)
 End if 
 
 $Mnu_buffer:=mnu_Color(Editor_SEL_Get_font_color($Dom_label); "font")
-APPEND MENU ITEM:C411($Mnu_pop; Get localized string:C991("Menus_fontColor"); $Mnu_buffer)
+APPEND MENU ITEM:C411($Mnu_pop; Localized string:C991("Menus_fontColor"); $Mnu_buffer)
 RELEASE MENU:C978($Mnu_buffer)
 
 If ($Boo_disabled)

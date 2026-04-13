@@ -9,18 +9,13 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_LONGINT:C283($1)
-C_LONGINT:C283($2)
+var $1 : Integer
+var $2 : Integer
 
-C_LONGINT:C283($Lon_mouseX; $Lon_mouseY; $Lon_parameters)
-C_TEXT:C284($Dom_canvas; $Dom_g; $Dom_label; $Dom_node; $Dom_objects; $Txt_buffer)
-C_TEXT:C284($Txt_class; $Txt_color; $Txt_objectID; $Txt_style; $Txt_tool; $Txt_transform)
-C_OBJECT:C1216($Obj_parameters)
-
-If (False:C215)
-	C_LONGINT:C283(Editor_TEXT_BEGIN; $1)
-	C_LONGINT:C283(Editor_TEXT_BEGIN; $2)
-End if 
+var $Lon_mouseX; $Lon_mouseY; $Lon_parameters : Integer
+var $Dom_canvas; $Dom_g; $Dom_label; $Dom_node; $Dom_objects; $Txt_buffer : Text
+var $Txt_class; $Txt_color; $Txt_objectID; $Txt_style; $Txt_tool; $Txt_transform : Text
+var $Obj_parameters : Object
 
 // ----------------------------------------------------
 // Initialisations

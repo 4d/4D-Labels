@@ -1,34 +1,29 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Editor_Get_default_stroke_width
-  // Database: 4D Labels
-  // ID[ECCC36EE3033427BA0608AF16896E72F]
-  // Created #26-5-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_LONGINT:C283($0)
+// ----------------------------------------------------
+// Project method : Editor_Get_default_stroke_width
+// Database: 4D Labels
+// ID[ECCC36EE3033427BA0608AF16896E72F]
+// Created #26-5-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Integer
 
-C_LONGINT:C283($Lon_parameters;$Lon_value)
-
-If (False:C215)
-	C_LONGINT:C283(Editor_Get_default_stroke_width ;$0)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+var $Lon_parameters; $Lon_value : Integer
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=0; "Missing parameter"))
 	
-	  //NO PARAMETERS REQUIRED
+	//NO PARAMETERS REQUIRED
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=1)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -38,12 +33,12 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
-$Lon_value:=OB Get:C1224((OBJECT Get pointer:C1124(Object named:K67:5;"object"))->;"stroke-width";Is longint:K8:6)
+// ----------------------------------------------------
+$Lon_value:=OB Get:C1224((OBJECT Get pointer:C1124(Object named:K67:5; "object"))->; "stroke-width"; Is longint:K8:6)
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=$Lon_value
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

@@ -1,43 +1,38 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : PRINT_Get_image_field
-  // Database: 4D Labels
-  // ID[575A4F1544BB47D0B96B01FEEC4A679F]
-  // Created #20-2-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_PICTURE:C286($0)
-C_TEXT:C284($1)
+// ----------------------------------------------------
+// Project method : PRINT_Get_image_field
+// Database: 4D Labels
+// ID[575A4F1544BB47D0B96B01FEEC4A679F]
+// Created #20-2-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Picture
+var $1 : Text
 
-C_LONGINT:C283($Lon_parameters;$Lon_start)
-C_PICTURE:C286($Pic_image)
-C_POINTER:C301($Ptr_field)
-C_TEXT:C284($Txt_expression;$Txt_segment)
+var $Lon_parameters; $Lon_start : Integer
+var $Pic_image : Picture
+var $Ptr_field : Pointer
+var $Txt_expression; $Txt_segment : Text
 
-ARRAY LONGINT:C221($tLon_lengths;0)
-ARRAY LONGINT:C221($tLon_positions;0)
+ARRAY LONGINT:C221($tLon_lengths; 0)
+ARRAY LONGINT:C221($tLon_positions; 0)
 
-If (False:C215)
-	C_PICTURE:C286(PRINT_Get_image_field ;$0)
-	C_TEXT:C284(PRINT_Get_image_field ;$1)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=1;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	$Txt_expression:=$1
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=2)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -49,18 +44,18 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
-While (Match regex:C1019("([^+]+)";$Txt_expression;$Lon_start;$tLon_positions;$tLon_lengths))
+// ----------------------------------------------------
+While (Match regex:C1019("([^+]+)"; $Txt_expression; $Lon_start; $tLon_positions; $tLon_lengths))
 	
-	$Txt_segment:=Substring:C12($Txt_expression;$tLon_positions{1};$tLon_lengths{1})
+	$Txt_segment:=Substring:C12($Txt_expression; $tLon_positions{1}; $tLon_lengths{1})
 	
-	$Ptr_field:=Get_field_pointer ($Txt_segment)
+	$Ptr_field:=Get_field_pointer($Txt_segment)
 	
 	If (Asserted:C1132(Not:C34(Is nil pointer:C315($Ptr_field))))
 		
 		If (Type:C295($Ptr_field->)=Is picture:K8:10)
 			
-			COMBINE PICTURES:C987($Pic_image;$Pic_image;Horizontal concatenation:K61:8;$Ptr_field->)
+			COMBINE PICTURES:C987($Pic_image; $Pic_image; Horizontal concatenation:K61:8; $Ptr_field->)
 			
 		End if 
 	End if 
@@ -69,9 +64,9 @@ While (Match regex:C1019("([^+]+)";$Txt_expression;$Lon_start;$tLon_positions;$t
 	
 End while 
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=$Pic_image
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

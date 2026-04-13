@@ -8,81 +8,47 @@
 // Description:
 // Sets the width of object(s) according to localisation
 // ----------------------------------------------------
-// Declarations
-var $1 : Integer
-var $2 : Text
-C_TEXT:C284(${3})
+#DECLARE($alignment : Integer; $objectName : Text;  ...  : Text)
 
-var $Lon_alignment; $Lon_bottom; $Lon_height; $Lon_i; $Lon_left; $Lon_parameters : Integer
-var $Lon_right; $Lon_top; $Lon_width : Integer
-var $Txt_objectName : Text
+var $bottom; $height; $i; $left; $right; $top : Integer
+var $width : Integer
 
-// ----------------------------------------------------
-// Initialisations
-$Lon_parameters:=Count parameters:C259
-
-If (Asserted:C1132($Lon_parameters>=2; "Missing parameter"))
+For ($i; 2; Count parameters:C259; 1)
 	
-	//Required parameters
-	$Lon_alignment:=$1
-	$Txt_objectName:=$2  // Object name
+	$objectName:=${$i}
 	
-	//Optional parameters
-	If ($Lon_parameters>=2)
-		
-		// <NONE>
-		
-	End if 
+	OBJECT GET BEST SIZE:C717(*; $objectName; $width; $height)
 	
-Else 
+	$width:=$width*1.1  //10% more
 	
-	ABORT:C156
-	
-End if 
-
-// ----------------------------------------------------
-For ($Lon_i; 2; $Lon_parameters; 1)
-	
-	$Txt_objectName:=${$Lon_i}
-	
-	OBJECT GET BEST SIZE:C717(*; $Txt_objectName; $Lon_width; $Lon_height)
-	
-	$Lon_width:=$Lon_width*1.1  //10% more
-	
-	OBJECT GET COORDINATES:C663(*; $Txt_objectName; $Lon_left; $Lon_top; $Lon_right; $Lon_bottom)
+	OBJECT GET COORDINATES:C663(*; $objectName; $left; $top; $right; $bottom)
 	
 	Case of 
 			
 			//______________________________________________________
-		: ($Lon_alignment=Align left:K42:2)
+		: ($alignment=Align left:K42:2)
 			
-			$Lon_right:=$Lon_left+$Lon_width
-			
-			//______________________________________________________
-		: ($Lon_alignment=Align right:K42:4)
-			
-			$Lon_left:=$Lon_right-$Lon_width
+			$right:=$left+$width
 			
 			//______________________________________________________
-		: ($Lon_alignment=Align center:K42:3)
+		: ($alignment=Align right:K42:4)
 			
-			$Lon_left:=$Lon_left+((($Lon_right-$Lon_left)-$Lon_width)\2)
-			$Lon_right:=$Lon_left+$Lon_width
+			$left:=$right-$width
+			
+			//______________________________________________________
+		: ($alignment=Align center:K42:3)
+			
+			$left:=$left+((($right-$left)-$width)\2)
+			$right:=$left+$width
 			
 			//______________________________________________________
 		Else 
 			
-			ASSERT:C1129(False:C215; "Unknown entry point: \""+String:C10($Lon_alignment)+"\"")
+			ASSERT:C1129(False:C215; "Unknown entry point: \""+String:C10($alignment)+"\"")
 			
 			//______________________________________________________
 	End case 
 	
-	OBJECT SET COORDINATES:C1248(*; $Txt_objectName; $Lon_left; $Lon_top; $Lon_right; $Lon_bottom)
+	OBJECT SET COORDINATES:C1248(*; $objectName; $left; $top; $right; $bottom)
 	
 End for 
-
-// ----------------------------------------------------
-// Return
-// <NONE>
-// ----------------------------------------------------
-// End

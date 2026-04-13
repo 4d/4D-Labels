@@ -9,20 +9,16 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_BOOLEAN:C305($0)
+var $0 : Boolean
 
-C_BOOLEAN:C305($Boo_update)
-C_LONGINT:C283($Lon_i; $Lon_parameters)
-C_POINTER:C301($Ptr_textEdit)
-C_TEXT:C284($Dom_canvas; $Dom_label; $Dom_object; $Dom_text; $Txt_buffer; $Txt_ID)
-C_TEXT:C284($Txt_old; $Txt_value)
-C_OBJECT:C1216($Obj_dialog)
+var $Boo_update : Boolean
+var $Lon_i; $Lon_parameters : Integer
+var $Ptr_textEdit : Pointer
+var $Dom_canvas; $Dom_label; $Dom_object; $Dom_text; $Txt_buffer; $Txt_ID : Text
+var $Txt_old; $Txt_value : Text
+var $Obj_dialog : Object
 
 ARRAY TEXT:C222($tDom_selects; 0)
-
-If (False:C215)
-	C_BOOLEAN:C305(Editor_TEXT_EDIT_Stop; $0)
-End if 
 
 // ----------------------------------------------------
 // Initialisations

@@ -4,11 +4,11 @@
 // Created #7-7-2015 by Vincent de Lachaux
 // ----------------------------------------------------
 // Declarations
-C_LONGINT:C283($Lon_formEvent)
-C_POINTER:C301($Ptr_me)
-C_TEXT:C284($Txt_buffer; $Txt_me; $Txt_target; $Dom_label; $Dom_form; $Txt_formName)
-C_OBJECT:C1216($Obj_buffer; $Obj_param)
-C_POINTER:C301($Ptr_table)
+var $Lon_formEvent : Integer
+var $Ptr_me : Pointer
+var $Txt_buffer; $Txt_me; $Txt_target; $Dom_label; $Dom_form; $Txt_formName : Text
+var $Obj_buffer; $Obj_param : Object
+var $Ptr_table : Pointer
 // ----------------------------------------------------
 // Initialisations
 $Lon_formEvent:=Form event code:C388
@@ -51,8 +51,8 @@ Case of
 				//PICTURE PROPERTIES($Pic_buffer;$Lon_width;$Lon_height)
 				//CLEAR VARIABLE($Pic_buffer)
 				//wizard_SET_DATA (\
-										"size.width";String($Lon_width);\
-										"size.height";String($Lon_height))
+					"size.width";String($Lon_width);\
+					"size.height";String($Lon_height))
 				//End if 
 				//End if 
 				//End if 
@@ -66,12 +66,12 @@ Case of
 					If ($Txt_formName#"no-form")
 						If (label_data_Get("setting.auto-width")="false")
 							$Ptr_table:=Table:C252(C_MASTER_TABLE)
-							C_PICTURE:C286($Pic_buffer)
+							var $Pic_buffer : Picture
 							FORM SCREENSHOT:C940($Ptr_table->; $Txt_formName; $Pic_buffer)
-							C_REAL:C285($Num_width; $Num_height)
+							var $Num_width; $Num_height : Real
 							PICTURE PROPERTIES:C457($Pic_buffer; $Num_width; $Num_height)
 							CLEAR VARIABLE:C89($Pic_buffer)
-							C_TEXT:C284($Txt_unit)
+							var $Txt_unit : Text
 							$Txt_unit:=label_data_Get("size.unit")
 							If ($Txt_unit#"pt")
 								$Num_width:=math_Length_conversion($Num_width; "pt"; $Txt_unit; 2)
@@ -89,16 +89,16 @@ Case of
 				
 				//#ACI0097966 [
 				//wizard_SET_DATA ("rows";OB Get($Obj_buffer;"rows";Is text);\
-										//"columns";OB Get($Obj_buffer;"columns";Is text);\
-										//"size.height";OB Get($Obj_buffer;"size.height";Is text);\
-										//"size.width";OB Get($Obj_buffer;"size.width";Is text);\
-										//"gap.horizontal";OB Get($Obj_buffer;"gap.horizontal";Is text);\
-										//"gap.vertical";OB Get($Obj_buffer;"gap.vertical";Is text);\
-										//"margin.left";OB Get($Obj_buffer;"margin.left";Is text);\
-										//"margin.top";OB Get($Obj_buffer;"margin.top";Is text);\
-										//"margin.right";OB Get($Obj_buffer;"margin.right";Is text);\
-										//"margin.bottom";OB Get($Obj_buffer;"margin.bottom";Is text);\
-										//"setting.auto-width";"true")
+					//"columns";OB Get($Obj_buffer;"columns";Is text);\
+					//"size.height";OB Get($Obj_buffer;"size.height";Is text);\
+					//"size.width";OB Get($Obj_buffer;"size.width";Is text);\
+					//"gap.horizontal";OB Get($Obj_buffer;"gap.horizontal";Is text);\
+					//"gap.vertical";OB Get($Obj_buffer;"gap.vertical";Is text);\
+					//"margin.left";OB Get($Obj_buffer;"margin.left";Is text);\
+					//"margin.top";OB Get($Obj_buffer;"margin.top";Is text);\
+					//"margin.right";OB Get($Obj_buffer;"margin.right";Is text);\
+					//"margin.bottom";OB Get($Obj_buffer;"margin.bottom";Is text);\
+					//"setting.auto-width";"true")
 				//
 				wizard_SET_DATA("rows"; OB Get:C1224($Obj_buffer; "rows"; Is text:K8:3); \
 					"columns"; OB Get:C1224($Obj_buffer; "columns"; Is text:K8:3); \

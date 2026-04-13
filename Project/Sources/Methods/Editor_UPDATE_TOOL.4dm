@@ -9,20 +9,15 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_TEXT:C284($1)
-C_REAL:C285($2)
+var $1 : Text
+var $2 : Real
 
-C_LONGINT:C283($Lon_parameters)
-C_PICTURE:C286($Pic_buffer)
-C_REAL:C285($Num_value)
-C_TEXT:C284($Dom_root; $Dom_tool; $Txt_tool)
-C_OBJECT:C1216($Obj_param)
-C_BOOLEAN:C305($boo_isLightScheme)
-
-If (False:C215)
-	C_TEXT:C284(Editor_UPDATE_TOOL; $1)
-	C_REAL:C285(Editor_UPDATE_TOOL; $2)
-End if 
+var $Lon_parameters : Integer
+var $Pic_buffer : Picture
+var $Num_value : Real
+var $Dom_root; $Dom_tool; $Txt_tool : Text
+var $Obj_param : Object
+var $boo_isLightScheme : Boolean
 
 // ----------------------------------------------------
 // Initialisations

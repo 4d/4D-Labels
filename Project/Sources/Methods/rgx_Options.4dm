@@ -1,21 +1,16 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Method : rgx_Options
-  // Created 28/09/07 by Vincent
-  // ----------------------------------------------------
-  // Description
-  //
-  // ----------------------------------------------------
-C_TEXT:C284($0)
-C_LONGINT:C283($1)
+// ----------------------------------------------------
+// Method : rgx_Options
+// Created 28/09/07 by Vincent
+// ----------------------------------------------------
+// Description
+//
+// ----------------------------------------------------
+var $0 : Text
+var $1 : Integer
 
-C_LONGINT:C283($Lon_Options)
-C_TEXT:C284($Txt_Pattern)
-
-If (False:C215)
-	C_TEXT:C284(rgx_Options ;$0)
-	C_LONGINT:C283(rgx_Options ;$1)
-End if 
+var $Lon_Options : Integer
+var $Txt_Pattern : Text
 
 $Lon_Options:=$1
 
