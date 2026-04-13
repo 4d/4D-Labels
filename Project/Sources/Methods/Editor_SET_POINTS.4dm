@@ -1,35 +1,30 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Editor_SET_POINTS
-  // Database: 4D Labels
-  // ID[EE40B406B042443DA59D4D1CD54DA1C4]
-  // Created #2-2-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_REAL:C285($1)
-C_REAL:C285($2)
+// ----------------------------------------------------
+// Project method : Editor_SET_POINTS
+// Database: 4D Labels
+// ID[EE40B406B042443DA59D4D1CD54DA1C4]
+// Created #2-2-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $1 : Real
+var $2 : Real
 
-C_LONGINT:C283($Lon_parameters)
-C_POINTER:C301($Ptr_object)
-C_REAL:C285($Num_x;$Num_y)
+var $Lon_parameters : Integer
+var $Ptr_object : Pointer
+var $Num_x; $Num_y : Real
 
-If (False:C215)
-	C_REAL:C285(Editor_SET_POINTS ;$1)
-	C_REAL:C285(Editor_SET_POINTS ;$2)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=0; "Missing parameter"))
 	
-	  //NO PARAMETERS REQUIRED
+	//NO PARAMETERS REQUIRED
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=1)
 		
 		$Num_x:=$1
@@ -37,7 +32,7 @@ If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
 		
 	End if 
 	
-	$Ptr_object:=OBJECT Get pointer:C1124(Object named:K67:5;"object")
+	$Ptr_object:=OBJECT Get pointer:C1124(Object named:K67:5; "object")
 	
 Else 
 	
@@ -45,13 +40,13 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
-OB SET:C1220($Ptr_object->;\
-"point-x";$Num_x;\
-"point-y";$Num_y)
+// ----------------------------------------------------
+OB SET:C1220($Ptr_object->; \
+"point-x"; $Num_x; \
+"point-y"; $Num_y)
 
-  // ----------------------------------------------------
-  // Return
-  // <NONE>
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// Return
+// <NONE>
+// ----------------------------------------------------
+// End

@@ -1,39 +1,34 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : label_Parse_pattern
-  // Database: 4D Labels
-  // ID[534B2735468044D38023E9415DF18FEC]
-  // Created #7-4-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_TEXT:C284($0)
-C_BLOB:C604($1)
+// ----------------------------------------------------
+// Project method : label_Parse_pattern
+// Database: 4D Labels
+// ID[534B2735468044D38023E9415DF18FEC]
+// Created #7-4-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Text
+var $1 : Blob
 
-C_BLOB:C604($Blb_pattern)
-C_LONGINT:C283($Lon_i;$Lon_parameters)
-C_TEXT:C284($Txt_byte;$Txt_pattern)
+var $Blb_pattern : Blob
+var $Lon_i; $Lon_parameters : Integer
+var $Txt_byte; $Txt_pattern : Text
 
-If (False:C215)
-	C_TEXT:C284(label_Parse_pattern ;$0)
-	C_BLOB:C604(label_Parse_pattern ;$1)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=1;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	$Blb_pattern:=$1
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=2)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -45,11 +40,11 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 
-For ($Lon_i;0;7;1)
+For ($Lon_i; 0; 7; 1)
 	
-	$Txt_byte:="00"+Replace string:C233(String:C10($Blb_pattern{$Lon_i};"&x");"0x";"";*)
+	$Txt_byte:="00"+Replace string:C233(String:C10($Blb_pattern{$Lon_i}; "&x"); "0x"; ""; *)
 	
 	If ($Lon_i#0)
 		
@@ -57,13 +52,13 @@ For ($Lon_i;0;7;1)
 		
 	End if 
 	
-	$Txt_pattern:=$Txt_pattern+Substring:C12($Txt_byte;Length:C16($Txt_byte)-1;2)
+	$Txt_pattern:=$Txt_pattern+Substring:C12($Txt_byte; Length:C16($Txt_byte)-1; 2)
 	
 End for 
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=$Txt_pattern
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

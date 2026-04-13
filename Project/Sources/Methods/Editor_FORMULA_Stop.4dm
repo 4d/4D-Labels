@@ -9,26 +9,20 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_BOOLEAN:C305($0)
-C_LONGINT:C283($1)
-C_LONGINT:C283($2)
+var $0 : Boolean
+var $1 : Integer
+var $2 : Integer
 
-C_BOOLEAN:C305($Boo_update)
-C_LONGINT:C283($kLon_leftOffset; $kLon_topOffset; $Lon_bottom; $Lon_height; $Lon_left; $Lon_mouseX)
-C_LONGINT:C283($Lon_mouseY; $Lon_parameters; $Lon_right; $Lon_top; $Lon_viewPortHeight; $Lon_viewPortWidth)
-C_LONGINT:C283($Lon_width; $Lon_xClick; $Lon_yClick)
-C_REAL:C285($Num_cx; $Num_cy; $Num_editorHeight; $Num_editorWidth; $Num_editorX; $Num_editorY)
-C_REAL:C285($Num_offsetX; $Num_offsetY; $Num_tx; $Num_ty; $Num_xScaling; $Num_xTranslation)
-C_REAL:C285($Num_yScaling; $Num_yTranslation; $Num_zoom)
-C_TEXT:C284($Dom_buffer; $Dom_canvas; $Dom_label; $Dom_object; $Dom_textArea; $Txt_buffer)
-C_TEXT:C284($Txt_ID; $Txt_strokeColor; $Txt_tranform; $Txt_value)
-C_OBJECT:C1216($Obj_parameters)
-
-If (False:C215)
-	C_BOOLEAN:C305(Editor_TEXT_Stop; $0)
-	C_LONGINT:C283(Editor_TEXT_Stop; $1)
-	C_LONGINT:C283(Editor_TEXT_Stop; $2)
-End if 
+var $Boo_update : Boolean
+var $kLon_leftOffset; $kLon_topOffset; $Lon_bottom; $Lon_height; $Lon_left; $Lon_mouseX : Integer
+var $Lon_mouseY; $Lon_parameters; $Lon_right; $Lon_top; $Lon_viewPortHeight; $Lon_viewPortWidth : Integer
+var $Lon_width; $Lon_xClick; $Lon_yClick : Integer
+var $Num_cx; $Num_cy; $Num_editorHeight; $Num_editorWidth; $Num_editorX; $Num_editorY : Real
+var $Num_offsetX; $Num_offsetY; $Num_tx; $Num_ty; $Num_xScaling; $Num_xTranslation : Real
+var $Num_yScaling; $Num_yTranslation; $Num_zoom : Real
+var $Dom_buffer; $Dom_canvas; $Dom_label; $Dom_object; $Dom_textArea; $Txt_buffer : Text
+var $Txt_ID; $Txt_strokeColor; $Txt_tranform; $Txt_value : Text
+var $Obj_parameters : Object
 
 // ----------------------------------------------------
 // Initialisations

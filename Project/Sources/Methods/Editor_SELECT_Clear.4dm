@@ -9,22 +9,15 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_BOOLEAN:C305($0)
-C_TEXT:C284($1)
-C_TEXT:C284($2)
+var $0 : Boolean
+var $1 : Text
+var $2 : Text
 
-C_BOOLEAN:C305($Boo_update)
-C_LONGINT:C283($Lon_i; $Lon_parameters)
-C_TEXT:C284($Dom_canvas; $Dom_label; $Dom_object; $Txt_ID)
+var $Boo_update : Boolean
+var $Lon_i; $Lon_parameters : Integer
+var $Dom_canvas; $Dom_label; $Dom_object; $Txt_ID : Text
 
 ARRAY TEXT:C222($tDom_selected; 0)
-
-If (False:C215)
-	C_BOOLEAN:C305(Editor_SELECT_Clear; $0)
-	C_TEXT:C284(Editor_SELECT_Clear; $1)
-	C_TEXT:C284(Editor_SELECT_Clear; $2)
-End if 
-
 // ----------------------------------------------------
 // Initialisations
 $Lon_parameters:=Count parameters:C259

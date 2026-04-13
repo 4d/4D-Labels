@@ -1,38 +1,34 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : num_not_INF
-  // Database: 4D Labels
-  // ID[8ECA0DEBD0A544B38D13F943FEFB5B9C]
-  // Created #20-4-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  // to filter INF (SVG runtime error)
-  // ----------------------------------------------------
-  // Declarations
-C_REAL:C285($0)
-C_REAL:C285($1)
+// ----------------------------------------------------
+// Project method : num_not_INF
+// Database: 4D Labels
+// ID[8ECA0DEBD0A544B38D13F943FEFB5B9C]
+// Created #20-4-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+// to filter INF (SVG runtime error)
+// ----------------------------------------------------
+// Declarations
+var $0 : Real
+var $1 : Real
 
-C_LONGINT:C283($Lon_parameters)
-C_REAL:C285($Num_in;$Num_out)
+var $Lon_parameters : Integer
+var $Num_in; $Num_out : Real
 
-If (False:C215)
-	C_REAL:C285(num_not_INF ;$0)
-	C_REAL:C285(num_not_INF ;$1)
-End if 
 
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=1;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	$Num_in:=$1
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=2)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -42,12 +38,12 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 $Num_out:=Num:C11(String:C10($Num_in))
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=$Num_out
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

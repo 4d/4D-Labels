@@ -1,37 +1,31 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : layout_SET_DATA
-  // Database: 4D Labels
-  // ID[DB07854D600B421F95C42615D9FAE4E4]
-  // Created #16-12-2014 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_TEXT:C284($1)
-C_TEXT:C284($2)
+// ----------------------------------------------------
+// Project method : layout_SET_DATA
+// Database: 4D Labels
+// ID[DB07854D600B421F95C42615D9FAE4E4]
+// Created #16-12-2014 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $1 : Text
+var $2 : Text
 
-C_LONGINT:C283($Lon_parameters)
-C_POINTER:C301($Ptr_me)
-C_TEXT:C284($Txt_target;$Txt_value)
-C_OBJECT:C1216($Obj_buffer)
-
-If (False:C215)
-	C_TEXT:C284(layout_SET_DATA ;$1)
-	C_TEXT:C284(layout_SET_DATA ;$2)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+var $Lon_parameters : Integer
+var $Ptr_me : Pointer
+var $Txt_target; $Txt_value : Text
+var $Obj_buffer : Object
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=1;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	$Txt_target:=$1
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=2)
 		
 		$Txt_value:=$2
@@ -42,13 +36,13 @@ If (Asserted:C1132($Lon_parameters>=1;"Missing parameter"))
 		
 		Case of 
 				
-				  //________________________________________
+				//________________________________________
 			: (Type:C295($Ptr_me->)=Is text:K8:3)\
 				 | (Type:C295($Ptr_me->)=Is alpha field:K8:1)
 				
 				$Txt_value:=$Ptr_me->
 				
-				  //________________________________________
+				//________________________________________
 			: (Type:C295($Ptr_me->)=Is longint:K8:6)\
 				 | (Type:C295($Ptr_me->)=Is integer:K8:5)\
 				 | (Type:C295($Ptr_me->)=Is integer 64 bits:K8:25)\
@@ -56,17 +50,17 @@ If (Asserted:C1132($Lon_parameters>=1;"Missing parameter"))
 				
 				$Txt_value:=String:C10($Ptr_me->)
 				
-				  //________________________________________
+				//________________________________________
 			: (Type:C295($Ptr_me->)=Is real:K8:4)
 				
-				$Txt_value:=String:C10($Ptr_me->;"&xml")
+				$Txt_value:=String:C10($Ptr_me->; "&xml")
 				
-				  //________________________________________
+				//________________________________________
 			Else 
 				
 				ASSERT:C1129(False:C215)
 				
-				  //________________________________________
+				//________________________________________
 		End case 
 	End if 
 	
@@ -76,18 +70,18 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
-  //store value
+// ----------------------------------------------------
+//store value
 $Obj_buffer:=(OBJECT Get pointer:C1124(Object subform container:K67:4))->
 
-OB SET:C1220($Obj_buffer;\
-$Txt_target;$Txt_value;\
-"target";$Txt_target)
+OB SET:C1220($Obj_buffer; \
+$Txt_target; $Txt_value; \
+"target"; $Txt_target)
 
 CALL SUBFORM CONTAINER:C1086(-1)
 
-  // ----------------------------------------------------
-  // Return
-  // <NONE>
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// Return
+// <NONE>
+// ----------------------------------------------------
+// End

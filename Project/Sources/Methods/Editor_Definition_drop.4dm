@@ -1,35 +1,31 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Editor_Definition_drop
-  // Database: 4D Labels
-  // ID[7A3178924DED430C8B150CEF957165AD]
-  // Created #25-5-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_BOOLEAN:C305($0)
+// ----------------------------------------------------
+// Project method : Editor_Definition_drop
+// Database: 4D Labels
+// ID[7A3178924DED430C8B150CEF957165AD]
+// Created #25-5-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Boolean
 
-C_LONGINT:C283($Lon_parameters)
-C_TEXT:C284($Dom_label;$File_pasteboard)
+var $Lon_parameters : Integer
+var $Dom_label; $File_pasteboard : Text
 
-If (False:C215)
-	C_BOOLEAN:C305(Editor_Definition_drop ;$0)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=0; "Missing parameter"))
 	
-	  //NO PARAMETERS REQUIRED
+	//NO PARAMETERS REQUIRED
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=1)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -41,15 +37,15 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 If ($File_pasteboard="@.4lb")\
  | ($File_pasteboard="@.4lbp")
 	
-	$Dom_label:=label_Parse_document ($File_pasteboard;True:C214)
+	$Dom_label:=label_Parse_document($File_pasteboard; True:C214)
 	
 	If (Length:C16($Dom_label)#0)
 		
-		  //free memory
+		//free memory
 		DOM CLOSE XML:C722($Dom_label)
 		
 		C_LABEL_DOCUMENT:=$File_pasteboard
@@ -59,8 +55,8 @@ If ($File_pasteboard="@.4lb")\
 	End if 
 End if 
 
-  // ----------------------------------------------------
-  // Return
-  // <NONE>
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// Return
+// <NONE>
+// ----------------------------------------------------
+// End

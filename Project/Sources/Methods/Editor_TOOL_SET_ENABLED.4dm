@@ -14,10 +14,6 @@
 
 var $count_parameters : Integer
 
-If (False:C215)
-	C_BOOLEAN:C305(Editor_TOOL_SET_ENABLED; $1)
-End if 
-
 // ----------------------------------------------------
 // Initialisations
 $count_parameters:=Count parameters:C259

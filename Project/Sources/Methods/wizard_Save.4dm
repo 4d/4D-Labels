@@ -9,18 +9,13 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_BOOLEAN:C305($0)
-C_TEXT:C284($1)
+var $0 : Boolean
+var $1 : Text
 
-C_BOOLEAN:C305($Boo_success)
-C_LONGINT:C283($Lon_parameters)
-C_TEXT:C284($File_pathname; $kTxt_extension; $Txt_extension; $Txt_name)
-C_OBJECT:C1216($Obj_form; $Obj_path)
-
-If (False:C215)
-	C_BOOLEAN:C305(wizard_Save; $0)
-	C_TEXT:C284(wizard_Save; $1)
-End if 
+var $Boo_success : Boolean
+var $Lon_parameters : Integer
+var $File_pathname; $kTxt_extension; $Txt_extension; $Txt_name : Text
+var $Obj_form; $Obj_path : Object
 
 // ----------------------------------------------------
 // Initialisations

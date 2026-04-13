@@ -1,40 +1,35 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Editor_OB_Get_count
-  // Database: 4D Labels
-  // ID[60E874B2DEC248AE8F28BADEA958A1FA]
-  // Created #17-2-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_LONGINT:C283($0)
-C_TEXT:C284($1)
-C_POINTER:C301($2)
+// ----------------------------------------------------
+// Project method : Editor_OB_Get_count
+// Database: 4D Labels
+// ID[60E874B2DEC248AE8F28BADEA958A1FA]
+// Created #17-2-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Integer
+var $1 : Text
+var $2 : Pointer
 
-C_LONGINT:C283($Lon_count;$Lon_parameters)
-C_POINTER:C301($Ptr_array)
-C_TEXT:C284($Dom_label)
+var $Lon_count; $Lon_parameters : Integer
+var $Ptr_array : Pointer
+var $Dom_label : Text
 
-ARRAY TEXT:C222($tDom_buffer;0)
+ARRAY TEXT:C222($tDom_buffer; 0)
 
-If (False:C215)
-	C_LONGINT:C283(Editor_OB_Get_count ;$0)
-	C_TEXT:C284(Editor_OB_Get_count ;$1)
-	C_POINTER:C301(Editor_OB_Get_count ;$2)
-End if 
 
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=1;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=1; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	$Dom_label:=$1
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=2)
 		
 		$Ptr_array:=$2  //populated with the DOM references if passed
@@ -47,22 +42,22 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
-$tDom_buffer{0}:=DOM Find XML element:C864(DOM Find XML element by ID:C1010($Dom_label;"objects");"objects/object";$tDom_buffer)
+// ----------------------------------------------------
+$tDom_buffer{0}:=DOM Find XML element:C864(DOM Find XML element by ID:C1010($Dom_label; "objects"); "objects/object"; $tDom_buffer)
 
 $Lon_count:=Size of array:C274($tDom_buffer)
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=$Lon_count
 
 If ($Lon_parameters>=2)
 	
-	  //%W-518.1
-	COPY ARRAY:C226($tDom_buffer;$Ptr_array->)
-	  //%W+518.1
+	//%W-518.1
+	COPY ARRAY:C226($tDom_buffer; $Ptr_array->)
+	//%W+518.1
 	
 End if 
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

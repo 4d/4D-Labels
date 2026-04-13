@@ -9,24 +9,19 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_TEXT:C284($1)
-C_TEXT:C284($2)
+var $1 : Text
+var $2 : Text
 
-C_LONGINT:C283($kLon_topOffset; $Lon_bottom; $Lon_fontSize; $Lon_frameBottom; $Lon_frameLeft; $Lon_frameRight)
-C_LONGINT:C283($Lon_frameTop; $Lon_left; $Lon_parameters; $Lon_right; $Lon_style; $Lon_top)
-C_REAL:C285($Num_editorHeight; $Num_editorWidth; $Num_editorX; $Num_editorY; $Num_xScaling; $Num_xTranslation)
-C_REAL:C285($Num_yTranslation)
-C_TEXT:C284($Dom_canvas; $Dom_label; $Dom_object; $Txt_buffer; $Txt_fill; $Txt_ID)
-C_TEXT:C284($Txt_stroke)
-C_OBJECT:C1216($Obj_dialog)
+var $kLon_topOffset; $Lon_bottom; $Lon_fontSize; $Lon_frameBottom; $Lon_frameLeft; $Lon_frameRight : Integer
+var $Lon_frameTop; $Lon_left; $Lon_parameters; $Lon_right; $Lon_style; $Lon_top : Integer
+var $Num_editorHeight; $Num_editorWidth; $Num_editorX; $Num_editorY; $Num_xScaling; $Num_xTranslation : Real
+var $Num_yTranslation : Real
+var $Dom_canvas; $Dom_label; $Dom_object; $Txt_buffer; $Txt_fill; $Txt_ID : Text
+var $Txt_stroke : Text
+var $Obj_dialog : Object
 
 ARRAY LONGINT:C221($tLon_length; 0)
 ARRAY LONGINT:C221($tLon_pos; 0)
-
-If (False:C215)
-	C_TEXT:C284(Editor_TEXT_EDIT_START; $1)
-	C_TEXT:C284(Editor_TEXT_EDIT_START; $2)
-End if 
 
 // ----------------------------------------------------
 // Initialisations

@@ -9,22 +9,18 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_TEXT:C284($0)
-C_OBJECT:C1216($1)
+var $0 : Text
+var $1 : Object
 
-C_BOOLEAN:C305($Boo_inGroup)
-C_LONGINT:C283($Lon_parameters; $Lon_type; $Lon_x1; $Lon_x2; $Lon_y1; $Lon_y2)
-C_REAL:C285($Num_centerX; $Num_centerY; $Num_editorHeight; $Num_editorWidth; $Num_editorX; $Num_editorY)
-C_REAL:C285($Num_fillOpacity; $Num_height; $Num_rotation; $Num_strokeOpacity; $Num_strokeWidth; $Num_width)
-C_REAL:C285($Num_x; $Num_xScalling; $Num_xTranslation; $Num_y; $Num_yScalling; $Num_yTranslation)
-C_TEXT:C284($Dom_buffer; $Dom_canvas; $Dom_defs; $Dom_object; $Txt_class; $Txt_data)
-C_TEXT:C284($Txt_direction; $Txt_fill; $Txt_ID; $Txt_stroke; $Txt_style; $Txt_transform)
-C_TEXT:C284($Txt_type)
+var $Boo_inGroup : Boolean
+var $Lon_parameters; $Lon_type; $Lon_x1; $Lon_x2; $Lon_y1; $Lon_y2 : Integer
+var $Num_centerX; $Num_centerY; $Num_editorHeight; $Num_editorWidth; $Num_editorX; $Num_editorY : Real
+var $Num_fillOpacity; $Num_height; $Num_rotation; $Num_strokeOpacity; $Num_strokeWidth; $Num_width : Real
+var $Num_x; $Num_xScalling; $Num_xTranslation; $Num_y; $Num_yScalling; $Num_yTranslation : Real
+var $Dom_buffer; $Dom_canvas; $Dom_defs; $Dom_object; $Txt_class; $Txt_data : Text
+var $Txt_direction; $Txt_fill; $Txt_ID; $Txt_stroke; $Txt_style; $Txt_transform : Text
+var $Txt_type : Text
 
-If (False:C215)
-	C_TEXT:C284(Editor_Put_object; $0)
-	C_OBJECT:C1216(Editor_Put_object; $1)
-End if 
 
 // ----------------------------------------------------
 // Initialisations

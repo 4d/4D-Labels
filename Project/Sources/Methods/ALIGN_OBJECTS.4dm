@@ -9,18 +9,14 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_OBJECT:C1216($1)
+var $1 : Object
 
-C_BOOLEAN:C305($Boo_visible)
-C_LONGINT:C283($kLon_buttonMinWidth; $kLon_hOffset; $Lon_bottom; $Lon_height; $Lon_i; $Lon_left)
-C_LONGINT:C283($Lon_parameters; $Lon_positionLeft; $Lon_right; $Lon_rightOffset; $Lon_top; $Lon_width)
-C_TEXT:C284($Txt_object; $Txt_type)
+var $Boo_visible : Boolean
+var $kLon_buttonMinWidth; $kLon_hOffset; $Lon_bottom; $Lon_height; $Lon_i; $Lon_left : Integer
+var $Lon_parameters; $Lon_positionLeft; $Lon_right; $Lon_rightOffset; $Lon_top; $Lon_width : Integer
+var $Txt_object; $Txt_type : Text
 
 ARRAY OBJECT:C1221($tObj_objects; 0)
-
-If (False:C215)
-	C_OBJECT:C1216(ALIGN_OBJECTS; $1)
-End if 
 
 // ----------------------------------------------------
 // Initialisations

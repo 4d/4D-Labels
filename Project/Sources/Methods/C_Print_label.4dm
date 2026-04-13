@@ -14,28 +14,21 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_LONGINT:C283($0)
-C_LONGINT:C283($1)
-C_TEXT:C284($2)
-C_TEXT:C284($3)
+var $0 : Integer
+var $1 : Integer
+var $2 : Text
+var $3 : Text
 
-C_BLOB:C604($Blb_buffer)
-C_BOOLEAN:C305($Boo_OK; $Boo_withPrintSettings)
-C_LONGINT:C283($Lon_bottom; $Lon_error; $Lon_height; $Lon_left; $Lon_orientation; $Lon_parameters)
-C_LONGINT:C283($Lon_right; $Lon_table; $Lon_top; $Lon_width)
-C_PICTURE:C286($Pic_buffer)
-C_POINTER:C301($Ptr_table)
-C_TEXT:C284($Dom_label; $File_; $File_path; $Txt_form; $Txt_onErrorMethod; $Txt_option)
-C_OBJECT:C1216($file; $o)
+var $Blb_buffer : Blob
+var $Boo_OK; $Boo_withPrintSettings : Boolean
+var $Lon_bottom; $Lon_error; $Lon_height; $Lon_left; $Lon_orientation; $Lon_parameters : Integer
+var $Lon_right; $Lon_table; $Lon_top; $Lon_width : Integer
+var $Pic_buffer : Picture
+var $Ptr_table : Pointer
+var $Dom_label; $File_; $File_path; $Txt_form; $Txt_onErrorMethod; $Txt_option : Text
+var $file; $o : Object
 
 ARRAY LONGINT:C221($tLon_records; 0)
-
-If (False:C215)
-	C_LONGINT:C283(C_Print_label; $0)
-	C_LONGINT:C283(C_Print_label; $1)
-	C_TEXT:C284(C_Print_label; $2)
-	C_TEXT:C284(C_Print_label; $3)
-End if 
 
 // ----------------------------------------------------
 // Initialisations
@@ -119,7 +112,7 @@ Case of
 				//#ACI0096139 {
 				//PLATFORM PROPERTIES($Lon_platform)
 				//$File_:=Select document(13893;Choose($Lon_platform=Windows;".4lb";"4DET");Get localized string("Select label settings file...");Package open+Use sheet window)
-				$File_:=Select document:C905(13893; ".4lb;.4lbp"; Get localized string:C991("Select label settings file..."); Package open:K24:8+Use sheet window:K24:11)
+				$File_:=Select document:C905(13893; ".4lb;.4lbp"; Localized string:C991("Select label settings file..."); Package open:K24:8+Use sheet window:K24:11)
 				//}
 				//]
 				

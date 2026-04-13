@@ -9,7 +9,7 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_LONGINT:C283($Lon_disabledTextColor; $Lon_parameters)
+var $Lon_disabledTextColor; $Lon_parameters : Integer
 
 // ----------------------------------------------------
 // Initialisations

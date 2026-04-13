@@ -1,36 +1,30 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Editor_MENU_IMAGE_OPTIONS
-  // Database: 4D Labels
-  // ID[D3D6E13AACC64978B0B64C5CEAE6322F]
-  // Created #20-5-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_TEXT:C284($0)
-C_TEXT:C284($1)
-C_TEXT:C284($2)
+// ----------------------------------------------------
+// Project method : Editor_MENU_IMAGE_OPTIONS
+// Database: 4D Labels
+// ID[D3D6E13AACC64978B0B64C5CEAE6322F]
+// Created #20-5-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Text
+var $1 : Text
+var $2 : Text
 
-C_LONGINT:C283($Lon_parameters)
-C_TEXT:C284($Mnu_parentMenu;$Mnu_sub;$Txt_preserveAspectRatio)
+var $Lon_parameters : Integer
+var $Mnu_parentMenu; $Mnu_sub; $Txt_preserveAspectRatio : Text
 
-If (False:C215)
-	C_TEXT:C284(Editor_MENU_IMAGE_OPTIONS ;$0)
-	C_TEXT:C284(Editor_MENU_IMAGE_OPTIONS ;$1)
-	C_TEXT:C284(Editor_MENU_IMAGE_OPTIONS ;$2)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=0; "Missing parameter"))
 	
-	  //NO PARAMETERS REQUIRED
+	//NO PARAMETERS REQUIRED
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=1)
 		
 		$Txt_preserveAspectRatio:=$1
@@ -48,23 +42,23 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 $Mnu_sub:=Create menu:C408
 
-APPEND MENU ITEM:C411($Mnu_sub;":xliff:Menus_scaledToFitPropCentered")
-SET MENU ITEM PARAMETER:C1004($Mnu_sub;-1;"image-preserve-aspect-ratio"+Choose:C955($Txt_preserveAspectRatio="true";"-remove";""))
-SET MENU ITEM MARK:C208($Mnu_sub;-1;Char:C90(18)*Num:C11($Txt_preserveAspectRatio="true"))
+APPEND MENU ITEM:C411($Mnu_sub; ":xliff:Menus_scaledToFitPropCentered")
+SET MENU ITEM PARAMETER:C1004($Mnu_sub; -1; "image-preserve-aspect-ratio"+Choose:C955($Txt_preserveAspectRatio="true"; "-remove"; ""))
+SET MENU ITEM MARK:C208($Mnu_sub; -1; Char:C90(18)*Num:C11($Txt_preserveAspectRatio="true"))
 
 If ($Lon_parameters>=2)
 	
-	APPEND MENU ITEM:C411($Mnu_parentMenu;":xliff:Menus_image";$Mnu_sub)
+	APPEND MENU ITEM:C411($Mnu_parentMenu; ":xliff:Menus_image"; $Mnu_sub)
 	RELEASE MENU:C978($Mnu_sub)
 	
 End if 
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=$Mnu_sub
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

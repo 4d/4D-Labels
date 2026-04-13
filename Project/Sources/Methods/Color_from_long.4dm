@@ -1,36 +1,30 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Color_from_long
-  // Database: 4D Labels
-  // ID[816EFF42A98C4E8498B404A4E2090C7C]
-  // Created #6-1-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_TEXT:C284($0)
-C_LONGINT:C283($1)
-C_TEXT:C284($2)
+// ----------------------------------------------------
+// Project method : Color_from_long
+// Database: 4D Labels
+// ID[816EFF42A98C4E8498B404A4E2090C7C]
+// Created #6-1-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Text
+var $1 : Integer
+var $2 : Text
 
-C_LONGINT:C283($Lon_color;$Lon_parameters)
-C_TEXT:C284($Txt_color;$Txt_target)
+var $Lon_color; $Lon_parameters : Integer
+var $Txt_color; $Txt_target : Text
 
-If (False:C215)
-	C_TEXT:C284(Color_from_long ;$0)
-	C_LONGINT:C283(Color_from_long ;$1)
-	C_TEXT:C284(Color_from_long ;$2)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=0; "Missing parameter"))
 	
-	  //NO PARAMETERS REQUIRED
+	//NO PARAMETERS REQUIRED
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=1)
 		
 		$Lon_color:=$1
@@ -48,16 +42,16 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 
 Case of 
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: ($Lon_color=-1)
 		
-		$Txt_color:=Choose:C955($Txt_target="stroke";"black";"none")
+		$Txt_color:=Choose:C955($Txt_target="stroke"; "black"; "none")
 		
-		  //______________________________________________________
+		//______________________________________________________
 	Else 
 		
 		$Txt_color:="rgb("\
@@ -65,12 +59,12 @@ Case of
 			+String:C10(($Lon_color & 0xFF00) >> 8)+","\
 			+String:C10(($Lon_color & 0x00FF))+")"
 		
-		  //______________________________________________________
+		//______________________________________________________
 End case 
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=$Txt_color
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

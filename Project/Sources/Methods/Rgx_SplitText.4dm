@@ -1,40 +1,32 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Method : Rgx_SplitText
-  // Created 27/09/07 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description
-  // Alias "QF_SplitText"
-  // ----------------------------------------------------
-  // Paramètres
-  // $1 = Regular expression
-  // $2 = Target text
-  // $3 = Array of text segments
-  // $4 = Regular expression flags
-  // $0 = Error result
-  // ----------------------------------------------------
-C_LONGINT:C283($0)
-C_TEXT:C284($1)
-C_TEXT:C284($2)
-C_POINTER:C301($3)
-C_LONGINT:C283($4)
+// ----------------------------------------------------
+// Method : Rgx_SplitText
+// Created 27/09/07 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description
+// Alias "QF_SplitText"
+// ----------------------------------------------------
+// Paramètres
+// $1 = Regular expression
+// $2 = Target text
+// $3 = Array of text segments
+// $4 = Regular expression flags
+// $0 = Error result
+// ----------------------------------------------------
+var $0 : Integer
+var $1 : Text
+var $2 : Text
+var $3 : Pointer
+var $4 : Integer
 
-C_BOOLEAN:C305($Boo_OK)
-C_LONGINT:C283($Lon_Error;$Lon_i;$Lon_Options;$Lon_Parameters;$Lon_Start)
-C_TEXT:C284($Txt_Buffer;$Txt_Error_Method;$Txt_Pattern;$Txt_Target)
+var $Boo_OK : Boolean
+var $Lon_Error; $Lon_i; $Lon_Options; $Lon_Parameters; $Lon_Start : Integer
+var $Txt_Buffer; $Txt_Error_Method; $Txt_Pattern; $Txt_Target : Text
 
-ARRAY LONGINT:C221($tLon_Lengths;0)
-ARRAY LONGINT:C221($tLon_Positions;0)
+ARRAY LONGINT:C221($tLon_Lengths; 0)
+ARRAY LONGINT:C221($tLon_Positions; 0)
 
-If (False:C215)
-	C_LONGINT:C283(Rgx_SplitText ;$0)
-	C_TEXT:C284(Rgx_SplitText ;$1)
-	C_TEXT:C284(Rgx_SplitText ;$2)
-	C_POINTER:C301(Rgx_SplitText ;$3)
-	C_LONGINT:C283(Rgx_SplitText ;$4)
-End if 
-
-C_LONGINT:C283(rgx_Lon_Error)
+var rgx_Lon_Error : Integer
 
 $Lon_Parameters:=Count parameters:C259
 
@@ -50,7 +42,7 @@ Else
 		
 	End if 
 	
-	$Txt_Pattern:=rgx_Options ($Lon_Options)+$1
+	$Txt_Pattern:=rgx_Options($Lon_Options)+$1
 	$Txt_Target:=$2
 	
 	CLEAR VARIABLE:C89($3->)
@@ -62,43 +54,43 @@ Else
 	
 	Repeat 
 		
-		$Boo_OK:=Match regex:C1019($Txt_Pattern;$Txt_Target;$Lon_Start;$tLon_Positions;$tLon_Lengths)
+		$Boo_OK:=Match regex:C1019($Txt_Pattern; $Txt_Target; $Lon_Start; $tLon_Positions; $tLon_Lengths)
 		
 		If ($Boo_OK)
 			
-			For ($Lon_i;0;Size of array:C274($tLon_Positions);1)
+			For ($Lon_i; 0; Size of array:C274($tLon_Positions); 1)
 				
 				If ($Lon_i=0)
 					
-					  //zz
-					$Txt_Buffer:=Substring:C12($Txt_Target;$Lon_Start;$tLon_Positions{$Lon_i}-$Lon_Start)
+					//zz
+					$Txt_Buffer:=Substring:C12($Txt_Target; $Lon_Start; $tLon_Positions{$Lon_i}-$Lon_Start)
 					
 				Else 
 					
-					  //xx
-					$Txt_Buffer:=Substring:C12($Txt_Target;$tLon_Positions{$Lon_i-1};$tLon_Positions{$Lon_i}-1)
+					//xx
+					$Txt_Buffer:=Substring:C12($Txt_Target; $tLon_Positions{$Lon_i-1}; $tLon_Positions{$Lon_i}-1)
 					
 				End if 
 				
 				If ($Lon_Options ?? 11)  //Trim unnecessary whitespace or tab from the start and the end of a string.
 					
-					$Lon_Error:=Rgx_SubstituteText ("^\\s*";"";->$Txt_Buffer)
-					$Lon_Error:=Rgx_SubstituteText ("\\s*$";"";->$Txt_Buffer)
+					$Lon_Error:=Rgx_SubstituteText("^\\s*"; ""; ->$Txt_Buffer)
+					$Lon_Error:=Rgx_SubstituteText("\\s*$"; ""; ->$Txt_Buffer)
 					
 				End if 
 				
 				Case of 
 						
-						  //______________________________________________________
+						//______________________________________________________
 					: (Length:C16($Txt_Buffer)=0)\
 						 & ($Lon_Options ?? 10)  //Skeep empty lines
 						
-						  //______________________________________________________
+						//______________________________________________________
 					Else 
 						
-						APPEND TO ARRAY:C911($3->;$Txt_Buffer)
+						APPEND TO ARRAY:C911($3->; $Txt_Buffer)
 						
-						  //______________________________________________________
+						//______________________________________________________
 				End case 
 				
 				If ($tLon_Positions{$Lon_i}>0)
@@ -110,27 +102,27 @@ Else
 			
 		Else 
 			
-			$Txt_Buffer:=Substring:C12($Txt_Target;$Lon_Start)
+			$Txt_Buffer:=Substring:C12($Txt_Target; $Lon_Start)
 			
 			If ($Lon_Options ?? 11)  //Trim unnecessary whitespace or tab from the start and the end of a string.
 				
-				$Lon_Error:=Rgx_SubstituteText ("^\\s*";"";->$Txt_Buffer)
-				$Lon_Error:=Rgx_SubstituteText ("\\s*$";"";->$Txt_Buffer)
+				$Lon_Error:=Rgx_SubstituteText("^\\s*"; ""; ->$Txt_Buffer)
+				$Lon_Error:=Rgx_SubstituteText("\\s*$"; ""; ->$Txt_Buffer)
 				
 			End if 
 			
 			Case of 
 					
-					  //______________________________________________________
+					//______________________________________________________
 				: (Length:C16($Txt_Buffer)=0)\
 					 & ($Lon_Options ?? 10)  //Skeep empty lines
 					
-					  //______________________________________________________
+					//______________________________________________________
 				Else 
 					
-					APPEND TO ARRAY:C911($3->;$Txt_Buffer)
+					APPEND TO ARRAY:C911($3->; $Txt_Buffer)
 					
-					  //______________________________________________________
+					//______________________________________________________
 			End case 
 		End if 
 	Until (Not:C34($Boo_OK))

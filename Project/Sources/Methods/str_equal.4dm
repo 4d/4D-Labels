@@ -1,42 +1,36 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : str_equal
-  // Database: development
-  // ID[DCF30A469D5E4218B85F194A77D16EFA]
-  // Created #12-5-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  // Tests if two strings are strictly identical
-  // ----------------------------------------------------
-  // Declarations
-C_BOOLEAN:C305($0)
-C_TEXT:C284($1)
-C_TEXT:C284($2)
+// ----------------------------------------------------
+// Project method : str_equal
+// Database: development
+// ID[DCF30A469D5E4218B85F194A77D16EFA]
+// Created #12-5-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+// Tests if two strings are strictly identical
+// ----------------------------------------------------
+// Declarations
+var $0 : Boolean
+var $1 : Text
+var $2 : Text
 
-C_BOOLEAN:C305($Boo_equal)
-C_LONGINT:C283($Lon_parameters)
-C_TEXT:C284($Txt_string_1;$Txt_string_2)
+var $Boo_equal : Boolean
+var $Lon_parameters : Integer
+var $Txt_string_1; $Txt_string_2 : Text
 
-If (False:C215)
-	C_BOOLEAN:C305(str_equal ;$0)
-	C_TEXT:C284(str_equal ;$1)
-	C_TEXT:C284(str_equal ;$2)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=2;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=2; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	$Txt_string_1:=$1
 	$Txt_string_2:=$2
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=3)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -46,31 +40,31 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 Case of 
 		
-		  //________________________________________
+		//________________________________________
 	: (Length:C16($Txt_string_1)#Length:C16($Txt_string_2))
 		
-		  //Obviously not identical
+		//Obviously not identical
 		
-		  //________________________________________
+		//________________________________________
 	: (Length:C16($Txt_string_1)=0)
 		
-		  //Both strings are empty
+		//Both strings are empty
 		$Boo_equal:=True:C214
 		
-		  //________________________________________
+		//________________________________________
 	Else 
 		
-		$Boo_equal:=(Position:C15($Txt_string_1;$Txt_string_2;1;*)=1)
+		$Boo_equal:=(Position:C15($Txt_string_1; $Txt_string_2; 1; *)=1)
 		
-		  //________________________________________
+		//________________________________________
 End case 
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=$Boo_equal
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

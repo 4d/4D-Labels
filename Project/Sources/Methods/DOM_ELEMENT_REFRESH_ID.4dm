@@ -20,10 +20,6 @@ var $Txt_ID : Text
 ARRAY LONGINT:C221($tLon_types; 0)
 ARRAY TEXT:C222($tDom_nodes; 0)
 
-If (False:C215)
-	C_TEXT:C284(DOM_ELEMENT_REFRESH_ID; $1)
-End if 
-
 // ----------------------------------------------------
 // Initialisations
 $Lon_parameters:=Count parameters:C259

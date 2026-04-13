@@ -1,42 +1,36 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Convert_into_points
-  // Database: 4D Labels
-  // ID[D0D2F58C0ED14D048E30C05EEBA7CD62]
-  // Created #15-12-2014 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_REAL:C285($0)
-C_REAL:C285($1)
-C_TEXT:C284($2)
+// ----------------------------------------------------
+// Project method : Convert_into_points
+// Database: 4D Labels
+// ID[D0D2F58C0ED14D048E30C05EEBA7CD62]
+// Created #15-12-2014 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $0 : Real
+var $1 : Real
+var $2 : Text
 
-C_LONGINT:C283($Lon_parameters)
-C_REAL:C285($Num_value)
-C_TEXT:C284($Txt_unit)
+var $Lon_parameters : Integer
+var $Num_value : Real
+var $Txt_unit : Text
 
-If (False:C215)
-	C_REAL:C285(Convert_into_points ;$0)
-	C_REAL:C285(Convert_into_points ;$1)
-	C_TEXT:C284(Convert_into_points ;$2)
-End if 
-
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=2;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=2; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	$Num_value:=$1
 	$Txt_unit:=$2
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=3)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -46,35 +40,35 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 Case of 
 		
-		  //________________________________________
+		//________________________________________
 	: ($Txt_unit="in")
 		
 		$Num_value:=$Num_value*72
 		
-		  //________________________________________
+		//________________________________________
 	: ($Txt_unit="mm")
 		
 		$Num_value:=$Num_value*2.83464567
 		
-		  //________________________________________
+		//________________________________________
 	: ($Txt_unit="cm")
 		
-		  //1 Centimeter = 28.3464567 Points [Postscript]
-		  //1 Point = 0.0352777778 Centimeters
+		//1 Centimeter = 28.3464567 Points [Postscript]
+		//1 Point = 0.0352777778 Centimeters
 		$Num_value:=$Num_value*((283464566/10000000)+((99999997/100000000)/10000000))
 		
-		  //________________________________________
+		//________________________________________
 	Else 
 		
-		  //________________________________________
+		//________________________________________
 End case 
 
-  // ----------------------------------------------------
-  // Return
+// ----------------------------------------------------
+// Return
 $0:=$Num_value
 
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// End

@@ -1,38 +1,33 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : DEBUG_EXPORT_CANVAS
-  // Database: 4D Labels
-  // ID[0C31D8C5974648448A56DC18ED0A9D13]
-  // Created #21-5-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_TEXT:C284($1)
-C_TEXT:C284($2)
-C_TEXT:C284($3)
+// ----------------------------------------------------
+// Project method : DEBUG_EXPORT_CANVAS
+// Database: 4D Labels
+// ID[0C31D8C5974648448A56DC18ED0A9D13]
+// Created #21-5-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $1 : Text
+var $2 : Text
+var $3 : Text
 
-C_LONGINT:C283($Lon_parameters)
-C_TEXT:C284($Dir_export;$Dom_hdl;$Txt_name;$Txt_what)
+var $Lon_parameters : Integer
+var $Dir_export; $Dom_hdl; $Txt_name; $Txt_what : Text
 
-If (False:C215)
-	C_TEXT:C284(DEBUG_EXPORT ;$1)
-	C_TEXT:C284(DEBUG_EXPORT ;$2)
-	C_TEXT:C284(DEBUG_EXPORT ;$3)
-End if 
 
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=2;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=2; "Missing parameter"))
 	
-	  //Required parameters
+	//Required parameters
 	$Txt_what:=$1
 	$Dom_hdl:=$2
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=3)
 		
 		$Txt_name:=$3
@@ -47,55 +42,55 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 Case of 
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: (Is compiled mode:C492)
 		
-		  //NOTHING MORE TO DO
+		//NOTHING MORE TO DO
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: (Test path name:C476($Dir_export)#Is a folder:K24:2)
 		
-		  //NOTHING MORE TO DO
+		//NOTHING MORE TO DO
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: ($Txt_what="canvas")
 		
 		If (Length:C16($Txt_name)>0)
 			
-			DOM EXPORT TO FILE:C862($Dom_hdl;$Dir_export+$Txt_name)
+			DOM EXPORT TO FILE:C862($Dom_hdl; $Dir_export+$Txt_name)
 			
 		Else 
 			
-			DOM EXPORT TO FILE:C862($Dom_hdl;$Dir_export+"image.svg")
+			DOM EXPORT TO FILE:C862($Dom_hdl; $Dir_export+"image.svg")
 			
 		End if 
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: ($Txt_what="label")
 		
 		If (Length:C16($Txt_name)>0)
 			
-			DOM EXPORT TO FILE:C862($Dom_hdl;$Dir_export+$Txt_name)
+			DOM EXPORT TO FILE:C862($Dom_hdl; $Dir_export+$Txt_name)
 			
 		Else 
 			
-			DOM EXPORT TO FILE:C862($Dom_hdl;$Dir_export+"label.xml")
+			DOM EXPORT TO FILE:C862($Dom_hdl; $Dir_export+"label.xml")
 			
 		End if 
 		
-		  //______________________________________________________
+		//______________________________________________________
 	Else 
 		
-		ASSERT:C1129(False:C215;"Unknown entry point: \""+$Txt_what+"\"")
+		ASSERT:C1129(False:C215; "Unknown entry point: \""+$Txt_what+"\"")
 		
-		  //______________________________________________________
+		//______________________________________________________
 End case 
 
-  // ----------------------------------------------------
-  // Return
-  // <NONE>
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// Return
+// <NONE>
+// ----------------------------------------------------
+// End

@@ -9,8 +9,8 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_LONGINT:C283($Lon_parameters)
-C_BOOLEAN:C305($boo_isColorSchemeLight)
+var $Lon_parameters : Integer
+var $boo_isColorSchemeLight : Boolean
 
 // ----------------------------------------------------
 // Initialisations

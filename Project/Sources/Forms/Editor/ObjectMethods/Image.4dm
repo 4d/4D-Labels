@@ -4,13 +4,13 @@
 // Created #22-12-2014 by Vincent de Lachaux
 // ----------------------------------------------------
 // Declarations
-C_LONGINT:C283($0)
+var $0 : Integer
 
-C_BOOLEAN:C305($Boo_label; $Boo_OK)
-C_LONGINT:C283($Lon_accept; $Lon_formEvent)
-C_POINTER:C301($Ptr_me)
-C_TEXT:C284($Dom_canvas; $Dom_label; $File_path; $Txt_me)
-C_OBJECT:C1216($Obj_parameters)
+var $Boo_label; $Boo_OK : Boolean
+var $Lon_accept; $Lon_formEvent : Integer
+var $Ptr_me : Pointer
+var $Dom_canvas; $Dom_label; $File_path; $Txt_me : Text
+var $Obj_parameters : Object
 
 // ----------------------------------------------------
 // Initialisations

@@ -14,13 +14,6 @@ var $1 : Text
 var $2 : Integer
 var $3 : Text
 
-If (False:C215)
-	C_TEXT:C284(Get_text_display; $0)
-	C_TEXT:C284(Get_text_display; $1)
-	C_LONGINT:C283(Get_text_display; $2)
-	C_TEXT:C284(Get_text_display; $3)
-End if 
-
 var $expression; $itemReference; $pattern; $result; $t; $value : Text
 var $countTableFieldPairs; $i : Integer
 

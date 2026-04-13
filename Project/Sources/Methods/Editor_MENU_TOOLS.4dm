@@ -15,8 +15,8 @@
 //C_TEXT($0)
 //C_TEXT($1)
 
-C_LONGINT:C283($count_parameters)
-C_TEXT:C284($Mnu_main; $Mnu_tools; $Txt_tool)
+var $count_parameters : Integer
+var $Mnu_main; $Mnu_tools; $Txt_tool : Text
 
 //If (False)
 //C_TEXT(Editor_MENU_TOOLS; $0)

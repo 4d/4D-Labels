@@ -9,17 +9,12 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_PICTURE:C286($0)
-C_LONGINT:C283($1)
+var $0 : Picture
+var $1 : Integer
 
-C_LONGINT:C283($Lon_fieldType; $Lon_parameters)
-C_PICTURE:C286($Pic_icon)
-C_TEXT:C284($File_path; $Txt_imageFile; $Txt_root; $txt_suffix)
-
-If (False:C215)
-	C_PICTURE:C286(wizard_Field_icon; $0)
-	C_LONGINT:C283(wizard_Field_icon; $1)
-End if 
+var $Lon_fieldType; $Lon_parameters : Integer
+var $Pic_icon : Picture
+var $File_path; $Txt_imageFile; $Txt_root; $txt_suffix : Text
 
 // ----------------------------------------------------
 // Initialisations

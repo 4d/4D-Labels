@@ -1,30 +1,30 @@
 //%attributes = {"invisible":true}
-  // ----------------------------------------------------
-  // Project method : Editor_PICKER
-  // Database: 4D Labels
-  // ID[58911415406542338F2D521694CF3CFF]
-  // Created #19-5-2015 by Vincent de Lachaux
-  // ----------------------------------------------------
-  // Description:
-  //
-  // ----------------------------------------------------
-  // Declarations
-C_LONGINT:C283($Lon_formEvent;$Lon_parameters;$Lon_size)
-C_POINTER:C301($Ptr_me)
-C_TEXT:C284($Txt_font;$Txt_me)
+// ----------------------------------------------------
+// Project method : Editor_PICKER
+// Database: 4D Labels
+// ID[58911415406542338F2D521694CF3CFF]
+// Created #19-5-2015 by Vincent de Lachaux
+// ----------------------------------------------------
+// Description:
+//
+// ----------------------------------------------------
+// Declarations
+var $Lon_formEvent; $Lon_parameters; $Lon_size : Integer
+var $Ptr_me : Pointer
+var $Txt_font; $Txt_me : Text
 
-  // ----------------------------------------------------
-  // Initialisations
+// ----------------------------------------------------
+// Initialisations
 $Lon_parameters:=Count parameters:C259
 
-If (Asserted:C1132($Lon_parameters>=0;"Missing parameter"))
+If (Asserted:C1132($Lon_parameters>=0; "Missing parameter"))
 	
-	  //NO PARAMETERS REQUIRED
+	//NO PARAMETERS REQUIRED
 	
-	  //Optional parameters
+	//Optional parameters
 	If ($Lon_parameters>=1)
 		
-		  // <NONE>
+		// <NONE>
 		
 	End if 
 	
@@ -38,38 +38,38 @@ Else
 	
 End if 
 
-  // ----------------------------------------------------
+// ----------------------------------------------------
 Case of 
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: ($Lon_formEvent=On Getting Focus:K2:7)
 		
-		  //set the attributes according to the current selection
-		OBJECT SET FONT:C164(*;$Txt_me;Editor_SEL_Get_font )
-		OBJECT SET FONT SIZE:C165(*;$Txt_me;Editor_SEL_Get_font_size )
+		//set the attributes according to the current selection
+		OBJECT SET FONT:C164(*; $Txt_me; Editor_SEL_Get_font)
+		OBJECT SET FONT SIZE:C165(*; $Txt_me; Editor_SEL_Get_font_size)
 		
-		  //______________________________________________________
+		//______________________________________________________
 	: ($Lon_formEvent=On After Edit:K2:43)
 		
-		  ///set selection attributes according to the current values
-		$Txt_font:=OBJECT Get font:C1069(*;$Txt_me)
-		$Lon_size:=OBJECT Get font size:C1070(*;$Txt_me)
+		///set selection attributes according to the current values
+		$Txt_font:=OBJECT Get font:C1069(*; $Txt_me)
+		$Lon_size:=OBJECT Get font size:C1070(*; $Txt_me)
 		
-		Editor_SEL_SET_FONT ($Txt_font)
-		Editor_SEL_SET_FONT_SIZE ($Lon_size)
+		Editor_SEL_SET_FONT($Txt_font)
+		Editor_SEL_SET_FONT_SIZE($Lon_size)
 		
-		  //keep the current values
+		//keep the current values
 		
-		  //______________________________________________________
+		//______________________________________________________
 	Else 
 		
-		ASSERT:C1129(False:C215;"Form event activated unnecessary ("+String:C10($Lon_formEvent)+")")
+		ASSERT:C1129(False:C215; "Form event activated unnecessary ("+String:C10($Lon_formEvent)+")")
 		
-		  //______________________________________________________
+		//______________________________________________________
 End case 
 
-  // ----------------------------------------------------
-  // Return
-  // <NONE>
-  // ----------------------------------------------------
-  // End
+// ----------------------------------------------------
+// Return
+// <NONE>
+// ----------------------------------------------------
+// End

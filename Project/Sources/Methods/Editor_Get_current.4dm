@@ -19,11 +19,6 @@ var $count_parameters : Integer
 var $Dom_current : Text
 var $Obj_dialog : Object
 
-If (False:C215)
-	C_TEXT:C284(Editor_Get_current; $0)
-	C_BOOLEAN:C305(Editor_Get_current; $1)
-End if 
-
 // ----------------------------------------------------
 // Initialisations
 $count_parameters:=Count parameters:C259

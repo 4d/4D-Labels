@@ -30,12 +30,6 @@ var $Dom_rects; $Dom_selects; $Dom_setting; $Dom_size; $Dom_xml; $kTxt_objectPre
 var $Txt_alignment; $Txt_buffer; $Txt_codec; $Txt_document; $Txt_fontName; $Txt_layoutName : Text
 var $Txt_PRPF; $Txt_PRPS; $Txt_style; $Txt_type; $Txt_variableName : Text
 
-If (False:C215)
-	C_TEXT:C284(parse_data; $0)
-	C_POINTER:C301(parse_data; $1)
-	C_BOOLEAN:C305(parse_data; $2)
-End if 
-
 /* File format for 4D labels.
 The format is based on IFF:
 http://en.wikipedia.org/wiki/Interchange_File_Format

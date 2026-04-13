@@ -9,20 +9,14 @@
 //
 // ----------------------------------------------------
 // Declarations
-C_REAL:C285($0)
-C_REAL:C285($1)
-C_TEXT:C284($2)
-C_LONGINT:C283($3)
+var $0 : Real
+var $1 : Real
+var $2 : Text
+var $3 : Integer
 
-C_LONGINT:C283($Lon_parameters; $Lon_round)
-C_REAL:C285($Num_value)
-C_TEXT:C284($Txt_unit)
-
-If (False:C215)
-	C_REAL:C285(Convert_from_points; $0)
-	C_TEXT:C284(Convert_from_points; $2)
-	C_LONGINT:C283(Convert_from_points; $3)
-End if 
+var $Lon_parameters; $Lon_round : Integer
+var $Num_value : Real
+var $Txt_unit : Text
 
 // ----------------------------------------------------
 // Initialisations
