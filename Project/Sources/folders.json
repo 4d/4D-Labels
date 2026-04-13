@@ -376,7 +376,6 @@
 		"methods": [
 			"Compiler_Rgx",
 			"Rgx_ExtractText",
-			"Rgx_Get_Pattern",
 			"Rgx_MatchText",
 			"rgx_NO_ERROR",
 			"rgx_Options",

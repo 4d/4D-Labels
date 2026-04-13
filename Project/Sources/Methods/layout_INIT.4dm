@@ -5,12 +5,8 @@
 // ID[E9019810C6A346A4804BB0DF82566898]
 // Created #16-12-2014 by Vincent de Lachaux
 // ----------------------------------------------------
-// Description:
-//
-// ----------------------------------------------------
-// Declarations
 var $Boo_fixedHeight; $Boo_fixedWidth; $Boo_mode; $Boo_prefilled : Boolean
-var $Lon_; $Lon_i; $Lon_pages; $Lon_parameters; $Lon_platform; $Lst_buffer : Integer
+var $Lon_; $Lon_i; $Lon_pages; $Lst_buffer : Integer
 var $Ptr_table : Pointer
 var $File_user; $Txt_buffer : Text
 
@@ -19,32 +15,10 @@ ARRAY TEXT:C222($tTxt_forms; 0)
 ARRAY TEXT:C222($tTxt_methods; 0)
 ARRAY OBJECT:C1221($tObj_param; 0)
 
-// ----------------------------------------------------
-// Initialisations
-$Lon_parameters:=Count parameters:C259
-
-If (Asserted:C1132($Lon_parameters>=0; "Missing parameter"))
-	
-	//NO PARAMETERS REQUIRED
-	
-	//Optional parameters
-	If ($Lon_parameters>=1)
-		
-	End if 
-	
-Else 
-	
-	ABORT:C156
-	
-End if 
-
-// ----------------------------------------------------
 OBJECT SET VISIBLE:C603(*; "Debug@"; <>Boo_debug)
 
 //==================== adjust display according to the platform
-_O_PLATFORM PROPERTIES:C365($Lon_platform)
-
-If ($Lon_platform=Mac OS:K25:2)
+If (Is macOS:C1572)
 	
 	OBJECT SET VISIBLE:C603(*; "win.@"; False:C215)
 	
@@ -203,9 +177,3 @@ CLEAR VARIABLE:C89($tObj_param)
 
 // #redmine:20134 adapt separator's line to the localized label
 obj_ADAPT_SEPARATOR_LINE("size.title.1"; "size.title.2"; "size.title.3")
-
-// ----------------------------------------------------
-// Return
-// <NONE>
-// ----------------------------------------------------
-// End

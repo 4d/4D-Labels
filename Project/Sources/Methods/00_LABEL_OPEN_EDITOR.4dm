@@ -94,38 +94,38 @@ Case of
 		$Mnu_edit:=Create menu:C408
 		
 		APPEND MENU ITEM:C411($Mnu_edit; Localized string:C991("CommonMenuItemUndo"))
-		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; _o_Undo action:K59:16)
+		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; ak undo:K76:51)
 		SET MENU ITEM SHORTCUT:C423($Mnu_edit; -1; "Z"; Command key mask:K16:1)
 		
 		APPEND MENU ITEM:C411($Mnu_edit; Localized string:C991("CommonMenuRedo"))
-		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; _o_Redo action:K59:17)
+		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; ak redo:K76:52)
 		SET MENU ITEM SHORTCUT:C423($Mnu_edit; -1; "Z"; Shift key mask:K16:3)
 		
 		APPEND MENU ITEM:C411($Mnu_edit; "-")
 		
 		APPEND MENU ITEM:C411($Mnu_edit; Localized string:C991("CommonMenuItemCut"))
-		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; _o_Cut action:K59:18)
+		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; ak cut:K76:53)
 		SET MENU ITEM SHORTCUT:C423($Mnu_edit; -1; "X"; Command key mask:K16:1)
 		
 		APPEND MENU ITEM:C411($Mnu_edit; Localized string:C991("CommonMenuItemCopy"))
-		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; _o_Copy action:K59:19)
+		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; ak copy:K76:54)
 		SET MENU ITEM SHORTCUT:C423($Mnu_edit; -1; "C"; Command key mask:K16:1)
 		
 		APPEND MENU ITEM:C411($Mnu_edit; Localized string:C991("CommonMenuItemPaste"))
-		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; _o_Paste action:K59:20)
+		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; ak paste:K76:55)
 		SET MENU ITEM SHORTCUT:C423($Mnu_edit; -1; "V"; Command key mask:K16:1)
 		
 		APPEND MENU ITEM:C411($Mnu_edit; Localized string:C991("CommonMenuItemClear"))
-		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; _o_Clear action:K59:21)
+		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; ak clear:K76:56)
 		
 		APPEND MENU ITEM:C411($Mnu_edit; Localized string:C991("CommonMenuItemSelectAll"))
-		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; _o_Select all action:K59:22)
+		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; ak select all:K76:57)
 		SET MENU ITEM SHORTCUT:C423($Mnu_edit; -1; "A"; Command key mask:K16:1)
 		
 		APPEND MENU ITEM:C411($Mnu_edit; "(-")
 		
 		APPEND MENU ITEM:C411($Mnu_edit; Localized string:C991("CommonMenuItemShowClipboard"))
-		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; _o_Show clipboard action:K59:23)
+		SET MENU ITEM PROPERTY:C973($Mnu_edit; -1; Associated standard action name:K28:8; ak show clipboard:K76:58)
 		
 		APPEND MENU ITEM:C411($Mnu_bar; Localized string:C991("CommonMenuEdit"); $Mnu_edit)
 		RELEASE MENU:C978($Mnu_edit)

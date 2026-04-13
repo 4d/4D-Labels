@@ -19,11 +19,6 @@ If (False:C215)
 	C_POINTER:C301(Rgx_ExtractText; $4)
 	C_LONGINT:C283(Rgx_ExtractText; $5)
 	
-	C_TEXT:C284(Rgx_Get_Pattern; $0)
-	C_TEXT:C284(Rgx_Get_Pattern; $1)
-	C_TEXT:C284(Rgx_Get_Pattern; $2)
-	C_POINTER:C301(Rgx_Get_Pattern; $3)
-	
 	C_LONGINT:C283(Rgx_MatchText; $0)
 	C_TEXT:C284(Rgx_MatchText; $1)
 	C_TEXT:C284(Rgx_MatchText; $2)

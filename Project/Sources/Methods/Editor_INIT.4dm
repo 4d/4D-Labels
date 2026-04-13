@@ -5,41 +5,14 @@
 // ID[F2AB60EDB4BC40E0B9EF63D1E68F512E]
 // Created #12-2-2015 by Vincent de Lachaux
 // ----------------------------------------------------
-// Description:
-//
-// ----------------------------------------------------
-// Declarations
-var $Lon_parameters; $Lon_platform : Integer
 var $Ptr_buffer : Pointer
 var $Dir_media : Text
 
 ARRAY TEXT:C222($tTxt_buffer; 0)
 
-// ----------------------------------------------------
-// Initialisations
-$Lon_parameters:=Count parameters:C259
+$Ptr_buffer:=OBJECT Get pointer:C1124(Object named:K67:5; "object")
+OB GET PROPERTY NAMES:C1232($Ptr_buffer->; $tTxt_buffer)
 
-If (Asserted:C1132($Lon_parameters>=0; "Missing parameter"))
-	
-	//NO PARAMETERS REQUIRED
-	
-	//Optional parameters
-	If ($Lon_parameters>=1)
-		
-		// <NONE>
-		
-	End if 
-	
-	$Ptr_buffer:=OBJECT Get pointer:C1124(Object named:K67:5; "object")
-	OB GET PROPERTY NAMES:C1232($Ptr_buffer->; $tTxt_buffer)
-	
-Else 
-	
-	ABORT:C156
-	
-End if 
-
-// ----------------------------------------------------
 If (Size of array:C274($tTxt_buffer)=0)  //INIT
 	
 	//show debug objects if any
@@ -47,8 +20,6 @@ If (Size of array:C274($tTxt_buffer)=0)  //INIT
 	
 	//show inworks object
 	OBJECT SET VISIBLE:C603(*; "tool.2"; <>Boo_debug)  //freehand tool
-	
-	_O_PLATFORM PROPERTIES:C365($Lon_platform)
 	
 	//init default values & toolbar
 	$Dir_media:=Get 4D folder:C485(Current resources folder:K5:16)\
@@ -59,7 +30,7 @@ If (Size of array:C274($tTxt_buffer)=0)  //INIT
 	OB SET:C1220($Ptr_buffer->; \
 		"inited"; True:C214; \
 		"root-media"; $Dir_media; \
-		"platform"; $Lon_platform; \
+		"platform"; 2+Num:C11(Is Windows:C1573); \
 		"default-font"; "'"+OBJECT Get font:C1069(*; "AutoFont")+"'"; \
 		"debug"; <>Boo_debug; \
 		"step-X"; 10; \
@@ -81,9 +52,3 @@ If (Size of array:C274($tTxt_buffer)=0)  //INIT
 	Editor_TOOL_SET_ENABLED(False:C215)
 	
 End if 
-
-// ----------------------------------------------------
-// Return
-// <NONE>
-// ----------------------------------------------------
-// End

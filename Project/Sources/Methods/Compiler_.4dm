@@ -692,12 +692,6 @@ C_TEXT:C284(Editor_SEL_Get_color; $1)
 C_TEXT:C284(Editor_SEL_Get_color; $2)
 C_TEXT:C284(Editor_SEL_Get_color; $3)
 
-//Rgx_Get_Pattern
-C_TEXT:C284(Rgx_Get_Pattern; $0)
-C_TEXT:C284(Rgx_Get_Pattern; $1)
-C_TEXT:C284(Rgx_Get_Pattern; $2)
-C_POINTER:C301(Rgx_Get_Pattern; $3)
-
 //Editor_SEL_Get_text_align
 C_TEXT:C284(Editor_SEL_Get_text_align; $0)
 C_TEXT:C284(Editor_SEL_Get_text_align; $1)
