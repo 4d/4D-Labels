@@ -7,10 +7,9 @@
 // ----------------------------------------------------
 #DECLARE($data : Text; $value : Text;  ...  : Text)
 
-var $i : Integer
-var $tr : Pointer
-
 If (Count parameters:C259>2)
+	
+	var $i : Integer
 	
 	For ($i; 1; Count parameters:C259; 2)
 		
@@ -25,28 +24,27 @@ Else
 	
 	If (Length:C16($value)=0)
 		
-		$tr:=OBJECT Get pointer:C1124(Object current:K67:2)
+		var $me:=OBJECT Get pointer:C1124(Object current:K67:2)
+		var $type:=Value type:C1509($me->)
 		
 		Case of 
 				
 				// ________________________________________
-			: (Type:C295($tr->)=Is text:K8:3)\
-				 | (Type:C295($tr->)=Is alpha field:K8:1)
+			: ($type=Is text:K8:3)\
+				 || ($type=Is alpha field:K8:1)
 				
-				$value:=$tr->
-				
-				// ________________________________________
-			: (Type:C295($tr->)=Is longint:K8:6)\
-				 | (Type:C295($tr->)=Is integer:K8:5)\
-				 | (Type:C295($tr->)=Is integer 64 bits:K8:25)\
-				 | (Type:C295($tr->)=_o_Is float:K8:26)
-				
-				$value:=String:C10($tr->)
+				$value:=$me->
 				
 				// ________________________________________
-			: (Type:C295($tr->)=Is real:K8:4)
+			: ($type=Is longint:K8:6)\
+				 || ($type=Is integer:K8:5)
 				
-				$value:=String:C10($tr->; "&xml")
+				$value:=String:C10($me->)
+				
+				// ________________________________________
+			: ($type=Is real:K8:4)
+				
+				$value:=String:C10($me->; "&xml")
 				
 				// ________________________________________
 			Else 
