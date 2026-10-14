@@ -303,7 +303,8 @@
 					"width": 269,
 					"height": 22,
 					"class": "background",
-					"stroke": "transparent"
+					"stroke": "transparent",
+					"fill": "automatic"
 				},
 				"field.search.frame": {
 					"type": "rectangle",
@@ -676,5 +677,5 @@
 			"View 9": {}
 		}
 	},
-	"geometryStamp": 19
+	"geometryStamp": 23
 }
