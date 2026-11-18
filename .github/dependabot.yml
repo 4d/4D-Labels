@@ -1,3 +1,5 @@
+# Weekly bump of SHA-pinned GitHub Actions (SHA and "# vX.Y.Z" comment), grouped in a single PR.
+# Internal 4d actions track @main on purpose and are ignored.
 version: 2
 updates:
   - package-ecosystem: "github-actions"

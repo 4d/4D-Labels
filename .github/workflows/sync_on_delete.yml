@@ -1,27 +1,31 @@
 name: Delete
 
+# Propagates branch/tag deletions to the internal Git server mirror.
+
 on:
   delete:
 
+permissions:
+  contents: read
 
 jobs:
   sync:
     runs-on: [self-hosted, macOS, ARM64]
     name: Git Repo Sync
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-          lfs: true 
+          lfs: true
 
       - name: Get Internal Sync action
-        uses: actions/checkout@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: 4d/gitlabsync-action
-          ref: main
+          ref: main # internal action, intentionally tracks main
           path: .github/workflows/external/sync
           token: ${{ secrets.CI_GIT_SYNC }}
-    
+
       - id: Sync
         uses: ./.github/workflows/external/sync/
         with:

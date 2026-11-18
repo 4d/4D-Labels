@@ -1,5 +1,7 @@
 name: Lint
 
+# Checks that XLIFF, 4DSettings and 4DCatalog files are well-formed XML.
+
 on:
   push:
     paths:
@@ -12,14 +14,17 @@ on:
       - '**.xlf'
       - '**.4DSettings'
       - '**.4DCatalog'
+
+permissions:
+  contents: read
+
 jobs:
   run-lint:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Lint XML
         run: |
